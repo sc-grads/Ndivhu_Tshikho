@@ -1,0 +1,114 @@
+Data is a collection of facts, such as #, words, measurements, observations or just descriptions of things.
+row data - that needs to be processd to give meaning.
+information- processed data which have meaning.
+
+Database- an organized collection of structured information or data, typically stored electronically in a computer.
+
+how is the dat stored?
+-stored into tables.
+-data has to be stored in a standardized manner
+-tables are not the database.
+
+tables
+-relational database system contains one or more objects called tables.
+-data is stored in these tables.
+
+column
+-set of a data values, all of a single type in a table.
+-columns define the data in a table.
+-contains text values, # or even pointers to files in the operating system.
+-column name is uniquein a table..
+-Field = column
+-field is the intesection of a row and a column.
+
+row 
+
+collection of field that make up a record.
+
+a row is also called a record.each row represent a unique record.
+
+Key
+
+is a data item that exclusively identifies a record.key can be single attribute of a group of attribute.key are also used to generate relayionship among different database tables.
+
+diiferent types of Keys 
+
+Candidate keyan attribute or set of attributes thhat uniquely identifies a record.
+
+Primary Keyis a set of one or more field(columsn) of a table that uniquely identify a record in a database table.
+
+Secondary KeyCandidate Key that are not selected as Primary key.
+
+Unique Keyis a set of one or more attribute that can be used to uniquely identify the records in table.
+
+Composite Keyis a combination of more that one attributw that can be used to uniquely identify each record.
+
+Foreign keyis a field  in database table that is a primary key in another table.
+
+Relational Database
+is a type of database and its based in relational model of the data.
+-stored and provides access to data points that are related to one another.
+-To ensure that data is always accurate and accessible, relational databases follows certain integrity rules.
+
+RDBMS
+a program that allows you to create, update, and administer a relational database.
+-most use SQL to access the database.
+
+Advantage
+-enhanced data security.
+-retain data consistency.
+-vetter flexibility and scalability.
+-Easy maintenance.
+
+Tranction
+is a single logical unit or work which accesses and possibly modifies the contents of a database.
+-access data using read and write operation.
+groups SQL statements so that they either all committed, or all rolled back.
+
+Acid properties
+-is a concept that refers to the four properted of a transaction in a database system.
+-ensure the accuracy and integrity of the data in a database.
+-ensuring that the data does not become corrupt as a result of failure.
+
+which is:
+Atomicity
+-either all of its operations are executed or none.
+-The transaction should be completely executed or fails completely
+
+this provide reliability.
+
+consistency
+-ensure that the transaction maintain data integrity constraints, leaving the data consistent.
+-Data that is saved in the database must always be valid 
+
+and it will be valid according to the defined set of rules.
+
+Isolation
+
+all the transaction will be carried out and executed as if it is the only transaction in the system.-no transaction will affect the existence of any other transaction.
+
+ensuring that the transactionwill not be changed by any other concurrent transaction.
+
+Durability
+
+Once a transaction is completed and commited its changes are persisted permanently in the databaseensuring that the information that is saved in that database is immutable until another update or deletion transaction affects it.
+
+ Normalization
+ -process of organizing in a database in order to reduce data redundancy and improve data integrity.
+ -systematic approach of decomposing tables to eliminate data redundancy(repetition) and undesirable characteristics like
+ insertion, update and deletion anomalies.
+ -it works in accordance with a series of so-called normal forms(NF).
+
+ 1NF
+ it contains only atomic values, an atomic value that cannot be divided.
+ There are no repeating groups.
+
+ 2NF
+ -it is in 1NF.
+ -all partial key dependencies are removed, where an attribute in a table depends on only a part of the primary key
+ , not the whole key.
+
+3NF
+-it is in 2NF.
+-Non-primary key column shouldn't depend on the other non-primary key columns.
+-There is no transitive functional dependency.
