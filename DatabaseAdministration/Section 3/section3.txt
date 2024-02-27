@@ -1,0 +1,3 @@
+Download, install  MSSQL 2022
+Download and install AdventureWorks Database
+Created a database and tables for practice.
