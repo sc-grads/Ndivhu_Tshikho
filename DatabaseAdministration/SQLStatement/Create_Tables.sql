@@ -1,23 +1,27 @@
 
-## CREATE TABLE--This SQL command is used to create a new table in the database
-## [AdventureWorks2022].[Sales].[Visit]-- This specifies the fully qualified name of the table. 
-## "AdventureWorks2022" is the database name, "Sales" is the schema name, and "Visit" is the table name.
+/*
+CREATE TABLE
 
-## visit_id INT PRIMARY KEY IDENTITY (1,1)--This defines the first column of the table named "visit_id" with the following properties
-## INT-- Specifies the data type of the column as integer.
-## PRIMARY KEY --Indicates that this column is the primary key for the table, ensuring uniqueness and 
-## --providing a unique identifier for each row.
-## IDENTITY (1,1) -- Specifies that the column is an identity column, which automatically generates 
-## --incremental values starting from 1 with a seed of 1 and an increment of 1 for each new row inserted into the table.
+--This SQL command is used to create a new table in the database
+[AdventureWorks2022].[Sales].[Visit]-- This specifies the fully qualified name of the table. 
+"AdventureWorks2022" is the database name, "Sales" is the schema name, and "Visit" is the table name.
 
-## store_id INT NOT NULL--This line defines the store_id column with the following properties
-## INT--Specifies the data type of the column as integer.
-## NOT NULL--Specifies that this column cannot contain null values.
-## FOREIGN KEY (store_id) REFERENCES Sales.Storenew(store_id) 
-## --This line creates a foreign key constraint on the store_id column, 
-## --referencing the store_id column in the Sales.Storenew table. 
-## --This ensures referential integrity by enforcing that the values in the store_id column of 
-## --the Visit table must exist in the store_id column of the Sales.Storenew table.
+visit_id INT PRIMARY KEY IDENTITY (1,1)--This defines the first column of the table named "visit_id" with the following properties
+INT-- Specifies the data type of the column as integer.
+PRIMARY KEY --Indicates that this column is the primary key for the table, ensuring uniqueness and 
+providing a unique identifier for each row.
+IDENTITY (1,1) -- Specifies that the column is an identity column, which automatically generates 
+incremental values starting from 1 with a seed of 1 and an increment of 1 for each new row inserted into the table.
+
+store_id INT NOT NULL--This line defines the store_id column with the following properties
+INT--Specifies the data type of the column as integer.
+NOT NULL--Specifies that this column cannot contain null values.
+FOREIGN KEY (store_id) REFERENCES Sales.Storenew(store_id) 
+This line creates a foreign key constraint on the store_id column, 
+referencing the store_id column in the Sales.Storenew table. 
+This ensures referential integrity by enforcing that the values in the store_id column of 
+the Visit table must exist in the store_id column of the Sales.Storenew table.
+*/
 
 CREATE TABLE [AdventureWorks2022].[Sales].[Visit](
 visit_id INT PRIMARY KEY IDENTITY (1,1),
@@ -30,3 +34,18 @@ FOREIGN KEY (store_id) REFERENCES Sales.Storenew(store_id)
 )
 
 SELECT * From [AdventureWorks2022].[Sales].[Visit]
+
+
+---Join---
+---when we join two tables, we are linking them together via a selected characteristic.
+
+SELECT column.names 
+From table1.name1 join table.name2
+ON column.name1 = column.name2
+
+---Example---
+--- AS- are used to assign aliases to the tables 
+--- ON- used to specify the condition for joining tables in a JOIN operation.
+SELECT * From [Person].[BusinessEntityContact] AS e 
+join [Person].[PersonPhone] AS s
+ON e.[BusinessEntityID] = s.[BusinessEntityID]
