@@ -48,29 +48,3 @@ commit
 SELECT * From SalesStaff
 
 -----------------------------------------------------------------------------------
----SubQuery
---Is a query within another SQL query and embedded within there WHERE clause.
-
-SELECT * FROM [HumanResources].[EmployeePayHistory]
---- WHERE clause filters the rows that are returned by the query.
-WHERE BusinessEntityID IN (SELECT BusinessEntityID From [HumanResources].[EmployeePayHistory]  WHERE Rate > 60)
-
-SELECT * From [Production].[Product] 
-WHERE ProductID IN (SELECT ProductID From [Production].[ProductInventory] WHERE Quantity > 300)
-DELETE SalesStaff
-
-----------
-
-WHERE staffid IN (SELECT BusinessEntityID From Sales.vSalesPerson WHERE SalesLastYear = 0)
-
-SELECT * From SalesStaff
-
-----OR----
-
-DELETE SalesStaff
-From Sales.vSalesPerson sp
-INNER JOIN SalesStaff ss
-ON sp.BusinessEntityID = ss.staffid WHERE sp.SalesLastYear = 0
-
-SELECT * From SalesStaff
-
