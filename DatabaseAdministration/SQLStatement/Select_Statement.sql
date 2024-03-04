@@ -1,4 +1,3 @@
-
 --List all columns in a tablle.
 SELECT *
 From table_name
