@@ -10,5 +10,5 @@ SELECT * FROM [HumanResources].[EmployeePayHistory]
 WHERE BusinessEntityID IN (SELECT BusinessEntityID From [HumanResources].[EmployeePayHistory]  WHERE Rate > 60)
 
 SELECT * From [Production].[Product] 
-WHERE ProductID IN (SELECT ProductID From [Production].[ProductInventory] WHERE Color = 'Black')
+WHERE ProductID IN (SELECT ProductID From [Production].[ProductInventory] WHERE Quantity = 500)
 

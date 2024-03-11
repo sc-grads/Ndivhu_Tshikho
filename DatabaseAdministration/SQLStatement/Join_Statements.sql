@@ -73,6 +73,7 @@ CREATE TABLE Employee(
 	EmpTitle nvarchar(50) NULL,
 )
  drop table Employee
+ drop table Sales
 INSERT INTO Employee (EmpID, EmpName, EmpTitle) values (3, 'Dino', 'Sales Associate'),(79, 'James', 'Sales Manager'), (11, 'Issa', 'Sales Associate'),  (39, 'Bihaag', 'Sales Executive')
 
 SELECT * From Employee;
@@ -106,4 +107,13 @@ ON e.EmpID = s.EmpID
 SELECT * From Employee e Left Join sales s
 ON e.EmpID = s.EmpID 
 
+SELECT * FROM [Sales].[SalesOrderHeader]
 
+SELECT * From  [Sales].[SalesOrderDetail] AS sod
+--table [Sales].[SalesOrderDetail] is used, and it is given the alias sod
+INNER JOIN  [Sales].[SalesOrderHeader] AS soh ---[Sales].[SalesOrderHeader] is given am alias sod
+--The join condition specifies that rows will be matched based on the SalesOrderID column.
+ON sod.SalesOrderID = soh.SalesOrderID
+INNER JOIN [Sales].[Customer] AS sc
+-----The join condition specifies that rows will be matched based on the CustomerID column
+ON soh.CustomerID = sc.CustomerID
