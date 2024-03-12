@@ -41,7 +41,7 @@ jobs:
 
       - name: Convert Windows path to Unix-style path
         run: |
-          unix_path=$(echo "C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql" | sed 's/\\//\//g')
+          unix_path=$(echo "C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql" | tr '\\' '/')
           echo $unix_path
 
       - name: Copy SQL script into container
