@@ -42,10 +42,17 @@ jobs:
       - name: Convert Windows path to Unix-style path
         run: |
           unix_path=$(echo "C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql" | tr '\\' '/')
-          echo $unix_path
+          echo "Unix-style path: $unix_path"
+
+      - name: List container to check existence
+        run: |
+          docker ps -a
 
       - name: Copy SQL script into container
         run: |
+          echo "Copying file to container..."
+          echo "Source: $unix_path"
+          echo "Destination: $(docker ps -qf 'name=sql_server'):/tmp/Assignment_Database.sql"
           docker cp "$unix_path" $(docker ps -qf "name=sql_server"):/tmp/Assignment_Database.sql
 
       - name: Run SQL script
