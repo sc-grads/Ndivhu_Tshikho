@@ -32,14 +32,14 @@ jobs:
 
       - name: Start MSSQL container
         run: |
-          docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -d mcr.microsoft.com/mssql/server:latest
+          docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -d mcr.microsoft.com/mssql/server:latest || true
+          sleep 10 # Allow some time for the container to start
 
-      - name: Wait for MSSQL to start
+      - name: Check if MSSQL container is running
         run: |
-          sleep 60 # Adjust this based on your system's startup time
-          docker ps -a
+          docker ps -a | grep sql_server
 
       - name: Run SQL script
+        if: ${{ success() }}
         run: |
           docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i path/to/your/script.sql
-
