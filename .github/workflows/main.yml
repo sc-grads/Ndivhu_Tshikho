@@ -30,14 +30,21 @@ jobs:
           curl -fsSL https://get.docker.com -o get-docker.sh
           sudo sh get-docker.sh
 
-      - name: Start MSSQL container
-        run: |
-          docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -d mcr.microsoft.com/mssql/server:latest || true
-          sleep 10 # Allow some time for the container to start
-
       - name: Check if MSSQL container is running
         run: |
-          docker ps -a | grep sql_server
+          docker ps -a | grep sql_server || true
+
+      - name: View container logs
+        run: |
+          docker logs sql_server || true
+
+      - name: Manually start MSSQL container
+        run: |
+          docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -d mcr.microsoft.com/mssql/server:latest || true
+
+      - name: Check if MSSQL container is running after manual start
+        run: |
+          docker ps -a | grep sql_server || true
 
       - name: Run SQL script
         if: ${{ success() }}
