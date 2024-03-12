@@ -41,8 +41,8 @@ jobs:
 
       - name: Copy SQL script into container
         run: |
-          docker cp C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql sql_server:/Assignment_Database.sql
+          docker cp C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql $(docker ps -qf "name=sql_server"):/tmp/Assignment_Database.sql
 
       - name: Run SQL script
         run: |
-          docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i /Assignment_Database.sql
+          docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i /tmp/Assignment_Database.sql
