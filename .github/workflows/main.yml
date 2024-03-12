@@ -30,23 +30,19 @@ jobs:
           curl -fsSL https://get.docker.com -o get-docker.sh
           sudo sh get-docker.sh
 
-      - name: Check if MSSQL container is running
+      - name: Start MSSQL container
         run: |
-          docker ps -a | grep sql_server || true
+          docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -d mcr.microsoft.com/mssql/server:latest
 
-      - name: View container logs
+      - name: Wait for MSSQL to start
         run: |
-          docker logs sql_server || true
+          sleep 60 # Adjust this based on your system's startup time
+          docker ps -a
 
-      - name: Manually start MSSQL container
+      - name: Copy SQL script into container
         run: |
-          docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -d mcr.microsoft.com/mssql/server:latest || true
-
-      - name: Check if MSSQL container is running after manual start
-        run: |
-          docker ps -a | grep sql_server || true
+          docker cp C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql sql_server:/Assignment_Database.sql
 
       - name: Run SQL script
-        if: ${{ success() }}
         run: |
-          docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i path/to/your/script.sql
+          docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i /Assignment_Database.sql
