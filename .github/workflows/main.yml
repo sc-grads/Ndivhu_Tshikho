@@ -39,9 +39,13 @@ jobs:
           sleep 60 # Adjust this based on your system's startup time
           docker ps -a
 
+      - name: Get SQL Server Container ID
+        id: get_container_id
+        run: echo "::set-output name=container_id::$(docker ps -qf 'name=sql_server')"
+
       - name: Copy SQL script into container
         run: |
-          docker cp C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql $(docker ps -qf "name=sql_server"):/tmp/Assignment_Database.sql
+          docker cp C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql ${{ steps.get_container_id.outputs.container_id }}:/tmp/Assignment_Database.sql
 
       - name: Run SQL script
         run: |
