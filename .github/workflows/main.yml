@@ -39,10 +39,15 @@ jobs:
           sleep 60 # Adjust this based on your system's startup time
           docker ps -a
 
+      - name: Convert Windows path to Unix-style path
+        run: |
+          unix_path=$(echo "C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql" | sed 's/\\//\//g')
+          echo $unix_path
+
       - name: Copy SQL script into container
         run: |
-          docker cp C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql $(docker ps -qf "name=sql_server"):/tmp/Assignment_Database.sql
+          docker cp "$unix_path" $(docker ps -qf "name=sql_server"):/tmp/Assignment_Database.sql
 
       - name: Run SQL script
         run: |
-          docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P #Ndivhudzannyi99 -d master -i /tmp/Assignment_Database.sql
+          docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i /tmp/Assignment_Database.sql
