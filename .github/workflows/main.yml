@@ -24,5 +24,4 @@ jobs:
 
     - name: Run SQL script
       run: |
-        sudo docker exec -it sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrongPassword -d master -i /scripts/script.sql
-
+        sudo docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrongPassword -d master -i /Ndivhu_Tshikho/script.sql
