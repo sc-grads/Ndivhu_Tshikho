@@ -22,6 +22,10 @@ jobs:
         sleep 60 # Adjust this based on your system's startup time
         docker ps -a
 
+    - name: Ensure MSSQL container is running
+      run: |
+        sudo docker start sql_server
+
     - name: Run SQL script
       run: |
         sudo docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrongPassword -d master -i /Ndivhu_Tshikho/script.sql
