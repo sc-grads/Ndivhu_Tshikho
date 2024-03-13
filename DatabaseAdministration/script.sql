@@ -2,7 +2,7 @@
 CREATE DATABASE MyDatabase;
 
 -- Use the created database
-MyDatabase;
+USE MyDatabase;
  
 -- Create the Person table
 CREATE TABLE Person (
