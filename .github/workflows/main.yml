@@ -33,14 +33,14 @@ jobs:
       run: sudo docker ps -a | grep -q 'sql1' && sudo docker start sql1 || true
 
     - name: Download SQL script
-      run: wget -O script.sql https://raw.githubusercontent.com/sc-grads/Ndivhu_Tshikho/285223f3e54d579668fca533f094760bcd1496d2/DatabaseAdministration/script.sql
+      run: wget -O /tmp/script.sql https://raw.githubusercontent.com/sc-grads/Ndivhu_Tshikho/285223f3e54d579668fca533f094760bcd1496d2/DatabaseAdministration/script.sql
 
     - name: List files in directory
-      run: ls -l
+      run: ls -l /tmp
 
     - name: Print contents of SQL script
-      run: cat script.sql
+      run: cat /tmp/script.sql
 
     - name: Run SQL scripts
       run: |
-        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.eu.ngrok.io,15245 -U sa -P C8xYp!Z3#sDq -i script.sql
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.eu.ngrok.io,15245 -U sa -P C8xYp!Z3#sDq -i /tmp/script.sql
