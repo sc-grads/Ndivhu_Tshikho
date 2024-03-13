@@ -10,38 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Remove conflicting package
-      run: sudo apt-get remove containerd.io -y
+      - name: Remove conflicting package
+        run: sudo apt-get remove containerd.io -y
 
-    - name: Update package lists
-      run: sudo apt-get update
+      - name: Update package lists
+        run: sudo apt-get update
 
-    - name: Install Docker
-      run: sudo apt-get install docker.io -y
+      - name: Install Docker
+        run: sudo apt-get install docker.io -y
 
-    - name: Run MSSQL Server
-      run: |
-        sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong@Password123' -p 1433:1433 --name sql1 -d mcr.microsoft.com/mssql/server:2019-latest
+      - name: Run MSSQL Server
+        run: |
+          sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong@Password123' -p 1433:1433 --name sql1 -d mcr.microsoft.com/mssql/server:2019-latest
 
-    - name: Wait for MSSQL to start
-      run: sleep 30
+      - name: Wait for MSSQL to start
+        run: sleep 30
 
-    - name: Start Docker container if not running
-      run: sudo docker ps -a | grep -q 'sql1' && sudo docker start sql1 || true
+      - name: Start Docker container if not running
+        run: sudo docker ps -a | grep -q 'sql1' && sudo docker start sql1 || true
 
-    - name: Download SQL script
-      run: wget -O /tmp/script.sql https://raw.githubusercontent.com/sc-grads/Ndivhu_Tshikho/87f82be6ab185a1fd7d60fc4efee8fdb84a6ebe3/DatabaseAdministration/script.sql
-
-    - name: List files in directory
-      run: ls -l /tmp
-
-    - name: Print contents of SQL script
-      run: cat /tmp/script.sql
-
-    - name: Run SQL scripts
-      run: |
-        cat /tmp/script.sql | sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.eu.ngrok.io,15245 -U sa -P C8xYp!Z3#sDq
-
+      - name: Run SQL script
+        run: |
+          sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.eu.ngrok.io,15245 -U sa -P C8xYp!Z3#sDq -i DatabaseAdministration/script.sql
