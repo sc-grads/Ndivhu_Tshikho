@@ -35,6 +35,12 @@ jobs:
     - name: Download SQL script
       run: wget -O script.sql https://raw.githubusercontent.com/sc-grads/Ndivhu_Tshikho/285223f3e54d579668fca533f094760bcd1496d2/DatabaseAdministration/script.sql
 
+    - name: List files in directory
+      run: ls -l
+
+    - name: Print contents of SQL script
+      run: cat script.sql
+
     - name: Run SQL scripts
       run: |
         sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.eu.ngrok.io,15245 -U sa -P C8xYp!Z3#sDq -i script.sql
