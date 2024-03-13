@@ -1,6 +1,21 @@
-- name: Download and run MSSQL Docker container
+name: MSSQL Server Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Download and run MSSQL Docker container
       run: |
-        sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -v $(pwd):/scripts mcr.microsoft.com/mssql/server:2019-latest
+        sudo docker run -d -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -v $(pwd):/scripts mcr.microsoft.com/mssql/server:2019-latest
 
     - name: Wait for MSSQL to start
       run: |
@@ -9,5 +24,5 @@
 
     - name: Run SQL script
       run: |
-        # Assuming your SQL script file is named 'script.sql' and located in the root directory of your repository
         sudo docker exec -it sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrongPassword -d master -i /scripts/script.sql
+
