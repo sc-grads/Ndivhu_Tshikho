@@ -3,7 +3,7 @@ CREATE DATABASE MyDatabase;
 
 -- Use the created database
 USE MyDatabase;
- 
+
 -- Create the Person table
 CREATE TABLE Person (
         FirstName NVARCHAR(50),
