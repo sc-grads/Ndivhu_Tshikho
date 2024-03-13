@@ -34,4 +34,7 @@ jobs:
 
       - name: Run SQL scripts
         run: |
-          sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.eu.ngrok.io,15245 -U sa -P C8xYp!Z3#sDq -i script.sql
+          sudo docker cp script.sql sql1:/tmp/script.sql
+          sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.eu.ngrok.io,15245 -U sa -P C8xYp!Z3#sDq -i /tmp/script.sql
+
+      
