@@ -29,6 +29,9 @@ jobs:
     - name: Wait for MSSQL to start
       run: sleep 30
 
+    - name: Check if container is running
+      run: sudo docker ps -f name=sql1
+
     - name: Run SQL scripts
       run: |
-        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i scripts/script.sql
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i script.sql
