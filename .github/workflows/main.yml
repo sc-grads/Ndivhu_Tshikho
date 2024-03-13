@@ -1,49 +1,13 @@
-name: MSSQL Server Workflow
+- name: Download and run MSSQL Docker container
+      run: |
+        sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -v $(pwd):/scripts mcr.microsoft.com/mssql/server:2019-latest
 
-on:
-  push:
-    branches:
-      - main
+    - name: Wait for MSSQL to start
+      run: |
+        sleep 60 # Adjust this based on your system's startup time
+        docker ps -a
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Update and upgrade packages
-        run: |
-          sudo apt-get update
-          sudo apt-get upgrade -y
-
-      - name: Remove conflicting package
-        run: |
-          sudo apt-get remove -y containerd
-
-      - name: Install Docker
-        run: |
-          curl -fsSL https://get.docker.com -o get-docker.sh
-          sudo sh get-docker.sh
-
-      - name: Start MSSQL container
-        run: |
-          docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -d mcr.microsoft.com/mssql/server:latest
-
-      - name: Wait for MSSQL to start
-        run: |
-          sleep 60 # Adjust this based on your system's startup time
-          docker ps -a
-
-      - name: Copy SQL script into container
-        run: |
-          docker cp C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/Assignment_Database.sql $(docker ps -qf "name=sql_server"):/tmp/Assignment_Database.sql
-
-
-      - name: Run SQL script
-        run: |
-          docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i /tmp/Assignment_Database.sql
+    - name: Run SQL script
+      run: |
+        # Assuming your SQL script file is named 'script.sql' and located in the root directory of your repository
+        sudo docker exec -it sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrongPassword -d master -i /scripts/script.sql
