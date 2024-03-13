@@ -13,10 +13,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Remove conflicting package
+      run: sudo apt-get remove containerd.io -y
+
+    - name: Update package lists
+      run: sudo apt-get update
+
     - name: Install Docker
-      run: |
-        sudo apt-get update
-        sudo apt-get install docker.io -y
+      run: sudo apt-get install docker.io -y
 
     - name: Run MSSQL Server
       run: |
@@ -27,5 +31,4 @@ jobs:
 
     - name: Run SQL scripts
       run: |
-        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrongPassword -d master -i script.sql
-
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i scripts/script.sql
