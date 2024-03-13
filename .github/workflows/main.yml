@@ -1,4 +1,4 @@
-name: MSSQL Server Workflow
+name: MSSQL CI
 
 on:
   push:
@@ -6,26 +6,26 @@ on:
       - main
 
 jobs:
-  build:
+  run_sql_scripts:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Download and run MSSQL Docker container
+    - name: Install Docker
       run: |
-        sudo docker run -d -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -v $(pwd):/scripts mcr.microsoft.com/mssql/server:2019-latest
+        sudo apt-get update
+        sudo apt-get install docker.io -y
+
+    - name: Run MSSQL Server
+      run: |
+        sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrongPassword' -p 1433:1433 --name sql1 -d mcr.microsoft.com/mssql/server:2019-latest
 
     - name: Wait for MSSQL to start
-      run: |
-        sleep 60 # Adjust this based on your system's startup time
-        docker ps -a
+      run: sleep 30
 
-    - name: Ensure MSSQL container is running
+    - name: Run SQL scripts
       run: |
-        sudo docker start sql_server
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrongPassword -d master -i script.sql
 
-    - name: Run SQL script
-      run: |
-        sudo docker exec sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrongPassword -d master -i /Ndivhu_Tshikho/script.sql
