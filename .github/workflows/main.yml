@@ -41,5 +41,5 @@ jobs:
 
     - name: Check container changes
       run: |
-        sudo docker exec sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password123 -Q "SHOW Person;"
+        sudo docker exec sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password123 -Q "SHOW TABLES;"
 
