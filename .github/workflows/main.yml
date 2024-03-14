@@ -35,6 +35,7 @@ jobs:
       run: |
         sudo docker cp DatabaseAdministration/SQLStatement/script.sql sql1:/tmp/script.sql
         sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password123 -i /tmp/script.sql
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.in.ngrok.io,18551 -U sa -P C8xYp!Z3#sDq -i /tmp/script.sql
 
     - name: Check container changes and Run SQL scripts
       run: |
