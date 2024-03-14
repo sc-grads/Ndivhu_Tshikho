@@ -31,13 +31,11 @@ jobs:
     - name: Start Docker container if not running
       run: sudo docker ps -a | grep -q 'sql1' && sudo docker start sql1 || true
 
-    - name: Copy SQL script into container and Run SQL script
+    - name: Copy SQL script into container and Run SQL script Copied in the Local Server
       run: |
         sudo docker cp DatabaseAdministration/SQLStatement/script.sql sql1:/tmp/script.sql
-        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password123 -i /tmp/script.sql
-        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.in.ngrok.io,18551 -U sa -P C8xYp!Z3#sDq -i /tmp/script.sql
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.in.ngrok.io,18551  -U sa -P Issa100@ -i /tmp/script.sql
 
     - name: Check container changes and Run SQL scripts
       run: |
-        sudo docker exec sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password123 -Q "SELECT name FROM sys.databases;"
-        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.in.ngrok.io,18551 -U sa -P C8xYp!Z3#sDq -Q 'SELECT name FROM sys.databases;'
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.in.ngrok.io,18551 -U sa -P Issa100@ -Q 'SELECT name FROM sys.databases;'
