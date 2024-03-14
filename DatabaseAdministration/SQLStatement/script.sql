@@ -27,10 +27,7 @@ BEGIN
     ');
 END
 GO
-
--- Insert sample data into the Person table
--- INSERT INTO Person(FirstName, LastName) VALUES('John', 'Doe'),('Jane', 'Smith'),('Alice', 'Johnson');
-
+    
 -- Use the stored procedure to insert more data
 EXEC InsertPerson 'Michael', 'Jordan';
 EXEC InsertPerson 'LeBron', 'James';
