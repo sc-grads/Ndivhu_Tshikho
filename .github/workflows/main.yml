@@ -19,10 +19,22 @@ jobs:
     - name: Update package lists
       run: sudo apt-get update
 
-    - name: Install FreeTDS and SQLCMD
-      run: sudo apt-get install freetds-dev freetds-bin -y
+    - name: Install Docker
+      run: sudo apt-get install docker.io -y
+
+    - name: Run MSSQL Server
+      run: |
+        sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong@Password123' -p 1433:1433 --name sql1 -d mcr.microsoft.com/mssql/server:2019-latest
+
+    - name: Wait for MSSQL to start
+      run: sleep 30
+
+    - name: Start Docker container if not running
+      run: sudo docker ps -a | grep -q 'sql1' && sudo docker start sql1 || true
+
+    - name: Copy SQL script into container
+      run: sudo docker cp DatabaseAdministration/SQLStatement/script.sql sql1:/tmp/script.sql
 
     - name: Run SQL script
       run: |
-        cat DatabaseAdministration/SQLStatement/script.sql |
-        tsql -S 0.tcp.in.ngrok.io,18551 -U sa -P C8xYp!Z3#sDq
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Password123 -i /tmp/script.sql
