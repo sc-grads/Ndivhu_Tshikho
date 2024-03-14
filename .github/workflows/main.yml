@@ -45,4 +45,4 @@ jobs:
     - name: Run SQL scripts
       run: |
         sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.in.ngrok.io,18551 -U sa -P C8xYp!Z3#sDq -Q 'SELECT name FROM sys.databases;'
-
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S 0.tcp.in.ngrok.io,18551 -U sa -P C8xYp!Z3#sDq -i /tmp/script.sql
