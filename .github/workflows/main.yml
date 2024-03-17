@@ -33,8 +33,8 @@ jobs:
     - name: Copy SQL script into a container and Run SQL script Copied in the Local Server
       run: |
         sudo docker cp DatabaseAdministration/SQLStatement/script.sql sql1:/tmp/script.sql
-        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S ${{secrets.LOCALSERVERNAME}} -U ${{secrets.LOCALLOGIN}} -P ${{secrets.LOCALSERVERPASSWORD}} -i /tmp/script.sql
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S ${{secrets.NEW_LOCAL_SERVER_NAME}} -U ${{secrets.LOCALLOGIN}} -P ${{secrets.LOCALSERVERPASSWORD}} -i /tmp/script.sql
 
     - name: Check container changes and Run SQL scripts
       run: |
-        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S ${{secrets.LOCALSERVERNAME}} -U ${{secrets.LOCALLOGIN}} -P ${{secrets.LOCALSERVERPASSWORD}} -Q 'SELECT name FROM sys.databases;'
+        sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S ${{secrets.NEW_LOCAL_SERVER_NAME}} -U ${{secrets.LOCALLOGIN}} -P ${{secrets.LOCALSERVERPASSWORD}} -Q 'SELECT name FROM sys.databases;'
