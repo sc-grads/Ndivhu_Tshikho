@@ -1,4 +1,4 @@
--- Create MyDatabase if it doesn't exist
+-- Create AdventureWorks2022 database if it doesn't exist
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'AdventureWorks2022')
 BEGIN
     CREATE DATABASE AdventureWorks2022;
@@ -7,50 +7,51 @@ GO
 
 USE AdventureWorks2022;
 
-    -- Drop tables if they already exist
-    IF OBJECT_ID('dbo.Customer', 'U') IS NOT NULL
-        DROP TABLE dbo.Customer;
-    IF OBJECT_ID('dbo.Order', 'U') IS NOT NULL
-        DROP TABLE dbo.Order;
-    IF OBJECT_ID('dbo.Product', 'U') IS NOT NULL
-        DROP TABLE dbo.Product;
+-- Drop tables if they already exist
+IF OBJECT_ID('Customer', 'U') IS NOT NULL
+    DROP TABLE Customer;
+IF OBJECT_ID('Orders', 'U') IS NOT NULL
+    DROP TABLE Orders;
+IF OBJECT_ID('Product', 'U') IS NOT NULL
+    DROP TABLE Product;
 
-    -- Create the Customer table
-    CREATE TABLE dbo.Customer (
-        CustomerID INT PRIMARY KEY IDENTITY(1,1),
-        FirstName NVARCHAR(50),
-        LastName NVARCHAR(50)
-    );
+-- Create the Customer table
+CREATE TABLE Customer (
+    CustomerID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50)
+);
 
-    -- Create the Order table
-    CREATE TABLE dbo.Order (
-        OrderID INT PRIMARY KEY IDENTITY(1,1),
-        CustomerID INT FOREIGN KEY REFERENCES dbo.Customer(CustomerID),
-        OrderDate DATE
-    );
+-- Create the Order table
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY IDENTITY(1,1),
+    CustomerID INT FOREIGN KEY REFERENCES Customer(CustomerID),
+    OrderDate DATE
+);
 
-    -- Create the Product table
-    CREATE TABLE dbo.Product (
-        ProductID INT PRIMARY KEY IDENTITY(1,1),
-        ProductName NVARCHAR(100),
-        Price DECIMAL(10, 2)
-    );
+-- Create the Product table
+CREATE TABLE Product (
+    ProductID INT PRIMARY KEY IDENTITY(1,1),
+    ProductName NVARCHAR(100),
+    Price DECIMAL(10, 2)
+);
 
-    -- Insert sample data into the Customer table
-    INSERT INTO dbo.Customer (FirstName, LastName)
-    VALUES ('John', 'Doe'),
-           ('Jane', 'Doe'),
-           ('Alice', 'Smith');
+-- Insert sample data into the Customer table
+INSERT INTO Customer (FirstName, LastName)
+VALUES ('John', 'Doe'),
+       ('Jane', 'Doe'),
+       ('Alice', 'Smith');
 
-    -- Insert sample data into the Order table
-    INSERT INTO dbo.Order (CustomerID, OrderDate)
-    VALUES (1, '2024-03-18'),
-           (2, '2024-03-17'),
-           (3, '2024-03-16');
+-- Insert sample data into the Order table
+INSERT INTO Orders (CustomerID, OrderDate)
+VALUES (1, '2024-03-18'),
+       (2, '2024-03-17'),
+       (3, '2024-03-16');
 
-    -- Insert sample data into the Product table
-    INSERT INTO dbo.Product (ProductName, Price)
-    VALUES ('ProductA', 10.99),
-           ('ProductB', 20.50),
-           ('ProductC', 5.75);
+-- Insert sample data into the Product table
+INSERT INTO Product (ProductName, Price)
+VALUES ('ProductA', 10.99),
+       ('ProductB', 20.50),
+       ('ProductC', 5.75);
+
 
