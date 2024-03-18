@@ -23,3 +23,5 @@ AS
 SELECT * FROM [Person].[Address] WHERE City= @city
 GO
 EXEC SelctAllPersonAddressWithPara @city = 'New York'
+
+

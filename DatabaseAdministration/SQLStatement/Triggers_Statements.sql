@@ -1,3 +1,6 @@
+Use AdventureWorks2022
+Go
+
 -- Are dpecial stored procedures that are executed automatically in response to the database object,
 -- database and server events.
 
@@ -9,6 +12,12 @@ AFTER -- {INSERT, DELETE, UPDATE}
 AS sql_statement
 
 
+SELECT TOP (1000) [EmpName]
+      ,[EmpTitle]
+      ,[EmpID]
+  FROM [AdventureWorks2022].[dbo].[Employee]
+
+
 --- Example
 
 CREATE TABLE [dbo].[EmployeeTriggerHistory](
@@ -16,10 +25,12 @@ CREATE TABLE [dbo].[EmployeeTriggerHistory](
 	[Statement] [nchar](10) NULL
 ) ON [PRIMARY]
 
+select * from [dbo].[EmployeeTriggerHistory]
+--drop table [dbo].[EmployeeTriggerHistory]
 GO
-
+--drop TRIGGER [dbo].[EmployeeInsert] 
 CREATE TRIGGER [dbo].[EmployeeInsert] 
-   ON  [dbo].[Employee] 
+   ON  [dbo].[Employee]
    AFTER INSERT
 AS 
 BEGIN
@@ -28,12 +39,10 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for trigger here
-	Insert into EmployeeTriggerHistory values ((select Top 1 (EmpID) from employee),'Insert')
-
+	Insert into EmployeeTriggerHistory values ((select Top 100(EmpID) from Employee), 'Insert')
 
 END
-
 GO
 
-INSERT INTO Employee (EmpID, EmpName, EmpTitle) values (7, 'Craig', 'Manager')
+--insert into [Employee] (EmpID,[EmpName],[EmpTitle]) values (15,'Queen','Manager')
 select * from [dbo].[EmployeeTriggerHistory]
