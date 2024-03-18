@@ -6,6 +6,7 @@ END
 GO
 
 USE AdventureWorks2022;
+GO
 
 -- Drop tables if they already exist
 IF OBJECT_ID('Customer', 'U') IS NOT NULL
@@ -14,6 +15,7 @@ IF OBJECT_ID('Orders', 'U') IS NOT NULL
     DROP TABLE Orders;
 IF OBJECT_ID('Product', 'U') IS NOT NULL
     DROP TABLE Product;
+GO
 
 -- Create the Customer table
 CREATE TABLE Customer (
@@ -21,6 +23,7 @@ CREATE TABLE Customer (
     FirstName NVARCHAR(50),
     LastName NVARCHAR(50)
 );
+GO
 
 -- Create the Order table
 CREATE TABLE Orders (
@@ -28,6 +31,7 @@ CREATE TABLE Orders (
     CustomerID INT FOREIGN KEY REFERENCES Customer(CustomerID),
     OrderDate DATE
 );
+GO
 
 -- Create the Product table
 CREATE TABLE Product (
@@ -35,6 +39,7 @@ CREATE TABLE Product (
     ProductName NVARCHAR(100),
     Price DECIMAL(10, 2)
 );
+GO
 
 -- Create a stored procedure for inserting data
 CREATE PROCEDURE InsertSampleData
