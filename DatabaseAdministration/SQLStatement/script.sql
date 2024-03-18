@@ -36,22 +36,29 @@ CREATE TABLE Product (
     Price DECIMAL(10, 2)
 );
 
--- Insert sample data into the Customer table
-INSERT INTO Customer (FirstName, LastName)
-VALUES ('John', 'Doe'),
-       ('Jane', 'Doe'),
-       ('Alice', 'Smith');
+-- Create a stored procedure for inserting data
+CREATE PROCEDURE InsertSampleData
+AS
+BEGIN
+    -- Insert sample data into the Customer table
+    INSERT INTO Customer (FirstName, LastName)
+    VALUES ('John', 'Doe'),
+           ('Jane', 'Doe'),
+           ('Alice', 'Smith');
 
--- Insert sample data into the Order table
-INSERT INTO Orders (CustomerID, OrderDate)
-VALUES (1, '2024-03-18'),
-       (2, '2024-03-17'),
-       (3, '2024-03-16');
+    -- Insert sample data into the Order table
+    INSERT INTO Orders (CustomerID, OrderDate)
+    VALUES (1, '2024-03-18'),
+           (2, '2024-03-17'),
+           (3, '2024-03-16');
 
--- Insert sample data into the Product table
-INSERT INTO Product (ProductName, Price)
-VALUES ('ProductA', 10.99),
-       ('ProductB', 20.50),
-       ('ProductC', 5.75);
+    -- Insert sample data into the Product table
+    INSERT INTO Product (ProductName, Price)
+    VALUES ('ProductA', 10.99),
+           ('ProductB', 20.50),
+           ('ProductC', 5.75);
+END;
+GO
 
-
+-- Execute the stored procedure to insert sample data
+EXEC InsertSampleData;
