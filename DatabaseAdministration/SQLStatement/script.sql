@@ -1,4 +1,4 @@
--- Create AdventureWorks2022 database if it doesn't exist
+-- Create an AdventureWorks2022 database if it doesn't exist
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'AdventureWorks2022')
 BEGIN
     CREATE DATABASE AdventureWorks2022;
