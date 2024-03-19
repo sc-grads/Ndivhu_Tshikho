@@ -13,9 +13,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       
-    - name: Copy files to target directory
+    - name: Build Docker image
+      run: docker build -t my-container .
+      
+    - name: Run Docker container and copy files
       run: |
-        rsync -av --exclude='.git' C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/DatabaseAdministration/SSRS/ DatabaseAdministration/SSRS/
+        docker run --rm -v C:/Users/NdivhudzannyiT/Documents/Ndivhu_Tshikho/DatabaseAdministration/SSRS/:/data my-container cp -r /data/* /github/workspace/DatabaseAdministration/SSRS/
         
     - name: Configure git
       run: |
@@ -24,9 +27,9 @@ jobs:
         
     - name: Commit changes
       run: |
+        cd DatabaseAdministration/SSRS/
         git add .
         git commit -m "Move SSRS files to GitHub"
         
     - name: Push changes
       uses: ad-m/github-push-action@master
-      
