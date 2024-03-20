@@ -8,6 +8,11 @@ GO
 USE AdventureWorks2022;
 GO
 
+-- Drop stored procedure if it already exists
+IF OBJECT_ID('InsertSampleData', 'P') IS NOT NULL
+    DROP PROCEDURE InsertSampleData;
+GO
+
 IF OBJECT_ID('Product', 'U') IS NOT NULL
     DROP TABLE Product;
 IF OBJECT_ID('Orders', 'U') IS NOT NULL
@@ -63,6 +68,10 @@ BEGIN
            ('ProductC', 5.75);
 END;
 GO
+
+-- Execute the stored procedure to insert sample data
+EXEC InsertSampleData;
+
 
 -- Execute the stored procedure to insert sample data
 EXEC InsertSampleData;
