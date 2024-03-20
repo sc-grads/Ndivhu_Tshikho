@@ -20,7 +20,6 @@ IF OBJECT_ID('Orders', 'U') IS NOT NULL
 IF OBJECT_ID('Customer', 'U') IS NOT NULL
     DROP TABLE Customer;
 GO
-
 -- Create the Customer table
 CREATE TABLE Customer (
     CustomerID INT PRIMARY KEY IDENTITY(1,1),
