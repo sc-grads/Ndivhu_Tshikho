@@ -8,13 +8,12 @@ GO
 USE AdventureWorks2022;
 GO
 
--- Drop tables if they already exist
-IF OBJECT_ID('Customer', 'U') IS NOT NULL
-    DROP TABLE Customer;
-IF OBJECT_ID('Orders', 'U') IS NOT NULL
-    DROP TABLE Orders;
 IF OBJECT_ID('Product', 'U') IS NOT NULL
     DROP TABLE Product;
+IF OBJECT_ID('Orders', 'U') IS NOT NULL
+    DROP TABLE Orders;
+IF OBJECT_ID('Customer', 'U') IS NOT NULL
+    DROP TABLE Customer;
 GO
 
 -- Create the Customer table
