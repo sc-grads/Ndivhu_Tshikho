@@ -18,15 +18,14 @@ jobs:
 
       - name: Publish Report to Web Report Server
         run: |
-          # PowerShell script to publish a report to Web Report Server
+          # PowerShell script to publish report to Web Report Server
           $reportPath = "${{ github.workspace }}/DatabaseAdministration/SSRS/Reports/SalesAnalysisReport.rdl"
           $reportServerUrl = "http://desktop-pl72rr2/ReportServer"
           $reportServerFolder = "/Report Folder"
-          $reportServerCredentials = "username:password"
-
+          $reportServerCredentials = "your_username:your_password"
 
           # Build command to publish report
-          $publishCommand = "ReportBuilder.exe /publish:`"$reportPath`" /rs:$reportServerUrl /rf:$reportServerFolder /rc:$reportServerCredentials"
+          $publishCommand = "ReportBuilder.exe /publish:`"$reportPath`" /rs:$reportServerUrl /rf:$reportServerFolder /rc:`"$reportServerCredentials`""
 
           # Execute the command
           Invoke-Expression -Command $publishCommand
