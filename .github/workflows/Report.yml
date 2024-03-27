@@ -21,8 +21,8 @@ jobs:
           $reportServerFolder = "/Report Folder"
           $reportServerCredentials = "your_username:your_password"
           
-          # Specify full path to ReportBuilder.exe
-          $reportBuilderPath = "C:\Program Files (x86)\Microsoft Report Builder\MSReportBuilder.exe"
+          # Specify full path to ReportBuilder.exe with double quotes
+          $reportBuilderPath = '"C:\Program Files (x86)\Microsoft Report Builder\MSReportBuilder.exe"'
 
           # Build command to publish report
           $publishCommand = "$reportBuilderPath /publish:`"$reportPath`" /rs:$reportServerUrl /rf:$reportServerFolder /rc:`"$reportServerCredentials`""
