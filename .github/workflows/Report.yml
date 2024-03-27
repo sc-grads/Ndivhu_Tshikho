@@ -25,7 +25,7 @@ jobs:
           $reportBuilderPath = '"C:\Program Files (x86)\Microsoft Report Builder\MSReportBuilder.exe"'
 
           # Build command to publish report
-          $publishCommand = "$reportBuilderPath /publish:`"$reportPath`" /rs:$reportServerUrl /rf:$reportServerFolder /rc:`"$reportServerCredentials`""
+          $publishCommand = "$reportBuilderPath /publish `"$reportPath`" /rs:$reportServerUrl /rf:$reportServerFolder /rc:`"$reportServerCredentials`""
 
           # Execute the command
           Invoke-Expression -Command $publishCommand
