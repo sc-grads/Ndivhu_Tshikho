@@ -1,0 +1,32 @@
+name: DeployReport
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_report:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Report Builder
+        uses: microsoft/report-builder-action@v1
+
+      - name: Publish Report to Web Report Server
+        run: |
+          # PowerShell script to publish a report to Web Report Server
+          $reportPath = "${{ github.workspace }}/DatabaseAdministration/SSRS/Reports/SalesAnalysisReport.rdl"
+          $reportServerUrl = "http://desktop-pl72rr2/ReportServer"
+          $reportServerFolder = "/Report Folder"
+          $reportServerCredentials = "username:password"
+
+
+          # Build command to publish report
+          $publishCommand = "ReportBuilder.exe /publish:`"$reportPath`" /rs:$reportServerUrl /rf:$reportServerFolder /rc:$reportServerCredentials"
+
+          # Execute the command
+          Invoke-Expression -Command $publishCommand
