@@ -1,10 +1,31 @@
-Run # PowerShell script to publish report to Web Report Server
-  
-Invoke-Expression: D:\a\_temp\19da2403-5645-4c67-bb0c-f768e44831bb.ps1:15
-Line |
-  15 |  Invoke-Expression -Command $publishCommand
-     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | The term 'C:\Program Files (x86)\Microsoft Report Builder\MSReportBuilder.exe' is not recognized as a name of a
-     | cmdlet, function, script file, or executable program. Check the spelling of the name, or if a path was included,
-     | verify that the path is correct and try again.
-Error: Process completed with exit code 1.
+name: DeployReport
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_report:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Publish Report to Web Report Server
+        run: |
+          # PowerShell script to publish report to Web Report Server
+          $reportPath = "${{ github.workspace }}/DatabaseAdministration/SSRS/Reports/SalesAnalysisReport.rdl"
+          $reportServerUrl = "http://desktop-pl72rr2/ReportServer"
+          $reportServerFolder = "/Report Folder"
+          $reportServerCredentials = "User:Issa100@"
+
+          # Specify full path to ReportBuilder.exe with double quotes
+          $reportBuilderPath = '"C:\Program Files (x86)\Microsoft Report Builder\MSReportBuilder.exe"'
+
+          # Build command to publish report
+          $publishCommand = "& $reportBuilderPath /publish `"$reportPath`" /rs:$reportServerUrl /rf:$reportServerFolder /rc:`"$reportServerCredentials`""
+
+          # Execute the command
+          Invoke-Expression -Command $publishCommand
