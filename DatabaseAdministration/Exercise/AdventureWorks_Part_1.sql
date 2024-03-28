@@ -161,5 +161,8 @@ Select [SalesOrderID],[ProductID],[OrderQty],
 from [Sales].[SalesOrderDetail]
 Where [SalesOrderID] = 43659 or [SalesOrderID] = 43664
 
+
+
+
       
 
