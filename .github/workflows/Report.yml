@@ -22,10 +22,10 @@ jobs:
           $reportServerCredentials = "User:Issa100@"
 
           # Specify full path to MSReportBuilder.exe with double quotes
-          $reportBuilderPath = 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Report Builder\MSReportBuilder.exe'
+          $reportBuilderPath = '"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Report Builder\MSReportBuilder.exe"'
 
           # Build command to publish report
-          $publishCommand = "& `"$reportBuilderPath`" /publish `"$reportPath`" /rs:$reportServerUrl /rf:$reportServerFolder /rc:`"$reportServerCredentials`""
+          $publishCommand = "& $reportBuilderPath /publish `"$reportPath`" /rs:$reportServerUrl /rf:$reportServerFolder /rc:`"$reportServerCredentials`""
 
           # Execute the command
           Invoke-Expression -Command $publishCommand
