@@ -43,5 +43,3 @@ SELECT * From [AdventureWorks2022].[Sales].[Visit]
 -----View-----
 --- are virtual tables generated from a query result. They provide a way to present data stored in one or more 
 --- tables in a structured format without actually storing the data physically. 
-
-
