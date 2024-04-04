@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main
-
+    paths:
+      -'DatabaseAdministration/SSRS'
 jobs:
   deploy_report:
     runs-on: windows-latest
