@@ -3,20 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Practice Activity 2", "Practice Activity 2\Practice Activity 2.dtproj", "{D2C81732-C2C4-4D82-9896-501C7B047678}"
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Practice Activity 2", "Practice Activity 2.dtproj", "{2B88A4F9-1FC8-4B90-8A71-59DC2245C76C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|Default = Development|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D2C81732-C2C4-4D82-9896-501C7B047678}.Development|Default.ActiveCfg = Development
-		{D2C81732-C2C4-4D82-9896-501C7B047678}.Development|Default.Build.0 = Development
+		{2B88A4F9-1FC8-4B90-8A71-59DC2245C76C}.Development|Default.ActiveCfg = Development
+		{2B88A4F9-1FC8-4B90-8A71-59DC2245C76C}.Development|Default.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1D9F102B-8238-4D79-A66F-17DA2E1F3150}
+		SolutionGuid = {E052BD37-A8FA-43FA-B79A-743FD8C9A995}
 	EndGlobalSection
 EndGlobal
