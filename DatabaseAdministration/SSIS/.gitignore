@@ -1,0 +1,8 @@
+*.vs
+*.database
+*.dtproj
+*.dtproj.user
+*.params
+*.sln
+
+
