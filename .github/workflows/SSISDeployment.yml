@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 'latest'
+        dotnet-version: '5.0.x'  # or any other valid version like '5.0.*' or '3.1.x'
 
     - name: Run PowerShell script
       shell: pwsh
