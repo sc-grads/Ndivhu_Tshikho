@@ -1,0 +1,24 @@
+name: Deploy SSIS Project
+
+on:
+  push:
+    branches:
+      - main  # Or any other branch you want to trigger the workflow on
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'  # or any other valid version like '5.0.*' or '3.1.x'
+
+    - name: Run PowerShell script
+      shell: 'cmd'
+      run: |
+        "C:\Users\NdivhudzannyiT\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell (x86).lnk" -Command "C:\Users\NdivhudzannyiT\Downloads\SSISDataDeployment.ps1"
