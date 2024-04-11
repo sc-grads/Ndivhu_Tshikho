@@ -27,7 +27,21 @@ DatabaseAdministration/SSIS/Practice Activity 4/Practice Activity 4.database
 DatabaseAdministration/SSIS/Practice Activity 4/Practice Activity 4.dtproj
 DatabaseAdministration/SSIS/Practice Activity 4/Practice Activity 4.dtproj.user
 DatabaseAdministration/SSIS/Practice Activity 4/Project.params
+
 DatabaseAdministration/SSIS/Practice Activity 5/Practice Activity 5.database
 DatabaseAdministration/SSIS/Practice Activity 5/Practice Activity 5.dtproj
 DatabaseAdministration/SSIS/Practice Activity 5/Practice Activity 5.dtproj.user
 DatabaseAdministration/SSIS/Practice Activity 5/Project.params
+
+DatabaseAdministration/SSIS/Data Flow Task/Data Flow Task.database
+DatabaseAdministration/SSIS/Data Flow Task/Data Flow Task.dtproj
+DatabaseAdministration/SSIS/Data Flow Task/Data Flow Task.dtproj.user
+DatabaseAdministration/SSIS/Data Flow Task/Project.params
+DatabaseAdministration/SSIS/TestProject/TestProject.dtproj.user
+DatabaseAdministration/SSIS/TestProject/TestProject.dtproj
+DatabaseAdministration/SSIS/TestProject/Project.params
+DatabaseAdministration/SSIS/TestProject/TestProject.database
+DatabaseAdministration/SSIS/CustomerProject/CustomerProject.database
+DatabaseAdministration/SSIS/CustomerProject/CustomerProject.dtproj
+DatabaseAdministration/SSIS/CustomerProject/CustomerProject.dtproj.user
+DatabaseAdministration/SSIS/CustomerProject/Project.params
