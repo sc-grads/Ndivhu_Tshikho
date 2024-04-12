@@ -21,21 +21,17 @@ jobs:
           Install-Module -Name SqlServer -Force -AllowClobber
           Import-Module SqlServer
 
-      - name: Download package file
-        run: |
-          $packageFilePath = "DatabaseAdministration/SSIS/SSISWorking/Aggregate.dtsx"
-          $rawUrl = "https://raw.githubusercontent.com/Ndivhu_Tshikho/YourRepository/main/$packageFilePath"
-          Invoke-WebRequest -Uri $rawUrl -OutFile "Aggregate.dtsx"
-
       - name: Run PowerShell script
         shell: pwsh
         run: |
+          $packageFilePath = "DatabaseAdministration/SSIS/SSISWorking/Aggregate.dtsx"
+
           $SSISNamespace = "Microsoft.SqlServer.Management.IntegrationServices"
           $TargetServerName = "DESKTOP-PL72RR2"
           $CatalogName = "SSISDB"
           $FolderName = "SSISWorking"
           $ProjectName = "SSISWorking"
-          $PackageFilePath = "Aggregate.dtsx"
+          $PackageFilePath = $Env:GITHUB_WORKSPACE + "/" + $packageFilePath
 
           try {
               # Check if the package file exists
