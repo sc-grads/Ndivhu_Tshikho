@@ -43,9 +43,6 @@ jobs:
                   throw "Package file not found at $PackageFilePath"
               }
 
-              # Load the SSIS assembly
-              Add-Type -AssemblyName "Microsoft.SqlServer.Management.IntegrationServices" -ErrorAction Stop
-
               # Create a connection to the server
               $sqlConnectionString = "Data Source=$TargetServerName;Integrated Security=True;MultipleActiveResultSets=false"
               $sqlConnection = New-Object System.Data.SqlClient.SqlConnection $sqlConnectionString
