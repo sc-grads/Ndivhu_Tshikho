@@ -1,0 +1,69 @@
+name: Deploy SSIS Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+
+      - name: Install SQL Server module
+        run: |
+          Install-Module -Name SqlServer -Force -AllowClobber
+          Import-Module SqlServer
+
+      - name: Download package file
+        run: |
+          $packageFilePath = "DatabaseAdministration/SSIS/SSISWorking/Aggregate.dtsx"
+          $rawUrl = "https://raw.githubusercontent.com/YourUsername/YourRepository/main/$packageFilePath"
+          Invoke-WebRequest -Uri $rawUrl -OutFile "Aggregate.dtsx"
+
+      - name: Run PowerShell script
+        shell: pwsh
+        run: |
+          $SSISNamespace = "Microsoft.SqlServer.Management.IntegrationServices"
+          $TargetServerName = "DESKTOP-PL72RR2"
+          $CatalogName = "SSISDB"
+          $FolderName = "Folder"
+          $ProjectName = "Project"
+          $PackageFilePath = "Aggregate.dtsx"
+
+          try {
+              # Check if the package file exists
+              if (-not (Test-Path $PackageFilePath)) {
+                  throw "Package file not found at $PackageFilePath"
+              }
+
+              # Load the SSIS assembly
+              Add-Type -AssemblyName "Microsoft.SqlServer.Management.IntegrationServices" -ErrorAction Stop
+
+              # Create a connection to the server
+              $sqlConnectionString = "Data Source=$TargetServerName;Integrated Security=True;MultipleActiveResultSets=false"
+              $sqlConnection = New-Object System.Data.SqlClient.SqlConnection $sqlConnectionString
+
+              # Create the Integration Services object
+              $integrationServices = New-Object $SSISNamespace".IntegrationServices" $sqlConnection
+
+              # Get the folder instance
+              $folder = $integrationServices.Catalogs[$CatalogName].Folders[$FolderName]
+
+              # Read the package data from the file
+              $packageData = Get-Content -Path $PackageFilePath -Raw
+
+              # Deploy the package to the destination project
+              $folder.DeployPackages($ProjectName, @{"Package" = $packageData})
+
+              Write-Host "Package deployed successfully."
+          } catch {
+              Write-Error "Failed to deploy package: $_"
+              exit 1
+          }
