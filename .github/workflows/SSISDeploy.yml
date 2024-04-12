@@ -30,6 +30,8 @@ jobs:
           $ProjectFilePath = "DatabaseAdministration/SSIS/SSISWorking/bin/Development/SSISWorking.ispac" # Update this path accordingly.
           $ProjectName = "SSISWorking"
 
+          Add-Type -Path "C:\Program Files (x86)\Microsoft SQL Server Management Studio 19\Common7\IDE\CommonExtensions\Microsoft\SSIS\160\Binn\150References\SMO\Microsoft.SqlServer.Dmf.Common.dll"
+
           # Load the IntegrationServices assembly
           [System.Reflection.Assembly]::Load("Microsoft.SQLServer.Management.IntegrationServices, "+
               "Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL") | Out-Null
