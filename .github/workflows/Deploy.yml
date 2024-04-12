@@ -26,18 +26,16 @@ jobs:
         run: |
           $packageFilePath = "DatabaseAdministration/SSIS/SSISWorking/Aggregate.dtsx"
 
-          $SSISNamespace = "Microsoft.SqlServer.Management.IntegrationServices"
-          $TargetServerName = "DESKTOP-PL72RR2"
-          $CatalogName = "SSISDB"
-          $FolderName = "SSISWorking"
-          $ProjectName = "SSISWorking"
-          $PackageFilePath = $Env:GITHUB_WORKSPACE + "/" + $packageFilePath
-
           try {
-              # Check if the package file exists
-              if (-not (Test-Path $PackageFilePath)) {
-                  throw "Package file not found at $PackageFilePath"
-              }
+              # Load the SSIS assembly
+              Add-Type -AssemblyName "Microsoft.SqlServer.Management.IntegrationServices" -ErrorAction Stop
+
+              $SSISNamespace = "Microsoft.SqlServer.Management.IntegrationServices"
+              $TargetServerName = "DESKTOP-PL72RR2"
+              $CatalogName = "SSISDB"
+              $FolderName = "SSISWorking"
+              $ProjectName = "SSISWorking"
+              $PackageFilePath = $Env:GITHUB_WORKSPACE + "/" + $packageFilePath
 
               # Create a connection to the server
               $sqlConnectionString = "Data Source=$TargetServerName;Integrated Security=True;MultipleActiveResultSets=false"
