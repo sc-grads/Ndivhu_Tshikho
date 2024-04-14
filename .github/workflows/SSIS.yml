@@ -23,7 +23,7 @@ jobs:
 
       - name: Run MSSQL Server
         run: |
-          sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=${{secrets.DK_PASSWORD}}' -p ${{secrets.DK_PORT}} --name sql1 -d mcr.microsoft.com/mssql/server:2019-latest
+          sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Password@123' -p your_port_number:1433 --name sql1 -d mcr.microsoft.com/mssql/server:2019-latest
 
       - name: Wait for MSSQL to start
         run: sleep 30
@@ -33,8 +33,8 @@ jobs:
 
       - name: Check if catalog exists and create one
         run: |
-          if sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -Q "IF NOT EXISTS (SELECT * FROM sys.catalogs WHERE name = 'SSISDB') SELECT 'Catalog does not exist';" | grep -q "Catalog does not exist"; then
-             sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -Q "CREATE CATALOG SSISDB"
+          if sqlcmd -S localhost -U sa -P your_sa_password -Q "IF NOT EXISTS (SELECT * FROM sys.catalogs WHERE name = 'SSISDB') SELECT 'Catalog does not exist';" | grep -q "Catalog does not exist"; then
+             sqlcmd -S localhost -U sa -P your_sa_password -Q "CREATE CATALOG SSISDB"
              echo "Catalog created successfully."
           else
             echo "Catalog already exists."
@@ -42,4 +42,4 @@ jobs:
 
       - name: Deploy SSIS package
         run: |
-          sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -d SSISDB -i "DatabaseAdministration/SSIS/Integration Services Project/bin/Development/Integration Services Project.ispac"
+          sqlcmd -S localhost -U sa -P Password@123 -d SSISDB -i DatabaseAdministration/SSIS/Integration Services "Project/bin/Development/Integration Services Project.ispac"
