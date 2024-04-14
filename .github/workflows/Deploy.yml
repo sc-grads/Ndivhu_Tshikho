@@ -1,60 +1,47 @@
-name: Deploy SSIS Project
+name: MSSQL CI
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'DatabaseAdministration/SQLStatement/script.sql'
 
 jobs:
-  deploy:
-    runs-on: windows-latest
+  run_sql_scripts:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-
-      - name: Install SQL Server module
+      - name: Remove conflicting package and update package lists
         run: |
-          Install-Module -Name SqlServer -Force -AllowClobber
-          Import-Module SqlServer
+          sudo apt-get remove containerd.io -y
+          sudo apt-get update
 
-      - name: Run PowerShell script
-        shell: pwsh
+      - name: Install Docker
+        run: sudo apt-get install docker.io -y
+
+      - name: Run MSSQL Server
         run: |
-          $packageFilePath = "DatabaseAdministration/SSIS/SSISWorking/Aggregate.dtsx"
+          sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=${{secrets.DK_PASSWORD}}' -p ${{secrets.DK_PORT}} --name sql1 -d mcr.microsoft.com/mssql/server:2019-latest
 
-          try {
-              # Load the SSIS assembly
-              Add-Type -AssemblyName "Microsoft.SqlServer.Management.IntegrationServices" -ErrorAction Stop
+      - name: Wait for MSSQL to start
+        run: sleep 30
 
-              $SSISNamespace = "Microsoft.SqlServer.Management.IntegrationServices"
-              $TargetServerName = "DESKTOP-PL72RR2"
-              $CatalogName = "SSISDB"
-              $FolderName = "SSISWorking"
-              $ProjectName = "SSISWorking"
-              $PackageFilePath = $Env:GITHUB_WORKSPACE + "/" + $packageFilePath
+      - name: Start Docker container if not running
+        run: sudo docker ps -a | grep -q 'sql1' && sudo docker start sql1 || true
 
-              # Create a connection to the server
-              $sqlConnectionString = "Data Source=$TargetServerName;Integrated Security=True;MultipleActiveResultSets=false"
-              $sqlConnection = New-Object System.Data.SqlClient.SqlConnection $sqlConnectionString
+      - name: Check if catalog exists and create one
+        run: |
+          if sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -Q "IF NOT EXISTS (SELECT * FROM sys.catalogs WHERE name = 'SSISB') SELECT 'Catalog does not exist';" | grep -q "Catalog does not exist"; then
+            sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -Q "CREATE CATALOG SSISB"
+            echo "Catalog created successfully."
+          else
+            echo "Catalog already exists."
+          fi
 
-              # Create the Integration Services object
-              $integrationServices = New-Object $SSISNamespace".IntegrationServices" $sqlConnection
-
-              # Get the folder instance
-              $folder = $integrationServices.Catalogs[$CatalogName].Folders[$FolderName]
-
-              # Read the package data from the file
-              $packageData = Get-Content -Path $PackageFilePath -Raw
-
-              # Deploy the package to the destination project
-              $folder.DeployPackages($ProjectName, @{"Package" = $packageData})
-
-              Write-Host "Package deployed successfully."
-          } catch {
-              Write-Error "Failed to deploy package: $_"
-              exit 1
-          }
+      - name: Deploy SSIS package
+        run: |
+          sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -d SSISB -i path/to/your/package.ispac
