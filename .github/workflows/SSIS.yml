@@ -32,13 +32,13 @@ jobs:
 
       - name: Check if catalog exists and create one
         run: |
-          if sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -Q "IF NOT EXISTS (SELECT * FROM sys.catalogs WHERE name = 'YourCatalogName') SELECT 'Catalog does not exist';" | grep -q "Catalog does not exist"; then
-            sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -Q "CREATE CATALOG YourCatalogName"
-            echo "Catalog created successfully."
+          if sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -Q "IF NOT EXISTS (SELECT * FROM sys.catalogs WHERE name = 'SSISDB') SELECT 'Catalog does not exist';" | grep -q "Catalog does not exist"; then
+             sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -Q "CREATE CATALOG SSISDB"
+             echo "Catalog created successfully."
           else
             echo "Catalog already exists."
           fi
 
-      - name: Deploy SSIS package
+      - name: Deploy  package
         run: |
-          sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -d YourCatalogName -i path/to/your/package.ispac
+          sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -d SSISDB -i DatabaseAdministration/SSIS/Practice Activity 2/bin/Development/Practice Activity 2.ispac
