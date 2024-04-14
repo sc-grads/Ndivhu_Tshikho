@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'DatabaseAdministration/SQLStatement/script.sql'
-
 jobs:
   run_sql_scripts:
     runs-on: ubuntu-latest
