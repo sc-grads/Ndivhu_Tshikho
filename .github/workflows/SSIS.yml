@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
 jobs:
   run_sql_scripts:
     runs-on: ubuntu-latest
@@ -41,4 +42,4 @@ jobs:
 
       - name: Deploy SSIS package
         run: |
-         sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -d YourCatalogName -i DatabaseAdministration/SSIS/Integration Services Project/bin/Development/Integration Services Project.ispac
+          sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -d SSISDB -i "DatabaseAdministration/SSIS/Integration Services Project/bin/Development/Integration Services Project.ispac"
