@@ -1,4 +1,4 @@
-name: Deploy SSIS Package
+name: Deploy Package
 
 on:
   push:
@@ -15,6 +15,7 @@ jobs:
         
       - name: Build Docker image
         run: docker build -t sql-env .
+        working-directory: ${{ github.workspace }}
         
       - name: Run SQL environment container
         run: docker run -d --name sql-container -p 1433:1433 sql-env
@@ -24,5 +25,5 @@ jobs:
         run: docker exec sql-container /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourPassword -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'SSISDB') CREATE DATABASE [SSISDB]"
           
       - name: Deploy SSIS package
-        run: docker exec sql-container /opt/mssql-tools/bin/ISDeploymentWizard /S localhost /D SSISDB /A ProjectDeploy /ModelType:Project /ProjectPath:"DatabaseAdministration/SSIS/Practice Activity 2/bin/Development/Practice Activity 2.ispac" /ISServerOption:Native
+        run: docker exec sql-container /opt/mssql-tools/bin/ISDeploymentWizard /S localhost /D SSISDB /A ProjectDeploy /ModelType:Project /ProjectPath:"/DatabaseAdministration/SSIS/Practice Activity 2/bin/Development/Practice Activity 2.ispac" /ISServerOption:Native
         if: steps.check_catalog.outputs.returncode == 0
