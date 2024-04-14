@@ -1,78 +1,28 @@
-name: Deploy SSIS Project
+name: Deploy SSIS Package
 
 on:
   push:
     branches:
-      - main  # Trigger the workflow on pushes to the main branch. Adjust as needed.
+      - main
 
 jobs:
   deploy:
-    runs-on: windows-latest  # Use a Windows runner to execute PowerShell scripts.
-
+    runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2  # Action to checkout your repository's code.
-
-      - name: Setup .NET Core  # Optional, if .NET Core is needed.
-        uses: actions/setup-dotnet@v1
-
-      - name: Install SQL Server module
-        run: |
-          Install-Module -Name SqlServer -Force -AllowClobber
-          Import-Module SqlServer
-
-      - name: Run PowerShell script
-        shell: pwsh  # Specify PowerShell as the shell for this step.
-        run: |
-          $SSISNamespace = "Microsoft.SqlServer.Management.IntegrationServices"
-          $TargetServerName = "DESKTOP-PL72RR2"
-          $TargetFolderName = "SSISWorking"
-          $ProjectFilePath = "DatabaseAdministration/SSIS/SSISWorking/bin/Development/SSISWorking.ispac" # Update this path accordingly.
-          $ProjectName = "SSISWorking"
-
-          # Check if the file exists
-          if (-not (Test-Path $ProjectFilePath)) {
-              Write-Error "Project file not found at $ProjectFilePath"
-              exit 1
-          }
-
-          # Create a connection to the server
-          $sqlConnectionString = "Data Source=$TargetServerName;Initial Catalog=master;Integrated Security=SSPI;"
-          try {
-              $sqlConnection = New-Object System.Data.SqlClient.SqlConnection $sqlConnectionString
-          } catch {
-              Write-Error "Failed to connect to SQL Server: $_"
-              exit 1
-          }
-
-          # Create the Integration Services object
-          try {
-              $integrationServices = New-Object $SSISNamespace".IntegrationServices" $sqlConnection
-          } catch {
-              Write-Error "Failed to create Integration Services object: $_"
-              exit 1
-          }
-
-          # Get the Integration Services catalog
-          $catalog = $integrationServices.Catalogs["SSISDB"]
-
-          # Create the target folder
-          $folder = New-Object $SSISNamespace".CatalogFolder" ($catalog, $TargetFolderName, "Folder description")
-          try {
-              $folder.Create()
-          } catch {
-              Write-Error "Failed to create folder: $_"
-              exit 1
-          }
-
-          Write-Host "Deploying $ProjectName project ..."
-
-          # Read the project file and deploy it
-          try {
-              [byte[]] $projectFile = [System.IO.File]::ReadAllBytes($ProjectFilePath)
-              $folder.DeployProject($ProjectName, $projectFile)
-              Write-Host "Project deployed successfully."
-          } catch {
-              Write-Error "Failed to deploy project: $_"
-              exit 1
-          }
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Build Docker image
+        run: docker build -t sql-env .
+        
+      - name: Run SQL environment container
+        run: docker run -d --name sql-container -p 1433:1433 sql-env
+          
+      - name: Check if catalog exists
+        id: check_catalog
+        run: docker exec sql-container /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourPassword -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'SSISDB') CREATE DATABASE [SSISDB]"
+          
+      - name: Deploy SSIS package
+        run: docker exec sql-container /opt/mssql-tools/bin/ISDeploymentWizard /S localhost /D SSISDB /A ProjectDeploy /ModelType:Project /ProjectPath:"DatabaseAdministration/SSIS/Practice Activity 2/bin/Development/Practice Activity 2.ispac" /ISServerOption:Native
+        if: steps.check_catalog.outputs.returncode == 0
