@@ -39,6 +39,6 @@ jobs:
             echo "Catalog already exists."
           fi
 
-      - name: Deploy  package
+      - name: Deploy SSIS package
         run: |
-          sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -d SSISDB -i DatabaseAdministration/SSIS/Practice Activity 2/bin/Development/Practice Activity 2.ispac
+         sqlcmd -S localhost -U sa -P ${{secrets.DK_PASSWORD}} -d YourCatalogName -i DatabaseAdministration/SSIS/Integration Services Project/bin/Development/Integration Services Project.ispac
