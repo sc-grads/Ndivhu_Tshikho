@@ -21,7 +21,8 @@ jobs:
  
       - name: Deploy SSIS package
         run: |
+         sudo cp DatabaseAdministration/SSIS/DataWorkFlow1/bin/Development/DataWorkFlow1.ispac sql1:/tmp/DataWorkFlow1.ispac
           # Execute SQL command to deploy the SSIS package
-          sqlcmd -S "7.tcp.eu.ngrok.io,18547" -U "User" -P "Issa100@" -d SSISDB -Q "DECLARE @ProjectBinary AS varbinary(max); DECLARE @operation_id AS bigint; SET @ProjectBinary = (SELECT * FROM OPENROWSET(BULK '${{ github.workspace }}/DatabaseAdministration/SSIS/DataWorkFlow1/bin/Development/DataWorkFlow1.ispac', SINGLE_BLOB) AS BinaryData); EXEC catalog.deploy_project @folder_name = 'CustomerTest', @project_name = 'Practice Activity 2', @Project_Stream = @ProjectBinary, @operation_id = @operation_id out"
+          sqlcmd -S "7.tcp.eu.ngrok.io,18547" -U "User" -P "Issa100@" -d SSISDB -Q "DECLARE @ProjectBinary AS varbinary(max); DECLARE @operation_id AS bigint; SET @ProjectBinary = (SELECT * FROM OPENROWSET(BULK '/tmp/DataWorkFlow1.ispac', SINGLE_BLOB) AS BinaryData); EXEC catalog.deploy_project @folder_name = 'CustomerTest', @project_name = 'Practice Activity 2', @Project_Stream = @ProjectBinary, @operation_id = @operation_id out"
       - name: Debug workspace contents
         run: ls -R ${{ github.workspace }}
