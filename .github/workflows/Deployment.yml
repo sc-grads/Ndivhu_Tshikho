@@ -1,29 +1,41 @@
-name: Deploy SSIS Package
- 
+name: MSSQL CI
+
 on:
   push:
     branches:
       - main
- 
+
 jobs:
-  deploy:
+  run_sql_scripts:
     runs-on: ubuntu-latest
- 
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
- 
-      - name: Install SQL Server tools
+
+      - name: Remove conflicting package and update package lists
         run: |
+          sudo apt-get remove containerd.io -y
           sudo apt-get update
-          sudo apt-get install -y mssql-tools unixodbc-dev
-          sudo apt-get install -y --no-install-recommends msodbcsql17
- 
-      - name: Deploy SSIS package
+
+      - name: Install Docker
+        run: sudo apt-get install docker.io -y
+
+      - name: Run MSSQL Server
         run: |
-          sudo ls 
-          sudo cp DatabaseAdministration/SSIS/DataWorkFlow1/bin/Development/DataWorkFlow1.ispac /tmp/DataWorkFlow1.ispac
-          # Execute SQL command to deploy the SSIS package
-          sqlcmd -S "7.tcp.eu.ngrok.io,18547" -U "User" -P "Issa100@" -d SSISDB -Q "DECLARE @ProjectBinary AS varbinary(max); DECLARE @operation_id AS bigint; SET @ProjectBinary = (SELECT * FROM OPENROWSET(BULK '/tmp/DataWorkFlow1.ispac', SINGLE_BLOB) AS BinaryData); EXEC catalog.deploy_project @folder_name = 'CustomerTest', @project_name = 'Practice Activity 2', @Project_Stream = @ProjectBinary, @operation_id = @operation_id out"
-      - name: Debug workspace contents
-        run: ls -R ${{ github.workspace }}
+          sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD= ${{secrets.DK_PASSWORD}}' -p ${{secrets.DK_PORT}} --name sql1 -d mcr.microsoft.com/mssql/server:2019-latest
+
+      - name: Wait for MSSQL to start
+        run: sleep 30
+
+      - name: Start Docker container if not running
+        run: sudo docker ps -a | grep -q 'sql1' && sudo docker start sql1 || true
+
+      - name: Copy SQL script into a container and Run SQL script Copied in the Local Server
+        run: |
+          sudo docker cp DatabaseAdministration/SSIS/DataWorkFlow1/bin/Development/DataWorkFlow1.ispac sql1:/tmp/DataWorkFlow1.ispac
+       
+
+      - name: Check container changes and Run SQL scripts
+        run: |
+          sudo docker exec -i sql1 /opt/mssql-tools/bin/sqlcmd -S "7.tcp.eu.ngrok.io,18547" -U "User" -P "Issa100@" -d SSISDB -Q "DECLARE @ProjectBinary AS varbinary(max); DECLARE @operation_id AS bigint; SET @ProjectBinary = (SELECT * FROM OPENROWSET(BULK '/tmp/DataWorkFlow1.ispac', SINGLE_BLOB) AS BinaryData); EXEC catalog.deploy_project @folder_name = 'CustomerTest', @project_name = 'Practice Activity 2', @Project_Stream = @ProjectBinary, @operation_id = @operation_id out"
