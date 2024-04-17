@@ -1,0 +1,168 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\CheckPointsDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|solutionrelative:CheckPointsDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ShrinkDatabaseTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|solutionrelative:ShrinkDatabaseTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\HistoryCleanUpTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|solutionrelative:HistoryCleanUpTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ExecuteTSQLStatementTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|solutionrelative:ExecuteTSQLStatementTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ExecuteSQLServerAgentTaskDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|solutionrelative:ExecuteSQLServerAgentTaskDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\BackUpDatabaseTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|solutionrelative:BackUpDatabaseTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\CheckDatabaseIntegrityDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|solutionrelative:CheckDatabaseIntegrityDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ReorganizeIndexTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|solutionrelative:ReorganizeIndexTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\RebuildIndexTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{53113F28-8F4B-4631-8DDC-4ED25DBCA73C}|DataWorkFlow3.dtproj|solutionrelative:RebuildIndexTask.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CheckPointsDemo.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\CheckPointsDemo.dtsx",
+              "RelativeDocumentMoniker": "CheckPointsDemo.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\CheckPointsDemo.dtsx [Design]",
+              "RelativeToolTip": "CheckPointsDemo.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T13:29:06.739Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ShrinkDatabaseTask.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ShrinkDatabaseTask.dtsx",
+              "RelativeDocumentMoniker": "ShrinkDatabaseTask.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ShrinkDatabaseTask.dtsx [Design]",
+              "RelativeToolTip": "ShrinkDatabaseTask.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T13:11:44.4Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HistoryCleanUpTask.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\HistoryCleanUpTask.dtsx",
+              "RelativeDocumentMoniker": "HistoryCleanUpTask.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\HistoryCleanUpTask.dtsx [Design]",
+              "RelativeToolTip": "HistoryCleanUpTask.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T13:08:24.283Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExecuteTSQLStatementTask.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ExecuteTSQLStatementTask.dtsx",
+              "RelativeDocumentMoniker": "ExecuteTSQLStatementTask.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ExecuteTSQLStatementTask.dtsx [Design]",
+              "RelativeToolTip": "ExecuteTSQLStatementTask.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T12:37:22.143Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExecuteSQLServerAgentTaskDemo.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ExecuteSQLServerAgentTaskDemo.dtsx",
+              "RelativeDocumentMoniker": "ExecuteSQLServerAgentTaskDemo.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ExecuteSQLServerAgentTaskDemo.dtsx [Design]",
+              "RelativeToolTip": "ExecuteSQLServerAgentTaskDemo.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T12:31:31.695Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BackUpDatabaseTask.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\BackUpDatabaseTask.dtsx",
+              "RelativeDocumentMoniker": "BackUpDatabaseTask.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\BackUpDatabaseTask.dtsx [Design]",
+              "RelativeToolTip": "BackUpDatabaseTask.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T12:24:15.395Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CheckDatabaseIntegrityDemo.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\CheckDatabaseIntegrityDemo.dtsx",
+              "RelativeDocumentMoniker": "CheckDatabaseIntegrityDemo.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\CheckDatabaseIntegrityDemo.dtsx [Design]",
+              "RelativeToolTip": "CheckDatabaseIntegrityDemo.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T13:23:34.822Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ReorganizeIndexTask.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ReorganizeIndexTask.dtsx",
+              "RelativeDocumentMoniker": "ReorganizeIndexTask.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\ReorganizeIndexTask.dtsx [Design]",
+              "RelativeToolTip": "ReorganizeIndexTask.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T13:22:36.007Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RebuildIndexTask.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\RebuildIndexTask.dtsx",
+              "RelativeDocumentMoniker": "RebuildIndexTask.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\MasteringSQLServerIntegrationServices\\DataWorkFlow3\\RebuildIndexTask.dtsx [Design]",
+              "RelativeToolTip": "RebuildIndexTask.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T13:16:16.577Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
