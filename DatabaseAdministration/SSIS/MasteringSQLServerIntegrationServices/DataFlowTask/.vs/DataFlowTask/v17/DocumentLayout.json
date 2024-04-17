@@ -1,0 +1,132 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|DataFlowTask.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\LookUp.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|DataFlowTask.dtproj|solutionrelative:LookUp.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|DataFlowTask.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\CachTransformDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|DataFlowTask.dtproj|solutionrelative:CachTransformDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|Data Flow Task.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\CachTransformDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|Data Flow Task.dtproj|solutionrelative:CachTransformDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|Data Flow Task.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\FuzzyLookUp.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|Data Flow Task.dtproj|solutionrelative:FuzzyLookUp.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|Data Flow Task.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\LookUp.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|Data Flow Task.dtproj|solutionrelative:LookUp.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|Data Flow Task.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\MergeJoin.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|Data Flow Task.dtproj|solutionrelative:MergeJoin.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|Data Flow Task.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\AuditDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{5FE75968-FEB6-4513-B8E9-C630775B0590}|Data Flow Task.dtproj|solutionrelative:AuditDemo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LookUp.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\LookUp.dtsx",
+              "RelativeDocumentMoniker": "LookUp.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\LookUp.dtsx [Design]",
+              "RelativeToolTip": "LookUp.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T08:59:35.753Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CachTransformDemo.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\CachTransformDemo.dtsx",
+              "RelativeDocumentMoniker": "CachTransformDemo.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\CachTransformDemo.dtsx [Design]",
+              "RelativeToolTip": "CachTransformDemo.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-17T08:58:57.313Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FuzzyLookUp.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\FuzzyLookUp.dtsx",
+              "RelativeDocumentMoniker": "FuzzyLookUp.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\FuzzyLookUp.dtsx [Design]",
+              "RelativeToolTip": "FuzzyLookUp.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-08T08:44:20.169Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CachTransformDemo.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\CachTransformDemo.dtsx",
+              "RelativeDocumentMoniker": "CachTransformDemo.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\CachTransformDemo.dtsx [Design]",
+              "RelativeToolTip": "CachTransformDemo.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-08T08:23:51.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LookUp.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\LookUp.dtsx",
+              "RelativeDocumentMoniker": "LookUp.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\LookUp.dtsx [Design]",
+              "RelativeToolTip": "LookUp.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-08T08:13:33.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MergeJoin.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\MergeJoin.dtsx",
+              "RelativeDocumentMoniker": "MergeJoin.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\MergeJoin.dtsx [Design]",
+              "RelativeToolTip": "MergeJoin.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-08T07:58:31.355Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuditDemo.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\AuditDemo.dtsx",
+              "RelativeDocumentMoniker": "AuditDemo.dtsx",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\Data Flow Task\\AuditDemo.dtsx [Design]",
+              "RelativeToolTip": "AuditDemo.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-08T07:06:57.111Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
