@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\CustomerProject\\",
+  "WorkspaceRootPath": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\TestProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9C5C5638-EB95-4E36-9E56-88E792E66F1A}|CustomerProject.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\CustomerProject\\Package.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{9C5C5638-EB95-4E36-9E56-88E792E66F1A}|CustomerProject.dtproj|solutionrelative:Package.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+      "AbsoluteMoniker": "D:0:0:{086BA2F4-C4AC-48B9-AD09-558EEAF2464E}|TestProject.dtproj|C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\TestProject\\Package.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{086BA2F4-C4AC-48B9-AD09-558EEAF2464E}|TestProject.dtproj|solutionrelative:Package.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,12 +24,12 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Package.dtsx [Design]",
-              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\CustomerProject\\Package.dtsx",
+              "DocumentMoniker": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\TestProject\\Package.dtsx",
               "RelativeDocumentMoniker": "Package.dtsx",
-              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\CustomerProject\\Package.dtsx [Design]",
+              "ToolTip": "C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\DatabaseAdministration\\SSIS\\TestProject\\Package.dtsx [Design]",
               "RelativeToolTip": "Package.dtsx [Design]",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
-              "WhenOpened": "2024-04-10T23:36:40.054Z",
+              "WhenOpened": "2024-04-22T09:18:40.094Z",
               "EditorCaption": " [Design]"
             }
           ]
