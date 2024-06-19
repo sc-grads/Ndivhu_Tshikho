@@ -17,11 +17,6 @@ table 'Sales by Store'
 		summarizeBy: none
 		sourceColumn: transaction_date
 
-		variation Variation
-			isDefault
-			relationship: 27966ae6-1e07-4dcf-af70-91924bc25348
-			defaultHierarchy: LocalDateTable_4760f4e5-dccf-40d4-a579-0bc71fab6f9d.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -125,6 +120,38 @@ table 'Sales by Store'
 		sourceColumn: promo_item_yn
 
 		annotation SummarizationSetBy = Automatic
+
+	column 'Time Group' =
+			
+			FLOOR(
+			    'Sales by Store'[transaction_time],
+			    "1:00"
+			)
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 0e62e1c0-1a87-4fc8-a0c9-783390666321
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Total Revenue' =
+			
+			CURRENCY(
+			    'Sales by Store'[quantity_sold]* 'Sales by Store'[unit_price]
+			)
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 0ee16b88-01a3-49f6-8d80-b4e83d1ba63a
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	partition 'Sales by Store' = m
 		mode: import

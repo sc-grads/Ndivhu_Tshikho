@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.55\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU06\",\"version\":\"5.55\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "config": "{\"version\":\"5.55\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU06\",\"version\":\"5.55\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -20,12 +20,31 @@
   "sections": [
     {
       "config": "{}",
-      "displayName": "Page 1",
+      "displayName": "Page 2",
       "displayOption": 1,
       "filters": "[]",
       "height": 720.00,
-      "name": "af93a7a8128bd294ccbe",
-      "visualContainers": [],
+      "name": "cdbf62d9b28a17bb081d",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"86ba0cf9d6af5f89ad7f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":84.8780487804878,\"y\":100.97560975609755,\"z\":0,\"width\":610.2439024390244,\"height\":541.4634146341464,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"Measure Table.Customer Sales\"},{\"queryRef\":\"Measure Table.Orders By Females\"},{\"queryRef\":\"Measure Table.Cost (Currency)\"}],\"Rows\":[{\"queryRef\":\"Calendar.Date Format (yyy-mm-dd)\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Measure Table\",\"Type\":0},{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Customer Sales\"},\"Name\":\"Measure Table.Customer Sales\",\"NativeReferenceName\":\"Customer Sales\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"% Quantiy Sold To Females\"},\"Name\":\"Measure Table.Orders By Females\",\"NativeReferenceName\":\"% Quantiy Sold To Females\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Date Format (yyy-mm-dd)\"},\"Name\":\"Calendar.Date Format (yyy-mm-dd)\",\"NativeReferenceName\":\"Transation Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Cost (Currency)\"},\"Name\":\"Measure Table.Cost (Currency)\",\"NativeReferenceName\":\"Cost (Currency)\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Date Format (yyy-mm-dd)\"}}}]},\"columnProperties\":{\"Calendar.Date Format (yyy-mm-dd)\":{\"displayName\":\"Transation Date\"}},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 541.46,
+          "width": 610.24,
+          "x": 84.88,
+          "y": 100.98,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"dde31f010b0a0d8d6c5a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":705.3658536585366,\"y\":100.97560975609755,\"z\":1,\"width\":339.5121951219512,\"height\":144.8780487804878,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Calendar.Year Half\"},{\"queryRef\":\"Measure Table.Cost (Currency)\"},{\"queryRef\":\"Calendar.Customer Sales LY (COALESCE)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measure Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year Half\"},\"Name\":\"Calendar.Year Half\",\"NativeReferenceName\":\"Year Half\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Cost (Currency)\"},\"Name\":\"Measure Table.Cost (Currency)\",\"NativeReferenceName\":\"Cost (Currency)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Customer Sales LY (COALESCE)\"},\"Name\":\"Calendar.Customer Sales LY (COALESCE)\",\"NativeReferenceName\":\"Customer Sales LY (COALESCE)\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 144.88,
+          "width": 339.51,
+          "x": 705.37,
+          "y": 100.98,
+          "z": 1.00
+        }
+      ],
       "width": 1280.00
     }
   ]

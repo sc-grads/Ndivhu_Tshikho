@@ -1,0 +1,183 @@
+table 'Measure Table'
+	lineageTag: 59e27888-e00d-43df-9466-eaed4cc7c607
+
+	measure Cost = ```
+			
+			    SUMX(
+			    'Sales by Store',                  --Returns the Sales by Store table to evaluate expression quantity sold times 
+			                                       --from a related table. 
+			    'Sales by Store'[quantity_sold]*
+			    RELATED(
+			        'Product Lookup'[current_cost]
+			    )
+			)
+			```
+		displayFolder: Tips & Best Practices
+		lineageTag: bffd20ba-c433-4b03-8e8e-aa592ef8754a
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Customer Sales' =
+			
+			SUMX(
+			    'Sales by Store',
+			    'Sales by Store'[quantity_sold]*'Sales by Store'[unit_price]
+			)
+		displayFolder: Tips & Best Practices
+		lineageTag: 6d14142c-e116-4df1-898f-a2064ccbc7e0
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Profit =
+			
+			[Customer Sales] - [Cost]
+		displayFolder: Tips & Best Practices
+		lineageTag: 37b68b75-9036-44a5-a459-91792e1c646e
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Customer Sales (Last Year)' =
+			
+			CALCULATE(
+			    [Customer Sales],
+			    DATEADD(
+			        'Calendar'[Transaction_Date],
+			        -1,
+			        YEAR
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 88535c88-1cef-48fd-a1bf-3e2f98bbdf9d
+
+		changedProperty = IsHidden
+
+	measure 'Customer Sales (Blank)' =
+			
+			IF(
+			    ISBLANK(
+			        [Customer Sales (Last Year)]
+			    ),
+			    "No Sales",
+			    [Customer Sales (Last Year)]
+			)
+		lineageTag: 9a0342f4-489f-4e72-b991-dbbf6f9ad7e8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Quantiy Sold To Females' = ```
+			
+			VAR TotalOrders_Females =
+			CALCULATE(
+			    SUM(
+			        'Sales by Store'[quantity_sold]
+			    ),
+			    FILTER(
+			        'Customer Lookup',
+			        'Customer Lookup'[gender] = "F"
+			    )
+			)
+			VAR QuantitySold =
+			SUM(
+			    'Sales by Store'[quantity_sold]
+			)
+			VAR Ratio = 
+			DIVIDE(
+			    TotalOrders_Females,
+			    QuantitySold,
+			    "-"
+			)
+			RETURN
+			Ratio
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2f564bff-0421-4ab1-a095-13e2eca7b6e7
+
+	measure 'Orders By Females (Wrong)' = ```
+			
+			VAR TotalOrders_Females =
+			
+			SUM(
+			        'Sales by Store'[quantity_sold]
+			)
+			RETURN
+			CALCULATE(
+			    TotalOrders_Females,
+			    FILTER(
+			        'Customer Lookup',
+			        'Customer Lookup'[gender] = "F"
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 7949aa6b-1d07-4b34-873d-03967c4360ec
+
+	measure 'Total Customers' =
+			
+			DISTINCTCOUNT(
+			    'Customer Lookup'[customer_id]
+			)
+		formatString: 0
+		displayFolder: Scalar Measures
+		lineageTag: af64eab4-bad2-43a3-9658-e136354a2c23
+
+	measure 'Total Employees' =
+			
+			COUNTROWS(
+			    'Employee Lookup'
+			)
+		formatString: 0
+		displayFolder: Scalar Measures
+		lineageTag: 426a7bdc-ba56-4c6f-8a67-bb69f5d320fd
+
+	measure 'Cost (Currency)' =
+			
+			ROUND(
+			    CURRENCY([Cost])
+			    ,2
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: e3a36650-2489-4231-85b3-bfcbef2b3433
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Customer Sales LY (COALESCE)' =
+			
+			VAR Customer_Sales_LY =
+			CALCULATE(
+			    [Customer Sales],
+			    DATEADD(
+			        'Calendar'[Transaction_Date],
+			        -1,
+			        YEAR
+			    )
+			)
+			RETURN
+			COALESCE(
+			    Customer_Sales_LY,
+			    "-"
+			)
+		lineageTag: 2604f713-4ae0-48a6-ab1f-8883b4400a45
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Measure Table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCk7MLchJVYqNBQA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

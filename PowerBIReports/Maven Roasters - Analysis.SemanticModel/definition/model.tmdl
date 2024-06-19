@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["Calendar","Customer Lookup","Employee Lookup","Food Inventory","Product Lookup","Sales by Store","Store Lookup"]
+annotation PBI_QueryOrder = ["Customer Lookup","Employee Lookup","Food Inventory","Product Lookup","Sales by Store","Store Lookup","Measure Table","Calendar"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -14,9 +14,7 @@ annotation PBIDesktopVersion = 2.130.754.0 (24.06)
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table Calendar
 ref table DateTableTemplate_49fd7cb6-7f21-4fbd-b4c5-3a88da97b4b2
-ref table LocalDateTable_e6d890e7-7cce-4b75-a1ec-b6cdf2bf0043
 ref table 'Customer Lookup'
 ref table LocalDateTable_5dc41436-e791-4818-a791-ad85bce59e4a
 ref table LocalDateTable_ffc4c291-2504-4e61-a89f-229f1fed6221
@@ -26,8 +24,10 @@ ref table 'Food Inventory'
 ref table LocalDateTable_1fd52871-3936-4eb8-8108-e810a7854f8d
 ref table 'Product Lookup'
 ref table 'Sales by Store'
-ref table LocalDateTable_4760f4e5-dccf-40d4-a579-0bc71fab6f9d
 ref table 'Store Lookup'
+ref table 'Measure Table'
+ref table Calendar
+ref table LocalDateTable_abbfeb27-19c9-4cc5-b95f-1a3ec7d4917e
 
 ref cultureInfo en-US
 

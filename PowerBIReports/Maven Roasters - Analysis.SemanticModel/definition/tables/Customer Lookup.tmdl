@@ -92,6 +92,24 @@ table 'Customer Lookup'
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Current Age' =
+			
+			floor(
+			    DATEDIFF(
+			        'Customer Lookup'[birthdate],
+			        TODAY(),
+			        DAY
+			    )/365.25,
+			    1
+			)
+		dataType: int64
+		formatString: 0
+		lineageTag: b04a89b2-4b1f-4bec-a2af-f76d51865158
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Customer Lookup' = m
 		mode: import
 		source =

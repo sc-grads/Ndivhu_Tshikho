@@ -1,26 +1,28 @@
 table Calendar
-	lineageTag: e3fad07c-86bc-46aa-adf3-1fccb6347e2a
+	lineageTag: 3ede25e7-2543-4146-ad19-115fcaab11ad
 
 	column Transaction_Date
 		dataType: dateTime
-		formatString: Long Date
-		lineageTag: 95981bee-35b2-4704-83ef-de12d745c3e0
+		formatString: m/d/yyyy
+		lineageTag: 7283337e-0837-490d-b08b-c6c80a34d53e
 		summarizeBy: none
 		sourceColumn: Transaction_Date
 
 		variation Variation
 			isDefault
-			relationship: c7ea8ae2-c28e-4bd4-90c5-46577a33bbdc
-			defaultHierarchy: LocalDateTable_e6d890e7-7cce-4b75-a1ec-b6cdf2bf0043.'Date Hierarchy'
+			relationship: 2da64180-1fe8-44df-b540-aff92531daf0
+			defaultHierarchy: LocalDateTable_abbfeb27-19c9-4cc5-b95f-1a3ec7d4917e.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
 
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
 	column Date_ID
 		dataType: int64
 		formatString: 0
-		lineageTag: 4a045186-60f9-46af-bf86-d7319e988b3b
+		lineageTag: a38ada81-2ed0-4c05-867e-a35c78d93ffd
 		summarizeBy: count
 		sourceColumn: Date_ID
 
@@ -29,7 +31,7 @@ table Calendar
 	column Week_ID
 		dataType: int64
 		formatString: 0
-		lineageTag: 17f06c00-52cd-417d-947f-d1de33d80ce9
+		lineageTag: d8449232-5e45-420e-b339-1ff6f951af1d
 		summarizeBy: count
 		sourceColumn: Week_ID
 
@@ -37,7 +39,7 @@ table Calendar
 
 	column Week_Desc
 		dataType: string
-		lineageTag: 350f65e5-0431-4bd8-bc66-ee0714007b52
+		lineageTag: 3444d543-ed16-4a83-a1f9-950c072fa5d2
 		summarizeBy: none
 		sourceColumn: Week_Desc
 
@@ -46,7 +48,7 @@ table Calendar
 	column Month_ID
 		dataType: int64
 		formatString: 0
-		lineageTag: aab24524-ab8e-482c-80b1-9c6e45703f78
+		lineageTag: 93cd3df9-4514-4b0d-a6d4-ed8595e76f0a
 		summarizeBy: count
 		sourceColumn: Month_ID
 
@@ -54,7 +56,7 @@ table Calendar
 
 	column Month_Name
 		dataType: string
-		lineageTag: b0e58fa9-cf06-4bc7-abc0-c61b68556167
+		lineageTag: 7b59da1d-00ae-4b40-a938-2f4851ff03ea
 		summarizeBy: none
 		sourceColumn: Month_Name
 
@@ -63,7 +65,7 @@ table Calendar
 	column Quarter_ID
 		dataType: int64
 		formatString: 0
-		lineageTag: 02b909bb-14b4-4aa0-b343-8246da6f4962
+		lineageTag: d71e63d2-c63a-45ee-9135-3c9557c403eb
 		summarizeBy: count
 		sourceColumn: Quarter_ID
 
@@ -71,7 +73,7 @@ table Calendar
 
 	column Quarter_Name
 		dataType: string
-		lineageTag: 0ddddf71-0a8b-46b6-a4d4-f99a623354dd
+		lineageTag: 3bc0550f-20f9-4b1e-9845-98b76a3e0775
 		summarizeBy: none
 		sourceColumn: Quarter_Name
 
@@ -80,7 +82,7 @@ table Calendar
 	column Year_ID
 		dataType: int64
 		formatString: 0
-		lineageTag: 923dea33-e8d6-44f2-acfc-412b86b02ce7
+		lineageTag: 588ff3a3-e22f-474c-8008-aaab88059cc3
 		summarizeBy: count
 		sourceColumn: Year_ID
 
@@ -88,9 +90,87 @@ table Calendar
 
 	column Week_Year
 		dataType: string
-		lineageTag: f7b59555-f8b8-4bce-be75-0fa628b11444
+		lineageTag: 779cc3f4-7d7c-4dbb-84af-8ed7be3b0bfb
 		summarizeBy: none
 		sourceColumn: Week_Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISNUMBER =
+			
+			ISNUMBER([Week_Desc])
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 41ab4bbd-9900-41fa-beda-5756c028f2bc
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Format (yyy-mm-dd)' = ```
+			
+			FORMAT(
+			    'Calendar'[Transaction_Date],
+			    "yyyy-mm-dd"
+			)
+			
+			```
+		dataType: string
+		lineageTag: d5c3c604-bdba-43ff-ac90-a73342701c76
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Half' = ```
+			
+			SWITCH(
+			    'Calendar'[Month_ID],
+			    1, "1H",
+			    2, "1H",
+			    3, "1H",
+			    4, "1H",
+			    5, "1H",
+			    6, "1H",
+			    7, "2H",
+			    8, "2H",
+			    9, "2H",
+			    10, "2H",
+			    11, "2H",
+			    12, "2H",
+			    "-"
+			)
+			
+			```
+		dataType: string
+		lineageTag: 888fd367-4a07-4d05-917c-2aa3f6e4c839
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quarter & Year' = ```
+			
+			VAR Q1 = 'Calendar'[Date_ID] IN {1,2,3}
+			VAR Q2 = 'Calendar'[Date_ID] IN {4,5,6}
+			VAR Q3 = 'Calendar'[Date_ID] IN {7,8,9}
+			VAR Q4 = 'Calendar'[Date_ID] IN {10,11,12}
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    Q1, "Q1" & "-" & 'Calendar'[Year_ID],
+			    Q2, "Q2" & "-" & 'Calendar'[Year_ID],
+			    Q3, "Q3" & "-" & 'Calendar'[Year_ID],
+			    Q4, "Q4" & "-" & 'Calendar'[Year_ID],
+			    "-"
+			)
+			
+			```
+		dataType: string
+		lineageTag: 0a8f983d-714d-41e5-ac21-61b66dc934e6
+		summarizeBy: none
+		isDataTypeInferred
 
 		annotation SummarizationSetBy = Automatic
 
@@ -103,6 +183,8 @@ table Calendar
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Transaction_Date", type date}, {"Date_ID", Int64.Type}, {"Week_ID", Int64.Type}, {"Week_Desc", type text}, {"Month_ID", Int64.Type}, {"Month_Name", type text}, {"Quarter_ID", Int64.Type}, {"Quarter_Name", type text}, {"Year_ID", Int64.Type}, {"Week_Year", type text}})
 				in
 				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
 
