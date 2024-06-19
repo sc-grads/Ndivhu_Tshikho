@@ -1,0 +1,137 @@
+table 'Product Lookup'
+	lineageTag: 5003ae57-454f-404f-aef5-20ed2ebe2033
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d6a5a1e1-75da-4252-a7b5-8e5df0e6a10f
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_group
+		dataType: string
+		lineageTag: 95c7e4d9-d6db-4984-bb91-379fd9600698
+		summarizeBy: none
+		sourceColumn: product_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category
+		dataType: string
+		lineageTag: 1dff28e9-0cf0-4bee-9b6b-ba049f09fc76
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_type
+		dataType: string
+		lineageTag: ee6faa7b-3912-4ba4-952a-a6fb2a93440f
+		summarizeBy: none
+		sourceColumn: product_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column product
+		dataType: string
+		lineageTag: 5f5c10f2-2ce8-4930-b4a8-9790e1a2bfd0
+		summarizeBy: none
+		sourceColumn: product
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_description
+		dataType: string
+		lineageTag: eea717b7-63d5-4659-aff6-233fa69320d9
+		summarizeBy: none
+		sourceColumn: product_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_of_measure
+		dataType: string
+		lineageTag: 449aadfa-a0ab-41a0-b59b-372ce5e17dc6
+		summarizeBy: none
+		sourceColumn: unit_of_measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_cost
+		dataType: double
+		lineageTag: 689b133c-32ce-40b5-8cd3-e002dead2e7f
+		summarizeBy: sum
+		sourceColumn: current_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column current_wholesale_price
+		dataType: double
+		lineageTag: d102a9f1-17e7-4ce6-9d76-175f76781f99
+		summarizeBy: sum
+		sourceColumn: current_wholesale_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column current_retail_price
+		dataType: double
+		lineageTag: 70179cd3-a1b5-40e4-bd78-b420e66bae6f
+		summarizeBy: sum
+		sourceColumn: current_retail_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tax_exempt_yn
+		dataType: string
+		lineageTag: f50d4cde-8417-4444-a8b8-505cfe77d732
+		summarizeBy: none
+		sourceColumn: tax_exempt_yn
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_yn
+		dataType: string
+		lineageTag: 61533283-01b0-4156-978f-e90c5499f598
+		summarizeBy: none
+		sourceColumn: promo_yn
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_product_yn
+		dataType: string
+		lineageTag: d64123c2-2801-42cc-baf0-45dfd7bdf5fc
+		summarizeBy: none
+		sourceColumn: new_product_yn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column1
+		dataType: int64
+		formatString: 0
+		lineageTag: a70b57da-e394-47a5-ace7-cebf6ca1146c
+		summarizeBy: sum
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Product Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\OneDrive - Northern Data (Pty) Ltd\Documents\Udemy Course\Microsoft Power BI\Advanced DAX for Data Analysis\Advanced+DAX+Data+Files\Advanced DAX Data Files\Product Lookup.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"product_id", Int64.Type}, {"product_group", type text}, {"product_category", type text}, {"product_type", type text}, {"product", type text}, {"product_description", type text}, {"unit_of_measure", type text}, {"current_cost", type number}, {"current_wholesale_price", type number}, {"current_retail_price", type number}, {"tax_exempt_yn", type text}, {"promo_yn", type text}, {"new_product_yn", type text}, {"", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

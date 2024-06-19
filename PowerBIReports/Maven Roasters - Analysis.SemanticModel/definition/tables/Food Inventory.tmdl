@@ -1,0 +1,80 @@
+table 'Food Inventory'
+	lineageTag: 7ab32f58-aba4-4484-a8e9-87a3ef3eb950
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 65cebbcb-f8c8-436a-a584-0853175ad7fb
+		summarizeBy: sum
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column baked_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3f7141fe-697c-45ab-9afb-7b80e380345b
+		summarizeBy: none
+		sourceColumn: baked_date
+
+		variation Variation
+			isDefault
+			relationship: fa263381-ecf6-4de8-8d42-c447527e1722
+			defaultHierarchy: LocalDateTable_1fd52871-3936-4eb8-8108-e810a7854f8d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column transaction_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8f5531ec-f40a-4194-9810-624f8337bc58
+		summarizeBy: none
+		sourceColumn: transaction_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 72be2ddf-2759-4eed-ac1b-39a0e4fb2729
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity_start_of_day
+		dataType: int64
+		formatString: 0
+		lineageTag: 46344d10-8f11-4ffd-bf08-8e4741379fe1
+		summarizeBy: sum
+		sourceColumn: quantity_start_of_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity_sold
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d495927-aec5-4028-a868-eab4db26dc2f
+		summarizeBy: sum
+		sourceColumn: quantity_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Food Inventory' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\OneDrive - Northern Data (Pty) Ltd\Documents\Udemy Course\Microsoft Power BI\Advanced DAX for Data Analysis\Advanced+DAX+Data+Files\Advanced DAX Data Files\Food Inventory.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"store_id", Int64.Type}, {"baked_date", type date}, {"transaction_date", type date}, {"product_id", Int64.Type}, {"quantity_start_of_day", Int64.Type}, {"quantity_sold", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

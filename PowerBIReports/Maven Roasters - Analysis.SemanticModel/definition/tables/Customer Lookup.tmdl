@@ -1,0 +1,108 @@
+table 'Customer Lookup'
+	lineageTag: 2c1d4c0f-aee6-4041-a078-d4837b5d2775
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1dfc6d89-be69-407b-b94f-97e31bcc7279
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column home_store
+		dataType: int64
+		formatString: 0
+		lineageTag: 933e4948-1231-40f8-97ee-2180f7804227
+		summarizeBy: sum
+		sourceColumn: home_store
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_first-name
+		dataType: string
+		lineageTag: 1d8f71b5-f3d2-436a-9dc4-307fccec70ce
+		summarizeBy: none
+		sourceColumn: customer_first-name
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_email
+		dataType: string
+		lineageTag: 79d8d776-8024-4245-9f74-e21d42ea5fb3
+		summarizeBy: none
+		sourceColumn: customer_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_since
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ac733114-a66e-4c10-9db1-513c35f79fee
+		summarizeBy: none
+		sourceColumn: customer_since
+
+		variation Variation
+			isDefault
+			relationship: a676ed18-406a-4fa3-a860-453154bec74b
+			defaultHierarchy: LocalDateTable_5dc41436-e791-4818-a791-ad85bce59e4a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column loyalty_card_number
+		dataType: string
+		lineageTag: 4d65a2ac-c7e5-46c7-a90c-f2f9ec6924de
+		summarizeBy: none
+		sourceColumn: loyalty_card_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column birthdate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c2f57b27-11d9-4cc3-a162-327c1dbb34f6
+		summarizeBy: none
+		sourceColumn: birthdate
+
+		variation Variation
+			isDefault
+			relationship: c837bb6a-d4f8-44a2-a511-df2b5467b210
+			defaultHierarchy: LocalDateTable_ffc4c291-2504-4e61-a89f-229f1fed6221.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column gender
+		dataType: string
+		lineageTag: b7dacacc-1b9a-4db6-a8e2-a2a1ef5748ea
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column birth_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fa4ad33-d2bf-4380-961c-8de523c7d084
+		summarizeBy: sum
+		sourceColumn: birth_year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Customer Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\OneDrive - Northern Data (Pty) Ltd\Documents\Udemy Course\Microsoft Power BI\Advanced DAX for Data Analysis\Advanced+DAX+Data+Files\Advanced DAX Data Files\Customer Lookup.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_id", Int64.Type}, {"home_store", Int64.Type}, {"customer_first-name", type text}, {"customer_email", type text}, {"customer_since", type date}, {"loyalty_card_number", type text}, {"birthdate", type date}, {"gender", type text}, {"birth_year", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
