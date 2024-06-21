@@ -1,0 +1,35 @@
+table 'Table Constructor Demo'
+	lineageTag: b615a547-8c23-4c58-ac86-66ad7204beef
+
+	column Value1
+		dataType: string
+		lineageTag: 2087af27-c069-4114-9054-55bf19bd8fe2
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Value1]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value2
+		dataType: string
+		lineageTag: d3f9668d-e211-4258-afaa-cbb64fe54eca
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Value2]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Table Constructor Demo' = calculated
+		mode: import
+		source =
+				
+				{
+				    ("Customer 1", FORMAT(CALCULATE([Customer Sales], 'Customer Lookup'[customer_id] =1), "CURRENCY")),
+				    ("Customer 79", FORMAT(CALCULATE([Customer Sales], 'Customer Lookup'[customer_id] =79), "CURRENCY"))
+				
+				}
+
+	annotation PBI_Id = a6bac8dd02b248ee86995c7a257556e2
+

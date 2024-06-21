@@ -1,6 +1,17 @@
 table Calendar
 	lineageTag: 3ede25e7-2543-4146-ad19-115fcaab11ad
 
+	measure 'Total Profit' =
+			
+			CALCULATE(
+			    [Profit],
+			    REMOVEFILTERS(
+			        'Sales by Store'
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: d3e78619-03e9-439d-b422-606695b70553
+
 	column Transaction_Date
 		dataType: dateTime
 		formatString: m/d/yyyy
@@ -183,8 +194,6 @@ table Calendar
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Transaction_Date", type date}, {"Date_ID", Int64.Type}, {"Week_ID", Int64.Type}, {"Week_Desc", type text}, {"Month_ID", Int64.Type}, {"Month_Name", type text}, {"Quarter_ID", Int64.Type}, {"Quarter_Name", type text}, {"Year_ID", Int64.Type}, {"Week_Year", type text}})
 				in
 				    #"Changed Type"
-
-	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
 

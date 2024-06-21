@@ -10,7 +10,7 @@ annotation PBI_QueryOrder = ["Customer Lookup","Employee Lookup","Food Inventory
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBIDesktopVersion = 2.130.754.0 (24.06)
+annotation PBIDesktopVersion = 2.130.930.0 (24.06)
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -28,6 +28,26 @@ ref table 'Store Lookup'
 ref table 'Measure Table'
 ref table Calendar
 ref table LocalDateTable_abbfeb27-19c9-4cc5-b95f-1a3ec7d4917e
+ref table 'Values Example'
+ref table 'SELECTCOLUMN DEMO'
+ref table LocalDateTable_e01a2027-1516-4c74-939b-e84faa7a7c5b
+ref table 'SUMMARIZE Demo'
+ref table 'Unsold Pastries'
+ref table LocalDateTable_961e03e8-580a-4ce9-b9de-ffdb292cfdb4
+ref table 'Row Demo'
+ref table 'DATATABLE Demo'
+ref table 'GENERATESERIES Demo'
+ref table 'Table Constructor Demo'
+ref table 'Target Sales - Aril 2019 (DATATABLE)'
+ref table 'CROSSJOIN Demo'
+ref table 'UNION Demo'
+ref table 'Target Sales - March 2019 (DATATABLE)'
+ref table 'EXCEPT Demo'
+ref table LocalDateTable_57abd7d9-d0d6-4284-a500-63e8d8c9982e
+ref table LocalDateTable_92cd85b2-85b7-4d52-a222-ac72ddd510b0
+ref table 'New Employees (INTERSECT)'
+ref table LocalDateTable_007ac6d9-acb0-48d6-a885-9c77445fe913
+ref table 'Repeat Customer Sales (INTERSECT Assignment)'
 
 ref cultureInfo en-US
 

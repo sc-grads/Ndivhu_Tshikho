@@ -1,0 +1,135 @@
+table 'EXCEPT Demo'
+	lineageTag: 816d0d09-2a1c-454e-abfc-35cfcb5e7676
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d8ad545-0994-412e-a950-3224d1b1127b
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Customer Lookup[customer_id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column home_store
+		dataType: int64
+		formatString: 0
+		lineageTag: 94198acf-3d5f-46a9-84fd-13b4569ae52c
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Customer Lookup[home_store]
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_first-name
+		dataType: string
+		lineageTag: 40ecc7ad-5c89-4949-a840-de622434a9d1
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Customer Lookup[customer_first-name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_email
+		dataType: string
+		lineageTag: f96db52a-6c0e-4781-9380-40ac4aaa318c
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Customer Lookup[customer_email]
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_since
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6630adb2-79be-4b81-b88a-e1e3768ee23f
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Customer Lookup[customer_since]
+
+		variation Variation
+			isDefault
+			relationship: d72c8b6e-44aa-4810-b939-a413177a576f
+			defaultHierarchy: LocalDateTable_57abd7d9-d0d6-4284-a500-63e8d8c9982e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column loyalty_card_number
+		dataType: string
+		lineageTag: 4fb6d342-ccf1-4b36-958a-a67b5f10a695
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Customer Lookup[loyalty_card_number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column birthdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e3109a52-cb6f-42ec-8a60-0a23e30d4684
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Customer Lookup[birthdate]
+
+		variation Variation
+			isDefault
+			relationship: a2dfa120-2f3d-4863-8310-6b4665b329f7
+			defaultHierarchy: LocalDateTable_92cd85b2-85b7-4d52-a222-ac72ddd510b0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: aa74b07e-2719-4e86-9be8-4c64c12b4f0b
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Customer Lookup[gender]
+
+		annotation SummarizationSetBy = Automatic
+
+	column birth_year
+		dataType: int64
+		formatString: 0
+		lineageTag: f7291430-e311-4cd0-a0c7-58f68f652cd3
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Customer Lookup[birth_year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Age'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7488c9c5-b261-4db8-81b6-1e6797a0afca
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Customer Lookup[Current Age]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'EXCEPT Demo' = calculated
+		mode: import
+		source =
+				
+				EXCEPT(
+				    'Customer Lookup',
+				    FILTER(
+				        VALUES(
+				            'Customer Lookup'
+				            ),
+				            'Customer Lookup'[customer_since] >DATE(2017,02,1)
+				    )
+				)
+
+	annotation PBI_Id = fa62605f85934f969275556cee2d6cb2
+

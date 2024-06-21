@@ -64,6 +64,36 @@ table 'Food Inventory'
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Quantity Sold' =
+			
+			SUM(
+			    'Food Inventory'[quantity_sold]
+			)
+		dataType: int64
+		formatString: 0
+		lineageTag: 03b30ada-4ed6-4da0-a725-11ddcef0702e
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quantity Sold (Calculate)' = ```
+			
+			 CALCULATE(
+			    SUM(
+			    'Food Inventory'[quantity_sold]
+			    )
+			)
+			
+			```
+		dataType: int64
+		formatString: 0
+		lineageTag: 22d79a5f-b8dc-4a0b-8853-e7f91bd5a478
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Food Inventory' = m
 		mode: import
 		source =
@@ -73,8 +103,6 @@ table 'Food Inventory'
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"store_id", Int64.Type}, {"baked_date", type date}, {"transaction_date", type date}, {"product_id", Int64.Type}, {"quantity_start_of_day", Int64.Type}, {"quantity_sold", Int64.Type}})
 				in
 				    #"Changed Type"
-
-	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
 

@@ -116,6 +116,186 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1547,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "Values Example",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1788.2004941929001,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "SELECTCOLUMN DEMO",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2029.4009883858002,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "SUMMARIZE Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2270.6014825787006,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "Unsold Pastries",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2511.8019767716005,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "Row Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2753.0024709645004,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "DATATABLE Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2994.2029651574003,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "GENERATESERIES Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3235.4034593503,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "Table Constructor Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3476.6039535432,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "Target Sales - Aril 2019 (DATATABLE)",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3717.8044477361,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "CROSSJOIN Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3959.004941929,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "UNION Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4200.2054361219,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "Target Sales - March 2019 (DATATABLE)",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4441.4059303148,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "EXCEPT Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4682.6064245077,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "New Employees (INTERSECT)",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4923.8069187005995,
+            "y": 267.6337694995114
+          },
+          "nodeIndex": "Repeat Customer Sales (INTERSECT Assignment)",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

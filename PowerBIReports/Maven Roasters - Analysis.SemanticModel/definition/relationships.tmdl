@@ -51,3 +51,28 @@ relationship 85b3e74b-2ec3-0edc-51a6-9b82c8b637d2
 	fromColumn: 'Sales by Store'.transaction_date
 	toColumn: Calendar.Transaction_Date
 
+relationship aac56590-8f7f-4790-a4c7-d3cc662f6e8a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SELECTCOLUMN DEMO'.start_date
+	toColumn: LocalDateTable_e01a2027-1516-4c74-939b-e84faa7a7c5b.Date
+
+relationship 507c54e7-304a-4e93-8738-7c01c44300fb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Unsold Pastries'.transaction_date
+	toColumn: LocalDateTable_961e03e8-580a-4ce9-b9de-ffdb292cfdb4.Date
+
+relationship d72c8b6e-44aa-4810-b939-a413177a576f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'EXCEPT Demo'.customer_since
+	toColumn: LocalDateTable_57abd7d9-d0d6-4284-a500-63e8d8c9982e.Date
+
+relationship a2dfa120-2f3d-4863-8310-6b4665b329f7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'EXCEPT Demo'.birthdate
+	toColumn: LocalDateTable_92cd85b2-85b7-4d52-a222-ac72ddd510b0.Date
+
+relationship ce06137d-5dd0-4007-b840-5fc89f248ba7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'New Employees (INTERSECT)'.start_date
+	toColumn: LocalDateTable_007ac6d9-acb0-48d6-a885-9c77445fe913.Date
+
