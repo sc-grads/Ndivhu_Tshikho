@@ -110,6 +110,50 @@ table 'Customer Lookup'
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Customer Sales (High/Low)' = ```
+			
+			VAR TotalSales =
+			SUMX(
+			    'Sales by Store',
+			    'Sales by Store'[quantity_sold]*'Sales by Store'[unit_price]
+			)
+			
+			VAR AllCustomers =
+			COUNTROWS(
+			    'Customer Lookup'
+			)
+			
+			VAR AverageSales =
+			DIVIDE(
+			    TotalSales,
+			    AllCustomers
+			)
+			
+			VAR CustomerSales =
+			SUMX(
+			    RELATEDTABLE(
+			        'Sales by Store'
+			    ),
+			    'Sales by Store'[quantity_sold]*'Sales by Store'[unit_price]
+			)
+			
+			VAR HighLow = 
+			IF(
+			    CustomerSales > AverageSales, 
+			    "High",
+			    "Low"
+			)
+			
+			RETURN
+			HighLow
+			```
+		dataType: string
+		lineageTag: 54aa1f2d-736e-4079-8081-94960c2189d2
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Customer Lookup' = m
 		mode: import
 		source =

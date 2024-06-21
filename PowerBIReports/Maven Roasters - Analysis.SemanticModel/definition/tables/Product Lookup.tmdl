@@ -121,6 +121,23 @@ table 'Product Lookup'
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Number of Food Items Made' = ```
+			
+			SUMX(
+			    RELATEDTABLE(
+			        'Food Inventory'
+			    ),
+			    'Food Inventory'[quantity_start_of_day] 
+			)
+			```
+		dataType: int64
+		formatString: 0
+		lineageTag: 404b9110-fcdb-4f93-b16f-2662cc93e07c
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Product Lookup' = m
 		mode: import
 		source =

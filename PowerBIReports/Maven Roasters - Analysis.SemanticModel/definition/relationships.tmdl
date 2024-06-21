@@ -13,11 +13,6 @@ relationship e1ed15e4-2dbd-48a9-8366-f14c688670f5
 	fromColumn: 'Employee Lookup'.start_date
 	toColumn: LocalDateTable_1e69a575-89cf-4f8c-93f9-f23afd43bc00.Date
 
-relationship fa263381-ecf6-4de8-8d42-c447527e1722
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'Food Inventory'.baked_date
-	toColumn: LocalDateTable_1fd52871-3936-4eb8-8108-e810a7854f8d.Date
-
 relationship 91e90578-d167-235b-d626-5fd94c4f8b11
 	fromColumn: 'Sales by Store'.customer_id
 	toColumn: 'Customer Lookup'.customer_id
@@ -75,4 +70,13 @@ relationship ce06137d-5dd0-4007-b840-5fc89f248ba7
 	joinOnDateBehavior: datePartOnly
 	fromColumn: 'New Employees (INTERSECT)'.start_date
 	toColumn: LocalDateTable_007ac6d9-acb0-48d6-a885-9c77445fe913.Date
+
+relationship fb9dc294-48d7-6969-aaf3-940c13b44b56
+	isActive: false
+	fromColumn: 'Food Inventory'.baked_date
+	toColumn: Calendar.Transaction_Date
+
+relationship 3ad6414a-004e-e66a-3d9c-d65a84fae614
+	fromColumn: 'UNION Demo'.'Store ID'
+	toColumn: 'Store Lookup'.store_id
 

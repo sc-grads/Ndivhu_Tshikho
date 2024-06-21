@@ -22,7 +22,7 @@ table 'Store Lookup'
 		dataType: int64
 		formatString: 0
 		lineageTag: d6310d7f-66d2-4170-b828-487b39143f6c
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: store_square_feet
 
 		annotation SummarizationSetBy = Automatic
@@ -55,7 +55,7 @@ table 'Store Lookup'
 		dataType: int64
 		formatString: 0
 		lineageTag: ca64f7cb-3774-42f8-941e-4cf654ace770
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: store_postal_code
 
 		annotation SummarizationSetBy = Automatic
@@ -63,7 +63,7 @@ table 'Store Lookup'
 	column store_longitude
 		dataType: double
 		lineageTag: 46672899-538b-4934-9fcf-1efa9686985d
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: store_longitude
 
 		annotation SummarizationSetBy = Automatic
@@ -73,7 +73,7 @@ table 'Store Lookup'
 	column store_latitude
 		dataType: double
 		lineageTag: 5d8942c3-2de1-41ae-9dd7-4255c1619925
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: store_latitude
 
 		annotation SummarizationSetBy = Automatic
@@ -84,7 +84,7 @@ table 'Store Lookup'
 		dataType: int64
 		formatString: 0
 		lineageTag: e7313979-f7fa-443f-b443-8aeb961bdf99
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: manager
 
 		annotation SummarizationSetBy = Automatic

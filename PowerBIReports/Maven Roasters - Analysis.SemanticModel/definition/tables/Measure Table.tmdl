@@ -513,6 +513,207 @@ table 'Measure Table'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Wholesale Cost' = ```
+			
+			SUMX(
+			    'Sales by Store',
+			    'Sales by Store'[quantity_sold]*
+			    RELATED(
+			        'Product Lookup'[current_wholesale_price]
+			    )
+			)
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: e08dc031-49cf-4c0f-8217-454c8296d46c
+
+	measure 'Quantity Sold (USERELATIONSHIP)' =
+			
+			CALCULATE(
+			    [Sum Quantity Sold],
+			    USERELATIONSHIP(
+			        'Food Inventory'[baked_date],
+			        'Calendar'[Transaction_Date]
+			    )
+			)
+		formatString: #,0
+		lineageTag: da92c638-aa12-4dd3-9170-3a904e5c8edd
+
+	measure 'Number of Employees (CROSSFILTER)' =
+			
+			CALCULATE(
+			    COUNTROWS(
+			    'Employee Lookup'
+			    ),
+			    CROSSFILTER(
+			        'Sales by Store'[staff_id],
+			        'Employee Lookup'[staff_id],
+			        Both
+			    )
+			)
+		formatString: 0
+		lineageTag: f371fed9-90a9-4b7f-9d1f-c0b6be93a179
+
+	measure 'Custombers who Purchased' =
+			
+			CALCULATE(
+			    COUNTROWS(
+			        'Customer Lookup'
+			    ),
+			    CROSSFILTER(
+			        'Sales by Store'[customer_id],
+			        'Customer Lookup'[customer_id],
+			        Both
+			    )
+			)
+		formatString: #,0
+		lineageTag: 8f7896f0-fe4e-4f2c-a9e3-67117448f4cf
+
+	measure 'Average Order Value (CWP)' =
+			
+			DIVIDE(
+			    [Customer Sales],
+			    [Custombers who Purchased],
+			    BLANK()
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: fc9431ad-aff7-4095-bb03-d2f22ba6960f
+
+	measure 'Bean Goal (TREATAS)' =
+			
+			CALCULATE(
+			    SUM(
+			        'UNION Demo'[Bean/Teas Goal]
+			    ),
+			    TREATAS(
+			        SUMMARIZE(
+			            'Calendar',
+			            'Calendar'[Year_ID],
+			            'Calendar'[Month_Name]
+			        ),
+			        'UNION Demo'[Year],
+			        'UNION Demo'[Month]
+			    )
+			)
+		formatString: 0
+		lineageTag: 8218f6ba-7e66-4d03-ba25-bc858ff63100
+
+	measure 'Beverage Goal (TREATAS)' =
+			
+			CALCULATE(
+			    SUM(
+			        'UNION Demo'[Beverage Goal]
+			    ),
+			    TREATAS(
+			        SUMMARIZE(
+			            'Calendar',
+			            'Calendar'[Year_ID],
+			            'Calendar'[Month_Name]
+			        ),
+			        'UNION Demo'[Year],
+			        'UNION Demo'[Month]
+			    )
+			)
+		formatString: 0
+		lineageTag: cb1ebb0a-ce8a-4872-95a7-dc66dd05449d
+
+	measure 'Food Goal (TREATAS)' =
+			
+			CALCULATE(
+			    SUM(
+			        'UNION Demo'[Food Goal]
+			    ),
+			    TREATAS(
+			        SUMMARIZE(
+			            'Calendar',
+			            'Calendar'[Year_ID],
+			            'Calendar'[Month_Name]
+			        ),
+			        'UNION Demo'[Year],
+			        'UNION Demo'[Month]
+			    )
+			)
+		formatString: 0
+		lineageTag: 3ab78be2-a256-4aaa-9d91-ee577a5282cf
+
+	measure 'Merchandise Goal (TREATAS)' =
+			
+			CALCULATE(
+			    SUM(
+			        'UNION Demo'[Merchandise Goal]
+			    ),
+			    TREATAS(
+			        SUMMARIZE(
+			            'Calendar',
+			            'Calendar'[Year_ID],
+			            'Calendar'[Month_Name]
+			        ),
+			        'UNION Demo'[Year],
+			        'UNION Demo'[Month]
+			    )
+			)
+		formatString: 0
+		lineageTag: d7ce4d2b-86cc-4d26-ad7b-ed9fada344b3
+
+	measure 'Bean %  to Goal' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(
+			            'Sales by Store'[quantity_sold]
+			        ),
+			        'Sales by Store'[Product Group] = "Whole Bean/Teas"
+			    ),
+			    [Bean Goal (TREATAS)]   
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: bf791084-2d80-47cf-9612-e54405865f84
+
+	measure 'Beverage %  to Goal' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(
+			            'Sales by Store'[quantity_sold]
+			        ),
+			        'Sales by Store'[Product Group] = "Beverages"
+			    ),
+			    [Beverage Goal (TREATAS)]   
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 69b81ec4-88ed-4877-92c4-a8361c27993c
+
+	measure 'Food %  to Goal' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(
+			            'Sales by Store'[quantity_sold]
+			        ),
+			        'Sales by Store'[Product Group] = "Food"
+			    ),
+			    [Food Goal (TREATAS)]   
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: bed4ee4d-76f6-4697-ae95-10a8f2184c0a
+
+	measure 'Merchandise %  to Goal' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(
+			            'Sales by Store'[quantity_sold]
+			        ),
+			        'Sales by Store'[Product Group] = "Merchandise"
+			    ),
+			    [Merchandise Goal (TREATAS)]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b37d2d31-849a-4239-b116-d6310520bf35
+
 	partition 'Measure Table' = m
 		mode: import
 		source =

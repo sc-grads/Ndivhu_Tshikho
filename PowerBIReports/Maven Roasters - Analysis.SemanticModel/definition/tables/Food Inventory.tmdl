@@ -17,11 +17,6 @@ table 'Food Inventory'
 		summarizeBy: none
 		sourceColumn: baked_date
 
-		variation Variation
-			isDefault
-			relationship: fa263381-ecf6-4de8-8d42-c447527e1722
-			defaultHierarchy: LocalDateTable_1fd52871-3936-4eb8-8108-e810a7854f8d.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date

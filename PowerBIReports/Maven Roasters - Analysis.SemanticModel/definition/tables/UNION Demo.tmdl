@@ -5,7 +5,7 @@ table 'UNION Demo'
 		dataType: int64
 		formatString: 0
 		lineageTag: 79ca4421-a457-490c-a1eb-5005c46589e5
-		summarizeBy: count
+		summarizeBy: none
 		isNameInferred
 		isDataTypeInferred
 		sourceColumn: Target Sales - March 2019 (DATATABLE)[Store ID]
