@@ -1,5 +1,6 @@
 table Calendar
 	lineageTag: 3ede25e7-2543-4146-ad19-115fcaab11ad
+	dataCategory: Time
 
 	measure 'Total Profit' =
 			
@@ -14,15 +15,11 @@ table Calendar
 
 	column Transaction_Date
 		dataType: dateTime
+		isKey
 		formatString: m/d/yyyy
 		lineageTag: 7283337e-0837-490d-b08b-c6c80a34d53e
 		summarizeBy: none
 		sourceColumn: Transaction_Date
-
-		variation Variation
-			isDefault
-			relationship: 2da64180-1fe8-44df-b540-aff92531daf0
-			defaultHierarchy: LocalDateTable_abbfeb27-19c9-4cc5-b95f-1a3ec7d4917e.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -180,6 +177,50 @@ table Calendar
 			```
 		dataType: string
 		lineageTag: 0a8f983d-714d-41e5-ac21-61b66dc934e6
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday Number' =
+			
+			WEEKDAY(
+			    'Calendar'[Transaction_Date],
+			    2
+			)
+		dataType: int64
+		formatString: 0
+		lineageTag: 506b0fd7-53e1-4df9-bccd-916def7a46dd
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday Name' =
+			
+			FORMAT(
+			    'Calendar'[Transaction_Date],
+			    "ddd"
+			)
+		dataType: string
+		lineageTag: b132d61d-bf93-4a7c-a737-eac112da573b
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekend =
+			
+			IF(
+			    WEEKDAY(
+			        'Calendar'[Transaction_Date],
+			        2
+			    )IN{6,7},
+			    "Y",
+			    "N"
+			)
+		dataType: string
+		lineageTag: d54b9366-5fad-4c0c-bc65-0d65e8f50239
 		summarizeBy: none
 		isDataTypeInferred
 

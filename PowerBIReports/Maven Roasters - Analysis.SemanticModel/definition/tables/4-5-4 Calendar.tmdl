@@ -1,0 +1,160 @@
+table '4-5-4 Calendar'
+	lineageTag: 1bcbdc63-987b-4f4c-b38b-93c56b2e98fa
+
+	measure Measure
+		lineageTag: d70567c3-da90-429a-9f77-a0d71c733378
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2196d3b2-5c21-410d-a271-a56a53e9d0e6
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 6306dbca-f8ed-4d10-8645-501c9e1ce0ba
+			defaultHierarchy: LocalDateTable_232de1d6-a03d-4b31-8ac5-4aa6534da493.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FiscalYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 62a14110-2791-445f-ad73-a0e7bce2fcb6
+		summarizeBy: sum
+		sourceColumn: FiscalYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalQuarter
+		dataType: int64
+		formatString: 0
+		lineageTag: c476baf4-5273-4d8b-af51-1c24117e7258
+		summarizeBy: sum
+		sourceColumn: FiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalMonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: c11888d7-aa3b-4331-af65-363975f0e608
+		summarizeBy: sum
+		sourceColumn: FiscalMonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalMonthOfQuarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 711baf72-98a1-4b6b-8a82-d877a31d3376
+		summarizeBy: sum
+		sourceColumn: FiscalMonthOfQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalWeekOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: a3940263-af4c-4eb7-8912-1f7bb6ede035
+		summarizeBy: sum
+		sourceColumn: FiscalWeekOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: bae9f0e3-a543-4128-bd5a-bb9b8841b5d8
+		summarizeBy: sum
+		sourceColumn: DayOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalMonthName
+		dataType: string
+		lineageTag: a4803490-272b-43ac-b4fb-26c0be9ef308
+		summarizeBy: none
+		sourceColumn: FiscalMonthName
+		sortByColumn: FiscalMonthNumber
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalMonthYear
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c9e39fda-bfe4-47f5-bd63-a5b55af32dd6
+		summarizeBy: none
+		sourceColumn: FiscalMonthYear
+
+		variation Variation
+			isDefault
+			relationship: 78add3ca-f59b-42f1-a94a-80fae798ec25
+			defaultHierarchy: LocalDateTable_8d36ea22-f451-4135-a7d6-45c69c691b66.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FiscalQuarterYear
+		dataType: int64
+		formatString: 0
+		lineageTag: f4cf2083-1023-4692-9384-f6dfc01768ea
+		summarizeBy: sum
+		sourceColumn: FiscalQuarterYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfMonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c81acb4-3465-4806-819d-3baf2a560f87
+		summarizeBy: sum
+		sourceColumn: DayOfMonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayName
+		dataType: string
+		lineageTag: c2243c1e-a8e4-4f53-96d5-8663f187b8e8
+		summarizeBy: none
+		sourceColumn: DayName
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'FiscalYear Hierarchy'
+		lineageTag: 9e1f7fd9-dbef-46fe-aee8-314bff4ad95d
+
+		level FiscalYear
+			lineageTag: 9a754786-26b9-448e-b772-75ee68580774
+			column: FiscalYear
+
+		level FiscalMonthName
+			lineageTag: 33629751-42e9-4eb5-bf59-5ddb3c3b2eb1
+			column: FiscalMonthName
+
+		level Date
+			lineageTag: 32e3864f-7d00-4a25-951d-ce7b11bd0ccf
+			column: Date
+
+	partition '4-5-4 Calendar' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\OneDrive - Northern Data (Pty) Ltd\Documents\Udemy Course\Microsoft Power BI\Advanced DAX for Data Analysis\Advanced+DAX+Data+Files\Advanced DAX Data Files\4-5-4 Calendar.csv"),[Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"FiscalYear", Int64.Type}, {"FiscalQuarter", Int64.Type}, {"FiscalMonthNumber", Int64.Type}, {"FiscalMonthOfQuarter", Int64.Type}, {"FiscalWeekOfYear", Int64.Type}, {"DayOfWeek", Int64.Type}, {"FiscalMonthName", type text}, {"FiscalMonthYear", type date}, {"FiscalQuarterYear", Int64.Type}, {"DayOfMonthNumber", Int64.Type}, {"DayName", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

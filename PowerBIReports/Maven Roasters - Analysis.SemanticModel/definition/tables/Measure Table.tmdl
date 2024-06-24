@@ -936,6 +936,7 @@ table 'Measure Table'
 			Output
 			```
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Iterator Functions
 		lineageTag: 49410aa7-c9d9-47f6-b742-374a91b41371
 
 	measure 'Rank of Customer Sales (RANKX)' =
@@ -952,6 +953,7 @@ table 'Measure Table'
 			)
 			)
 		formatString: 0
+		displayFolder: Iterator Functions
 		lineageTag: 8a8c8a29-a13c-4dc0-9315-85d5eac2ab20
 
 	measure 'Rounded Customer Sales' = ```
@@ -962,6 +964,7 @@ table 'Measure Table'
 			)
 			```
 		formatString: #,0.00
+		displayFolder: Iterator Functions
 		lineageTag: bec79981-91ff-4cb9-9c37-894dcc28cd6b
 
 	measure 'Rank of Rounded Customer Sales (RANKX)' =
@@ -980,6 +983,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: 0
+		displayFolder: Iterator Functions
 		lineageTag: de037c69-4d1f-458d-8e0d-60ccb4e7c55f
 
 	measure 'Top 5 Product by Profit (RANKX)' = ```
@@ -1006,9 +1010,238 @@ table 'Measure Table'
 			RETURN
 			Top5Product
 			```
+		displayFolder: Iterator Functions
 		lineageTag: 176609e8-e33c-469b-a8eb-8a02bd2be1fd
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% of Total Sales' = ```
+			
+			VAR ALLSales =
+			CALCULATE(
+			    [Customer Sales],
+			    ALL(
+			        'Sales by Store'
+			    )
+			)
+			VAR Ratio = 
+			DIVIDE(
+			    [Customer Sales],
+			    ALLSales
+			)
+			
+			RETURN
+			Ratio
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Advanced Time Intelligence
+		lineageTag: df7b7431-3a15-408e-a7ef-a76d366d6f36
+
+	measure 'Last Quarter''s Sales (PARALLELPERIOD)' =
+			
+			CALCULATE(
+			    [Customer Sales],
+			    PARALLELPERIOD(
+			        'Calendar'[Transaction_Date],
+			        -1,
+			        QUARTER
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Time Intelligence
+		lineageTag: 9861d497-0e30-4df8-a4f0-48eb265cb7a5
+
+	measure 'Last Quarter''s Sales (PREVIOUSQUARTER)' =
+			
+			CALCULATE(
+			    [Customer Sales],
+			    PREVIOUSQUARTER(
+			        'Calendar'[Transaction_Date]
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Time Intelligence
+		lineageTag: 455c2e36-2713-4024-b7ed-9b29368249ee
+
+	measure 'Last Years Sales (SAMEPERIODLASTYEAR)' =
+			
+			CALCULATE(
+			    [Customer Sales],
+			    SAMEPERIODLASTYEAR(
+			        'Calendar'[Transaction_Date]
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Time Intelligence
+		lineageTag: ed0d25ed-1f53-44f1-a106-700407bb49ce
+
+	measure 'Customer Sales Last Month (PARALLELPERIOD)' =
+			
+			CALCULATE(
+			    [Customer Sales],
+			    PARALLELPERIOD(
+			        'Calendar'[Transaction_Date],
+			        -1,
+			        MONTH
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Time Intelligence
+		lineageTag: 981f6985-5bd9-468f-923c-2614a1478e98
+
+	measure 'Customer Sales MoM % Change' =
+			
+			DIVIDE(
+			    ([Customer Sales] - [Customer Sales Last Month (PARALLELPERIOD)]),
+			    [Customer Sales Last Month (PARALLELPERIOD)],
+			    BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Advanced Time Intelligence
+		lineageTag: e09e370f-f444-43fa-9fed-b96bc29d771e
+
+	measure 'Customer Sales YoY % Change' = ```
+			
+			VAR LAstYearsSales = 
+			CALCULATE(
+			    [Customer Sales],
+			    SAMEPERIODLASTYEAR(
+			        'Calendar'[Transaction_Date]
+			    )
+			)
+			
+			VAR Ratio = 
+			
+			DIVIDE(
+			    ([Customer Sales] -LAstYearsSales),
+			    LAstYearsSales,
+			    "-"
+			    )
+			RETURN
+			Ratio
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Advanced Time Intelligence
+		lineageTag: e60796a7-2cd2-4e04-a0d3-2f5d135d7844
+
+	measure 'Last Week Sales 4-5-4 (DATEADD)' =
+			
+			CALCULATE(
+			    [Customer Sales],
+			    DATEADD(
+			        '4-5-4 Calendar'[Date],
+			        -7,
+			        DAY
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Time Intelligence
+		lineageTag: f6ae9a20-61b3-45cc-aca2-378369b63ea5
+
+	measure 'QTD Sales (4-5-4)' = ```
+			
+			 VAR MaxDate = Max('4-5-4 Calendar'[Date])
+			 VAR MaxPeriod = MAX('4-5-4 Calendar'[FiscalQuarterYear])
+			 VAR Output = 
+			 IF(
+			    HASONEVALUE(
+			        '4-5-4 Calendar'[FiscalQuarter]
+			    ),
+			    CALCULATE(
+			        [Customer Sales],
+			         '4-5-4 Calendar'[Date] <= MaxDate,
+			        '4-5-4 Calendar'[FiscalQuarterYear] = MaxPeriod
+			    ),
+			    "-"
+			 )
+			
+			 RETURN
+			 Output
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Time Intelligence
+		lineageTag: fbac24b3-3391-4de1-b891-32be58c492c7
+
+	measure 'Last QTD Sales (4-5-4)' = ```
+			
+			VAR lastPeriod = 
+			CALCULATE(
+			    [Customer Sales],
+			    FILTER(
+			        ALL(
+			            '4-5-4 Calendar'
+			        ),
+			        IF(
+			            SELECTEDVALUE('4-5-4 Calendar'[FiscalQuarter]) = 1,
+			            '4-5-4 Calendar'[FiscalQuarter] = 4 &&
+			            '4-5-4 Calendar'[FiscalYear] = SELECTEDVALUE('4-5-4 Calendar'[FiscalYear]) -1,
+			            '4-5-4 Calendar'[FiscalYear] = SELECTEDVALUE('4-5-4 Calendar'[FiscalYear]) && '4-5-4 Calendar'[FiscalQuarter] = SELECTEDVALUE('4-5-4 Calendar'[FiscalQuarter]) -1
+			        )
+			    )
+			)
+			
+			RETURN
+			lastPeriod
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Time Intelligence
+		lineageTag: f390473e-de8d-479a-a3be-2e41c0b3a9e9
+
+	measure 'MTD Sales (4-5-4)' = ```
+			
+			 VAR MaxDate = Max('4-5-4 Calendar'[Date])
+			 VAR MaxPeriod = MAX('4-5-4 Calendar'[FiscalMonthYear])
+			 VAR Output = 
+			 IF(
+			    HASONEVALUE(
+			        '4-5-4 Calendar'[FiscalMonthName]
+			    ),
+			    CALCULATE(
+			        [Customer Sales],
+			         '4-5-4 Calendar'[Date] <= MaxDate,
+			        '4-5-4 Calendar'[FiscalMonthYear] = MaxPeriod
+			    ),
+			    "-"
+			 )
+			
+			 RETURN
+			 Output
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 54dce7a2-540c-469d-b635-1145d7d6084f
+
+	measure 'YTD Sales (4-5-4)' = ```
+			
+			 VAR MaxDate = Max('4-5-4 Calendar'[Date])
+			 VAR MaxPeriod = MAX('4-5-4 Calendar'[FiscalYear])
+			 VAR MaxSellDate = MAX('Sales by Store'[transaction_date])
+			 VAR Output = 
+			
+			    CALCULATE(
+			        [Customer Sales],
+			         '4-5-4 Calendar'[Date] <= MaxDate,
+			        '4-5-4 Calendar'[FiscalYear] = MaxPeriod,
+			        'Calendar'[Transaction_Date] <= MaxSellDate
+			    )
+			
+			 RETURN
+			 Output
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c08ea4de-8a13-480e-9ce5-f96275f0c573
+
+	measure 'WoW % Change' =
+			
+			DIVIDE(
+			    ([Customer Sales] - [Last Week Sales 4-5-4 (DATEADD)]),
+			    [Last Week Sales 4-5-4 (DATEADD)],
+			    BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ee7ba6d3-39a9-4b9b-a55e-3ca967882044
 
 	partition 'Measure Table' = m
 		mode: import

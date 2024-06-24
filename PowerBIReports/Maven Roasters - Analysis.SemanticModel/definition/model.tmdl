@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["Customer Lookup","Employee Lookup","Food Inventory","Product Lookup","Sales by Store","Store Lookup","Measure Table","Calendar"]
+annotation PBI_QueryOrder = ["Customer Lookup","Employee Lookup","Food Inventory","Product Lookup","Sales by Store","Store Lookup","Measure Table","Calendar","4-5-4 Calendar"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -26,7 +26,6 @@ ref table 'Sales by Store'
 ref table 'Store Lookup'
 ref table 'Measure Table'
 ref table Calendar
-ref table LocalDateTable_abbfeb27-19c9-4cc5-b95f-1a3ec7d4917e
 ref table 'Values Example'
 ref table 'SELECTCOLUMN DEMO'
 ref table LocalDateTable_e01a2027-1516-4c74-939b-e84faa7a7c5b
@@ -49,6 +48,15 @@ ref table LocalDateTable_007ac6d9-acb0-48d6-a885-9c77445fe913
 ref table 'Repeat Customer Sales (INTERSECT Assignment)'
 ref table 'TREATAS Demo'
 ref table 'Average Days'
+ref table 'Calender Demo'
+ref table LocalDateTable_a42a60c5-cac8-4f1a-8225-8915ae233223
+ref table 'CALENDERAUTO Demo'
+ref table LocalDateTable_814c0109-b5b8-4aad-b1cd-e4d4cebe6717
+ref table 'Date Table (CALENDERAUTO)'
+ref table LocalDateTable_02a665dd-ab2d-494f-ae54-eca514622249
+ref table '4-5-4 Calendar'
+ref table LocalDateTable_232de1d6-a03d-4b31-8ac5-4aa6534da493
+ref table LocalDateTable_8d36ea22-f451-4135-a7d6-45c69c691b66
 
 ref cultureInfo en-US
 
