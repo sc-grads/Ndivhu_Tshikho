@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.55\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU06\",\"version\":\"5.55\",\"type\":2}},\"activeSectionIndex\":4,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "config": "{\"version\":\"5.55\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU06\",\"version\":\"5.55\",\"type\":2}},\"activeSectionIndex\":5,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -133,6 +133,27 @@
           "x": 90.00,
           "y": 292.50,
           "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "PagePerfomance Analyzer",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "b39ea9d52036023b78c0",
+      "ordinal": 5,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"a74782ea5672ed9fb23f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.552238805970148,\"y\":0,\"z\":0,\"width\":1073.0348258706467,\"height\":652.7363184079602,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"Calendar.Transaction_Date\",\"active\":true}],\"Values\":[{\"queryRef\":\"Measure Table.Customer Sales (Last Year)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measure Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Transaction_Date\"},\"Name\":\"Calendar.Transaction_Date\",\"NativeReferenceName\":\"Transaction_Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Customer Sales (Last Year)\"},\"Name\":\"Measure Table.Customer Sales (Last Year)\",\"NativeReferenceName\":\"Customer Sales (Last Year)\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 652.74,
+          "width": 1073.03,
+          "x": 9.55,
+          "y": 0.00,
+          "z": 0.00
         }
       ],
       "width": 1280.00

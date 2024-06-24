@@ -12,7 +12,7 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBIDesktopVersion = 2.130.930.0 (24.06)
 
-annotation PBI_ProTooling = ["DevMode"]
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
 
 ref table DateTableTemplate_49fd7cb6-7f21-4fbd-b4c5-3a88da97b4b2
 ref table 'Customer Lookup'
