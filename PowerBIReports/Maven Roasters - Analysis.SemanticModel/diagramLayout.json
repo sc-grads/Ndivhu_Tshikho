@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 1020,
+        "x": 1305.7995058070999,
         "y": 40
       },
       "nodes": [
@@ -310,6 +310,18 @@
             "width": 234
           },
           "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 5406.2079070863992,
+            "y": 285.96710283284472
+          },
+          "nodeIndex": "Average Days",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

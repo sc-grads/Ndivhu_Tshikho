@@ -48,6 +48,7 @@ ref table 'New Employees (INTERSECT)'
 ref table LocalDateTable_007ac6d9-acb0-48d6-a885-9c77445fe913
 ref table 'Repeat Customer Sales (INTERSECT Assignment)'
 ref table 'TREATAS Demo'
+ref table 'Average Days'
 
 ref cultureInfo en-US
 

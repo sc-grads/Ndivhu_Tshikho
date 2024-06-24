@@ -52,6 +52,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Scalar Functions
 		lineageTag: 88535c88-1cef-48fd-a1bf-3e2f98bbdf9d
 
 		changedProperty = IsHidden
@@ -65,6 +66,7 @@ table 'Measure Table'
 			    "No Sales",
 			    [Customer Sales (Last Year)]
 			)
+		displayFolder: Tips & Best Practices
 		lineageTag: 9a0342f4-489f-4e72-b991-dbbf6f9ad7e8
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -95,6 +97,7 @@ table 'Measure Table'
 			Ratio
 			```
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Tips & Best Practices
 		lineageTag: 2f564bff-0421-4ab1-a095-13e2eca7b6e7
 
 	measure 'Orders By Females (Wrong)' = ```
@@ -142,6 +145,7 @@ table 'Measure Table'
 			    ,2
 			)
 		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Tips & Best Practices
 		lineageTag: e3a36650-2489-4231-85b3-bfcbef2b3433
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
@@ -162,6 +166,7 @@ table 'Measure Table'
 			    Customer_Sales_LY,
 			    "-"
 			)
+		displayFolder: Scalar Functions
 		lineageTag: 2604f713-4ae0-48a6-ab1f-8883b4400a45
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -172,6 +177,7 @@ table 'Measure Table'
 			    'Food Inventory'[quantity_sold]
 			)
 		formatString: #,0
+		displayFolder: Scalar Functions
 		lineageTag: 3a949f09-14ed-4e24-b8b9-afc29aa624fe
 
 	measure 'Calculate Sum Quantity Sold' =
@@ -182,6 +188,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: #,0
+		displayFolder: Advanced Calculate
 		lineageTag: 2dea01e6-8cd0-49b9-88ae-4b91e80ca6fd
 
 	measure 'Store 3 Sales of Whle Beans & Teas (Calculate)' =
@@ -191,6 +198,7 @@ table 'Measure Table'
 			    'Store Lookup'[store_id] = 3,
 			    'Product Lookup'[product_group] = "Whole Bean/Teas"
 			)
+		displayFolder: Advanced Calculate
 		lineageTag: 7e3adb81-8363-4252-a6a4-e26ce4bb2017
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -206,6 +214,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Calculate
 		lineageTag: 94b3ec1f-9c91-42d4-bd29-adb1efbff770
 
 	measure 'Store 5 Profit (KEEPFILTERS)' =
@@ -217,6 +226,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Calculate
 		lineageTag: 9412b329-44e6-41fb-998b-51df31563508
 
 	measure 'Store 5 Profit' =
@@ -227,6 +237,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Calculate
 		lineageTag: fe1829d2-b98f-4038-9cac-f711adec7834
 
 	measure 'Store 3 Sales (KEEPFILTERS)' =
@@ -238,6 +249,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Calculate
 		lineageTag: 95072183-4b4f-4bbb-b728-5a97a83e6c17
 
 	measure 'Store 5 Sales (KEEPFILTERS)' =
@@ -249,6 +261,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Advanced Calculate
 		lineageTag: 67153767-9b10-4022-9193-1493a98caf00
 
 	measure 'Store 8 Sales (KEEPFILTERS)' =
@@ -259,6 +272,7 @@ table 'Measure Table'
 			        'Store Lookup'[store_id] = 8
 			    )
 			)
+		displayFolder: Advanced Calculate
 		lineageTag: c3ccf834-0552-46db-a15e-cb4c53051eea
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -281,6 +295,7 @@ table 'Measure Table'
 			RETURN
 			Ratio
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Advanced Calculate
 		lineageTag: 148da406-0c30-4d59-a62c-91661b86e6f2
 
 	measure 'Count of Product ID (DISTICNT)' =
@@ -291,6 +306,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: 0
+		displayFolder: Table & Filter Functions
 		lineageTag: 63357fac-1fd4-446b-be6f-082f26391f4a
 
 	measure 'Count of Product ID (VALUES)' =
@@ -301,6 +317,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: 0
+		displayFolder: Table & Filter Functions
 		lineageTag: 3bda65f5-71eb-4970-9e6b-9c135740a5f7
 
 	measure 'Customer Sales (ALLEXCEPT)' = ```
@@ -316,6 +333,7 @@ table 'Measure Table'
 			
 			```
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Table & Filter Functions
 		lineageTag: 21550432-efa4-4a14-a425-ba88957c3f95
 
 	measure 'Customer Sales (ALLEXCEPT ASSIGNMENT)' =
@@ -331,6 +349,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Table & Filter Functions
 		lineageTag: 16b780d9-731d-4b60-89fe-9073f13a0d2a
 
 	measure '% of Store-Level Sales' =
@@ -353,6 +372,7 @@ table 'Measure Table'
 			RETURN
 			Ratio
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Tips & Best Practices
 		lineageTag: 6ab75ba0-b9e2-44b3-97bf-72e6bfe3de21
 
 	measure 'Retail Price (SELECTEDVALUE)' =
@@ -361,6 +381,7 @@ table 'Measure Table'
 			    'Product Lookup'[current_retail_price]
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Table & Filter Functions
 		lineageTag: 500aefbe-a37d-4ac3-8464-f850c1022062
 
 	measure 'Quantity Sold (SELECTEDVALUE)' =
@@ -372,6 +393,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: #,0.00
+		displayFolder: Table & Filter Functions
 		lineageTag: 1c25fbba-965e-466e-89eb-27b29fb99602
 
 	measure 'Customer Sales (ALLSELECTED)' = ```
@@ -384,6 +406,7 @@ table 'Measure Table'
 			
 			```
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Table & Filter Functions
 		lineageTag: 25b8cfda-64c6-41e6-96cc-f83cda51f11b
 
 	measure 'Total Baked' =
@@ -393,6 +416,7 @@ table 'Measure Table'
 			    'Food Inventory'[quantity_start_of_day]
 			)
 		formatString: #,0
+		displayFolder: Scalar Functions
 		lineageTag: acf90f8a-96fa-4af8-bfa3-c5235e68e98b
 
 	measure 'Total Sold' =
@@ -402,6 +426,7 @@ table 'Measure Table'
 			    'Food Inventory'[quantity_sold]
 			)
 		formatString: #,0
+		displayFolder: Scalar Functions
 		lineageTag: 3195bbfc-5a78-420a-a9d6-928b90681f58
 
 	measure '% of Total Baked (ALLSELECTED)' = ```
@@ -424,6 +449,7 @@ table 'Measure Table'
 			Ratio
 			```
 		formatString: #,0.00%;-#,0.00%;#,0.00%
+		displayFolder: Table & Filter Functions
 		lineageTag: c73b11f7-e7fa-4ed7-9bd1-9c8a4fcbde3c
 
 	measure '% of Total Sold (ALLSELECTED)' = ```
@@ -446,6 +472,7 @@ table 'Measure Table'
 			Ratio
 			```
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Table & Filter Functions
 		lineageTag: e7fa357e-3043-4403-863e-321ec278b3de
 
 	measure '% of All Baked' = ```
@@ -468,6 +495,7 @@ table 'Measure Table'
 			Ratio
 			```
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Tips & Best Practices
 		lineageTag: b462c0db-f3a8-4a35-9d95-6f07ff308832
 
 	measure 'Food Unsold (SUMMARIZE Table)' =
@@ -477,6 +505,7 @@ table 'Measure Table'
 			    'Unsold Pastries'[quantity_start_of_day]-'Unsold Pastries'[quantity_sold]
 			)
 		formatString: #,0
+		displayFolder: Table & Filter Functions
 		lineageTag: aadc100b-d16d-4614-bf7f-b1240c49c554
 
 	measure 'Food Sold (SUMMERIZE Table)' =
@@ -485,6 +514,7 @@ table 'Measure Table'
 			    'Unsold Pastries'[quantity_sold]
 			)
 		formatString: 0
+		displayFolder: Table & Filter Functions
 		lineageTag: 11d3876e-92a7-47fe-9dce-6a6fe51cbd43
 
 	measure 'Lost Revenue (SUMMARIZE Table)' =
@@ -494,6 +524,7 @@ table 'Measure Table'
 			    [Food Unsold (SUMMARIZE Table)]*'Unsold Pastries'[current_retail_price]
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Table & Filter Functions
 		lineageTag: 06c4332c-4c0c-49b2-87fe-ce791ff7721d
 
 	measure 'Revenue (INTERSECT Assignment)' =
@@ -502,6 +533,7 @@ table 'Measure Table'
 			    'Repeat Customer Sales (INTERSECT Assignment)'[Revenue]
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Calculated Table Joins
 		lineageTag: 2fbd957d-4f4f-4cd4-8f8e-8795ed84dfed
 
 	measure 'Profit (INTERSECT Assignment)' =
@@ -509,6 +541,7 @@ table 'Measure Table'
 			SUM(
 			    'Repeat Customer Sales (INTERSECT Assignment)'[Profit]
 			)
+		displayFolder: Calculated Table Joins
 		lineageTag: 66055916-162d-4743-a241-7d66f8ff4132
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -525,6 +558,7 @@ table 'Measure Table'
 			
 			```
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Scalar Functions
 		lineageTag: e08dc031-49cf-4c0f-8217-454c8296d46c
 
 	measure 'Quantity Sold (USERELATIONSHIP)' =
@@ -537,6 +571,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: #,0
+		displayFolder: Relationship Functions
 		lineageTag: da92c638-aa12-4dd3-9170-3a904e5c8edd
 
 	measure 'Number of Employees (CROSSFILTER)' =
@@ -552,6 +587,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: 0
+		displayFolder: Calculated Table Joins
 		lineageTag: f371fed9-90a9-4b7f-9d1f-c0b6be93a179
 
 	measure 'Custombers who Purchased' =
@@ -567,6 +603,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: #,0
+		displayFolder: Calculated Table Joins
 		lineageTag: 8f7896f0-fe4e-4f2c-a9e3-67117448f4cf
 
 	measure 'Average Order Value (CWP)' =
@@ -577,6 +614,7 @@ table 'Measure Table'
 			    BLANK()
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Calculated Table Joins
 		lineageTag: fc9431ad-aff7-4095-bb03-d2f22ba6960f
 
 	measure 'Bean Goal (TREATAS)' =
@@ -596,6 +634,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: 0
+		displayFolder: Relationship Functions
 		lineageTag: 8218f6ba-7e66-4d03-ba25-bc858ff63100
 
 	measure 'Beverage Goal (TREATAS)' =
@@ -615,6 +654,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: 0
+		displayFolder: Relationship Functions
 		lineageTag: cb1ebb0a-ce8a-4872-95a7-dc66dd05449d
 
 	measure 'Food Goal (TREATAS)' =
@@ -634,6 +674,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: 0
+		displayFolder: Relationship Functions
 		lineageTag: 3ab78be2-a256-4aaa-9d91-ee577a5282cf
 
 	measure 'Merchandise Goal (TREATAS)' =
@@ -653,6 +694,7 @@ table 'Measure Table'
 			    )
 			)
 		formatString: 0
+		displayFolder: Relationship Functions
 		lineageTag: d7ce4d2b-86cc-4d26-ad7b-ed9fada344b3
 
 	measure 'Bean %  to Goal' = ```
@@ -668,6 +710,7 @@ table 'Measure Table'
 			)
 			```
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Relationship Functions
 		lineageTag: bf791084-2d80-47cf-9612-e54405865f84
 
 	measure 'Beverage %  to Goal' = ```
@@ -683,6 +726,7 @@ table 'Measure Table'
 			)
 			```
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Relationship Functions
 		lineageTag: 69b81ec4-88ed-4877-92c4-a8361c27993c
 
 	measure 'Food %  to Goal' = ```
@@ -698,6 +742,7 @@ table 'Measure Table'
 			)
 			```
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Relationship Functions
 		lineageTag: bed4ee4d-76f6-4697-ae95-10a8f2184c0a
 
 	measure 'Merchandise %  to Goal' =
@@ -712,7 +757,258 @@ table 'Measure Table'
 			    [Merchandise Goal (TREATAS)]
 			)
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Relationship Functions
 		lineageTag: b37d2d31-849a-4239-b116-d6310520bf35
+
+	measure 'Employee Full Name (CONCATENATEX)' =
+			
+			IF(
+			    HASONEVALUE(
+			        'Employee Lookup'[first_name]
+			    ),
+			    CONCATENATEX(
+			    'Employee Lookup',
+			    'Employee Lookup'[first_name] & " " & 'Employee Lookup'[last_name],
+			    ",",
+			    'Employee Lookup'[first_name],
+			    ASC
+			    ),
+			    BLANK()
+			)
+		displayFolder: Iterator Functions
+		lineageTag: 83800999-35a5-4a95-a841-09c02154c77a
+
+	measure 'Selected Product Category (CONCATENATEX)' =
+			
+			"Show Sales For: " &
+			CONCATENATEX(
+			    VALUES(
+			        'Product Lookup'[product_category]
+			    ),
+			    'Product Lookup'[product_category],
+			    ", ",
+			    'Product Lookup'[product_category],
+			    ASC
+			)
+		displayFolder: Iterator Functions
+		lineageTag: 70bd4cb4-c10c-464a-98fc-a3feeb507e50
+
+	measure '% of Customer Sales (CONCATENATEX Assignment)' = ```
+			
+			VAR AllExceptSales =
+			CALCULATE(
+			    [Customer Sales],
+			    ALLEXCEPT(
+			        'Sales by Store',
+			         'Sales by Store'[staff_id]
+			    )
+			    
+			)
+			
+			VAR Ratio =
+			DIVIDE(
+			    [Customer Sales],
+			    AllExceptSales,
+			    BLANK()
+			)
+			
+			RETURN
+			Ratio
+			```
+		formatString: #,0.00%;-#,0.00%;#,0.00%
+		displayFolder: Iterator Functions
+		lineageTag: 788b15dd-d137-4af3-9096-8ab0dae6b2ea
+
+	measure 'Sales By Employee Name' =
+			
+			"Employee: " &
+			IF(
+			    HASONEVALUE(
+			        'Employee Lookup'[first_name]
+			    ),
+			    CONCATENATEX(
+			    VALUES(
+			        'Employee Lookup'[first_name]
+			    ),
+			    'Employee Lookup'[first_name] &
+			    "-" & FORMAT([% of Customer Sales (CONCATENATEX Assignment)], "Percent"),
+			    ", ",
+			     'Employee Lookup'[first_name],
+			    ASC
+			)
+			    ,
+			    "Select Single Employee"
+			)
+		displayFolder: Iterator Functions
+		lineageTag: c521462d-30c6-47e2-963f-e863d990cf28
+
+	measure 'Average Daily Sales (AVERAGEX)' =
+			
+			AVERAGEX(
+			    'Calendar',
+			    [Customer Sales]
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Iterator Functions
+		lineageTag: 1151e06a-9b48-4dcd-ac30-2b665880f33a
+
+	measure 'Moving Average (AVERAGEX)' = ```
+			
+			VAR LastTransactionDate = Max('Calendar'[Transaction_Date])
+			VAR AverageDays = 30
+			
+			VAR PeriodInVisual = 
+			FILTER(
+			    All(
+			        'Calendar'[Transaction_Date]
+			    ),
+			    AND(
+			        'Calendar'[Transaction_Date] > LastTransactionDate - AverageDays,
+			        'Calendar'[Transaction_Date] <= LastTransactionDate
+			    )
+			
+			)
+			
+			VAR Output = 
+			CALCULATE(
+			    AVERAGEX(
+			        'Calendar',
+			        [Customer Sales]
+			    ),
+			    PeriodInVisual
+			)
+			
+			RETURN 
+			Output
+			```
+		displayFolder: Iterator Functions
+		lineageTag: e8c12785-42ca-45dd-b1aa-3e25ed88537f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Profit (AVERAGEX)' =
+			
+			AVERAGEX(
+			    'Calendar',
+			    [Profit]
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Iterator Functions
+		lineageTag: 0cddfb19-af40-4008-9999-73f6c4050590
+
+	measure 'Average Day Value ' =
+			
+			SELECTEDVALUE(
+			    'Average Days'[Value],
+			    28
+			)
+		formatString: 0
+		displayFolder: Iterator Functions
+		lineageTag: 4e14d66b-16bd-4ad5-9c62-18ad27658fd9
+
+	measure 'Moving Average Profit (AVERAGEX)' = ```
+			
+			VAR LastTransactionDate = Max('Calendar'[Transaction_Date])
+			VAR AverageDays = [Average Day Value ]
+			
+			VAR PeriodInVisual = 
+			FILTER(
+			    All(
+			        'Calendar'[Transaction_Date]
+			    ),
+			    AND(
+			        'Calendar'[Transaction_Date] > LastTransactionDate - AverageDays,
+			        'Calendar'[Transaction_Date] <= LastTransactionDate
+			    )
+			
+			)
+			
+			VAR Output = 
+			CALCULATE(
+			    AVERAGEX(
+			        'Calendar',
+			        [Profit]
+			    ),
+			    PeriodInVisual
+			)
+			
+			RETURN 
+			Output
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 49410aa7-c9d9-47f6-b742-374a91b41371
+
+	measure 'Rank of Customer Sales (RANKX)' =
+			
+			IF(
+			    HASONEVALUE(
+			        'Product Lookup'[product_category]
+			    ),
+			    RANKX(
+			    All(
+			        'Product Lookup'[product_category]
+			    ),
+			    [Customer Sales]
+			)
+			)
+		formatString: 0
+		lineageTag: 8a8c8a29-a13c-4dc0-9315-85d5eac2ab20
+
+	measure 'Rounded Customer Sales' = ```
+			
+			 MROUND(
+			    [Customer Sales],
+			    100000
+			)
+			```
+		formatString: #,0.00
+		lineageTag: bec79981-91ff-4cb9-9c37-894dcc28cd6b
+
+	measure 'Rank of Rounded Customer Sales (RANKX)' =
+			
+			IF(
+			    HASONEVALUE(
+			        'Product Lookup'[product_category]
+			    ),
+			    RANKX(
+			    All(
+			        'Product Lookup'[product_category]
+			    ),
+			    [Rounded Customer Sales],
+			    ,DESC
+			    ,Dense
+			    )
+			)
+		formatString: 0
+		lineageTag: de037c69-4d1f-458d-8e0d-60ccb4e7c55f
+
+	measure 'Top 5 Product by Profit (RANKX)' = ```
+			
+			VAR ProfitRank =
+			IF(
+			    HASONEVALUE(
+			        'Product Lookup'[product_category]
+			    ),
+			    RANKX(
+			        ALL(
+			            'Product Lookup'[product]
+			        ),
+			        [Customer Sales] - [Cost]
+			    )
+			)
+			
+			VAR Top5Product = 
+			IF(
+			    ProfitRank <= 5,
+			    [Profit]
+			)
+			
+			RETURN
+			Top5Product
+			```
+		lineageTag: 176609e8-e33c-469b-a8eb-8a02bd2be1fd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition 'Measure Table' = m
 		mode: import
