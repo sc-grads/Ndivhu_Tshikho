@@ -1,0 +1,72 @@
+table 'Product Lookup'
+	lineageTag: 7229dde0-fd01-46ce-9285-41eac529adda
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: bb4e2ade-5155-44e3-8428-480ba13dffd6
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Category Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 86fea315-9630-4106-85bf-adb744f0cd7c
+		summarizeBy: none
+		sourceColumn: Sub Category Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: f58f4404-e8ec-41e8-95c0-835b3f5e771b
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: 7a72a1cc-2d8e-4e86-9935-00db2f415506
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column RetailPrice
+		dataType: double
+		lineageTag: 0c6c719d-f0a8-4d6d-b27d-878517da13bc
+		summarizeBy: sum
+		sourceColumn: RetailPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StandardCost
+		dataType: double
+		lineageTag: 78cd49a4-3889-45e8-8172-c63496e9bcb2
+		summarizeBy: sum
+		sourceColumn: StandardCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Product Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Dimensions\Product.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductID", Int64.Type}, {"Sub Category Key", Int64.Type}, {"Color", type text}, {"ProductName", type text}, {"RetailPrice", type number}, {"StandardCost", type number}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type", {"ProductID"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,35 @@
+table 'Categories Lookup'
+	lineageTag: 4c3b3920-d372-4582-9a3f-1411f971c101
+
+	column CategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 161f9465-c1e3-41d2-a281-bc2982c15bf1
+		summarizeBy: none
+		sourceColumn: CategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 18983d75-9e34-4071-8bb5-216622ba4f05
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Categories Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Dimensions\Categories.xlsx"), null, true),
+				    Categories_Sheet = Source{[Item="Categories",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Categories_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"CategoryKey", Int64.Type}, {"Category", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
