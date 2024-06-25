@@ -4,8 +4,8 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 337,
-        "y": 93
+        "x": 535,
+        "y": 245.5
       },
       "nodes": [
         {
@@ -23,8 +23,8 @@
         },
         {
           "location": {
-            "x": 747,
-            "y": 195
+            "x": 740,
+            "y": 127
           },
           "nodeIndex": "Geography Lookup",
           "nodeLineageTag": "5c1387f7-0135-4c92-9261-9fd99946650d",
@@ -49,8 +49,8 @@
         },
         {
           "location": {
-            "x": 337,
-            "y": 281
+            "x": 254,
+            "y": 333
           },
           "nodeIndex": "Sales",
           "nodeLineageTag": "1a1011df-df53-4630-8026-6f2a4b145487",
@@ -62,8 +62,8 @@
         },
         {
           "location": {
-            "x": 748,
-            "y": 471
+            "x": 744,
+            "y": 587
           },
           "nodeIndex": "Sales rep Lookup",
           "nodeLineageTag": "6f6775e2-697f-45d3-8390-3c889699b7b1",
@@ -89,10 +89,23 @@
         },
         {
           "location": {
-            "x": 1032,
-            "y": 188.5
+            "x": 1011,
+            "y": 281.5
           },
           "nodeIndex": "DateMaster",
+          "nodeLineageTag": "a455a471-0b8c-4f27-af19-db894358d97a",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1295,
+            "y": 245.5
+          },
+          "nodeIndex": "Measure Table ",
           "size": {
             "height": 200,
             "width": 234

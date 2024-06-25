@@ -3,7 +3,7 @@ table DateMaster
 
 	column Date
 		dataType: dateTime
-		formatString: General Date
+		formatString: dd/mm/yyyy
 		lineageTag: ed0160d2-b438-48bc-91c5-2b19b6f14fd0
 		summarizeBy: none
 		isNameInferred
@@ -16,6 +16,8 @@ table DateMaster
 			defaultHierarchy: LocalDateTable_d3294cd3-3134-4966-b9c7-40840e6d4988.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
 	column Month = MONTH(DateMaster[Date])
 		dataType: int64
@@ -31,6 +33,7 @@ table DateMaster
 		lineageTag: 5caa6f7c-7f3a-4ca0-8640-02330877d877
 		summarizeBy: none
 		isDataTypeInferred
+		sortByColumn: 'Month Order'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -65,6 +68,24 @@ table DateMaster
 		dataType: string
 		lineageTag: daf47888-96df-4c2d-bad0-15e82292f895
 		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: a1119308-0bcf-4d93-bf91-7bb4a19369ec
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Order' = DateMaster[Date].[MonthNo]
+		dataType: int64
+		formatString: 0
+		lineageTag: afef0480-40b0-478c-ab36-046209a08649
+		summarizeBy: sum
 		isDataTypeInferred
 
 		annotation SummarizationSetBy = Automatic

@@ -1,0 +1,7 @@
+role 'Czech republic Role'
+	modelPermission: read
+
+	tablePermission 'Geography Lookup' = [Country] == "Czech "
+
+	annotation PBI_Id = 77c8316452c5419998c4fe641951099f
+

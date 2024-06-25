@@ -39,9 +39,13 @@ ref table 'Sales rep Lookup'
 ref table 'Product Lookup'
 ref table 'SubCategories Lookup'
 ref table Sales
-ref table LocalDateTable_b0939e57-64e7-4b45-97b8-8005a645222c
 ref table DateMaster
 ref table LocalDateTable_d3294cd3-3134-4966-b9c7-40840e6d4988
+ref table 'Measure Table '
+
+ref role 'Denmark Role'
+ref role 'Czech republic Role'
+ref role 'Germany Role'
 
 ref cultureInfo en-US
 

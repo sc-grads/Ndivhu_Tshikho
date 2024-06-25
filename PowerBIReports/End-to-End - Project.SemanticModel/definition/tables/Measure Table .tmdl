@@ -1,0 +1,50 @@
+table 'Measure Table '
+	lineageTag: 2cdb0a10-a4ff-4f8c-9363-2aaa1c56b5d3
+
+	measure 'Tot Rev' = SUM(Sales[Total Reveue])
+		lineageTag: 05b00bde-1779-4e71-8e37-142f0764933e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Prev Qtr' = CALCULATE([Tot Rev], PREVIOUSQUARTER(DateMaster[Date]))
+		formatString: #,0.00
+		lineageTag: a98cfe38-9fbc-4093-b96c-b84033774eee
+
+	measure 'QoQ Growth' = DIVIDE(([Tot Rev]-[Prev Qtr]),[Prev Qtr])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 497d4a2b-d54a-4e32-8b99-f8bb1e044b32
+
+	measure 'Tot Profit' = SUM(Sales[Gross Profit])
+		formatString: 0.00
+		lineageTag: d36bd0cd-5012-4118-946b-6d87914a494f
+
+	measure 'Prev Month Profit' = CALCULATE([Tot Profit],PREVIOUSMONTH(DateMaster[Date]))
+		lineageTag: 8dd87407-846e-465c-80c8-3cb468c831a4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM Growth' =
+			
+			DIVIDE(([Tot Profit]-[Prev Month Profit]), [Prev Month Profit])
+		formatString: #,0.00%;-#,0.00%;#,0.00%
+		lineageTag: d209b32e-cd55-462a-95ab-ad31e8478598
+
+	column Column
+		dataType: int64
+		formatString: 0
+		lineageTag: e8b64e89-0591-4066-92e9-e78ce797499b
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Measure Table ' = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 8536d8fb560343afab7e7aaa6ce4c3b2
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+
