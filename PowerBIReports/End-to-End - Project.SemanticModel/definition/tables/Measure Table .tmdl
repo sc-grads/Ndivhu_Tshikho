@@ -10,7 +10,7 @@ table 'Measure Table '
 		formatString: #,0.00
 		lineageTag: a98cfe38-9fbc-4093-b96c-b84033774eee
 
-	measure 'QoQ Growth' = DIVIDE(([Tot Rev]-[Prev Qtr]),[Prev Qtr])
+	measure 'QoQ Growth' = DIVIDE(([Tot Rev]-[Prev Qtr]), [Prev Qtr], BLANK())
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 497d4a2b-d54a-4e32-8b99-f8bb1e044b32
 

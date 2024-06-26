@@ -43,9 +43,5 @@ ref table DateMaster
 ref table LocalDateTable_d3294cd3-3134-4966-b9c7-40840e6d4988
 ref table 'Measure Table '
 
-ref role 'Denmark Role'
-ref role 'Czech republic Role'
-ref role 'Germany Role'
-
 ref cultureInfo en-US
 
