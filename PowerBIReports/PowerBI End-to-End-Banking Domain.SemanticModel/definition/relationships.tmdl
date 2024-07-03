@@ -1,0 +1,35 @@
+relationship d79e1a3f-c2d7-44ee-831c-705855e134be
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DateMaster.Date
+	toColumn: LocalDateTable_8eaf002e-7578-437e-a76d-861a65e6654e.Date
+
+relationship AutoDetected_67bd2440-386b-4ecb-a5c0-679d1c8ba842
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Bank_Churn.CustomerId
+	toColumn: 'CustomerInfo Lookup'.CustomerId
+
+relationship AutoDetected_50b2c5ef-e208-4413-9740-ebeab913adff
+	fromColumn: Bank_Churn.GenderID
+	toColumn: 'Gender Lookup'.GenderID
+
+relationship AutoDetected_d0404c0e-a408-4bf3-a43b-0818b648129e
+	fromColumn: Bank_Churn.GeographyID
+	toColumn: 'Geography Lookup'.GeographyID
+
+relationship 24d20860-4883-dda2-768e-ccd653a00089
+	fromColumn: Bank_Churn.HasCrCard
+	toColumn: 'CreditCard Lookup'.CreditID
+
+relationship 85aae4c6-563e-e86e-231f-7f0f3a03b1f3
+	fromColumn: Bank_Churn.IsActiveMember
+	toColumn: 'ActiveCustomer Lookup'.ActiveID
+
+relationship 5200ffc2-cba4-8d94-2c7d-775419cad2b5
+	fromColumn: Bank_Churn.'Bank DOJ'
+	toColumn: DateMaster.Date
+
+relationship 5eb7cbd1-c3ed-7dbb-3677-15618b9bc8e8
+	fromColumn: Bank_Churn.Exited
+	toColumn: 'ExitCustomer Lookup'.ExitID
+

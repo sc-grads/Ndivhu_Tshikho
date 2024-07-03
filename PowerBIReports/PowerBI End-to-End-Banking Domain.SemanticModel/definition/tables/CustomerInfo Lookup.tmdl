@@ -1,0 +1,34 @@
+table 'CustomerInfo Lookup'
+	lineageTag: c6ea7887-3752-4d6e-a064-364a8fdba161
+
+	column CustomerId
+		dataType: int64
+		formatString: 0
+		lineageTag: 556650bd-ad7f-4f35-9e3b-2fccca9a8b7f
+		summarizeBy: none
+		sourceColumn: CustomerId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Surname
+		dataType: string
+		lineageTag: fca3ef1a-0b2a-436e-96c6-5242c5a7a6a6
+		summarizeBy: none
+		sourceColumn: Surname
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'CustomerInfo Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Data Sets for end to end Powerbi Project\CustomerInfo.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"CustomerId", Int64.Type}, {"Surname", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

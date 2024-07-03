@@ -1,0 +1,159 @@
+table Bank_Churn
+	lineageTag: 05948bec-a251-48d8-9b5c-74ddebc5f1b6
+
+	column CustomerId
+		dataType: int64
+		formatString: 0
+		lineageTag: d4765228-9333-4957-9b3b-690915dea9fd
+		summarizeBy: none
+		sourceColumn: CustomerId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditScore
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ade263e-11d3-4706-8113-8fd5e7930f8c
+		summarizeBy: sum
+		sourceColumn: CreditScore
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bb3c13b-c090-4963-b700-243d1ce32f6c
+		summarizeBy: none
+		sourceColumn: GeographyID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GenderID
+		dataType: int64
+		formatString: 0
+		lineageTag: e5743084-f745-4541-aeb3-3dd2e486aa5d
+		summarizeBy: none
+		sourceColumn: GenderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: e7aee2b1-14c7-40e1-9c3b-de296e82c68a
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tenure
+		dataType: int64
+		formatString: 0
+		lineageTag: d93fc797-8596-4bb3-a98e-1661356206ee
+		summarizeBy: sum
+		sourceColumn: Tenure
+
+		annotation SummarizationSetBy = Automatic
+
+	column Balance
+		dataType: double
+		lineageTag: 490cf93e-061e-448e-9bcf-529929f69f62
+		summarizeBy: sum
+		sourceColumn: Balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumOfProducts
+		dataType: int64
+		formatString: 0
+		lineageTag: 086d1a33-58e5-4d45-a241-f180d631a917
+		summarizeBy: sum
+		sourceColumn: NumOfProducts
+
+		annotation SummarizationSetBy = Automatic
+
+	column HasCrCard
+		dataType: int64
+		formatString: 0
+		lineageTag: 5943770d-2fa8-4e77-8369-8cc869581461
+		summarizeBy: none
+		sourceColumn: HasCrCard
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsActiveMember
+		dataType: int64
+		formatString: 0
+		lineageTag: ca2ece9f-9a73-41b8-95dd-7a43bff3708f
+		summarizeBy: none
+		sourceColumn: IsActiveMember
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimatedSalary
+		dataType: double
+		lineageTag: c2e7dcf2-b43d-45d7-882e-01eb5f63c8d1
+		summarizeBy: sum
+		sourceColumn: EstimatedSalary
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Exited
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d6dde38-83ed-44ef-9336-d445a712dd73
+		summarizeBy: none
+		sourceColumn: Exited
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bank DOJ'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7b9ac339-4c7d-46e3-a881-e4b5d76947ae
+		summarizeBy: none
+		sourceColumn: Bank DOJ
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Credit Type' = ```
+			
+			SWITCH(
+			    TRUE(), 
+			    Bank_Churn[CreditScore] >= 800 && Bank_Churn[CreditScore] <= 850, "Excellent",
+			    Bank_Churn[CreditScore] >= 740 && Bank_Churn[CreditScore] <= 799, "Very Good",
+			    Bank_Churn[CreditScore] >= 670 && Bank_Churn[CreditScore] <= 739, "Good",
+			    Bank_Churn[CreditScore] >= 580 && Bank_Churn[CreditScore] <= 669, "Fair",
+			    Bank_Churn[CreditScore] >= 300 && Bank_Churn[CreditScore] <= 579, "Poor")
+			
+			
+			
+			
+			```
+		dataType: string
+		lineageTag: 6bca744d-77cb-426c-a563-8c84851e5538
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Bank_Churn = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Data Sets for end to end Powerbi Project\Bank_Churn.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"RowNumber", Int64.Type}, {"CustomerId", Int64.Type}, {"CreditScore", Int64.Type}, {"GeographyID", Int64.Type}, {"GenderID", Int64.Type}, {"Age", Int64.Type}, {"Tenure", Int64.Type}, {"Balance", type number}, {"NumOfProducts", Int64.Type}, {"HasCrCard", Int64.Type}, {"IsActiveMember", Int64.Type}, {"EstimatedSalary", type number}, {"Exited", Int64.Type}, {"Bank DOJ", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"RowNumber"}),
+				    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Removed Columns", {{"Bank DOJ", type datetime}}, "en-GB")
+				in
+				    #"Changed Type with Locale"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

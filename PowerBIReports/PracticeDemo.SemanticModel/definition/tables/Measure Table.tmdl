@@ -1,0 +1,46 @@
+table 'Measure Table'
+	lineageTag: cffd0618-ba5a-4f88-bcc4-6c072be0093d
+
+	measure 'Tot Rev' = SUM(Sales[Total Revenue])
+		formatString: #,0.00
+		lineageTag: d5a5eccf-ebb7-4e6d-a794-90487e3f06b9
+
+	measure 'Prev Qtr Sales' = CALCULATE([Tot Rev], PREVIOUSQUARTER(DateMaster[Date]))
+		lineageTag: 2a5533d4-8799-4c67-a06b-4a8ee23f069f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'QoQ Growth' = ```
+			DIVIDE(([Tot Rev]-[Prev Qtr Sales]), [Prev Qtr Sales])
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 206ddb77-d8a7-4d75-8be6-1efa912831d6
+
+	measure 'Total Profit' = SUM(Sales[Gross Profit])
+		lineageTag: 7b102a61-ef84-4b25-b8b7-b47cbc08cbff
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Previous Month Profit' = CALCULATE([Total Profit],PREVIOUSMONTH(DateMaster[Date]))
+		lineageTag: 5306088a-6e39-4cd8-b5a2-aeb137dea04e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM Growth' = DIVIDE(([Total Profit] -[Previous Month Profit]),[Previous Month Profit])
+		lineageTag: 4efb4d60-c777-4915-9319-e03ced2930ac
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Measure Table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

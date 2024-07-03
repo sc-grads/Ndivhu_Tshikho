@@ -1,0 +1,221 @@
+{
+  "version": "1.0",
+  "conceptualSchemaSettings": {},
+  "queries": [
+    {
+      "name": "Categories Lookup",
+      "lineageTag": "4c3b3920-d372-4582-9a3f-1411f971c101",
+      "text": [
+        "let",
+        "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\Data\\YouTube Project Datasets\\Dimensions\\Categories.xlsx\"), null, true),",
+        "    Categories_Sheet = Source{[Item=\"Categories\",Kind=\"Sheet\"]}[Data],",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(Categories_Sheet, [PromoteAllScalars=true]),",
+        "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"CategoryKey\", Int64.Type}, {\"Category\", type text}})",
+        "in",
+        "    #\"Changed Type\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = Excel.Workbook(File.Contents(\\\"C:\\\\Users\\\\NdivhudzannyiT\\\\Documents\\\\Ndivhu_Tshikho\\\\Data\\\\YouTube Project Datasets\\\\Dimensions\\\\Categories.xlsx\\\"), null, true),\\n    Categories_Sheet = Source{[Item=\\\"Categories\\\",Kind=\\\"Sheet\\\"]}[Data],\\n    #\\\"Promoted Headers\\\" = Table.PromoteHeaders(Categories_Sheet, [PromoteAllScalars=true]),\\n    #\\\"Changed Type\\\" = Table.TransformColumnTypes(#\\\"Promoted Headers\\\",{{\\\"CategoryKey\\\", Int64.Type}, {\\\"Category\\\", type text}})\\nin\\n    #\\\"Changed Type\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Geography Lookup",
+      "lineageTag": "5c1387f7-0135-4c92-9261-9fd99946650d",
+      "text": [
+        "let",
+        "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\Data\\YouTube Project Datasets\\Dimensions\\Geography.xlsx\"), null, true),",
+        "    Geography_Sheet = Source{[Item=\"Geography\",Kind=\"Sheet\"]}[Data],",
+        "    #\"Changed Type\" = Table.TransformColumnTypes(Geography_Sheet,{{\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}}),",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Changed Type\", [PromoteAllScalars=true]),",
+        "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Country\", type text}, {\"Town\", type text}, {\"Wikipedia\", type text}}),",
+        "    #\"Added Index\" = Table.AddIndexColumn(#\"Changed Type1\", \"Index\", 1, 1, Int64.Type),",
+        "    #\"Renamed Columns\" = Table.RenameColumns(#\"Added Index\",{{\"Index\", \"GeoKey\"}})",
+        "in",
+        "    #\"Renamed Columns\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = Excel.Workbook(File.Contents(\\\"C:\\\\Users\\\\NdivhudzannyiT\\\\Documents\\\\Ndivhu_Tshikho\\\\Data\\\\YouTube Project Datasets\\\\Dimensions\\\\Geography.xlsx\\\"), null, true),\\n    Geography_Sheet = Source{[Item=\\\"Geography\\\",Kind=\\\"Sheet\\\"]}[Data],\\n    #\\\"Changed Type\\\" = Table.TransformColumnTypes(Geography_Sheet,{{\\\"Column1\\\", type text}, {\\\"Column2\\\", type text}, {\\\"Column3\\\", type text}}),\\n    #\\\"Promoted Headers\\\" = Table.PromoteHeaders(#\\\"Changed Type\\\", [PromoteAllScalars=true]),\\n    #\\\"Changed Type1\\\" = Table.TransformColumnTypes(#\\\"Promoted Headers\\\",{{\\\"Country\\\", type text}, {\\\"Town\\\", type text}, {\\\"Wikipedia\\\", type text}}),\\n    #\\\"Added Index\\\" = Table.AddIndexColumn(#\\\"Changed Type1\\\", \\\"Index\\\", 1, 1, Int64.Type),\\n    #\\\"Renamed Columns\\\" = Table.RenameColumns(#\\\"Added Index\\\",{{\\\"Index\\\", \\\"GeoKey\\\"}})\\nin\\n    #\\\"Renamed Columns\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Sales rep Lookup",
+      "lineageTag": "6f6775e2-697f-45d3-8390-3c889699b7b1",
+      "text": [
+        "let",
+        "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\Data\\YouTube Project Datasets\\Dimensions\\SalesRep.xlsx\"), null, true),",
+        "    #\"Sales rep_Sheet\" = Source{[Item=\"Sales rep\",Kind=\"Sheet\"]}[Data],",
+        "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Sales rep_Sheet\",{{\"Column1\", type text}, {\"Column2\", type text}}),",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Changed Type\", [PromoteAllScalars=true]),",
+        "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"SalesRepID\", type text}, {\"Sales Rep Name\", type text}}),",
+        "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type1\",\"ID -\",\"\",Replacer.ReplaceText,{\"SalesRepID\"}),",
+        "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\" \",\"\",Replacer.ReplaceText,{\"SalesRepID\"})",
+        "in",
+        "    #\"Replaced Value1\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = Excel.Workbook(File.Contents(\\\"C:\\\\Users\\\\NdivhudzannyiT\\\\Documents\\\\Ndivhu_Tshikho\\\\Data\\\\YouTube Project Datasets\\\\Dimensions\\\\SalesRep.xlsx\\\"), null, true),\\n    #\\\"Sales rep_Sheet\\\" = Source{[Item=\\\"Sales rep\\\",Kind=\\\"Sheet\\\"]}[Data],\\n    #\\\"Changed Type\\\" = Table.TransformColumnTypes(#\\\"Sales rep_Sheet\\\",{{\\\"Column1\\\", type text}, {\\\"Column2\\\", type text}}),\\n    #\\\"Promoted Headers\\\" = Table.PromoteHeaders(#\\\"Changed Type\\\", [PromoteAllScalars=true]),\\n    #\\\"Changed Type1\\\" = Table.TransformColumnTypes(#\\\"Promoted Headers\\\",{{\\\"SalesRepID\\\", type text}, {\\\"Sales Rep Name\\\", type text}}),\\n    #\\\"Replaced Value\\\" = Table.ReplaceValue(#\\\"Changed Type1\\\",\\\"ID -\\\",\\\"\\\",Replacer.ReplaceText,{\\\"SalesRepID\\\"}),\\n    #\\\"Replaced Value1\\\" = Table.ReplaceValue(#\\\"Replaced Value\\\",\\\" \\\",\\\"\\\",Replacer.ReplaceText,{\\\"SalesRepID\\\"})\\nin\\n    #\\\"Replaced Value1\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Product Lookup",
+      "lineageTag": "7229dde0-fd01-46ce-9285-41eac529adda",
+      "text": [
+        "let",
+        "    Source = Csv.Document(File.Contents(\"C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\Data\\YouTube Project Datasets\\Dimensions\\Product.csv\"),[Delimiter=\",\", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+        "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProductID\", Int64.Type}, {\"Sub Category Key\", Int64.Type}, {\"Color\", type text}, {\"ProductName\", type text}, {\"RetailPrice\", type number}, {\"StandardCost\", type number}}),",
+        "    #\"Removed Duplicates\" = Table.Distinct(#\"Changed Type\", {\"ProductID\"})",
+        "in",
+        "    #\"Removed Duplicates\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = Csv.Document(File.Contents(\\\"C:\\\\Users\\\\NdivhudzannyiT\\\\Documents\\\\Ndivhu_Tshikho\\\\Data\\\\YouTube Project Datasets\\\\Dimensions\\\\Product.csv\\\"),[Delimiter=\\\",\\\", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),\\n    #\\\"Promoted Headers\\\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\\n    #\\\"Changed Type\\\" = Table.TransformColumnTypes(#\\\"Promoted Headers\\\",{{\\\"ProductID\\\", Int64.Type}, {\\\"Sub Category Key\\\", Int64.Type}, {\\\"Color\\\", type text}, {\\\"ProductName\\\", type text}, {\\\"RetailPrice\\\", type number}, {\\\"StandardCost\\\", type number}}),\\n    #\\\"Removed Duplicates\\\" = Table.Distinct(#\\\"Changed Type\\\", {\\\"ProductID\\\"})\\nin\\n    #\\\"Removed Duplicates\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "SubCategories Lookup",
+      "lineageTag": "b3be0104-bc54-4bdd-85d3-cd6976e0b69d",
+      "text": [
+        "let",
+        "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\Data\\YouTube Project Datasets\\Dimensions\\SubCategories.xlsx\"), null, true),",
+        "    #\"Sub categories_Sheet\" = Source{[Item=\"Sub categories\",Kind=\"Sheet\"]}[Data],",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Sub categories_Sheet\", [PromoteAllScalars=true]),",
+        "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"SubCategoryKey\", Int64.Type}, {\"CategoryKey\", type text}, {\"SubCategory Name\", type text}}),",
+        "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type\",\"ID - \",\"\",Replacer.ReplaceText,{\"CategoryKey\"}),",
+        "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ID  -\",\"\",Replacer.ReplaceText,{\"CategoryKey\"}),",
+        "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Replaced Value1\",\"ID -\",\"\",Replacer.ReplaceText,{\"CategoryKey\"})",
+        "in",
+        "    #\"Replaced Value2\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = Excel.Workbook(File.Contents(\\\"C:\\\\Users\\\\NdivhudzannyiT\\\\Documents\\\\Ndivhu_Tshikho\\\\Data\\\\YouTube Project Datasets\\\\Dimensions\\\\SubCategories.xlsx\\\"), null, true),\\n    #\\\"Sub categories_Sheet\\\" = Source{[Item=\\\"Sub categories\\\",Kind=\\\"Sheet\\\"]}[Data],\\n    #\\\"Promoted Headers\\\" = Table.PromoteHeaders(#\\\"Sub categories_Sheet\\\", [PromoteAllScalars=true]),\\n    #\\\"Changed Type\\\" = Table.TransformColumnTypes(#\\\"Promoted Headers\\\",{{\\\"SubCategoryKey\\\", Int64.Type}, {\\\"CategoryKey\\\", type text}, {\\\"SubCategory Name\\\", type text}}),\\n    #\\\"Replaced Value\\\" = Table.ReplaceValue(#\\\"Changed Type\\\",\\\"ID - \\\",\\\"\\\",Replacer.ReplaceText,{\\\"CategoryKey\\\"}),\\n    #\\\"Replaced Value1\\\" = Table.ReplaceValue(#\\\"Replaced Value\\\",\\\"ID  -\\\",\\\"\\\",Replacer.ReplaceText,{\\\"CategoryKey\\\"}),\\n    #\\\"Replaced Value2\\\" = Table.ReplaceValue(#\\\"Replaced Value1\\\",\\\"ID -\\\",\\\"\\\",Replacer.ReplaceText,{\\\"CategoryKey\\\"})\\nin\\n    #\\\"Replaced Value2\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Sales",
+      "lineageTag": "1a1011df-df53-4630-8026-6f2a4b145487",
+      "text": [
+        "let",
+        "    Source = Folder.Files(\"C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\Data\\YouTube Project Datasets\\Sales\"),",
+        "    #\"Filtered Hidden Files1\" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),",
+        "    #\"Invoke Custom Function1\" = Table.AddColumn(#\"Filtered Hidden Files1\", \"Transform File\", each #\"Transform File\"([Content])),",
+        "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Invoke Custom Function1\", {\"Name\", \"Source.Name\"}),",
+        "    #\"Removed Other Columns1\" = Table.SelectColumns(#\"Renamed Columns1\", {\"Source.Name\", \"Transform File\"}),",
+        "    #\"Expanded Table Column1\" = Table.ExpandTableColumn(#\"Removed Other Columns1\", \"Transform File\", Table.ColumnNames(#\"Transform File\"(#\"Sample File\"))),",
+        "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Expanded Table Column1\",{{\"Source.Name\", type text}, {\"fSalesPrimaryKey\", Int64.Type}, {\"ProductID\", Int64.Type}, {\"SalesRepID\", Int64.Type}, {\"Location\", type text}, {\"Date\", type date}, {\"Units\", Int64.Type}, {\"PercentOfStandardCost\", type number}, {\"RevenueDiscount\", type number}}),",
+        "    #\"Removed Source Details\" = Table.RemoveColumns(#\"Changed Type\",{\"Source.Name\"}),",
+        "    #\"Split location\" = Table.SplitColumn(#\"Removed Source Details\", \"Location\", Splitter.SplitTextByDelimiter(\";\", QuoteStyle.Csv), {\"Location.1\", \"Location.2\"}),",
+        "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Split location\",{{\"Location.1\", type text}, {\"Location.2\", type text}}),",
+        "    #\"Renamed Columns to location 1 to Country and Location 2 to town\" = Table.RenameColumns(#\"Changed Type1\",{{\"Location.1\", \"Country\"}, {\"Location.2\", \"Town\"}}),",
+        "    #\"Merged Queries\" = Table.NestedJoin(#\"Renamed Columns to location 1 to Country and Location 2 to town\", {\"Town\"}, #\"Geography Lookup\", {\"Town\"}, \"Geography Lookup\", JoinKind.LeftOuter),",
+        "    #\"Expanded Geography Lookup\" = Table.ExpandTableColumn(#\"Merged Queries\", \"Geography Lookup\", {\"GeoKey\"}, {\"Geography Lookup.GeoKey\"}),",
+        "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Expanded Geography Lookup\",{\"fSalesPrimaryKey\", \"ProductID\", \"SalesRepID\", \"Geography Lookup.GeoKey\", \"Country\", \"Town\", \"Date\", \"Units\", \"PercentOfStandardCost\", \"RevenueDiscount\"}),",
+        "    #\"Renamed Columns\" = Table.RenameColumns(#\"Reordered Columns\",{{\"Geography Lookup.GeoKey\", \"GeoKey\"}}),",
+        "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns\",{\"Country\", \"Town\"})",
+        "in",
+        "    #\"Removed Columns\""
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = Folder.Files(\\\"C:\\\\Users\\\\NdivhudzannyiT\\\\Documents\\\\Ndivhu_Tshikho\\\\Data\\\\YouTube Project Datasets\\\\Sales\\\"),\\n    #\\\"Filtered Hidden Files1\\\" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),\\n    #\\\"Invoke Custom Function1\\\" = Table.AddColumn(#\\\"Filtered Hidden Files1\\\", \\\"Transform File\\\", each #\\\"Transform File\\\"([Content])),\\n    #\\\"Renamed Columns1\\\" = Table.RenameColumns(#\\\"Invoke Custom Function1\\\", {\\\"Name\\\", \\\"Source.Name\\\"}),\\n    #\\\"Removed Other Columns1\\\" = Table.SelectColumns(#\\\"Renamed Columns1\\\", {\\\"Source.Name\\\", \\\"Transform File\\\"}),\\n    #\\\"Expanded Table Column1\\\" = Table.ExpandTableColumn(#\\\"Removed Other Columns1\\\", \\\"Transform File\\\", Table.ColumnNames(#\\\"Transform File\\\"(#\\\"Sample File\\\"))),\\n    #\\\"Changed Type\\\" = Table.TransformColumnTypes(#\\\"Expanded Table Column1\\\",{{\\\"Source.Name\\\", type text}, {\\\"fSalesPrimaryKey\\\", Int64.Type}, {\\\"ProductID\\\", Int64.Type}, {\\\"SalesRepID\\\", Int64.Type}, {\\\"Location\\\", type text}, {\\\"Date\\\", type date}, {\\\"Units\\\", Int64.Type}, {\\\"PercentOfStandardCost\\\", type number}, {\\\"RevenueDiscount\\\", type number}}),\\n    #\\\"Removed Source Details\\\" = Table.RemoveColumns(#\\\"Changed Type\\\",{\\\"Source.Name\\\"}),\\n    #\\\"Split location\\\" = Table.SplitColumn(#\\\"Removed Source Details\\\", \\\"Location\\\", Splitter.SplitTextByDelimiter(\\\";\\\", QuoteStyle.Csv), {\\\"Location.1\\\", \\\"Location.2\\\"}),\\n    #\\\"Changed Type1\\\" = Table.TransformColumnTypes(#\\\"Split location\\\",{{\\\"Location.1\\\", type text}, {\\\"Location.2\\\", type text}}),\\n    #\\\"Renamed Columns to location 1 to Country and Location 2 to town\\\" = Table.RenameColumns(#\\\"Changed Type1\\\",{{\\\"Location.1\\\", \\\"Country\\\"}, {\\\"Location.2\\\", \\\"Town\\\"}}),\\n    #\\\"Merged Queries\\\" = Table.NestedJoin(#\\\"Renamed Columns to location 1 to Country and Location 2 to town\\\", {\\\"Town\\\"}, #\\\"Geography Lookup\\\", {\\\"Town\\\"}, \\\"Geography Lookup\\\", JoinKind.LeftOuter),\\n    #\\\"Expanded Geography Lookup\\\" = Table.ExpandTableColumn(#\\\"Merged Queries\\\", \\\"Geography Lookup\\\", {\\\"GeoKey\\\"}, {\\\"Geography Lookup.GeoKey\\\"}),\\n    #\\\"Reordered Columns\\\" = Table.ReorderColumns(#\\\"Expanded Geography Lookup\\\",{\\\"fSalesPrimaryKey\\\", \\\"ProductID\\\", \\\"SalesRepID\\\", \\\"Geography Lookup.GeoKey\\\", \\\"Country\\\", \\\"Town\\\", \\\"Date\\\", \\\"Units\\\", \\\"PercentOfStandardCost\\\", \\\"RevenueDiscount\\\"}),\\n    #\\\"Renamed Columns\\\" = Table.RenameColumns(#\\\"Reordered Columns\\\",{{\\\"Geography Lookup.GeoKey\\\", \\\"GeoKey\\\"}}),\\n    #\\\"Removed Columns\\\" = Table.RemoveColumns(#\\\"Renamed Columns\\\",{\\\"Country\\\", \\\"Town\\\"})\\nin\\n    #\\\"Removed Columns\\\"\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Sample File",
+      "lineageTag": "5f722026-0b8f-4041-b835-17ade8c06bc0",
+      "queryGroupId": "d0681a05-bc13-42b8-bbb7-eaa0d899da6d",
+      "text": [
+        "let",
+        "    Source = Folder.Files(\"C:\\Users\\NdivhudzannyiT\\Documents\\Ndivhu_Tshikho\\Data\\YouTube Project Datasets\\Sales\"),",
+        "    Navigation1 = Source{0}[Content]",
+        "in",
+        "    Navigation1"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Parameter1",
+      "lineageTag": "43a0b4ff-6df1-4e3f-a3bc-28d403f090f9",
+      "queryGroupId": "d0681a05-bc13-42b8-bbb7-eaa0d899da6d",
+      "text": [
+        "#\"Sample File\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Sample File\", Type=\"Binary\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Binary",
+      "isHidden": false
+    },
+    {
+      "name": "Transform Sample File",
+      "lineageTag": "536acb1f-5e1b-48ce-b3ff-6bb92a62943b",
+      "queryGroupId": "8549d44f-e642-4b70-ae67-c62c2f980193",
+      "text": [
+        "let",
+        "    Source = Csv.Document(Parameter1,[Delimiter=\",\", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+        "in",
+        "    #\"Promoted Headers\""
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Transform File",
+      "lineageTag": "8fa69a5d-b1d3-49f3-92a7-ae8ebdbcc4f7",
+      "queryGroupId": "d0681a05-bc13-42b8-bbb7-eaa0d899da6d",
+      "text": [
+        "let",
+        "    Source = (Parameter1 as binary) => let",
+        "    Source = Csv.Document(Parameter1,[Delimiter=\",\", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+        "in",
+        "    #\"Promoted Headers\"",
+        "in",
+        "    Source"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    }
+  ],
+  "queryGroups": [
+    {
+      "name": "Transform File from Sales",
+      "id": "8549d44f-e642-4b70-ae67-c62c2f980193",
+      "description": ""
+    },
+    {
+      "name": "Query Errors - 6/25/2024 9:36:53 AM",
+      "id": "63213414-5732-46e0-96a1-fed8c1f702d9",
+      "order": 2,
+      "description": "Errors in queries that were loaded on 6/25/2024 9:36:53 AM."
+    },
+    {
+      "name": "Query Errors - 6/25/2024 10:00:24 AM",
+      "id": "05428dc3-a184-4d4e-826c-80080bc07cb7",
+      "order": 3,
+      "description": "Errors in queries that were loaded on 6/25/2024 10:00:24 AM."
+    },
+    {
+      "name": "Helper Queries",
+      "id": "d0681a05-bc13-42b8-bbb7-eaa0d899da6d",
+      "description": "",
+      "parentId": "8549d44f-e642-4b70-ae67-c62c2f980193"
+    }
+  ],
+  "culture": "en-US",
+  "firewallEnabled": true
+}

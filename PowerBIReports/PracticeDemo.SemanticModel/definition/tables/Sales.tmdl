@@ -1,10 +1,10 @@
 table Sales
-	lineageTag: 1a1011df-df53-4630-8026-6f2a4b145487
+	lineageTag: 88b6ee38-8270-437e-b394-77125613d2d5
 
 	column fSalesPrimaryKey
 		dataType: int64
 		formatString: 0
-		lineageTag: eebb0452-8824-4d24-a4ca-730d97a3e372
+		lineageTag: 0ecf8a0c-a15d-407f-a7d8-3f5182ca9247
 		summarizeBy: count
 		sourceColumn: fSalesPrimaryKey
 
@@ -13,7 +13,7 @@ table Sales
 	column ProductID
 		dataType: int64
 		formatString: 0
-		lineageTag: 6ae95136-b605-4613-8314-04b8928afa92
+		lineageTag: e22768e6-0d07-4f81-a89d-0c7df77a2b7f
 		summarizeBy: none
 		sourceColumn: ProductID
 
@@ -22,27 +22,25 @@ table Sales
 	column SalesRepID
 		dataType: int64
 		formatString: 0
-		lineageTag: 35090bd4-f178-452a-a535-f8927d09f6a6
+		lineageTag: 9ea0650a-7635-41c0-b443-1632791e8113
 		summarizeBy: none
 		sourceColumn: SalesRepID
 
 		annotation SummarizationSetBy = Automatic
 
-	column Date
-		dataType: dateTime
-		formatString: Long Date
-		lineageTag: 5514f74a-2675-4dc4-a06b-a735d9952e11
+	column 'Geo.Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: af79fa57-f842-4e2f-9966-b142cfd1dcc3
 		summarizeBy: none
-		sourceColumn: Date
+		sourceColumn: Geo.Key
 
 		annotation SummarizationSetBy = Automatic
-
-		annotation UnderlyingDateTimeDataType = Date
 
 	column Units
 		dataType: int64
 		formatString: 0
-		lineageTag: 4e089f94-c34f-4175-a829-be6b38d529b8
+		lineageTag: ed5f1c9c-d158-4ba4-a8da-aa69f3491e48
 		summarizeBy: sum
 		sourceColumn: Units
 
@@ -50,7 +48,7 @@ table Sales
 
 	column PercentOfStandardCost
 		dataType: double
-		lineageTag: d93f770a-bb45-46fe-bcbb-e4f73a45b760
+		lineageTag: ceea7ee6-23ce-404f-8d6b-c858c7f010b6
 		summarizeBy: sum
 		sourceColumn: PercentOfStandardCost
 
@@ -60,7 +58,7 @@ table Sales
 
 	column RevenueDiscount
 		dataType: double
-		lineageTag: dd96ba1f-de86-48d6-a797-6524089d1424
+		lineageTag: e1de526f-2d29-430a-b96b-009c96cb839a
 		summarizeBy: sum
 		sourceColumn: RevenueDiscount
 
@@ -68,42 +66,43 @@ table Sales
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	column GeoKey
-		dataType: int64
-		formatString: 0
-		lineageTag: 40a80203-ee78-41cc-bab6-330a394b946e
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a57e331e-8353-46e1-aa46-79961a45a1d8
 		summarizeBy: none
-		sourceColumn: GeoKey
+		sourceColumn: Date
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Total Reveue' = Sales[Units]* RELATED('Product Lookup'[RetailPrice])
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Total Revenue' = Sales[Units]*RELATED('Product Lookup'[RetailPrice])
 		dataType: double
-		formatString: 0.00
-		lineageTag: 6f453653-b757-492a-a028-0b3033ed24f9
+		formatString: #,0.00
+		lineageTag: b09b1172-32b5-4262-9459-60f883aa053f
 		summarizeBy: sum
 		isDataTypeInferred
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Total Cost' = Sales[Units] * RELATED('Product Lookup'[StandardCost])
+	column 'Total Cost' = Sales[Units]*RELATED('Product Lookup'[StandardCost])
 		dataType: double
-		formatString: 0.00
-		lineageTag: 6bbf083f-cf26-4697-9b63-552ed9082179
+		formatString: #,0.00
+		lineageTag: 7921f9e8-aad5-4925-91a4-8143f878c4de
 		summarizeBy: sum
 		isDataTypeInferred
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Gross Profit' = Sales[Total Reveue] - Sales[Total Cost]
+	column 'Gross Profit' = Sales[Total Revenue] - Sales[Total Cost]
 		dataType: double
-		lineageTag: 4514a6c7-2480-45d0-a952-1558b84a5e95
+		formatString: #,0.00
+		lineageTag: 7592dfe7-756e-4f94-95ef-7b25fa0fa666
 		summarizeBy: sum
 		isDataTypeInferred
 
 		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition Sales = m
 		mode: import
@@ -116,17 +115,20 @@ table Sales
 				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
 				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"fSalesPrimaryKey", Int64.Type}, {"ProductID", Int64.Type}, {"SalesRepID", Int64.Type}, {"Location", type text}, {"Date", type date}, {"Units", Int64.Type}, {"PercentOfStandardCost", type number}, {"RevenueDiscount", type number}}),
-				    #"Removed Source Details" = Table.RemoveColumns(#"Changed Type",{"Source.Name"}),
-				    #"Split location" = Table.SplitColumn(#"Removed Source Details", "Location", Splitter.SplitTextByDelimiter(";", QuoteStyle.Csv), {"Location.1", "Location.2"}),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Split location",{{"Location.1", type text}, {"Location.2", type text}}),
-				    #"Renamed Columns to location 1 to Country and Location 2 to town" = Table.RenameColumns(#"Changed Type1",{{"Location.1", "Country"}, {"Location.2", "Town"}}),
-				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns to location 1 to Country and Location 2 to town", {"Town"}, #"Geography Lookup", {"Town"}, "Geography Lookup", JoinKind.LeftOuter),
-				    #"Expanded Geography Lookup" = Table.ExpandTableColumn(#"Merged Queries", "Geography Lookup", {"GeoKey"}, {"Geography Lookup.GeoKey"}),
-				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Geography Lookup",{"fSalesPrimaryKey", "ProductID", "SalesRepID", "Geography Lookup.GeoKey", "Country", "Town", "Date", "Units", "PercentOfStandardCost", "RevenueDiscount"}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Reordered Columns",{{"Geography Lookup.GeoKey", "GeoKey"}}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns",{"Country", "Town"})
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Changed Type", "Location", Splitter.SplitTextByDelimiter(";", QuoteStyle.Csv), {"Location.1", "Location.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Location.1", type text}, {"Location.2", type text}}),
+				    #"Renamed Columns split location into country and Town" = Table.RenameColumns(#"Changed Type1",{{"Location.1", "Country"}, {"Location.2", "Town"}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns split location into country and Town",{"Source.Name"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"Country", "Town"}, #"Geography Lookup", {"Country", "Town"}, "Geography Lookup", JoinKind.LeftOuter),
+				    #"Expanded Geography Lookup" = Table.ExpandTableColumn(#"Merged Queries", "Geography Lookup", {"Geo.Key"}, {"Geography Lookup.Geo.Key"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Geography Lookup",{{"Geography Lookup.Geo.Key", "Geo.Key"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"fSalesPrimaryKey", "ProductID", "SalesRepID", "Geo.Key", "Country","Town", "Date", "Units", "PercentOfStandardCost", "RevenueDiscount"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Reordered Columns",{"Country", "Town"}),
+				    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Removed Columns1", {"Date"})
 				in
-				    #"Removed Columns"
+				    #"Removed Errors"
+
+	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
 

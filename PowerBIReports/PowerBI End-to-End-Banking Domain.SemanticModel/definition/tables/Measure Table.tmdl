@@ -1,0 +1,61 @@
+table 'Measure Table'
+	lineageTag: 87741c42-1cc8-43de-84bc-9a94b7ce9ddf
+
+	measure 'Active Customers' = CALCULATE(COUNT(Bank_Churn[CustomerId]), 'ActiveCustomer Lookup'[ActiveCategory] = "Active Member")
+		formatString: 0
+		lineageTag: 00b1a845-e468-4307-b2e0-6ad5dce201e6
+
+	measure 'Total Customers' = COUNT('CustomerInfo Lookup'[CustomerId])
+		formatString: 0
+		lineageTag: 4c7caf7d-ef55-43de-8c06-cdb3e4681c60
+
+	measure 'Inactive Customers' = ```
+			CALCULATE(COUNT(Bank_Churn[CustomerId]), 'ActiveCustomer Lookup'[ActiveCategory] = "Inactive Member") 
+			```
+		formatString: 0
+		lineageTag: 188a2975-28a1-4231-ba4a-faa846e18659
+
+	measure 'Credit Card Holders' = CALCULATE(COUNT(Bank_Churn[CustomerId]), 'CreditCard Lookup'[Category] = "credit card holder")
+		formatString: 0
+		lineageTag: 18f982de-8395-4fce-ad50-81d778d221c2
+
+	measure 'Non Credit Card Holder' = CALCULATE(COUNT('CustomerInfo Lookup'[CustomerId]), 'CreditCard Lookup'[Category] = "non credit card holder")
+		formatString: 0
+		lineageTag: 9ea7de4e-56c7-44c6-baba-985a00c8ece1
+
+	measure 'Exit Customers' = CALCULATE([Total Customers], 'ExitCustomer Lookup'[ExitCategory] = "Exit")
+		formatString: 0
+		lineageTag: da749c0e-ebe0-4289-8a3f-3bfdaef18e56
+
+	measure 'Retain Customers' = CALCULATE([Total Customers], 'ExitCustomer Lookup'[ExitCategory] = "Retain")
+		formatString: 0
+		lineageTag: 631e5b5b-ac74-45b0-ac7b-5b6eb3b29a7b
+
+	measure 'Previous Month Exit Customers' =
+			
+			CALCULATE(
+			    [Exit Customers],
+			    PREVIOUSMONTH(DateMaster[Date])
+			)
+		formatString: 0
+		lineageTag: f45ac982-f834-48b6-abe3-23bb96eb82f4
+
+	column Column
+		dataType: int64
+		formatString: 0
+		lineageTag: 0724d638-cfef-4408-82b7-82e5bcc183cd
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Measure Table' = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = c1d2e7ea9d3e4d5a8218e25113748e27
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+
