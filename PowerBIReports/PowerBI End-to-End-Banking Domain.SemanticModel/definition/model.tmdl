@@ -26,5 +26,9 @@ ref table 'Measure Table'
 ref table LocalDateTable_8eaf002e-7578-437e-a76d-861a65e6654e
 ref table Bank_Churn
 
+ref role FranceRegion
+ref role GermanyRegion
+ref role SpainRegion
+
 ref cultureInfo en-US
 

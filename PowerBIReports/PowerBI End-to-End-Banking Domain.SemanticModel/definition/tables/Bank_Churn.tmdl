@@ -153,7 +153,5 @@ table Bank_Churn
 				in
 				    #"Changed Type with Locale"
 
-	annotation PBI_NavigationStepName = Navigation
-
 	annotation PBI_ResultType = Table
 

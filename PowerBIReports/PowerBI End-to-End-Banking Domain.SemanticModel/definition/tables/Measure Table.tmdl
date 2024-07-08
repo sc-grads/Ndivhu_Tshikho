@@ -40,6 +40,16 @@ table 'Measure Table'
 		formatString: 0
 		lineageTag: f45ac982-f834-48b6-abe3-23bb96eb82f4
 
+	measure 'Churn %' =
+			
+			VAR EC = [Exit Customers]
+			VAR TC = [Total Customers]
+			VAR churnper = DIVIDE(EC, TC)
+			RETURN
+			churnper
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0a51c708-3b99-43be-a40f-5be671139af4
+
 	column Column
 		dataType: int64
 		formatString: 0

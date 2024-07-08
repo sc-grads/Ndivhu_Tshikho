@@ -29,7 +29,5 @@ table 'ExitCustomer Lookup'
 				in
 				    #"Changed Type"
 
-	annotation PBI_NavigationStepName = Navigation
-
 	annotation PBI_ResultType = Table
 
