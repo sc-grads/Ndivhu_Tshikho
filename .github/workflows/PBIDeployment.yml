@@ -33,7 +33,7 @@ jobs:
           pbi-tools publish \
             --workspace "Report DevOps Tutorial" \
             --accessToken ${{ env.PBI_ACCESS_TOKEN }} \
-            --inputFilePath "path/to/your/report.pbix" \
+            --inputFilePath "PowerBIReports/Territory Lookup.pbix" \
             --overwrite
         env:
           PBI_ACCESS_TOKEN: ${{ secrets.PBI_ACCESS_TOKEN }}
