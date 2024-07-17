@@ -13,7 +13,7 @@ jobs:
   Deployment:
     runs-on: ubuntu-latest
     container: 
-      image: ghcr.io/pbi-tools-core:latest
+      image: ghcr.io/your-username/pbi-tools-core:latest # Replace with the correct image name
 
     steps:
       # Check-out your repository under $GITHUB_WORKSPACE, so your job can access it
