@@ -3,8 +3,10 @@ name: Deployment
 # Controls when the workflow will run
 on: 
   push:
-    branches: [ Main ]
-
+    branches:
+      - main
+    paths:
+      - 'PowerBIReports/Territory Lookup.pbix'
 jobs: 
   Deployment:
     runs-on: ubuntu-latest
