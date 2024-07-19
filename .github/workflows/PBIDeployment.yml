@@ -5,10 +5,6 @@ on:
   push:
     branches: [ main ]
 
-env:
-  PROFILE: Files
-  ENVIRONMENT: PROD
-
 jobs:
   Deployment:
     runs-on: ubuntu-latest
@@ -17,13 +13,15 @@ jobs:
       image: ghcr.io/pbi-tools/pbi-tools-core:latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Check out the repository
       - uses: actions/checkout@v4
         with:
           lfs: 'true'
 
+      # Deploy using pbi-tools
       - name: pbi-tools deploy
-        run: /app/pbi-tools/pbi-tools.core deploy . "$PROFILE" "$ENVIRONMENT"
+        run: |
+          /app/pbi-tools/pbi-tools.core deploy . "Files" "PROD"
         env:
           PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
           PBI_CLIENT_ID: ${{ secrets.PBI_CLIENT_ID }}
