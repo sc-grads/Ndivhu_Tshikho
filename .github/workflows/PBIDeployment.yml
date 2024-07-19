@@ -1,33 +1,30 @@
-name: Deploy Power BI Report
+name: Deployment
 
+# Controls when the workflow will run
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
+env:
+  PROFILE: Files
+  ENVIRONMENT: PROD
 
 jobs:
-  deploy:
+  Deployment:
     runs-on: ubuntu-latest
+    environment: PROD
+    container:
+      image: ghcr.io/pbi-tools/pbi-tools-core:latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v1
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
         with:
-          dotnet-version: '5.0.x'
+          lfs: 'true'
 
-      - name: Download pbi-tools
-        run: |
-          wget https://github.com/pbi-tools/pbi-tools/releases/download/v1.2.0/pbi-tools-linux-x64.tar.gz
-          tar -xzf pbi-tools-linux-x64.tar.gz
-          chmod +x pbi-tools
-
-      - name: Deploy Power BI Report
-        run: |
-          ./pbi-tools deploy PowerBIReports --label deploy --environment PROD --base-path PowerBIReports
+      - name: pbi-tools deploy
+        run: /app/pbi-tools/pbi-tools.core deploy . "$PROFILE" "$ENVIRONMENT"
         env:
-          TENANT_ID: ${{ secrets.TENANT_ID }}
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
+          PBI_CLIENT_ID: ${{ secrets.PBI_CLIENT_ID }}
+          PBI_TENANT_ID: ${{ secrets.PBI_TENANT_ID }}
