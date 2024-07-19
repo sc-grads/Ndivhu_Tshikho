@@ -18,12 +18,15 @@ jobs:
         with:
           dotnet-version: '5.0.x'
 
-      - name: Install Power BI Tools
-        run: dotnet tool install --global PbiTools
+      - name: Download pbi-tools
+        run: |
+          wget https://github.com/pbi-tools/pbi-tools/releases/download/v1.2.0/pbi-tools-linux-x64.tar.gz
+          tar -xzf pbi-tools-linux-x64.tar.gz
+          chmod +x pbi-tools
 
       - name: Deploy Power BI Report
         run: |
-          pbi-tools deploy PowerBIReports --label deploy --environment PROD --base-path PowerBIReports
+          ./pbi-tools deploy PowerBIReports --label deploy --environment PROD --base-path PowerBIReports
         env:
           TENANT_ID: ${{ secrets.TENANT_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
