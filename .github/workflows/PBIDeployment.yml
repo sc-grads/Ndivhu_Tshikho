@@ -22,7 +22,11 @@ jobs:
         with:
           lfs: 'true'
 
+      - name: Change directory to PowerBIReports
+        run: cd PowerBIReports
+
       - name: pbi-tools deploy
+        working-directory: PowerBIReports
         run: /app/pbi-tools/pbi-tools-core deploy . "$PROFILE" "$ENVIRONMENT"
         env:
           PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
