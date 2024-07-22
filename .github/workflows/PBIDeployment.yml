@@ -24,5 +24,3 @@ jobs:
 
       - name: pbi-tools deploy
         run: /app/pbi-tools/pbi-tools.core deploy . "$PROFILE" "$ENVIRONMENT"
-        env:
-          PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
