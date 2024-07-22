@@ -5,10 +5,6 @@ on:
   push:
     branches: [ main ]
 
-env:
-  PROFILE: Files
-  ENVIRONMENT: PROD
-
 jobs:
   Deployment:
     runs-on: ubuntu-latest
@@ -27,6 +23,4 @@ jobs:
 
       - name: pbi-tools deploy
         working-directory: PowerBIReports
-        run: /app/pbi-tools/pbi-tools-core deploy . "$PROFILE" "$ENVIRONMENT"
-        env:
-          PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
+        run: /app/pbi-tools/pbi-tools-core deploy . Files PROD
