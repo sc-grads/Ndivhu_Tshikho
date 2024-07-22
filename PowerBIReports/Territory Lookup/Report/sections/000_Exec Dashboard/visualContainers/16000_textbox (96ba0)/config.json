@@ -1,0 +1,37 @@
+{
+  "name": "96ba08cd4c37f3d03545",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 779.26829268292693,
+        "y": 597.56097560975616,
+        "z": 18000,
+        "width": 208.53658536585368,
+        "height": 30.487804878048781,
+        "tabOrder": 16000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Most Ordered Product Type:"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

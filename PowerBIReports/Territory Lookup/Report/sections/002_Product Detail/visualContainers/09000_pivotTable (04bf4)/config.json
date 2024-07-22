@@ -1,0 +1,68 @@
+{
+  "name": "04bf46c16313405fae01",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 57.142857142857146,
+        "y": 465.71428571428572,
+        "z": 10000,
+        "width": 251.42857142857144,
+        "height": 210,
+        "tabOrder": 9000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "pivotTable",
+    "projections": {
+      "Rows": [
+        {
+          "queryRef": "Product Metric Selection.Product Metric Selection",
+          "active": true
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "p",
+          "Entity": "Product Metric Selection",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "p"
+              }
+            },
+            "Property": "Product Metric Selection"
+          },
+          "Name": "Product Metric Selection.Product Metric Selection",
+          "NativeReferenceName": "Product Metric Selection"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 1,
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "p"
+                }
+              },
+              "Property": "Product Metric Selection"
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {}
+  }
+}

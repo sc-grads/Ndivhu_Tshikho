@@ -1,0 +1,7 @@
+role Portland
+	modelPermission: read
+
+	tablePermission Sales = [Region] == "Portland"
+
+	annotation PBI_Id = 768b6d7498bd4b47b14d11127c9f24cc
+

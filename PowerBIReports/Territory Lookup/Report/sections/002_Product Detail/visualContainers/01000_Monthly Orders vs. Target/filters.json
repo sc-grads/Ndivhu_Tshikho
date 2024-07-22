@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Filterc849b1106a0b8da387fd",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "Calendar Lookup"
+          }
+        },
+        "Property": "Start of Month"
+      }
+    },
+    "type": "TopN",
+    "howCreated": 1
+  }
+]

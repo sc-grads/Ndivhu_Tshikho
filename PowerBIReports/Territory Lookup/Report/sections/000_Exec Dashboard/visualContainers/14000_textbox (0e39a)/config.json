@@ -1,0 +1,37 @@
+{
+  "name": "0e39ad9421f0a0fa9841",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1035.3658536585367,
+        "y": 596.34146341463418,
+        "z": 16000,
+        "width": 197.5609756097561,
+        "height": 30.487804878048781,
+        "tabOrder": 14000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Most Returned Product Type:"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

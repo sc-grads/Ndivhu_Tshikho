@@ -1,0 +1,50 @@
+﻿table 'Customer Matrix Selection'
+
+	column 'Customer Matrix Selection'
+		dataType: string
+		summarizeBy: none
+		isDataTypeInferred
+		sourceColumn: [Value1]
+		sortByColumn: 'Customer Matrix Selection Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Customer Matrix Selection Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Matrix Selection Fields'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		isDataTypeInferred
+		sourceColumn: [Value2]
+		sortByColumn: 'Customer Matrix Selection Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Matrix Selection Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: sum
+		isDataTypeInferred
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Customer Matrix Selection' = calculated
+		mode: import
+		source =
+				{
+				    ("Total Customers", NAMEOF('Measure Table'[Total Customers]), 0),
+				    ("Revenue Rer Customer", NAMEOF('Measure Table'[Average Revenue per Customer]), 1)
+				}
+
+	annotation PBI_Id = 05bf7d7c15194ef69b1b8030f1e414da
+

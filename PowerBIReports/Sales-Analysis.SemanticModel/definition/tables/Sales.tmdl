@@ -1,0 +1,100 @@
+table Sales
+	lineageTag: 1acfff9e-efc6-4de5-a92e-539548e83566
+
+	column 'Order ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 792c2614-7348-49bd-9401-3e5a40ce30c1
+		summarizeBy: count
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: 6bdb2938-96d5-4926-8c56-9fd6e8a5cd2a
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quantity Ordered'
+		dataType: int64
+		formatString: 0
+		lineageTag: 12efad22-b131-4c6b-a404-e066a7d699ed
+		summarizeBy: sum
+		sourceColumn: Quantity Ordered
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Price Each'
+		dataType: double
+		lineageTag: 3e705f94-ab05-4b5a-b851-bd3e6314a94d
+		summarizeBy: sum
+		sourceColumn: Price Each
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 528346b2-f90b-4441-9cd7-d2652bbba2da
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Purchase Address'
+		dataType: string
+		lineageTag: 06477e24-fab7-478b-933b-7f7439c7b521
+		summarizeBy: none
+		sourceColumn: Purchase Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 962de7c2-d43a-4fb1-8005-f3d4642941c5
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales = Sales[Quantity Ordered]* Sales[Price Each]
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 4eecebe9-b8be-4611-a1af-af2ad007593d
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sales = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\Project Files\Data-Sets"),
+				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+				    #"Removed Columns" = Table.RemoveColumns(#"Expanded Table Column1",{"Source.Name"}),
+				    #"Removed Blank Rows" = Table.SelectRows(#"Removed Columns", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Blank Rows", each true),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows",{{"Order ID", Int64.Type}, {"Quantity Ordered", Int64.Type}, {"Price Each", type number}, {"Order Date", type datetime}, {"Purchase Address", type text}}),
+				    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Changed Type", {"Order ID"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Errors",{{"Order Date", type date}}),
+				    #"Inserted Text Between Delimiters" = Table.AddColumn(#"Changed Type1", "Text Between Delimiters", each Text.BetweenDelimiters([Purchase Address], ",", ","), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text Between Delimiters",{{"Text Between Delimiters", "Region"}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Renamed Columns",{{"Region", Text.Trim, type text}})
+				in
+				    #"Trimmed Text"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,104 @@
+{
+  "filters": {
+    "byExpr": [
+      {
+        "name": "Filter1539f20aa5e5c3b60113",
+        "type": "Categorical",
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar Lookup"
+              }
+            },
+            "Property": "Year"
+          }
+        },
+        "howCreated": 0
+      }
+    ]
+  },
+  "singleVisual": {
+    "visualType": "slicer",
+    "objects": {
+      "merge": {
+        "general": [
+          {
+            "properties": {
+              "filter": {
+                "filter": {
+                  "Version": 2,
+                  "From": [
+                    {
+                      "Name": "c",
+                      "Entity": "Calendar Lookup",
+                      "Type": 0
+                    }
+                  ],
+                  "Where": [
+                    {
+                      "Condition": {
+                        "Comparison": {
+                          "ComparisonKind": 2,
+                          "Left": {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "c"
+                                }
+                              },
+                              "Property": "Year"
+                            }
+                          },
+                          "Right": {
+                            "Literal": {
+                              "Value": "2021D"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "data": [
+          {
+            "properties": {
+              "numericStart": {
+                "expr": {
+                  "Literal": {
+                    "Value": "2021D"
+                  }
+                }
+              },
+              "mode": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Between'"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "activeProjections": {
+      "Values": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar Lookup"
+              }
+            },
+            "Property": "Year"
+          }
+        }
+      ]
+    }
+  }
+}

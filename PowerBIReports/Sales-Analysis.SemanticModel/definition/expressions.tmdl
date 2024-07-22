@@ -1,0 +1,54 @@
+expression 'Sample File' =
+		let
+		    Source = Folder.Files("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\Project Files\Data-Sets"),
+		    Navigation1 = Source{0}[Content]
+		in
+		    Navigation1
+	lineageTag: f4dd44c3-e22a-4367-92fd-9cd5906503d8
+	queryGroup: 'Transform File from Data-Sets\Helper Queries'
+
+	annotation PBI_ResultType = Binary
+
+expression Parameter1 = #"Sample File" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 94edab07-27ce-44a6-b8c0-61f439c359a4
+	queryGroup: 'Transform File from Data-Sets\Helper Queries'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File' =
+		let
+		    Source = Csv.Document(Parameter1,[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+	lineageTag: d8e4077f-7b70-4669-8506-23005d9d1c7c
+	queryGroup: 'Transform File from Data-Sets'
+
+	annotation PBI_ResultType = Table
+
+expression 'Transform File' =
+		let
+		    Source = (Parameter1 as binary) => let
+		    Source = Csv.Document(Parameter1,[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+		in
+		    Source
+	mAttributes: [ FunctionQueryBinding = "{""exemplarFormulaName"":""Transform Sample File""}" ]
+	lineageTag: 274fc999-0907-4fe7-8057-3735fca360aa
+	queryGroup: 'Transform File from Data-Sets\Helper Queries'
+
+	annotation PBI_ResultType = Function
+
+expression DateMaster =
+		let
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+		in
+		    #"Removed Columns"
+	lineageTag: 47b0854c-d647-4932-b202-a1b5d07019b1
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,37 @@
+{
+  "name": "b66f7af01bdb71015a20",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 786.87651331719144,
+        "y": 543.58353510896006,
+        "z": 11000,
+        "width": 202.85714285714286,
+        "height": 40,
+        "tabOrder": 12000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Orders:"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

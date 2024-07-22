@@ -1,0 +1,53 @@
+{
+  "name": "da287c4fb98dd4507d42",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 32.195121951219512,
+        "y": 23.414634146341463,
+        "z": 0,
+        "width": 225.36585365853659,
+        "height": 100,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "image",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "imageUrl": {
+              "expr": {
+                "ResourcePackageItem": {
+                  "PackageName": "RegisteredResources",
+                  "PackageType": 1,
+                  "ItemName": "AdventureWorks_Logo26263587704688596.png"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AW Logo'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "howCreated": "InsertVisualButton"
+}

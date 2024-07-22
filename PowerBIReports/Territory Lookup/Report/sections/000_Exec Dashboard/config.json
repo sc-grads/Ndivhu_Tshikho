@@ -1,0 +1,34 @@
+{
+  "relationships": [
+    {
+      "source": "f5351fd8f63758e02085",
+      "target": "13f882445652409fb2bb",
+      "type": 1
+    },
+    {
+      "source": "f5351fd8f63758e02085",
+      "target": "87a3aae75a59c4ed469d",
+      "type": 3
+    },
+    {
+      "source": "f5351fd8f63758e02085",
+      "target": "726359ba23b68ad2f5a0",
+      "type": 3
+    },
+    {
+      "source": "f5351fd8f63758e02085",
+      "target": "be7f2eeed3af258c6ae6",
+      "type": 3
+    },
+    {
+      "source": "a8bea0163b5e0660540a",
+      "target": "96ba08cd4c37f3d03545",
+      "type": 3
+    },
+    {
+      "source": "a8bea0163b5e0660540a",
+      "target": "0e39ad9421f0a0fa9841",
+      "type": 3
+    }
+  ]
+}

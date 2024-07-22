@@ -1,0 +1,71 @@
+{
+  "id": 0,
+  "layoutOptimization": 1,
+  "pods": [
+    {
+      "boundSection": "726eaad48b4faa4a3416",
+      "config": "{}",
+      "name": "63888be2f359787ab3df",
+      "parameters": "[{\"name\":\"Param_Filterc0307d24653125cc608f\",\"boundFilter\":\"Filterc0307d24653125cc608f\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Product Lookup\"}},\"Property\":\"ProductName\"}}}]",
+      "type": 1
+    }
+  ],
+  "publicCustomVisuals": [
+    "RaceBarChart828E7F9A76D539488CE6C92657D234CF"
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU05",
+            "path": "BaseThemes/CY24SU05.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "AdventureWorks_Logo26263587704688596.png",
+            "path": "AdventureWorks_Logo26263587704688596.png",
+            "type": 100
+          },
+          {
+            "name": "Map_Icon4337346657250203.png",
+            "path": "Map_Icon4337346657250203.png",
+            "type": 100
+          },
+          {
+            "name": "Product_Icon8246548283966282.png",
+            "path": "Product_Icon8246548283966282.png",
+            "type": 100
+          },
+          {
+            "name": "Dashboard_Icon8161769394675709.png",
+            "path": "Dashboard_Icon8161769394675709.png",
+            "type": 100
+          },
+          {
+            "name": "Customer_Icon410400938716587.png",
+            "path": "Customer_Icon410400938716587.png",
+            "type": 100
+          },
+          {
+            "name": "Filter_Icon9137310644717072.png",
+            "path": "Filter_Icon9137310644717072.png",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ]
+}
