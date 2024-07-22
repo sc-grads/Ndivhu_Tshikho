@@ -1,0 +1,29 @@
+{
+  "displayName": "Hide Slicer Panel",
+  "name": "2868c9fb0786b76075b6",
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "84c9bf523bebd71070d7",
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "options": {
+    "targetVisualNames": [],
+    "suppressData": true
+  }
+}

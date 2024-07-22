@@ -1,0 +1,72 @@
+table 'Employee Lookup'
+	lineageTag: e02db0f2-bcbb-4a4a-ae34-5e102f89f29c
+
+	column staff_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d9812920-b6c9-4b1a-a8b2-ac933a47b3d6
+		summarizeBy: none
+		sourceColumn: staff_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_name
+		dataType: string
+		lineageTag: e801dee8-d8c3-455e-9ebf-9740918342b7
+		summarizeBy: none
+		sourceColumn: first_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_name
+		dataType: string
+		lineageTag: 0f3f002d-c1ad-42e4-b27e-0a209771a0bb
+		summarizeBy: none
+		sourceColumn: last_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column position
+		dataType: string
+		lineageTag: 4e290f7f-3d38-4e1d-99bf-d8ff482b0fb0
+		summarizeBy: none
+		sourceColumn: position
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c498551d-be56-4c9f-83cb-869221098b8f
+		summarizeBy: none
+		sourceColumn: start_date
+
+		variation Variation
+			isDefault
+			relationship: e1ed15e4-2dbd-48a9-8366-f14c688670f5
+			defaultHierarchy: LocalDateTable_1e69a575-89cf-4f8c-93f9-f23afd43bc00.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column location
+		dataType: string
+		lineageTag: 2e9b71f6-8439-41ad-a6e8-5d4cda136fa4
+		summarizeBy: none
+		sourceColumn: location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Employee Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\OneDrive - Northern Data (Pty) Ltd\Documents\Udemy Course\Microsoft Power BI\Advanced DAX for Data Analysis\Advanced+DAX+Data+Files\Advanced DAX Data Files\Employee Lookup.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"staff_id", Int64.Type}, {"first_name", type text}, {"last_name", type text}, {"position", type text}, {"start_date", type date}, {"location", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

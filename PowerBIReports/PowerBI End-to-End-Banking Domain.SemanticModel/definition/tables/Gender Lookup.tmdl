@@ -1,0 +1,33 @@
+table 'Gender Lookup'
+	lineageTag: 0fd55768-ea4e-49ef-89f5-9f25f10f3489
+
+	column GenderID
+		dataType: int64
+		formatString: 0
+		lineageTag: c3c70ab9-15c8-4102-b2d0-a3806eb8d53e
+		summarizeBy: none
+		sourceColumn: GenderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GenderCategory
+		dataType: string
+		lineageTag: 7cdee43a-8768-4469-88e7-ba8651b7cb6e
+		summarizeBy: none
+		sourceColumn: GenderCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Gender Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Data Sets for end to end Powerbi Project\Gender.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"GenderID", Int64.Type}, {"GenderCategory", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

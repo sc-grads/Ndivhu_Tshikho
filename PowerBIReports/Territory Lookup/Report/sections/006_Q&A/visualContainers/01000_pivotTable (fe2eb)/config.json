@@ -1,0 +1,74 @@
+{
+  "name": "fe2eb52ee3a7ca989986",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 958.53658536585363,
+        "y": 0,
+        "z": 1000,
+        "width": 321.95121951219511,
+        "height": 280.97560975609758,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "pivotTable",
+    "projections": {
+      "Rows": [
+        {
+          "queryRef": "Product Categories Lookup.CategoryName",
+          "active": true
+        }
+      ],
+      "Values": [
+        {
+          "queryRef": "Measure Table.Total  Orders"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "p",
+          "Entity": "Product Categories Lookup",
+          "Type": 0
+        },
+        {
+          "Name": "m",
+          "Entity": "Measure Table",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "p"
+              }
+            },
+            "Property": "CategoryName"
+          },
+          "Name": "Product Categories Lookup.CategoryName",
+          "NativeReferenceName": "CategoryName"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Total  Orders"
+          },
+          "Name": "Measure Table.Total  Orders",
+          "NativeReferenceName": "Total  Orders"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

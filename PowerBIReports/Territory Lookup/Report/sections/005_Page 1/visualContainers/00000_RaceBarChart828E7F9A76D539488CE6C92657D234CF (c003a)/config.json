@@ -1,0 +1,111 @@
+{
+  "name": "c003a24a9e516a87b910",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 10.24390243902439,
+        "y": 0,
+        "z": 0,
+        "width": 629.26829268292681,
+        "height": 720,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "RaceBarChart828E7F9A76D539488CE6C92657D234CF",
+    "projections": {
+      "barRaceChart_chartItems": [
+        {
+          "queryRef": "Product Subcategories Lookup.SubcategoryName"
+        }
+      ],
+      "barRaceChart_chartValues": [
+        {
+          "queryRef": "Measure Table.Total  Orders"
+        }
+      ],
+      "barRaceChart_chartPeriods": [
+        {
+          "queryRef": "Calendar Lookup.Start of Month"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "p",
+          "Entity": "Product Subcategories Lookup",
+          "Type": 0
+        },
+        {
+          "Name": "m",
+          "Entity": "Measure Table",
+          "Type": 0
+        },
+        {
+          "Name": "c",
+          "Entity": "Calendar Lookup",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "p"
+              }
+            },
+            "Property": "SubcategoryName"
+          },
+          "Name": "Product Subcategories Lookup.SubcategoryName",
+          "NativeReferenceName": "SubcategoryName"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Total  Orders"
+          },
+          "Name": "Measure Table.Total  Orders",
+          "NativeReferenceName": "Total  Orders"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Start of Month"
+          },
+          "Name": "Calendar Lookup.Start of Month",
+          "NativeReferenceName": "Start of Month"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 1,
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "c"
+                }
+              },
+              "Property": "Start of Month"
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "hasDefaultSort": true
+  }
+}

@@ -1,0 +1,26 @@
+table 'Average Days'
+	lineageTag: d6b78a9c-667c-4fbe-8ce4-011207a72813
+
+	column Value
+		dataType: int64
+		formatString: 0
+		lineageTag: 995984a9-4168-4d8c-bf96-60db09bfce80
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Average Days' = calculated
+		mode: import
+		source =
+				
+				GENERATESERIES(
+				    7,
+				    63,
+				    7
+				)
+
+	annotation PBI_Id = 1b09fe4e33ef4205aa8820d29b96181a
+

@@ -1,0 +1,221 @@
+﻿table 'Customer Lookups'
+
+	column CustomerKey
+		dataType: int64
+		isKey
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prefix
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column BirthDate
+		dataType: dateTime
+		formatString: Long Date
+		summarizeBy: none
+		sourceColumn: BirthDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MaritalStatus
+		dataType: string
+		summarizeBy: none
+		sourceColumn: MaritalStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailAddress
+		dataType: string
+		summarizeBy: none
+		sourceColumn: EmailAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnnualIncome
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: AnnualIncome
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalChildren
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: TotalChildren
+
+		annotation SummarizationSetBy = Automatic
+
+	column EducationLevel
+		dataType: string
+		summarizeBy: none
+		sourceColumn: EducationLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Occupation
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Occupation
+
+		annotation SummarizationSetBy = Automatic
+
+	column HomeOwner
+		dataType: string
+		summarizeBy: none
+		sourceColumn: HomeOwner
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name '
+		dataType: string
+		summarizeBy: none
+		sourceColumn: "Full Name "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Domain Name'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Domain Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Parent ?' =
+			
+			IF(
+			    'Customer Lookups'[TotalChildren] > 0,
+			    "Yes",
+			    "No"
+			    )
+		dataType: string
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Priority' =
+			
+			IF(
+			    'Customer Lookups'[AnnualIncome] > 100000 &&
+			    'Customer Lookups'[Is Parent ?] = "Yes",
+			    "Priority",
+			    "Standard"
+			)
+		dataType: string
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Income Level' = ```
+			
+			if(
+			    'Customer Lookups'[AnnualIncome] >= 150000, "Very High",
+			    if(
+			        'Customer Lookups'[AnnualIncome] >= 100000, "High",
+			        if(
+			            'Customer Lookups'[AnnualIncome] >= 50000, "Average", 
+			            "Low"
+			        )
+			    )
+			)
+			```
+		dataType: string
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Education Category' =
+			
+			SWITCH(
+			    'Customer Lookups'[EducationLevel],
+			    "High School", "High School",
+			    "Partial High School", "High School",
+			    "Bachelors", "Undergrad",
+			    "Partial College", "Undergrad",
+			    "Graduate Degree", "Graduate"
+			    )
+		dataType: string
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Full Name (CC)' =
+			
+			'Customer Lookups'[Prefix] & " "& 'Customer Lookups'[FirstName] & " "& 'Customer Lookups'[LastName]
+		dataType: string
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Birth Year' =
+			
+			YEAR(
+			 'Customer Lookups'[BirthDate]
+			)
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Customer Lookups' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\OneDrive - Northern Data (Pty) Ltd\Documents\Udemy Course\Microsoft Power BI\AdventureWorks+Raw+Data\AdventureWorks Raw Data\AdventureWorks Customer Lookup.csv"),[Delimiter=",", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"CustomerKey", Int64.Type}, {"Prefix", type text}, {"FirstName", type text}, {"LastName", type text}, {"BirthDate", type date}, {"MaritalStatus", type text}, {"Gender", type text}, {"EmailAddress", type text}, {"AnnualIncome", Int64.Type}, {"TotalChildren", Int64.Type}, {"EducationLevel", type text}, {"Occupation", type text}, {"HomeOwner", type text}}),
+				    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Changed Type", {"CustomerKey"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Errors", each [CustomerKey] <> null and [CustomerKey] <> ""),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Filtered Rows",{{"Prefix", Text.Proper, type text}, {"FirstName", Text.Proper, type text}, {"LastName", Text.Proper, type text}}),
+				    #"Inserted Full Nmae Column" = Table.AddColumn(#"Capitalized Each Word", "Full Name ", each Text.Combine({[Prefix], [FirstName], [LastName]}, " "), type text),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Inserted Full Nmae Column", "EmailAddress", "EmailAddress - Copy"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column",{{"EmailAddress - Copy", "Domain Name"}}),
+				    #"Extracted Text After Delimiter" = Table.TransformColumns(#"Renamed Columns", {{"Domain Name", each Text.AfterDelimiter(_, "@"), type text}}),
+				    #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Extracted Text After Delimiter", {{"Domain Name", each Text.BeforeDelimiter(_, "."), type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Extracted Text Before Delimiter","-"," ",Replacer.ReplaceText,{"Domain Name"}),
+				    #"Capitalized Each Word1" = Table.TransformColumns(#"Replaced Value",{{"Domain Name", Text.Proper, type text}})
+				in
+				    #"Capitalized Each Word1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

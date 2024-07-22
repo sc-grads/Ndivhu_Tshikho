@@ -1,0 +1,33 @@
+table 'ExitCustomer Lookup'
+	lineageTag: c7d8095a-56ff-441e-ac0d-bd9c169e3229
+
+	column ExitID
+		dataType: int64
+		formatString: 0
+		lineageTag: 4fc985c9-d48e-4580-be00-73c142e30173
+		summarizeBy: none
+		sourceColumn: ExitID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExitCategory
+		dataType: string
+		lineageTag: 6091f0f6-b367-47a0-8d12-964e896894f2
+		summarizeBy: none
+		sourceColumn: ExitCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'ExitCustomer Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Data Sets for end to end Powerbi Project\ExitCustomer.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ExitID", Int64.Type}, {"ExitCategory", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

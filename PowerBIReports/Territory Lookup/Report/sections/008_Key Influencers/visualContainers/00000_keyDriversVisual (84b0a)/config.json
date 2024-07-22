@@ -1,0 +1,150 @@
+{
+  "name": "84b0ad08e2087f443881",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 55.609756097560975,
+        "y": 29.26829268292683,
+        "z": 0,
+        "width": 1188.2926829268292,
+        "height": 648.29268292682923,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "keyDriversVisual",
+    "projections": {
+      "Target": [
+        {
+          "queryRef": "Customer Lookups.HomeOwner"
+        }
+      ],
+      "ExplainBy": [
+        {
+          "queryRef": "Customer Lookups.AnnualIncome"
+        },
+        {
+          "queryRef": "Customer Lookups.EducationLevel"
+        },
+        {
+          "queryRef": "Customer Lookups.Is Parent ?"
+        },
+        {
+          "queryRef": "Customer Lookups.MaritalStatus"
+        },
+        {
+          "queryRef": "Customer Lookups.Occupation"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "c",
+          "Entity": "Customer Lookups",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "HomeOwner"
+          },
+          "Name": "Customer Lookups.HomeOwner",
+          "NativeReferenceName": "HomeOwner"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "AnnualIncome"
+          },
+          "Name": "Customer Lookups.AnnualIncome",
+          "NativeReferenceName": "AnnualIncome"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "EducationLevel"
+          },
+          "Name": "Customer Lookups.EducationLevel",
+          "NativeReferenceName": "EducationLevel"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Is Parent ?"
+          },
+          "Name": "Customer Lookups.Is Parent ?",
+          "NativeReferenceName": "Is Parent ?"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "MaritalStatus"
+          },
+          "Name": "Customer Lookups.MaritalStatus",
+          "NativeReferenceName": "MaritalStatus"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Occupation"
+          },
+          "Name": "Customer Lookups.Occupation",
+          "NativeReferenceName": "Occupation"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "keyDrivers": [
+        {
+          "properties": {
+            "targetValue": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Y'''"
+                }
+              }
+            },
+            "selectedAnalysis": {
+              "expr": {
+                "Literal": {
+                  "Value": "'topProfiles'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,70 @@
+table 'Product Lookup'
+	lineageTag: 32d96bf0-dde1-41f7-8b88-10e4de8d8b13
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: 125d827a-d8a1-41b7-9071-a2bed43917b6
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c8a8b6a-0699-47f6-8dbd-86ab800b31dd
+		summarizeBy: none
+		sourceColumn: SubCategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: 61fc86b5-fecd-454f-93b5-f0abfa3ea602
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: bc55cf2a-5e87-47d8-b0cf-d12b19a95865
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column RetailPrice
+		dataType: double
+		lineageTag: 99c598f0-8e51-49ed-91d4-1813682fecb4
+		summarizeBy: sum
+		sourceColumn: RetailPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StandardCost
+		dataType: double
+		lineageTag: 8e30ad8a-bb78-461c-bf2f-6e1de08c9049
+		summarizeBy: sum
+		sourceColumn: StandardCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Product Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-PL72RR2", "ProductDB"),
+				    dbo_Product = Source{[Schema="dbo",Item="Product"]}[Data]
+				in
+				    dbo_Product
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

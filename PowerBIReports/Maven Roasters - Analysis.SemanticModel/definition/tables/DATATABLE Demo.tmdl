@@ -1,0 +1,52 @@
+table 'DATATABLE Demo'
+	lineageTag: 131f3710-88e2-41c1-8445-0b81a9ada2be
+
+	column 'Test Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f30688a-1ab1-4f9f-960f-604844b4e8ba
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Test Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Heads | Tails '
+		dataType: string
+		lineageTag: 3f8785ee-7ba7-40e3-b9be-6e144f8455b8
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Heads | Tails ]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trials
+		dataType: int64
+		formatString: 0
+		lineageTag: f64d6381-d8a3-44ee-b54a-1a12ee070807
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Trials]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DATATABLE Demo' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Test Number",INTEGER,
+				    "Heads | Tails ", STRING,
+				    "Trials", INTEGER,
+				    {
+				        {1, "Heads",1},
+				        {2, "Heads",1},
+				        {3, "Tails",1}
+				    }
+				)
+
+	annotation PBI_Id = 238dd4ec1fcc48b58d433101c3345ebf
+

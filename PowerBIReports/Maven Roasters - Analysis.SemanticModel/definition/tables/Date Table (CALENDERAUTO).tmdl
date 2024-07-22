@@ -1,0 +1,109 @@
+table 'Date Table (CALENDERAUTO)'
+	lineageTag: 1dbdf36f-fbb3-41dd-ad82-64d3b1a90b70
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4e051833-73fe-4880-bd92-9ae138742ca3
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: f45f3069-7988-49e7-9425-a4534b3aa75b
+			defaultHierarchy: LocalDateTable_02a665dd-ab2d-494f-ae54-eca514622249.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: d166c0de-3e76-4eb9-bb56-5708f699645b
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quarter Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: f55cc68f-55e3-4e2c-a156-87c4756dd92b
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Quarter Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: 222334bb-acff-45a2-87f3-e6cbff92a298
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 40fdabc7-ab31-49b9-b387-3533e628610d
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Short'
+		dataType: string
+		lineageTag: cc44c0b5-ef9a-4dd3-924b-a6e459e62add
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Month Short]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week NUmber'
+		dataType: int64
+		formatString: 0
+		lineageTag: 12fb83b3-77c9-4a22-b5bd-5db4cf0051a6
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Week NUmber]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Date Table (CALENDERAUTO)' = calculated
+		mode: import
+		source = ```
+				
+				VAR MinYear = YEAR(MIN('Calendar'[Transaction_Date]))
+				VAR MaxYear = YEAR(MAX('Calendar'[Transaction_Date]))
+				
+				RETURN
+				ADDCOLUMNS(
+				    FILTER(
+				        CALENDARAUTO(),
+				        YEAR([Date]) >= MinYear &&
+				        YEAR([Date]) <= MaxYear
+				    ),
+				    "Year", YEAR([Date]),
+				    "Quarter Number", INT(FORMAT([Date], "q")),
+				    "Quarter", "Q" & INT(FORMAT([Date],"q")),
+				    "Month Number", MONTH([Date]),
+				    "Month Short", FORMAT([Date], "mmm"),
+				    "Week NUmber", WEEKNUM([Date])
+				)
+				
+				```
+
+	annotation PBI_Id = 2a577ad0aa764e1795f52da683efb910
+

@@ -1,0 +1,37 @@
+{
+  "name": "5059dc98342fe396a21e",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1026.8765133171914,
+        "y": 543.58353510896006,
+        "z": 13000,
+        "width": 202.85714285714286,
+        "height": 40,
+        "tabOrder": 14000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Revenue:"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

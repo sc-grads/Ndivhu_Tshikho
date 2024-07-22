@@ -1,0 +1,54 @@
+table 'Geography Lookup'
+	lineageTag: 5c1387f7-0135-4c92-9261-9fd99946650d
+
+	column Country
+		dataType: string
+		lineageTag: 4a89de70-1683-47ef-b091-d309cdb06d8e
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Town
+		dataType: string
+		lineageTag: e308e6ba-6151-4da3-8dae-21405aa0d9b4
+		summarizeBy: none
+		sourceColumn: Town
+
+		annotation SummarizationSetBy = Automatic
+
+	column Wikipedia
+		dataType: string
+		lineageTag: ec588231-dfb6-4ab1-bd8f-18bad4e783e1
+		summarizeBy: none
+		sourceColumn: Wikipedia
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeoKey
+		dataType: int64
+		formatString: 0
+		lineageTag: b3577f72-9c10-4690-a6e6-f51579bcdc08
+		summarizeBy: none
+		sourceColumn: GeoKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Geography Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Dimensions\Geography.xlsx"), null, true),
+				    Geography_Sheet = Source{[Item="Geography",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Geography_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Country", type text}, {"Town", type text}, {"Wikipedia", type text}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Changed Type1", "Index", 1, 1, Int64.Type),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Index",{{"Index", "GeoKey"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

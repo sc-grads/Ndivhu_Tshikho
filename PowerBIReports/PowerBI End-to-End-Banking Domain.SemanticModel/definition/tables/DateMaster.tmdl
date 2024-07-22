@@ -1,0 +1,95 @@
+table DateMaster
+	lineageTag: c99b7870-4861-4789-8542-06845a2432a1
+
+	column Date
+		dataType: dateTime
+		lineageTag: 76a65528-8e37-43b5-9333-c1cef90c2e57
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: d79e1a3f-c2d7-44ee-831c-705855e134be
+			defaultHierarchy: LocalDateTable_8eaf002e-7578-437e-a76d-861a65e6654e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 20870309-f484-4bf0-83a7-6d9ab4fc43f0
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = MONTH(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 17ae6048-db7e-4012-9799-44cac84c517f
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name' = FORMAT(DateMaster[Date],"MMM")
+		dataType: string
+		lineageTag: 946f9a35-321a-48c5-9193-824ca57256b3
+		summarizeBy: none
+		isDataTypeInferred
+		sortByColumn: 'Month Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qtr = QUARTER(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: e8ad1cfd-bbed-4b75-92ab-5a3f07bed9ff
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weeknum = WEEKNUM(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 466b0851-b7fe-409f-a11e-597c2581a854
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekDay = WEEKDAY(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d54ca75-65c4-45dc-8dbc-175c2f198209
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekName = FORMAT(DateMaster[Date],"DDD")
+		dataType: string
+		lineageTag: f1ebe031-8b59-4e87-a4a1-d657be785bf7
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Order' = DateMaster[Date].[MonthNo]
+		dataType: int64
+		formatString: 0
+		lineageTag: d4a07325-4b3b-4fd2-b2eb-ef01fcd2d1b8
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateMaster = calculated
+		mode: import
+		source = CALENDAR(FIRSTDATE(Bank_Churn[Bank DOJ]),LASTDATE(Bank_Churn[Bank DOJ]))
+
+	annotation PBI_Id = 375f1800596d438583f67c65a093a9d6
+

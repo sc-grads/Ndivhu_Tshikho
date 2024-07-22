@@ -1,0 +1,99 @@
+table 'Target Sales - Aril 2019 (DATATABLE)'
+	lineageTag: 4f495162-c523-4aae-acdf-992f265e1356
+
+	column 'Store ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: d21b6db1-c17e-4331-9785-3bb62925cf06
+		summarizeBy: count
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Store ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		lineageTag: 8d9e7c59-0d45-4983-b507-e45d6317b4f7
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 05b88584-4f12-489b-a7e7-84e3fddb5a9c
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bean/Teas Goal'
+		dataType: int64
+		formatString: 0
+		lineageTag: 06723d0c-934f-4468-a69c-3811e34b3576
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Bean/Teas Goal]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Beverage Goal'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b5c7344-0722-4942-a391-d1b4c14f1bb2
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Beverage Goal]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Food Goal'
+		dataType: int64
+		formatString: 0
+		lineageTag: 20e6431a-828b-40c4-bf2e-7fafd24befed
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Food Goal]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Merchandise Goal'
+		dataType: int64
+		formatString: 0
+		lineageTag: bd92f932-d2b9-434b-a864-9cb1b7f7d781
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Merchandise Goal]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Target Sales - Aril 2019 (DATATABLE)' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Store ID", INTEGER,
+				    "Year", STRING,
+				    "Month", STRING,
+				    "Bean/Teas Goal", INTEGER,
+				    "Beverage Goal", INTEGER,
+				    "Food Goal", INTEGER,
+				    "Merchandise Goal", INTEGER,
+				    {
+				        {3,"2019", "April",268,15608,1964,80},
+				        {5,"2019", "April",277,14687,2020,91},
+				        {8,"2019", "April",377,15011,1973,34}
+				    }
+				)
+
+	annotation PBI_Id = bd0451cd89e94a06afc105b4d9431208
+

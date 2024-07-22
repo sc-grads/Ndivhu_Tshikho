@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Maven Roasters - Analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b0c694ee-7324-4baa-89c2-11e6578c21d8"
+  }
+}

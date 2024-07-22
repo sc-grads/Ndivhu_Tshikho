@@ -1,0 +1,30 @@
+{
+  "displayName": "Customer Insight ",
+  "name": "51ac21d794e93ffcb935",
+  "explorationState": {
+    "version": "1.15",
+    "activeSection": "cfacd8a89c464b69394b",
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "options": {
+    "targetVisualNames": [
+      "279efec2a99452be6fda"
+    ]
+  }
+}

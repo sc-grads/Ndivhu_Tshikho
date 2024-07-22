@@ -1,0 +1,294 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "p",
+              "Entity": "Product Categories Lookup",
+              "Type": 0
+            },
+            {
+              "Name": "p1",
+              "Entity": "Product Subcategories Lookup",
+              "Type": 0
+            },
+            {
+              "Name": "p2",
+              "Entity": "Product Lookup",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "Measure Table",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "p"
+                  }
+                },
+                "Property": "CategoryName"
+              },
+              "Name": "Product Categories Lookup.CategoryName",
+              "NativeReferenceName": "CategoryName"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "p1"
+                  }
+                },
+                "Property": "SubcategoryName"
+              },
+              "Name": "Product Subcategories Lookup.SubcategoryName",
+              "NativeReferenceName": "SubcategoryName"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "p2"
+                  }
+                },
+                "Property": "ProductName"
+              },
+              "Name": "Product Lookup.ProductName",
+              "NativeReferenceName": "ProductName"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Total  Orders"
+              },
+              "Name": "Measure Table.Total  Orders",
+              "NativeReferenceName": "Total  Orders"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "Total  Orders"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  2
+                ],
+                "Subtotal": 1,
+                "Aggregates": [
+                  {
+                    "Select": 3,
+                    "Aggregations": [
+                      {
+                        "Scope": {
+                          "PrimaryDepth": 2
+                        },
+                        "RespectInstanceFilters": true,
+                        "Min": {}
+                      },
+                      {
+                        "Scope": {
+                          "PrimaryDepth": 2
+                        },
+                        "RespectInstanceFilters": true,
+                        "Max": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Projections": [
+                  0,
+                  3
+                ],
+                "Subtotal": 1
+              }
+            ],
+            "Expansion": {
+              "From": [
+                {
+                  "Name": "p",
+                  "Entity": "Product Lookup",
+                  "Type": 0
+                }
+              ],
+              "Levels": [
+                {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "p"
+                          }
+                        },
+                        "Property": "ProductName"
+                      }
+                    }
+                  ],
+                  "Default": 0
+                }
+              ],
+              "Instances": {
+                "Children": [
+                  {
+                    "Values": [
+                      {
+                        "Literal": {
+                          "Value": "'Water Bottle - 30 oz.'"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "DataReduction": {
+            "DataVolume": 3,
+            "Primary": {
+              "TopNPerLevel": {
+                "Count": 8,
+                "WindowExpansion": {
+                  "From": [
+                    {
+                      "Name": "p",
+                      "Entity": "Product Lookup",
+                      "Type": 0
+                    },
+                    {
+                      "Name": "p1",
+                      "Entity": "Product Categories Lookup",
+                      "Type": 0
+                    }
+                  ],
+                  "Levels": [
+                    {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "p"
+                              }
+                            },
+                            "Property": "ProductName"
+                          }
+                        }
+                      ],
+                      "Default": 0
+                    },
+                    {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "p1"
+                              }
+                            },
+                            "Property": "CategoryName"
+                          }
+                        }
+                      ],
+                      "Default": 0
+                    }
+                  ],
+                  "WindowInstances": {
+                    "Values": [],
+                    "WindowExpansionInstanceWindowValue": [
+                      {
+                        "Values": [
+                          {
+                            "Literal": {
+                              "Value": "'Fender Set - Mountain'"
+                            }
+                          }
+                        ],
+                        "WindowStartKind": 1
+                      }
+                    ],
+                    "Children": [
+                      {
+                        "Values": [
+                          {
+                            "Literal": {
+                              "Value": "'Water Bottle - 30 oz.'"
+                            }
+                          }
+                        ],
+                        "WindowExpansionInstanceWindowValue": [],
+                        "Children": [
+                          {
+                            "Values": [
+                              {
+                                "Literal": {
+                                  "Value": "'Accessories'"
+                                }
+                              }
+                            ],
+                            "WindowExpansionInstanceWindowValue": [],
+                            "Children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "Aggregates": [
+            {
+              "Select": 3,
+              "Aggregations": [
+                {
+                  "Scope": {
+                    "PrimaryDepth": 1
+                  },
+                  "RespectInstanceFilters": true,
+                  "Min": {}
+                },
+                {
+                  "Scope": {
+                    "PrimaryDepth": 1
+                  },
+                  "RespectInstanceFilters": true,
+                  "Max": {}
+                }
+              ]
+            }
+          ],
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

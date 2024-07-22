@@ -1,0 +1,40 @@
+{
+  "name": "01a199a092397c0bc484",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 0,
+        "y": 40.975609756097583,
+        "z": 1000,
+        "width": 32.195121951219512,
+        "height": 39.512195121951216,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "actionButton",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "icon": [
+        {
+          "properties": {
+            "shapeType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'blank'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    }
+  },
+  "parentGroupName": "3c497e590bf4fb4db7ef",
+  "howCreated": "InsertVisualButton"
+}

@@ -1,0 +1,30 @@
+{
+  "displayName": "Clear Customer Filter",
+  "name": "12d5dfb45a7566609669",
+  "explorationState": {
+    "version": "1.15",
+    "activeSection": "cfacd8a89c464b69394b",
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "options": {
+    "targetVisualNames": [
+      "7ae2dc0d406097936ae9"
+    ]
+  }
+}

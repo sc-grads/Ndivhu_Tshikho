@@ -1,0 +1,98 @@
+table DateMaster
+	lineageTag: a455a471-0b8c-4f27-af19-db894358d97a
+
+	column Date
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: ed0160d2-b438-48bc-91c5-2b19b6f14fd0
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 97e5aaa5-eea6-4b9a-97a1-d66ebf1b7b70
+			defaultHierarchy: LocalDateTable_d3294cd3-3134-4966-b9c7-40840e6d4988.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Month = MONTH(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 7dda7062-8f97-4dae-9ff1-82fdb875b456
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name' = FORMAT(DateMaster[Date], "MMM")
+		dataType: string
+		lineageTag: 5caa6f7c-7f3a-4ca0-8640-02330877d877
+		summarizeBy: none
+		isDataTypeInferred
+		sortByColumn: 'Month Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qtr = QUARTER(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 7380e917-095a-46c1-8cb8-ba62bcbfd6e8
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Num' = WEEKNUM(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 420d2b7f-6ee3-4f42-a087-7310915dee19
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday = WEEKDAY(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: ac7e11e7-7191-4d1f-94e3-25c247952c01
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday Name' = FORMAT(DateMaster[Date], "DDD")
+		dataType: string
+		lineageTag: daf47888-96df-4c2d-bad0-15e82292f895
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR(DateMaster[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: a1119308-0bcf-4d93-bf91-7bb4a19369ec
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Order' = DateMaster[Date].[MonthNo]
+		dataType: int64
+		formatString: 0
+		lineageTag: afef0480-40b0-478c-ab36-046209a08649
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateMaster = calculated
+		mode: import
+		source = CALENDAR(FIRSTDATE(Sales[Date]), LASTDATE(Sales[Date]))
+
+	annotation PBI_Id = 2d94f664841f46d9b104f75d0bcefd21
+

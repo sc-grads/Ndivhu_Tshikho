@@ -1,0 +1,35 @@
+{
+  "name": "b8a5c8cfad0b79191e08",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 10.24390243902439,
+        "y": 0,
+        "z": 0,
+        "width": 951.219512195122,
+        "height": 494.63414634146341,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "qnaVisual",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "hiddenProperties": [
+        {
+          "properties": {
+            "savedUtterance": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Orders for blue  bikes by calendar lookup start of month '"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

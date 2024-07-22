@@ -1,0 +1,148 @@
+{
+  "name": "4bef068fe90adb005f3c",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 340,
+        "y": 24.285714285714288,
+        "z": 19000,
+        "width": 430,
+        "height": 50,
+        "tabOrder": 19000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "slicer",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "Customer Matrix Selection.Customer Matrix Selection",
+          "active": true
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "c",
+          "Entity": "Customer Matrix Selection",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Customer Matrix Selection"
+          },
+          "Name": "Customer Matrix Selection.Customer Matrix Selection",
+          "NativeReferenceName": "Customer Matrix Selection"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Basic'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "orientation": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "c",
+                    "Entity": "Customer Matrix Selection",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "c"
+                                }
+                              },
+                              "Property": "Customer Matrix Selection Fields"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''Measure Table''[Total Customers]'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "cachedFilterDisplayItems": [
+      {
+        "id": {
+          "scopeId": {
+            "Comparison": {
+              "ComparisonKind": 0,
+              "Left": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customer Matrix Selection"
+                    }
+                  },
+                  "Property": "Customer Matrix Selection Fields"
+                }
+              },
+              "Right": {
+                "Literal": {
+                  "Value": "'''Measure Table''[Total Customers]'"
+                }
+              }
+            }
+          }
+        },
+        "displayName": "Total Customers"
+      }
+    ]
+  }
+}

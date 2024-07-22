@@ -1,0 +1,53 @@
+table CalenderDate
+	lineageTag: 3841d10d-59c4-4550-8a73-9c156f9c289f
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 70e5c8c9-14ff-45e4-b2e5-a1b049c0b8e7
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 2c22c865-0d19-4415-9b39-e496bf817088
+			defaultHierarchy: LocalDateTable_0080647d-08c4-4814-868b-f326b68f9b84.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR(CalenderDate[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: ddf013fd-26d9-49a6-9274-aa3521ddcaec
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = MONTH(CalenderDate[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b3ac393-2b50-4be4-9b16-70f3bb767c69
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name' = FORMAT(CalenderDate[Date], "MMM")
+		dataType: string
+		lineageTag: 3c1489ae-9f7b-4a6a-939f-8bf4ec5cb1f9
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CalenderDate = calculated
+		mode: import
+		source =
+				
+				CALENDAR(FIRSTDATE(Sales[Order Date]), LASTDATE(Sales[Order Date]))
+
+	annotation PBI_Id = 0a1ea8b81a71483db2cad6cf7961f511
+

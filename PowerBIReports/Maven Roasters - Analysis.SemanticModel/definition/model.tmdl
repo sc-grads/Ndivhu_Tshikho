@@ -1,0 +1,62 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Customer Lookup","Employee Lookup","Food Inventory","Product Lookup","Sales by Store","Store Lookup","Measure Table","Calendar","4-5-4 Calendar"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.130.930.0 (24.06)
+
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
+
+ref table DateTableTemplate_49fd7cb6-7f21-4fbd-b4c5-3a88da97b4b2
+ref table 'Customer Lookup'
+ref table LocalDateTable_5dc41436-e791-4818-a791-ad85bce59e4a
+ref table LocalDateTable_ffc4c291-2504-4e61-a89f-229f1fed6221
+ref table 'Employee Lookup'
+ref table LocalDateTable_1e69a575-89cf-4f8c-93f9-f23afd43bc00
+ref table 'Food Inventory'
+ref table 'Product Lookup'
+ref table 'Sales by Store'
+ref table 'Store Lookup'
+ref table 'Measure Table'
+ref table Calendar
+ref table 'Values Example'
+ref table 'SELECTCOLUMN DEMO'
+ref table LocalDateTable_e01a2027-1516-4c74-939b-e84faa7a7c5b
+ref table 'SUMMARIZE Demo'
+ref table 'Unsold Pastries'
+ref table LocalDateTable_961e03e8-580a-4ce9-b9de-ffdb292cfdb4
+ref table 'Row Demo'
+ref table 'DATATABLE Demo'
+ref table 'GENERATESERIES Demo'
+ref table 'Table Constructor Demo'
+ref table 'Target Sales - Aril 2019 (DATATABLE)'
+ref table 'CROSSJOIN Demo'
+ref table 'UNION Demo'
+ref table 'Target Sales - March 2019 (DATATABLE)'
+ref table 'EXCEPT Demo'
+ref table LocalDateTable_57abd7d9-d0d6-4284-a500-63e8d8c9982e
+ref table LocalDateTable_92cd85b2-85b7-4d52-a222-ac72ddd510b0
+ref table 'New Employees (INTERSECT)'
+ref table LocalDateTable_007ac6d9-acb0-48d6-a885-9c77445fe913
+ref table 'Repeat Customer Sales (INTERSECT Assignment)'
+ref table 'TREATAS Demo'
+ref table 'Average Days'
+ref table 'Calender Demo'
+ref table LocalDateTable_a42a60c5-cac8-4f1a-8225-8915ae233223
+ref table 'CALENDERAUTO Demo'
+ref table LocalDateTable_814c0109-b5b8-4aad-b1cd-e4d4cebe6717
+ref table 'Date Table (CALENDERAUTO)'
+ref table LocalDateTable_02a665dd-ab2d-494f-ae54-eca514622249
+ref table '4-5-4 Calendar'
+ref table LocalDateTable_232de1d6-a03d-4b31-8ac5-4aa6534da493
+ref table LocalDateTable_8d36ea22-f451-4135-a7d6-45c69c691b66
+
+ref cultureInfo en-US
+

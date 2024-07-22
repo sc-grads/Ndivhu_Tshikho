@@ -1,0 +1,9 @@
+relationship 2c22c865-0d19-4415-9b39-e496bf817088
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CalenderDate.Date
+	toColumn: LocalDateTable_0080647d-08c4-4814-868b-f326b68f9b84.Date
+
+relationship d32a2947-6dad-0e0d-8371-1d8b23fd5021
+	fromColumn: Sales.'Order Date'
+	toColumn: CalenderDate.Date
+

@@ -1,0 +1,34 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["ActiveCustomer Lookup","CustomerInfo Lookup","CreditCard Lookup","ExitCustomer Lookup","Gender Lookup","Geography Lookup","Bank_Churn"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.130.930.0 (24.06)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'ActiveCustomer Lookup'
+ref table DateTableTemplate_3ca63d4d-2765-4705-85f2-2563d03bcb43
+ref table 'CustomerInfo Lookup'
+ref table 'CreditCard Lookup'
+ref table 'ExitCustomer Lookup'
+ref table 'Gender Lookup'
+ref table 'Geography Lookup'
+ref table DateMaster
+ref table 'Measure Table'
+ref table LocalDateTable_8eaf002e-7578-437e-a76d-861a65e6654e
+ref table Bank_Churn
+
+ref role FranceRegion
+ref role GermanyRegion
+ref role SpainRegion
+
+ref cultureInfo en-US
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "PowerBI End-to-End-Banking Domain"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c59262e8-dd83-467a-9626-853b9dee52ed"
+  }
+}

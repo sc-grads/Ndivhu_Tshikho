@@ -1,0 +1,127 @@
+[
+  {
+    "name": "Filtere74ef759e48057c41e38",
+    "expression": {
+      "Aggregation": {
+        "Expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Product Subcategories Lookup"
+              }
+            },
+            "Property": "SubcategoryName"
+          }
+        },
+        "Function": 3
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 0
+  },
+  {
+    "name": "Filter4989a9703745a8033674",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "Product Subcategories Lookup"
+          }
+        },
+        "Property": "SubcategoryName"
+      }
+    },
+    "filter": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "subquery",
+          "Expression": {
+            "Subquery": {
+              "Query": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "p",
+                    "Entity": "Product Subcategories Lookup",
+                    "Type": 0
+                  },
+                  {
+                    "Name": "m",
+                    "Entity": "Measure Table",
+                    "Type": 0
+                  }
+                ],
+                "Select": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "p"
+                        }
+                      },
+                      "Property": "SubcategoryName"
+                    },
+                    "Name": "field"
+                  }
+                ],
+                "OrderBy": [
+                  {
+                    "Direction": 2,
+                    "Expression": {
+                      "Measure": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "m"
+                          }
+                        },
+                        "Property": "Total  Orders"
+                      }
+                    }
+                  }
+                ],
+                "Top": 1
+              }
+            }
+          },
+          "Type": 2
+        },
+        {
+          "Name": "p",
+          "Entity": "Product Subcategories Lookup",
+          "Type": 0
+        }
+      ],
+      "Where": [
+        {
+          "Condition": {
+            "In": {
+              "Expressions": [
+                {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Source": "p"
+                      }
+                    },
+                    "Property": "SubcategoryName"
+                  }
+                }
+              ],
+              "Table": {
+                "SourceRef": {
+                  "Source": "subquery"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "type": "TopN",
+    "howCreated": 1,
+    "ordinal": 1
+  }
+]

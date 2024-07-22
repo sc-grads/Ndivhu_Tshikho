@@ -1,0 +1,110 @@
+relationship a676ed18-406a-4fa3-a860-453154bec74b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Customer Lookup'.customer_since
+	toColumn: LocalDateTable_5dc41436-e791-4818-a791-ad85bce59e4a.Date
+
+relationship c837bb6a-d4f8-44a2-a511-df2b5467b210
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Customer Lookup'.birthdate
+	toColumn: LocalDateTable_ffc4c291-2504-4e61-a89f-229f1fed6221.Date
+
+relationship e1ed15e4-2dbd-48a9-8366-f14c688670f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Employee Lookup'.start_date
+	toColumn: LocalDateTable_1e69a575-89cf-4f8c-93f9-f23afd43bc00.Date
+
+relationship 91e90578-d167-235b-d626-5fd94c4f8b11
+	fromColumn: 'Sales by Store'.customer_id
+	toColumn: 'Customer Lookup'.customer_id
+
+relationship 81dd48b9-4814-d8c8-988b-7f46d0702adf
+	fromColumn: 'Sales by Store'.staff_id
+	toColumn: 'Employee Lookup'.staff_id
+
+relationship a193db48-f6d1-6b57-9399-75b9fce060f2
+	fromColumn: 'Sales by Store'.product_id
+	toColumn: 'Product Lookup'.product_id
+
+relationship 17c0d745-9ebe-9dd0-462a-3c9c7486ddda
+	fromColumn: 'Food Inventory'.product_id
+	toColumn: 'Product Lookup'.product_id
+
+relationship f95c1ce5-4c78-2c73-079a-7c0fe1fe61d5
+	fromColumn: 'Sales by Store'.store_id
+	toColumn: 'Store Lookup'.store_id
+
+relationship 812cb9d6-6999-45eb-045e-efc9aed3fcdd
+	fromColumn: 'Food Inventory'.transaction_date
+	toColumn: Calendar.Transaction_Date
+
+relationship 85b3e74b-2ec3-0edc-51a6-9b82c8b637d2
+	fromColumn: 'Sales by Store'.transaction_date
+	toColumn: Calendar.Transaction_Date
+
+relationship aac56590-8f7f-4790-a4c7-d3cc662f6e8a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SELECTCOLUMN DEMO'.start_date
+	toColumn: LocalDateTable_e01a2027-1516-4c74-939b-e84faa7a7c5b.Date
+
+relationship 507c54e7-304a-4e93-8738-7c01c44300fb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Unsold Pastries'.transaction_date
+	toColumn: LocalDateTable_961e03e8-580a-4ce9-b9de-ffdb292cfdb4.Date
+
+relationship d72c8b6e-44aa-4810-b939-a413177a576f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'EXCEPT Demo'.customer_since
+	toColumn: LocalDateTable_57abd7d9-d0d6-4284-a500-63e8d8c9982e.Date
+
+relationship a2dfa120-2f3d-4863-8310-6b4665b329f7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'EXCEPT Demo'.birthdate
+	toColumn: LocalDateTable_92cd85b2-85b7-4d52-a222-ac72ddd510b0.Date
+
+relationship ce06137d-5dd0-4007-b840-5fc89f248ba7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'New Employees (INTERSECT)'.start_date
+	toColumn: LocalDateTable_007ac6d9-acb0-48d6-a885-9c77445fe913.Date
+
+relationship fb9dc294-48d7-6969-aaf3-940c13b44b56
+	isActive: false
+	fromColumn: 'Food Inventory'.baked_date
+	toColumn: Calendar.Transaction_Date
+
+relationship 3ad6414a-004e-e66a-3d9c-d65a84fae614
+	fromColumn: 'UNION Demo'.'Store ID'
+	toColumn: 'Store Lookup'.store_id
+
+relationship 0a79c165-7e37-44e9-8838-11e997a8efca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Calender Demo'.Date
+	toColumn: LocalDateTable_a42a60c5-cac8-4f1a-8225-8915ae233223.Date
+
+relationship eb564954-1a6c-42c7-914d-0cfd47538161
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'CALENDERAUTO Demo'.Date
+	toColumn: LocalDateTable_814c0109-b5b8-4aad-b1cd-e4d4cebe6717.Date
+
+relationship f45f3069-7988-49e7-9425-a4534b3aa75b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Date Table (CALENDERAUTO)'.Date
+	toColumn: LocalDateTable_02a665dd-ab2d-494f-ae54-eca514622249.Date
+
+relationship 6306dbca-f8ed-4d10-8645-501c9e1ce0ba
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '4-5-4 Calendar'.Date
+	toColumn: LocalDateTable_232de1d6-a03d-4b31-8ac5-4aa6534da493.Date
+
+relationship 78add3ca-f59b-42f1-a94a-80fae798ec25
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '4-5-4 Calendar'.FiscalMonthYear
+	toColumn: LocalDateTable_8d36ea22-f451-4135-a7d6-45c69c691b66.Date
+
+relationship 673716df-2347-5689-aed9-c4f5eb2b845b
+	fromColumn: 'Sales by Store'.transaction_date
+	toColumn: '4-5-4 Calendar'.Date
+
+relationship d59940eb-de22-2753-19c9-7229d83809b3
+	fromColumn: 'Food Inventory'.transaction_date
+	toColumn: '4-5-4 Calendar'.Date
+

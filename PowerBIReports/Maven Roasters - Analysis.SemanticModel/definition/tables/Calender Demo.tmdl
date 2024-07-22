@@ -1,0 +1,30 @@
+table 'Calender Demo'
+	lineageTag: 7a88a1c3-7992-4d7e-8b3e-ee7947fb5df9
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 692b4d05-3367-4206-a3f3-558d51d86ee5
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 0a79c165-7e37-44e9-8838-11e997a8efca
+			defaultHierarchy: LocalDateTable_a42a60c5-cac8-4f1a-8225-8915ae233223.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Calender Demo' = calculated
+		mode: import
+		source =
+				
+				CALENDAR(
+				    DATE( YEAR(MIN('Calendar'[Transaction_Date])),1,1),
+				    DATE(YEAR(MAX('Calendar'[Transaction_Date])),12,31)
+				)
+
+	annotation PBI_Id = a0f08815660b4a9781d414c9902428bb
+

@@ -1,0 +1,52 @@
+{
+  "projectionOrdering": {
+    "Values": [
+      0
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Total  Orders",
+        "Name": "Measure Table.Total  Orders",
+        "Type": 3,
+        "Format": "#,0"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Total  Orders",
+      "format": "#,0",
+      "queryName": "Measure Table.Total  Orders",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure Table"
+            }
+          },
+          "Property": "Total  Orders"
+        }
+      }
+    }
+  ]
+}

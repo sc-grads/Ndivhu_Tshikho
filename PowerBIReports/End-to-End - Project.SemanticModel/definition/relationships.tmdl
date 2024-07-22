@@ -1,0 +1,29 @@
+relationship AutoDetected_88c1c5f2-0cdb-4a91-b9d2-c28d99b048fe
+	fromColumn: Sales.GeoKey
+	toColumn: 'Geography Lookup'.GeoKey
+
+relationship 75811beb-3cd9-fdb6-6e7b-f2f46d3f04d9
+	fromColumn: Sales.SalesRepID
+	toColumn: 'Sales rep Lookup'.SalesRepID
+
+relationship f038fe08-1597-13ee-4a20-ef8b7cc22f9c
+	fromColumn: Sales.ProductID
+	toColumn: 'Product Lookup'.ProductID
+
+relationship f9b44ed9-434f-0362-f468-aca3a502492c
+	fromColumn: 'Product Lookup'.'Sub Category Key'
+	toColumn: 'SubCategories Lookup'.SubCategoryKey
+
+relationship 3ccadbfd-7782-eef8-0c2e-bcb39f70b19a
+	fromColumn: 'SubCategories Lookup'.CategoryKey
+	toColumn: 'Categories Lookup'.CategoryKey
+
+relationship 97e5aaa5-eea6-4b9a-97a1-d66ebf1b7b70
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DateMaster.Date
+	toColumn: LocalDateTable_d3294cd3-3134-4966-b9c7-40840e6d4988.Date
+
+relationship 26d1783f-36cf-2efe-33e5-f0028b4752ab
+	fromColumn: Sales.Date
+	toColumn: DateMaster.Date
+

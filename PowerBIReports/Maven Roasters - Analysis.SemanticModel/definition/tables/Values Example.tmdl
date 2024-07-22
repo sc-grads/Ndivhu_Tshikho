@@ -1,0 +1,23 @@
+table 'Values Example'
+	lineageTag: 12899ae7-348e-437d-b26b-2fedb24f6f09
+
+	column product_category
+		dataType: string
+		lineageTag: 1cf7c893-bad5-4225-96b8-f5bdd0a15225
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Product Lookup[product_category]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Values Example' = calculated
+		mode: import
+		source =
+				
+				VALUES(
+				    'Product Lookup'[product_category]
+				)
+
+	annotation PBI_Id = 908b77c718af4c4ea66efe20025dde3d
+

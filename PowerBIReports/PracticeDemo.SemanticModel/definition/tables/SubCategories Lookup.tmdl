@@ -1,0 +1,45 @@
+table 'SubCategories Lookup'
+	lineageTag: d1c71ff4-3f83-48a1-a5c4-261203be4a2a
+
+	column SubCategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f614006-309c-4610-ad82-95c2f7b4b8e5
+		summarizeBy: none
+		sourceColumn: SubCategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryKey
+		dataType: string
+		lineageTag: 413e54b2-069f-4d6a-8bec-bac4f17e176d
+		summarizeBy: none
+		sourceColumn: CategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SubCategory Name'
+		dataType: string
+		lineageTag: 59e013e0-e8ad-48cb-92ea-dd441c290a63
+		summarizeBy: none
+		sourceColumn: SubCategory Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SubCategories Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Dimensions\SubCategories.xlsx"), null, true),
+				    #"Sub categories_Sheet" = Source{[Item="Sub categories",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Sub categories_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"SubCategoryKey", Int64.Type}, {"CategoryKey", type text}, {"SubCategory Name", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","ID - ","",Replacer.ReplaceText,{"CategoryKey"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","ID -","",Replacer.ReplaceText,{"CategoryKey"})
+				in
+				    #"Replaced Value1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

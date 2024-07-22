@@ -1,0 +1,418 @@
+{
+  "objects": {
+    "tree": [
+      {
+        "properties": {
+          "effectiveBarsPerLevel": {
+            "expr": {
+              "Literal": {
+                "Value": "8L"
+              }
+            }
+          },
+          "accentColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 1,
+                    "Percent": 0.2
+                  }
+                }
+              }
+            }
+          },
+          "connectorDefaultColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 1,
+                    "Percent": 0.2
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "analysis": [
+      {
+        "properties": {
+          "aiMode": {
+            "expr": {
+              "Literal": {
+                "Value": "'relative'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "dataBars": [
+      {
+        "properties": {
+          "positiveBarColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 1,
+                    "Percent": 0.2
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "insights": [
+      {
+        "properties": {
+          "isAINode": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        },
+        "selector": {
+          "data": [
+            {
+              "scopeId": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product Lookup"
+                        }
+                      },
+                      "Property": "ProductName"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "'Water Bottle - 30 oz.'"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "properties": {
+          "isAINode": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        },
+        "selector": {
+          "data": [
+            {
+              "scopeId": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product Lookup"
+                        }
+                      },
+                      "Property": "ProductName"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "'Water Bottle - 30 oz.'"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "scopeId": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product Categories Lookup"
+                        }
+                      },
+                      "Property": "CategoryName"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "'Accessories'"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "ExplainBy": [
+      2,
+      0,
+      1
+    ],
+    "Analyze": [
+      3
+    ]
+  },
+  "projectionActiveItems": {
+    "ExplainBy": [
+      {
+        "queryRef": "Product Lookup.ProductName",
+        "suppressConcat": false
+      },
+      {
+        "queryRef": "Product Categories Lookup.CategoryName",
+        "suppressConcat": false
+      }
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "CategoryName",
+        "Name": "Product Categories Lookup.CategoryName",
+        "Type": 2048
+      },
+      {
+        "Restatement": "SubcategoryName",
+        "Name": "Product Subcategories Lookup.SubcategoryName",
+        "Type": 2048
+      },
+      {
+        "Restatement": "ProductName",
+        "Name": "Product Lookup.ProductName",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Total  Orders",
+        "Name": "Measure Table.Total  Orders",
+        "Type": 3,
+        "Format": "#,0"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "ExplainBy",
+          "Projection": 2,
+          "isActive": true
+        },
+        {
+          "Name": "ExplainBy",
+          "Projection": 0,
+          "isActive": true
+        },
+        {
+          "Name": "ExplainBy",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Analyze",
+          "Projection": 3,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "CategoryName",
+      "queryName": "Product Categories Lookup.CategoryName",
+      "roles": {
+        "ExplainBy": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Product Categories Lookup"
+            }
+          },
+          "Property": "CategoryName"
+        }
+      }
+    },
+    {
+      "displayName": "SubcategoryName",
+      "queryName": "Product Subcategories Lookup.SubcategoryName",
+      "roles": {
+        "ExplainBy": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Product Subcategories Lookup"
+            }
+          },
+          "Property": "SubcategoryName"
+        }
+      }
+    },
+    {
+      "displayName": "ProductName",
+      "queryName": "Product Lookup.ProductName",
+      "roles": {
+        "ExplainBy": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Product Lookup"
+            }
+          },
+          "Property": "ProductName"
+        }
+      }
+    },
+    {
+      "displayName": "Total  Orders",
+      "format": "#,0",
+      "queryName": "Measure Table.Total  Orders",
+      "roles": {
+        "Analyze": true
+      },
+      "sort": 2,
+      "sortOrder": 0,
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure Table"
+            }
+          },
+          "Property": "Total  Orders"
+        }
+      }
+    }
+  ],
+  "expansionStates": [
+    {
+      "roles": [
+        "ExplainBy"
+      ],
+      "levels": [
+        {
+          "queryRefs": [
+            "Product Lookup.ProductName"
+          ],
+          "isCollapsed": true,
+          "identityKeys": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Product Lookup"
+                  }
+                },
+                "Property": "ProductName"
+              }
+            }
+          ],
+          "isPinned": true,
+          "AIInformation": {
+            "method": "MaxSplit"
+          }
+        },
+        {
+          "queryRefs": [
+            "Product Categories Lookup.CategoryName"
+          ],
+          "isCollapsed": true,
+          "identityKeys": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Product Categories Lookup"
+                  }
+                },
+                "Property": "CategoryName"
+              }
+            }
+          ],
+          "isPinned": true,
+          "AIInformation": {
+            "method": "MaxSplit"
+          }
+        },
+        {
+          "queryRefs": [
+            "Product Subcategories Lookup.SubcategoryName"
+          ],
+          "isCollapsed": true,
+          "identityKeys": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Product Subcategories Lookup"
+                  }
+                },
+                "Property": "SubcategoryName"
+              }
+            }
+          ]
+        }
+      ],
+      "root": {
+        "identityValues": null,
+        "children": [
+          {
+            "identityValues": [
+              {
+                "Literal": {
+                  "Value": "'Water Bottle - 30 oz.'"
+                }
+              }
+            ],
+            "isToggled": true
+          }
+        ]
+      }
+    }
+  ]
+}

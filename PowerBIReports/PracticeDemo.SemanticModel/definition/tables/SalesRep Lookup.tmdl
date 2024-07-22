@@ -1,0 +1,37 @@
+table 'SalesRep Lookup'
+	lineageTag: 415b8ef9-622b-4989-9ff0-676152d21282
+
+	column SalesRepID
+		dataType: int64
+		formatString: 0
+		lineageTag: 4f2c113a-b705-46dc-9dcd-ea06b58f20c4
+		summarizeBy: none
+		sourceColumn: SalesRepID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Rep Name'
+		dataType: string
+		lineageTag: ef1cbc10-41ba-4768-ab19-5aecc4d4c4fc
+		summarizeBy: none
+		sourceColumn: Sales Rep Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SalesRep Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Dimensions\SalesRep.xlsx"), null, true),
+				    #"Sales rep_Sheet" = Source{[Item="Sales rep",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(#"Sales rep_Sheet",{{"Column1", type text}, {"Column2", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","ID - ","",Replacer.ReplaceText,{"Column1"}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Replaced Value", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"SalesRepID", Int64.Type}, {"Sales Rep Name", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,33 @@
+table 'CreditCard Lookup'
+	lineageTag: 00966b2c-12f5-4d73-a025-15c06b5dc931
+
+	column CreditID
+		dataType: int64
+		formatString: 0
+		lineageTag: c3ea59b7-4141-4630-8997-351c7a92843d
+		summarizeBy: none
+		sourceColumn: CreditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 4b6f6ca5-d7ab-4527-b3e5-bffec710eaa6
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'CreditCard Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Data Sets for end to end Powerbi Project\CreditCard.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"CreditID", Int64.Type}, {"Category", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

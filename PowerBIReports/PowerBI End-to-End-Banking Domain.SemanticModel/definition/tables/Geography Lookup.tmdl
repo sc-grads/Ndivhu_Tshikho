@@ -1,0 +1,33 @@
+table 'Geography Lookup'
+	lineageTag: a92e3378-2f7f-473b-bf81-a37bf761e341
+
+	column GeographyID
+		dataType: int64
+		formatString: 0
+		lineageTag: 21b601ae-1962-43df-b7fa-a5ac103a3952
+		summarizeBy: none
+		sourceColumn: GeographyID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyLocation
+		dataType: string
+		lineageTag: 5ad8be32-fdc1-46e1-a05e-6873a90fa997
+		summarizeBy: none
+		sourceColumn: GeographyLocation
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Geography Lookup' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Data Sets for end to end Powerbi Project\Geography.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"GeographyID", Int64.Type}, {"GeographyLocation", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
