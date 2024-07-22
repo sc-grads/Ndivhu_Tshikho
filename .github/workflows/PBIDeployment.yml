@@ -21,6 +21,11 @@ jobs:
       - name: Change directory to PowerBIReports
         run: cd PowerBIReports
 
+      # Debug step to list the contents of /app/pbi-tools
+      - name: List contents of /app/pbi-tools
+        run: ls -la /app/pbi-tools
+
+      # pbi-tools deploy step
       - name: pbi-tools deploy
         working-directory: PowerBIReports
         run: /app/pbi-tools/pbi-tools-core deploy . Files PROD
