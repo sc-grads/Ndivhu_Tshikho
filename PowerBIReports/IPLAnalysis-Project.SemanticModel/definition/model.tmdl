@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["ipl_ball_by_ball_2008_2022","ipl_matches_2008_2022","Measure Table","Measure Table (2)"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.131.1126.0 (24.07)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table ipl_ball_by_ball_2008_2022
+ref table DateTableTemplate_8a12353c-6d69-48ec-8f6c-39ab8d672792
+ref table ipl_matches_2008_2022
+ref table 'Calender Table'
+ref table LocalDateTable_4218d32e-8f8b-4015-a3d1-3cc48663aa78
+ref table 'Measure Table (2)'
+
+ref cultureInfo en-US
+

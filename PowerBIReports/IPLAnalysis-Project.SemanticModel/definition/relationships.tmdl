@@ -1,0 +1,13 @@
+relationship 5f2620ec-091d-f1c8-e0d1-d15a9f54a797
+	fromColumn: ipl_ball_by_ball_2008_2022.id
+	toColumn: ipl_matches_2008_2022.id
+
+relationship fe5f3411-a4bf-4293-b39c-3d086ccbd5e8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Calender Table'.Date
+	toColumn: LocalDateTable_4218d32e-8f8b-4015-a3d1-3cc48663aa78.Date
+
+relationship f0a4bc1a-0c7e-fed6-4f72-e71637ec399e
+	fromColumn: ipl_matches_2008_2022.match_date
+	toColumn: 'Calender Table'.Date
+

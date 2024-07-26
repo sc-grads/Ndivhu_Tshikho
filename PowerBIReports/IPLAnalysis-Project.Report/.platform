@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "IPLAnalysis-Project"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "463dcdef-c8cb-429c-a6a9-ac9045ef9e90"
+  }
+}

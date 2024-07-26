@@ -1,0 +1,162 @@
+table ipl_ball_by_ball_2008_2022
+	lineageTag: 17a77902-3daa-4fb6-a0d6-9bef6afb6dd5
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 442a8d0d-9ab1-42a6-9a4e-7d01e07b252f
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column innings
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c012cdb-40c3-4ad8-8bc0-feabc36637ea
+		summarizeBy: sum
+		sourceColumn: innings
+
+		annotation SummarizationSetBy = Automatic
+
+	column overs
+		dataType: int64
+		formatString: 0
+		lineageTag: 2a371f2a-5439-4127-9df3-5c04fa1a4dd8
+		summarizeBy: sum
+		sourceColumn: overs
+
+		annotation SummarizationSetBy = Automatic
+
+	column ball_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b6adca2-bb8e-4217-94d3-a5966afbb9e5
+		summarizeBy: sum
+		sourceColumn: ball_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column batter
+		dataType: string
+		lineageTag: 074bfced-0aef-4e8c-9822-95086912ead1
+		summarizeBy: none
+		sourceColumn: batter
+
+		annotation SummarizationSetBy = Automatic
+
+	column bowler
+		dataType: string
+		lineageTag: 1982c109-91b8-4c23-b0fc-6a3fe444d089
+		summarizeBy: none
+		sourceColumn: bowler
+
+		annotation SummarizationSetBy = Automatic
+
+	column non_striker
+		dataType: string
+		lineageTag: bc06929a-15da-45c9-a131-ab2b31783ee8
+		summarizeBy: none
+		sourceColumn: non_striker
+
+		annotation SummarizationSetBy = Automatic
+
+	column extra_type
+		dataType: string
+		lineageTag: a1958ad0-4f76-4939-8a77-12bab9dd2f7d
+		summarizeBy: none
+		sourceColumn: extra_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column batsman_run
+		dataType: int64
+		formatString: 0
+		lineageTag: 740f70a3-cec3-4f08-8bf5-fedf9a616122
+		summarizeBy: sum
+		sourceColumn: batsman_run
+
+		annotation SummarizationSetBy = Automatic
+
+	column extras_run
+		dataType: int64
+		formatString: 0
+		lineageTag: 520b7bfa-da07-4b51-949f-ede7099dbd6f
+		summarizeBy: sum
+		sourceColumn: extras_run
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_run
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c3962eb-6ee5-4e52-bfc3-7956684b7944
+		summarizeBy: sum
+		sourceColumn: total_run
+
+		annotation SummarizationSetBy = Automatic
+
+	column non_boundary
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a07daf27-2e86-43a0-9396-2ed81f3c7243
+		summarizeBy: none
+		sourceColumn: non_boundary
+
+		annotation SummarizationSetBy = Automatic
+
+	column iswicket_delivery
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d96d339-3857-4792-86a1-22c019de9168
+		summarizeBy: sum
+		sourceColumn: iswicket_delivery
+
+		annotation SummarizationSetBy = Automatic
+
+	column player_out
+		dataType: string
+		lineageTag: e764010a-bc23-4240-813a-61b05a318209
+		summarizeBy: none
+		sourceColumn: player_out
+
+		annotation SummarizationSetBy = Automatic
+
+	column dismissal_kind
+		dataType: string
+		lineageTag: 448ec89b-32c2-4c38-a93e-32f6cf120871
+		summarizeBy: none
+		sourceColumn: dismissal_kind
+
+		annotation SummarizationSetBy = Automatic
+
+	column fielders_involved
+		dataType: string
+		lineageTag: 043485d2-1186-4888-884f-8adb0d4c11e9
+		summarizeBy: none
+		sourceColumn: fielders_involved
+
+		annotation SummarizationSetBy = Automatic
+
+	column batting_team
+		dataType: string
+		lineageTag: 95987d42-4075-46a1-93d7-af9a9f7cf432
+		summarizeBy: none
+		sourceColumn: batting_team
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ipl_ball_by_ball_2008_2022 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-PL72RR2", "IPLAnalysisDB"),
+				    dbo_ipl_ball_by_ball_2008_2022 = Source{[Schema="dbo",Item="ipl_ball_by_ball_2008_2022"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_ipl_ball_by_ball_2008_2022,{{"iswicket_delivery", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
