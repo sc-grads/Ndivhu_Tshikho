@@ -1,0 +1,52 @@
+table 'Calender Table'
+	lineageTag: 214977bd-d6fd-4b45-93d3-d395df0292ba
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ac2b5907-3526-428c-a90e-b94b66cd1be7
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: fe5f3411-a4bf-4293-b39c-3d086ccbd5e8
+			defaultHierarchy: LocalDateTable_4218d32e-8f8b-4015-a3d1-3cc48663aa78.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR('Calender Table'[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: e245aae4-0976-4af8-a66f-70fbd74a599d
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = MONTH('Calender Table'[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: c0421e5a-8040-4ce7-8826-f341df3e94f4
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qrt = QUARTER('Calender Table'[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: a45e197c-2bed-4195-a927-1dc533f1c4f6
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Calender Table' = calculated
+		mode: import
+		source = CALENDAR(MIN(ipl_matches_2008_2022[match_date]),MAX(ipl_matches_2008_2022[match_date]))
+
+	annotation PBI_Id = db7ee293adde4f0b94b453e7bed7f886
+

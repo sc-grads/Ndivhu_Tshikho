@@ -1,0 +1,167 @@
+table ipl_matches_2008_2022
+	lineageTag: f7cb4163-dca6-413f-aba9-bb573271d98a
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 534b8dfd-94f3-4be3-bdc2-15837093b1ec
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 34769e14-0568-4256-b691-8d0b9ddfc810
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column match_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f2d14ea8-3fe9-4b4c-8cb5-90086c516d9b
+		summarizeBy: none
+		sourceColumn: match_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column season
+		dataType: string
+		lineageTag: a6038a5b-b049-43af-8619-78032a6aa527
+		summarizeBy: none
+		sourceColumn: season
+
+		annotation SummarizationSetBy = Automatic
+
+	column match_number
+		dataType: string
+		lineageTag: ee342e63-52d4-43da-8c29-7b063f09f3a7
+		summarizeBy: none
+		sourceColumn: match_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column team1
+		dataType: string
+		lineageTag: 2e594e27-d050-4817-98eb-a414ae1f3116
+		summarizeBy: none
+		sourceColumn: team1
+
+		annotation SummarizationSetBy = Automatic
+
+	column team2
+		dataType: string
+		lineageTag: 5e30de06-ebcf-4b66-98a9-6231b3b8ee33
+		summarizeBy: none
+		sourceColumn: team2
+
+		annotation SummarizationSetBy = Automatic
+
+	column venue
+		dataType: string
+		lineageTag: 8199e0c0-5180-433d-ad3b-e22a5bd46a4c
+		summarizeBy: none
+		sourceColumn: venue
+
+		annotation SummarizationSetBy = Automatic
+
+	column toss_winner
+		dataType: string
+		lineageTag: a8fa7743-cc68-40d7-bf97-ecc3b356c705
+		summarizeBy: none
+		sourceColumn: toss_winner
+
+		annotation SummarizationSetBy = Automatic
+
+	column toss_decision
+		dataType: string
+		lineageTag: 84a3f378-8e29-4506-ba17-354550fdb7a9
+		summarizeBy: none
+		sourceColumn: toss_decision
+
+		annotation SummarizationSetBy = Automatic
+
+	column superover
+		dataType: string
+		lineageTag: 254901c6-acec-4b15-8f1f-abf70479d647
+		summarizeBy: none
+		sourceColumn: superover
+
+		annotation SummarizationSetBy = Automatic
+
+	column winning_team
+		dataType: string
+		lineageTag: 76296204-e165-4641-a616-1ff97540bc1c
+		summarizeBy: none
+		sourceColumn: winning_team
+
+		annotation SummarizationSetBy = Automatic
+
+	column won_by
+		dataType: string
+		lineageTag: cef2b2de-a9e3-4088-8aa3-48af7092f565
+		summarizeBy: none
+		sourceColumn: won_by
+
+		annotation SummarizationSetBy = Automatic
+
+	column margin
+		dataType: string
+		lineageTag: 909f24eb-2e32-4ba5-a36d-316a76ce1b26
+		summarizeBy: none
+		sourceColumn: margin
+
+		annotation SummarizationSetBy = Automatic
+
+	column method
+		dataType: string
+		lineageTag: a828eb5a-4e74-40fc-a9dd-c6612e00a6df
+		summarizeBy: none
+		sourceColumn: method
+
+		annotation SummarizationSetBy = Automatic
+
+	column player_of_match
+		dataType: string
+		lineageTag: fa82b174-f3ad-4135-9016-3bb3fc044d50
+		summarizeBy: none
+		sourceColumn: player_of_match
+
+		annotation SummarizationSetBy = Automatic
+
+	column umpire1
+		dataType: string
+		lineageTag: 6ac00ee8-37e1-47d9-906e-04e5dad1b0f9
+		summarizeBy: none
+		sourceColumn: umpire1
+
+		annotation SummarizationSetBy = Automatic
+
+	column umpire2
+		dataType: string
+		lineageTag: 7bb70275-451e-491a-8aec-b11ceb292fb5
+		summarizeBy: none
+		sourceColumn: umpire2
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ipl_matches_2008_2022 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-PL72RR2", "IPLAnalysisDB"),
+				    dbo_ipl_matches_2008_2022 = Source{[Schema="dbo",Item="ipl_matches_2008_2022"]}[Data],
+				    #"Replaced value by Rising Pune Supergiant" = Table.ReplaceValue(dbo_ipl_matches_2008_2022,"Rising Pune Supergiants","Rising Pune Supergiant",Replacer.ReplaceText,{"team1"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Replaced value by Rising Pune Supergiant","Rising Pune Supergiants","Rising Pune Supergiant",Replacer.ReplaceText,{"winning_team"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Rising Pune Supergiants","Rising Pune Supergiant",Replacer.ReplaceText,{"team2"})
+				in
+				    #"Replaced Value1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

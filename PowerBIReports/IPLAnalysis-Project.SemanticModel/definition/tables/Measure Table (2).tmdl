@@ -1,0 +1,116 @@
+table 'Measure Table (2)'
+	lineageTag: 343418a6-f621-4450-9cb5-e9ce51582feb
+
+	measure 'Title Winner' = ```
+			
+			
+			VAR max_date = 
+			CALCULATE(
+			    MAX('Calender Table'[Date]), ALLSELECTED(ipl_matches_2008_2022),
+			    VALUES(ipl_matches_2008_2022)
+			)
+			
+			VAR title_winnner = 
+			CALCULATE(
+			    SELECTEDVALUE(ipl_matches_2008_2022[winning_team]),
+			    'Calender Table'[Date] = max_date
+			)
+			
+			
+			RETURN
+			title_winnner
+			```
+		lineageTag: 36d7f86b-d2a2-4abd-a602-b5faaf724683
+
+	measure 'Batter Runs' =
+			
+			CONCATENATE(sum(ipl_ball_by_ball_2008_2022[batsman_run]), " Runs")
+		lineageTag: 4762cff6-1a0c-4c62-aaec-ad719891cb43
+
+	measure 'Strike Rate for Batsman' = ```
+			
+			(SUM(ipl_ball_by_ball_2008_2022[batsman_run])/COUNT(ipl_ball_by_ball_2008_2022[ball_number]))*100
+			
+			```
+		lineageTag: 6a4f695d-ada9-4042-83be-3d7df85bf36d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Economy = ```
+			
+			DIVIDE(
+			    SUMX(
+			        FILTER(ipl_ball_by_ball_2008_2022, ipl_ball_by_ball_2008_2022[extra_type] <> "legbyes" && ipl_ball_by_ball_2008_2022[extra_type] <> "byes"), ipl_ball_by_ball_2008_2022[total_run]),(
+			        COUNT(ipl_ball_by_ball_2008_2022[overs]
+			        )
+			    )/6
+			)
+			
+			```
+		lineageTag: 3f16377c-8b8f-4af1-ab22-3848f6c922ed
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Wickets = ```
+			
+			COUNTAX(
+			    FILTER(
+			        ipl_ball_by_ball_2008_2022,
+			        ipl_ball_by_ball_2008_2022[iswicket_delivery] = TRUE()
+			    ),
+			    ipl_ball_by_ball_2008_2022[iswicket_delivery]
+			)
+			
+			```
+		formatString: 0
+		lineageTag: d7e65e8b-21be-4bea-bab5-0e8d83267fa2
+
+	measure 'Bowler Wickets' = CONCATENATE(SUM(ipl_ball_by_ball_2008_2022[iswicket_delivery]), " Wickets")
+		lineageTag: 103d33df-ae35-437d-b584-5c1079a46bc5
+
+	measure 'Average by Bowler' = ```
+			
+			DIVIDE(
+			    SUMX(
+			        FILTER(
+			            ipl_ball_by_ball_2008_2022, ipl_ball_by_ball_2008_2022[extra_type] <> "legbyes" && ipl_ball_by_ball_2008_2022[extra_type] <> "byes"), ipl_ball_by_ball_2008_2022[total_run]),
+			        SUM(
+			            ipl_ball_by_ball_2008_2022[iswicket_delivery]
+			        )
+			    )
+			
+			
+			
+			```
+		lineageTag: 3b428d94-12b9-49f0-819e-87b1929fb098
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Bowling SR' = COUNT(ipl_ball_by_ball_2008_2022[bowler])/SUM(ipl_ball_by_ball_2008_2022[iswicket_delivery])
+		lineageTag: 97b130e7-8e0b-490b-825b-692c94dc4afa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Matches Won on toss decision' = CALCULATE(COUNTROWS(ipl_matches_2008_2022), ipl_matches_2008_2022[toss_winner] = ipl_matches_2008_2022[winning_team])
+		formatString: 0
+		lineageTag: 9d6cf8fc-b02c-4ddb-b07a-677895b20d30
+
+	column Column1
+		dataType: string
+		lineageTag: a6743234-69c8-4be9-9b1f-387591c0698d
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Measure Table (2)' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
