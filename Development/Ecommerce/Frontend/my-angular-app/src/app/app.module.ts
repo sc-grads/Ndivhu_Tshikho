@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';  // Ensure this is imported
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
+import { LoginComponent } from './login/login.component';  // Import your component
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent
+    LoginComponent,  // Declare your component here
+    // Other components...
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,  // Add FormsModule here
+    // Other modules...
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
