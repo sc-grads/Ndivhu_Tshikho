@@ -1,26 +1,16 @@
+from flask import Flask
 from flask_cors import CORS
-from models import create_app
+from config import Config
+from routes import auth
 
-app = create_app()
-CORS(app)
+app = Flask(__name__)
+app.config.from_object(Config)
 
-if __name__ == '__main__':
-    app.run(debug=True)
-from flask_cors import CORS
-from models import create_app
-import logging  # Import logging module
+# Enable CORS for the whole application
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-app = create_app()
-CORS(app)
-
-# Set up logging
-logging.basicConfig(level=logging.DEBUG)
-
-@app.before_first_request
-def setup_logging():
-    if not app.debug:
-        app.logger.addHandler(logging.StreamHandler())
-        app.logger.setLevel(logging.INFO)
+# Register your routes
+app.register_blueprint(auth.bp)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     if (this.loginForm.valid) {
       // Handle login
+      
     }
   }
 }
