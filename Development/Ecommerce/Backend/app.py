@@ -1,18 +1,24 @@
 from flask import Flask
-from models import db
-from controllers import main
 from config import Config
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 
-app = Flask(__name__)
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+jwt = JWTManager()
 
-# Load configuration from config.py
-app.config.from_object(Config)
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
+    
+    db.init_app(app)
+    bcrypt.init_app(app)
+    jwt.init_app(app)
+    CORS(app)
+    
+    from routes.auth import auth_bp
+    app.register_blueprint(auth_bp, url_prefix='/api/auth')
 
-# Initialize the database with the Flask app
-db.init_app(app)
-
-# Register the blueprint (for routes in controllers.py)
-app.register_blueprint(main)
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    return app
