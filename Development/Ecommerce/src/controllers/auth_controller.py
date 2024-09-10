@@ -1,19 +1,16 @@
-from flask import request, jsonify
-from app import db
+from sqlalchemy.orm import Session
 from models.user import User
-import bcrypt
+from passlib.context import CryptContext
 
-def register_user():
-    data = request.get_json()
-    hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
-    new_user = User(username=data['username'], email=data['email'], password=hashed_password)
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify({"message": "User registered successfully"}), 201
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-def login_user():
-    data = request.get_json()
-    user = User.query.filter_by(email=data['email']).first()
-    if user and bcrypt.checkpw(data['password'].encode('utf-8'), user.password):
-        return jsonify({"message": "Login successful"}), 200
-    return jsonify({"message": "Invalid credentials"}), 401
+def get_password_hash(password):
+    return pwd_context.hash(password)
+
+def create_user(db: Session, username: str, email: str, password: str):
+    hashed_password = get_password_hash(password)
+    user = User(username=username, email=email, password=hashed_password)
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    return user

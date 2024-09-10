@@ -1,18 +1,28 @@
-from flask import Blueprint, redirect, render_template, request, url_for
-from controllers.auth_controller import register_user, login_user
+from fastapi import APIRouter, Depends, Request
+from sqlalchemy.orm import Session
+from fastapi.templating import Jinja2Templates
+from controllers.auth_controller import create_user
+from config import SessionLocal
 
-auth_bp = Blueprint('auth_bp', __name__)
+router = APIRouter()
+templates = Jinja2Templates(directory="templates")
 
-@auth_bp.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        # Handle registration logic
-        return redirect(url_for('auth_bp.login'))
-    return render_template('register.html')
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
-@auth_bp.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        # Handle login logic
-        return redirect(url_for('auth_bp.dashboard'))  # Or wherever you want to redirect after login
-    return render_template('login.html')
+@router.get("/register")
+def register_view(request: Request):
+    return templates.TemplateResponse("register.html", {"request": request})
+
+@router.post("/register")
+def register(request: Request, username: str, email: str, password: str, db: Session = Depends(get_db)):
+    create_user(db, username, email, password)
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@router.get("/login")
+def login_view(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})

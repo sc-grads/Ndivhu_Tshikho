@@ -1,0 +1,7 @@
+fastapi
+jinja2
+sqlalchemy
+databases
+uvicorn
+bcrypt
+python-jose

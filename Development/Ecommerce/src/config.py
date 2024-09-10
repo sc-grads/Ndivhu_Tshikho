@@ -1,5 +1,7 @@
-import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-class Config:
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///ecommerce.db'  # SQLite database file
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+DATABASE_URL = "sqlite:///./ECommerceDB.db"
+
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
