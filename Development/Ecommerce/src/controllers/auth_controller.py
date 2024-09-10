@@ -1,35 +1,19 @@
-from flask import request, redirect, url_for, render_template, flash
-from ..models.user import User, db
+from flask import request, jsonify
+from app import db
+from models.user import User
+import bcrypt
 
 def register_user():
-    if request.method == 'POST':
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
-
-        user = User(username=username, email=email)
-        user.set_password(password)
-
-        db.session.add(user)
-        db.session.commit()
-
-        flash('Registration successful. Please login.')
-        return redirect(url_for('auth.login'))
-    
-    return render_template('register.html')
+    data = request.get_json()
+    hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
+    new_user = User(username=data['username'], email=data['email'], password=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({"message": "User registered successfully"}), 201
 
 def login_user():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-
-        user = User.query.filter_by(email=email).first()
-
-        if user and user.check_password(password):
-            flash('Login successful.')
-            return redirect(url_for('home'))
-        else:
-            flash('Invalid credentials.')
-            return redirect(url_for('auth.login'))
-    
-    return render_template('login.html')
+    data = request.get_json()
+    user = User.query.filter_by(email=data['email']).first()
+    if user and bcrypt.checkpw(data['password'].encode('utf-8'), user.password):
+        return jsonify({"message": "Login successful"}), 200
+    return jsonify({"message": "Invalid credentials"}), 401
