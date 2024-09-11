@@ -4139,7 +4139,7 @@ cultureInfo en-US
 			    "product_lookup": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup"
+			          "ConceptualEntity": "Profile Lookup"
 			        }
 			      },
 			      "State": "Generated",
@@ -4200,7 +4200,7 @@ cultureInfo en-US
 			    "product_lookup.product_id": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "product_id"
 			        }
 			      },
@@ -4293,7 +4293,7 @@ cultureInfo en-US
 			    "product_lookup.product_group": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "product_group"
 			        }
 			      },
@@ -4406,7 +4406,7 @@ cultureInfo en-US
 			    "product_lookup.product_category": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "product_category"
 			        }
 			      },
@@ -4535,7 +4535,7 @@ cultureInfo en-US
 			    "product_lookup.product_type": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "product_type"
 			        }
 			      },
@@ -4664,7 +4664,7 @@ cultureInfo en-US
 			    "product_lookup.product": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "product"
 			        }
 			      },
@@ -4710,7 +4710,7 @@ cultureInfo en-US
 			    "product_lookup.product_description": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "product_description"
 			        }
 			      },
@@ -4839,7 +4839,7 @@ cultureInfo en-US
 			    "product_lookup.unit_of_measure": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "unit_of_measure"
 			        }
 			      },
@@ -4968,7 +4968,7 @@ cultureInfo en-US
 			    "product_lookup.current_cost": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "current_cost"
 			        }
 			      },
@@ -5091,7 +5091,7 @@ cultureInfo en-US
 			    "product_lookup.current_wholesale_price": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "current_wholesale_price"
 			        }
 			      },
@@ -5226,7 +5226,7 @@ cultureInfo en-US
 			    "product_lookup.current_retail_price": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "current_retail_price"
 			        }
 			      },
@@ -5361,7 +5361,7 @@ cultureInfo en-US
 			    "product_lookup.tax_exempt_yn": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "tax_exempt_yn"
 			        }
 			      },
@@ -5384,7 +5384,7 @@ cultureInfo en-US
 			    "product_lookup.promo_yn": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "promo_yn"
 			        }
 			      },
@@ -5407,7 +5407,7 @@ cultureInfo en-US
 			    "product_lookup.new_product_yn": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "new_product_yn"
 			        }
 			      },
@@ -5470,7 +5470,7 @@ cultureInfo en-US
 			    "product_lookup.column_1": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "Column1"
 			        }
 			      },
@@ -12713,7 +12713,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_column_1": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -12746,7 +12746,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_new_product_yn": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -12779,7 +12779,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_promo_yn": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -12812,7 +12812,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_tax_exempt_yn": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -12845,7 +12845,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_current_retail_price": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -12905,7 +12905,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_current_wholesale_price": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -12965,7 +12965,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_current_cost": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -12998,7 +12998,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_unit_of_measure": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -13031,7 +13031,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_product_description": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -13064,7 +13064,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_product": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -13097,7 +13097,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_product_type": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -13130,7 +13130,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_product_category": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -13163,7 +13163,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_product_group": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -13196,7 +13196,7 @@ cultureInfo en-US
 			    },
 			    "product_lookup_has_product_id": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {

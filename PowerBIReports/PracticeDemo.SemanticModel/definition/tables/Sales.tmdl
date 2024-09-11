@@ -77,7 +77,7 @@ table Sales
 
 		annotation UnderlyingDateTimeDataType = Date
 
-	column 'Total Revenue' = Sales[Units]*RELATED('Product Lookup'[RetailPrice])
+	column 'Total Revenue' = Sales[Units]*RELATED('Profile Lookup'[RetailPrice])
 		dataType: double
 		formatString: #,0.00
 		lineageTag: b09b1172-32b5-4262-9459-60f883aa053f
@@ -86,7 +86,7 @@ table Sales
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Total Cost' = Sales[Units]*RELATED('Product Lookup'[StandardCost])
+	column 'Total Cost' = Sales[Units]*RELATED('Profile Lookup'[StandardCost])
 		dataType: double
 		formatString: #,0.00
 		lineageTag: 7921f9e8-aad5-4925-91a4-8143f878c4de

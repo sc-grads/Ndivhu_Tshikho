@@ -10,11 +10,11 @@ table Sales
 
 		annotation SummarizationSetBy = Automatic
 
-	column Product
+	column Profile
 		dataType: string
 		lineageTag: 6bdb2938-96d5-4926-8c56-9fd6e8a5cd2a
 		summarizeBy: none
-		sourceColumn: Product
+		sourceColumn: Profile
 
 		annotation SummarizationSetBy = Automatic
 

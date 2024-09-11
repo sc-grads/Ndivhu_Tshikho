@@ -7,7 +7,7 @@ table 'CROSSJOIN Demo'
 		summarizeBy: none
 		isNameInferred
 		isDataTypeInferred
-		sourceColumn: Product Lookup[product_group]
+		sourceColumn: Profile Lookup[product_group]
 
 		annotation SummarizationSetBy = Automatic
 
@@ -17,7 +17,7 @@ table 'CROSSJOIN Demo'
 		summarizeBy: none
 		isNameInferred
 		isDataTypeInferred
-		sourceColumn: Product Lookup[product_category]
+		sourceColumn: Profile Lookup[product_category]
 
 		annotation SummarizationSetBy = Automatic
 
@@ -38,10 +38,10 @@ table 'CROSSJOIN Demo'
 				
 				CROSSJOIN(
 				    VALUES(
-				        'Product Lookup'[product_category]
+				        'Profile Lookup'[product_category]
 				    ),
 				    VALUES(
-				        'Product Lookup'[product_group]
+				        'Profile Lookup'[product_group]
 				    ),
 				
 				    FILTER(

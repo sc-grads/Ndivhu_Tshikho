@@ -42,7 +42,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Dimensions\Product.csv">
+          DTS:ConnectionString="C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Dimensions\Profile.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -353,11 +353,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Product"
+              refId="Package\Data Flow Task\Profile"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="Product"
+              name="Profile"
               usesDispositions="true"
               version="4">
               <properties>
@@ -368,7 +368,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Product]</property>
+                  name="OpenRowset">[dbo].[Profile]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -410,7 +410,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Product.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task\Profile.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[DESKTOP-PL72RR2.ProductDB]"
                   connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PL72RR2.ProductDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -418,91 +418,91 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input]"
+                  refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].Columns[ProductID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="ProductID"
-                      externalMetadataColumnId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      externalMetadataColumnId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ProductID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].Columns[Color]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].Columns[Color]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Color"
-                      externalMetadataColumnId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      externalMetadataColumnId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Color]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].Columns[ProductName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="ProductName"
-                      externalMetadataColumnId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      externalMetadataColumnId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ProductName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].Columns[RetailPrice]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].Columns[RetailPrice]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="RetailPrice"
-                      externalMetadataColumnId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[RetailPrice]"
+                      externalMetadataColumnId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[RetailPrice]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[RetailPrice]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].Columns[StandardCost]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].Columns[StandardCost]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StandardCost"
-                      externalMetadataColumnId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[StandardCost]"
+                      externalMetadataColumnId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[StandardCost]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StandardCost]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].Columns[Sub Category Key]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].Columns[Sub Category Key]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Sub Category Key"
-                      externalMetadataColumnId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryKey]"
+                      externalMetadataColumnId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryKey]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Sub Category Key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                       dataType="i4"
                       name="ProductID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryKey]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryKey]"
                       dataType="i4"
                       name="SubCategoryKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Color" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="ProductName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[RetailPrice]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[RetailPrice]"
                       dataType="numeric"
                       name="RetailPrice"
                       precision="10"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[StandardCost]"
+                      refId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[StandardCost]"
                       dataType="numeric"
                       name="StandardCost"
                       precision="10"
@@ -512,22 +512,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Product.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Data Flow Task\Profile.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -539,7 +539,7 @@
           <paths>
             <path
               refId="Package\Data Flow Task.Paths[Flat File Source Output]"
-              endId="Package\Data Flow Task\Product.Inputs[OLE DB Destination Input]"
+              endId="Package\Data Flow Task\Profile.Inputs[OLE DB Destination Input]"
               name="Flat File Source Output"
               startId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]" />
           </paths>
@@ -577,7 +577,7 @@
           TopLeft="262,123" />
         <NodeLayout
           Size="117,42"
-          Id="Package\Data Flow Task\Product"
+          Id="Package\Data Flow Task\Profile"
           TopLeft="266,271" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Flat File Source Output]"
@@ -617,7 +617,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Product">
+    design-time-name="Package\Data Flow Task\Profile">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

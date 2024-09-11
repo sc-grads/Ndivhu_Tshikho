@@ -13,7 +13,7 @@ IF OBJECT_ID('InsertSampleData', 'P') IS NOT NULL
     DROP PROCEDURE InsertSampleData;
 GO
 
-IF OBJECT_ID('Product', 'U') IS NOT NULL
+IF OBJECT_ID('Profile', 'U') IS NOT NULL
     DROP TABLE Product;
 IF OBJECT_ID('Orders', 'U') IS NOT NULL
     DROP TABLE Orders;
@@ -36,7 +36,7 @@ CREATE TABLE Orders (
 );
 GO
 
--- Create the Product table
+-- Create the Profile table
 CREATE TABLE Product (
     ProductID INT PRIMARY KEY IDENTITY(1,1),
     ProductName NVARCHAR(100),
@@ -60,7 +60,7 @@ BEGIN
            (2, '2024-03-17'),
            (3, '2024-03-16');
 
-    -- Insert sample data into the Product table
+    -- Insert sample data into the Profile table
     INSERT INTO Product (ProductName, Price)
     VALUES ('ProductA', 10.99),
            ('ProductB', 20.50),

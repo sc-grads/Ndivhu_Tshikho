@@ -8,10 +8,10 @@ relationship 75811beb-3cd9-fdb6-6e7b-f2f46d3f04d9
 
 relationship f038fe08-1597-13ee-4a20-ef8b7cc22f9c
 	fromColumn: Sales.ProductID
-	toColumn: 'Product Lookup'.ProductID
+	toColumn: 'Profile Lookup'.ProductID
 
 relationship f9b44ed9-434f-0362-f468-aca3a502492c
-	fromColumn: 'Product Lookup'.'Sub Category Key'
+	fromColumn: 'Profile Lookup'.'Sub Category Key'
 	toColumn: 'SubCategories Lookup'.SubCategoryKey
 
 relationship 3ccadbfd-7782-eef8-0c2e-bcb39f70b19a

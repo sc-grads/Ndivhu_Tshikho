@@ -1,4 +1,4 @@
-﻿table 'Product Lookup'
+﻿table 'Profile Lookup'
 
 	column ProductKey
 		dataType: int64
@@ -100,8 +100,8 @@
 			
 			SWITCH(
 			    TRUE(),
-			    'Product Lookup'[ProductPrice] > 500,"High",
-			     'Product Lookup'[ProductPrice] > 100,"Mid-Range",
+			    'Profile Lookup'[ProductPrice] > 500,"High",
+			     'Profile Lookup'[ProductPrice] > 100,"Mid-Range",
 			     "Low"
 			)
 			
@@ -115,10 +115,10 @@
 	column 'SKU Category' =
 			
 			LEFT(
-			    'Product Lookup'[ProductSKU],
+			    'Profile Lookup'[ProductSKU],
 			    SEARCH(
 			        "-",
-			        'Product Lookup'[ProductSKU]
+			        'Profile Lookup'[ProductSKU]
 			    )
 			    -1
 			)
@@ -128,11 +128,11 @@
 
 		annotation SummarizationSetBy = Automatic
 
-	partition 'Product Lookup' = m
+	partition 'Profile Lookup' = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\OneDrive - Northern Data (Pty) Ltd\Documents\Udemy Course\Microsoft Power BI\AdventureWorks+Raw+Data\AdventureWorks Raw Data\AdventureWorks Product Lookup.csv"),[Delimiter=",", Columns=11, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\OneDrive - Northern Data (Pty) Ltd\Documents\Udemy Course\Microsoft Power BI\AdventureWorks+Raw+Data\AdventureWorks Raw Data\AdventureWorks Profile Lookup.csv"),[Delimiter=",", Columns=11, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductKey", Int64.Type}, {"ProductSubcategoryKey", Int64.Type}, {"ProductSKU", type text}, {"ProductName", type text}, {"ModelName", type text}, {"ProductDescription", type text}, {"ProductColor", type text}, {"ProductSize", type text}, {"ProductStyle", type text}, {"ProductCost", Currency.Type}, {"ProductPrice", type number}}),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Changed Type",{{"ProductCost", type number}}),

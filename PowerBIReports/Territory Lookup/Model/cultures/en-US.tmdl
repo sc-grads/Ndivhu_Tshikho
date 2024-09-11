@@ -738,7 +738,7 @@
 			    "product_lookup": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup"
+			          "ConceptualEntity": "Profile Lookup"
 			        }
 			      },
 			      "State": "Generated",
@@ -812,7 +812,7 @@
 			    "product_lookup.product_key": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "ProductKey"
 			        }
 			      },
@@ -954,7 +954,7 @@
 			    "product_lookup.product_subcategory_key": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "ProductSubcategoryKey"
 			        }
 			      },
@@ -1112,7 +1112,7 @@
 			    "product_lookup.product_SKU": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "ProductSKU"
 			        }
 			      },
@@ -1194,7 +1194,7 @@
 			    "product_lookup.product_name": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "ProductName"
 			        }
 			      },
@@ -1212,7 +1212,7 @@
 			          }
 			        },
 			        {
-			          "Top 10 Product": {
+			          "Top 10 Profile": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -1222,7 +1222,7 @@
 			          }
 			        },
 			        {
-			          "Top 10 Product": {
+			          "Top 10 Profile": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -1357,7 +1357,7 @@
 			    "product_lookup.model_name": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "ModelName"
 			        }
 			      },
@@ -1499,7 +1499,7 @@
 			    "product_lookup.product_description": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "ProductDescription"
 			        }
 			      },
@@ -1641,7 +1641,7 @@
 			    "product_lookup.product_color": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "ProductColor"
 			        }
 			      },
@@ -1783,7 +1783,7 @@
 			    "product_lookup.product_style": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "ProductStyle"
 			        }
 			      },
@@ -1925,7 +1925,7 @@
 			    "product_lookup.product_cost": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "ProductCost"
 			        }
 			      },
@@ -2067,7 +2067,7 @@
 			    "product_lookup.product_price": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "ProductPrice"
 			        }
 			      },
@@ -2209,7 +2209,7 @@
 			    "product_lookup.SKU_type": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "SKU Type"
 			        }
 			      },
@@ -2344,7 +2344,7 @@
 			    "product_lookup.discount_price": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "Discount Price"
 			        }
 			      },
@@ -2479,7 +2479,7 @@
 			    "product_lookup.price_point": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "Price Point"
 			        }
 			      },
@@ -2614,7 +2614,7 @@
 			    "product_lookup.SKU_category": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Lookup",
+			          "ConceptualEntity": "Profile Lookup",
 			          "ConceptualProperty": "SKU Category"
 			        }
 			      },
@@ -2739,7 +2739,7 @@
 			    "product_categories_lookup": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Categories Lookup"
+			          "ConceptualEntity": "Profile Categories Lookup"
 			        }
 			      },
 			      "State": "Generated",
@@ -2840,7 +2840,7 @@
 			    "product_categories_lookup.product_category_key": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Categories Lookup",
+			          "ConceptualEntity": "Profile Categories Lookup",
 			          "ConceptualProperty": "ProductCategoryKey"
 			        }
 			      },
@@ -2995,7 +2995,7 @@
 			    "product_categories_lookup.category_name": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Categories Lookup",
+			          "ConceptualEntity": "Profile Categories Lookup",
 			          "ConceptualProperty": "CategoryName"
 			        }
 			      },
@@ -3137,7 +3137,7 @@
 			    "product_subcategories_lookup": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Subcategories Lookup"
+			          "ConceptualEntity": "Profile Subcategories Lookup"
 			        }
 			      },
 			      "State": "Generated",
@@ -3238,7 +3238,7 @@
 			    "product_subcategories_lookup.product_subcategory_key": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Subcategories Lookup",
+			          "ConceptualEntity": "Profile Subcategories Lookup",
 			          "ConceptualProperty": "ProductSubcategoryKey"
 			        }
 			      },
@@ -3393,7 +3393,7 @@
 			    "product_subcategories_lookup.subcategory_name": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Subcategories Lookup",
+			          "ConceptualEntity": "Profile Subcategories Lookup",
 			          "ConceptualProperty": "SubcategoryName"
 			        }
 			      },
@@ -3475,7 +3475,7 @@
 			    "product_subcategories_lookup.product_category_key": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Subcategories Lookup",
+			          "ConceptualEntity": "Profile Subcategories Lookup",
 			          "ConceptualProperty": "ProductCategoryKey"
 			        }
 			      },
@@ -15212,7 +15212,7 @@
 			    "product_metric_selection": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Metric Selection"
+			          "ConceptualEntity": "Profile Metric Selection"
 			        }
 			      },
 			      "State": "Generated",
@@ -15359,8 +15359,8 @@
 			    "product_metric_selection.product_metric_selection": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Metric Selection",
-			          "ConceptualProperty": "Product Metric Selection"
+			          "ConceptualEntity": "Profile Metric Selection",
+			          "ConceptualProperty": "Profile Metric Selection"
 			        }
 			      },
 			      "State": "Generated",
@@ -15519,8 +15519,8 @@
 			    "product_metric_selection.product_metric_selection_field": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Metric Selection",
-			          "ConceptualProperty": "Product Metric Selection Fields"
+			          "ConceptualEntity": "Profile Metric Selection",
+			          "ConceptualProperty": "Profile Metric Selection Fields"
 			        }
 			      },
 			      "State": "Generated",
@@ -15683,8 +15683,8 @@
 			    "product_metric_selection.product_metric_selection_order": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Product Metric Selection",
-			          "ConceptualProperty": "Product Metric Selection Order"
+			          "ConceptualEntity": "Profile Metric Selection",
+			          "ConceptualProperty": "Profile Metric Selection Order"
 			        }
 			      },
 			      "State": "Generated",
@@ -16759,7 +16759,7 @@
 			    },
 			    "product_subcategories_lookup_has_product_categories_lookup": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Subcategories Lookup"
+			        "ConceptualEntity": "Profile Subcategories Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -16805,7 +16805,7 @@
 			    },
 			    "product_lookup_has_product_subcategories_lookup": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -16897,7 +16897,7 @@
 			    },
 			    "product_metric_selection_has_product_metric_selection": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Metric Selection"
+			        "ConceptualEntity": "Profile Metric Selection"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -17009,7 +17009,7 @@
 			    },
 			    "product_lookup_has_measure_table_adjusted_revenue": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -17075,7 +17075,7 @@
 			    },
 			    "product_lookup_has_calendar_lookup_adjusted_price": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -18047,7 +18047,7 @@
 			    },
 			    "product_lookup_has_measure_table_overall_average_price": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -18536,7 +18536,7 @@
 			    },
 			    "product_lookup_has_measure_table_average_retail_price": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20121,7 +20121,7 @@
 			    },
 			    "product_subcategories_lookup_has_subcategory_name": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Subcategories Lookup"
+			        "ConceptualEntity": "Profile Subcategories Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20154,7 +20154,7 @@
 			    },
 			    "product_subcategories_lookup_has_product_subcategory_key": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Subcategories Lookup"
+			        "ConceptualEntity": "Profile Subcategories Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20187,7 +20187,7 @@
 			    },
 			    "product_categories_lookup_has_category_name": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Categories Lookup"
+			        "ConceptualEntity": "Profile Categories Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20220,7 +20220,7 @@
 			    },
 			    "product_categories_lookup_has_product_category_key": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Categories Lookup"
+			        "ConceptualEntity": "Profile Categories Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20253,7 +20253,7 @@
 			    },
 			    "product_lookup_has_SKU_category": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20286,7 +20286,7 @@
 			    },
 			    "product_lookup_has_price_point": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20319,7 +20319,7 @@
 			    },
 			    "product_lookup_has_discount_price": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20379,7 +20379,7 @@
 			    },
 			    "product_lookup_has_SKU_type": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20412,7 +20412,7 @@
 			    },
 			    "product_lookup_has_product_price": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20472,7 +20472,7 @@
 			    },
 			    "product_lookup_has_product_cost": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20532,7 +20532,7 @@
 			    },
 			    "product_lookup_has_product_style": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20565,7 +20565,7 @@
 			    },
 			    "product_lookup_has_product_color": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20598,7 +20598,7 @@
 			    },
 			    "product_lookup_has_product_description": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20631,7 +20631,7 @@
 			    },
 			    "product_lookup_has_model_name": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20664,7 +20664,7 @@
 			    },
 			    "product_lookup_has_product_name": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20697,7 +20697,7 @@
 			    },
 			    "product_lookup_has_product_SKU": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -20730,7 +20730,7 @@
 			    },
 			    "product_lookup_has_product_key": {
 			      "Binding": {
-			        "ConceptualEntity": "Product Lookup"
+			        "ConceptualEntity": "Profile Lookup"
 			      },
 			      "State": "Generated",
 			      "Roles": {

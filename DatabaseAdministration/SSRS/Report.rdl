@@ -20,7 +20,7 @@
         <CommandText>SELECT sod.SalesOrderID, sod.ProductID, p.Name AS ProductName, sod.OrderQty, sod.UnitPrice, sod.LineTotal,
        soh.CustomerID, c.FirstName AS CustomerFirstName, c.LastName AS CustomerLastName
 FROM Sales.SalesOrderDetail sod
-INNER JOIN Production.Product p ON sod.ProductID = p.ProductID
+INNER JOIN Production.Profile p ON sod.ProductID = p.ProductID
 INNER JOIN Sales.SalesOrderHeader soh ON sod.SalesOrderID = soh.SalesOrderID
 INNER JOIN Person.Person c ON soh.CustomerID = c.BusinessEntityID
 ORDER BY sod.SalesOrderID, sod.ProductID;</CommandText>
@@ -155,7 +155,7 @@ ORDER BY sod.SalesOrderID, sod.ProductID;</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Product ID</Value>
+                                  <Value>Profile ID</Value>
                                   <Style>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -196,7 +196,7 @@ ORDER BY sod.SalesOrderID, sod.ProductID;</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Product Name</Value>
+                                  <Value>Profile Name</Value>
                                   <Style>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>

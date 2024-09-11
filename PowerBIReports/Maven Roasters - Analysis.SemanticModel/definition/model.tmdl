@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["Customer Lookup","Employee Lookup","Food Inventory","Product Lookup","Sales by Store","Store Lookup","Measure Table","Calendar","4-5-4 Calendar"]
+annotation PBI_QueryOrder = ["Customer Lookup","Employee Lookup","Food Inventory","Profile Lookup","Sales by Store","Store Lookup","Measure Table","Calendar","4-5-4 Calendar"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -21,7 +21,7 @@ ref table LocalDateTable_ffc4c291-2504-4e61-a89f-229f1fed6221
 ref table 'Employee Lookup'
 ref table LocalDateTable_1e69a575-89cf-4f8c-93f9-f23afd43bc00
 ref table 'Food Inventory'
-ref table 'Product Lookup'
+ref table 'Profile Lookup'
 ref table 'Sales by Store'
 ref table 'Store Lookup'
 ref table 'Measure Table'

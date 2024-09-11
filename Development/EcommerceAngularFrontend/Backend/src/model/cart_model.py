@@ -11,7 +11,7 @@ class Cart(db.Model):
     quantity = db.Column(db.Integer, nullable=False)
 
     user = db.relationship('User', backref='carts')
-    product = db.relationship('Product', backref='carts')
+    product = db.relationship('Profile', backref='carts')
 
     def __repr__(self):
         return f'<Cart {self.id}>'

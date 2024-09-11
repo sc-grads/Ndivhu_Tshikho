@@ -27,19 +27,19 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBIDesktopVersion = 2.130.754.0 (24.06)
 
-annotation PBI_QueryOrder = ["Territory Lookup","Product Lookup","Product Categories Lookup","Product Subcategories Lookup","Customer Lookups","Errors in AdventureWorks Customer Lookup","Calendar Lookup","Sales Data","Sample File","Parameter1","Transform Sample File","Transform File","Returns Data","Measure Table"]
+annotation PBI_QueryOrder = ["Territory Lookup","Profile Lookup","Profile Categories Lookup","Profile Subcategories Lookup","Customer Lookups","Errors in AdventureWorks Customer Lookup","Calendar Lookup","Sales Data","Sample File","Parameter1","Transform Sample File","Transform File","Returns Data","Measure Table"]
 
 ref table 'Territory Lookup'
-ref table 'Product Lookup'
-ref table 'Product Categories Lookup'
-ref table 'Product Subcategories Lookup'
+ref table 'Profile Lookup'
+ref table 'Profile Categories Lookup'
+ref table 'Profile Subcategories Lookup'
 ref table 'Customer Lookups'
 ref table 'Calendar Lookup'
 ref table 'Sales Data'
 ref table 'Returns Data'
 ref table 'Measure Table'
 ref table 'Price Adjustment '
-ref table 'Product Metric Selection'
+ref table 'Profile Metric Selection'
 ref table 'Customer Matrix Selection'
 
 ref role Europe

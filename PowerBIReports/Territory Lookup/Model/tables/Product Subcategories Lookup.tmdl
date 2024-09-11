@@ -1,4 +1,4 @@
-﻿table 'Product Subcategories Lookup'
+﻿table 'Profile Subcategories Lookup'
 
 	column ProductSubcategoryKey
 		dataType: int64
@@ -24,11 +24,11 @@
 
 		annotation SummarizationSetBy = Automatic
 
-	partition 'Product Subcategories Lookup' = m
+	partition 'Profile Subcategories Lookup' = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\OneDrive - Northern Data (Pty) Ltd\Documents\Udemy Course\Microsoft Power BI\AdventureWorks+Raw+Data\AdventureWorks Raw Data\AdventureWorks Product Subcategories Lookup.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\OneDrive - Northern Data (Pty) Ltd\Documents\Udemy Course\Microsoft Power BI\AdventureWorks+Raw+Data\AdventureWorks Raw Data\AdventureWorks Profile Subcategories Lookup.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductSubcategoryKey", Int64.Type}, {"SubcategoryName", type text}, {"ProductCategoryKey", Int64.Type}})
 				in

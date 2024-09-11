@@ -30,7 +30,7 @@
           </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT        Name, ListPrice AS [List Price], SellStartDate, SellEndDate, ProductSubcategoryID
-FROM            Production.Product
+FROM            Production.Profile
 Where         ( ProductSubcategoryID IN (@paramProductSubID))
                     OR (ProductSubcategoryID is Null and 0 IN (@paramProductSubID))
 Order By Name, [List Price]</CommandText>
@@ -124,7 +124,7 @@ SELECT 0, 0, 'NULL','NULL'</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Product</Value>
+                                  <Value>Profile</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Arial</FontFamily>

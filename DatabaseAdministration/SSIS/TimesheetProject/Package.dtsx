@@ -7602,11 +7602,11 @@ where [refTable].[ProjectID] = ? and [refTable].[ProjectName] = ?</property>
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Master Tables\Loading master tables\Product Master Table"
+                  refId="Package\Master Tables\Loading master tables\Profile Master Table"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
-                  name="Product Master Table"
+                  name="Profile Master Table"
                   usesDispositions="true"
                   version="4">
                   <properties>
@@ -7659,7 +7659,7 @@ where [refTable].[ProjectID] = ? and [refTable].[ProjectName] = ?</property>
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Master Tables\Loading master tables\Product Master Table.Connections[OleDbConnection]"
+                      refId="Package\Master Tables\Loading master tables\Profile Master Table.Connections[OleDbConnection]"
                       connectionManagerID="Package.ConnectionManagers[DESKTOP-PL72RR2.TimesheetDB]"
                       connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PL72RR2.TimesheetDB]"
                       description="The OLE DB runtime connection used to access the database."
@@ -7667,35 +7667,35 @@ where [refTable].[ProjectID] = ? and [refTable].[ProjectName] = ?</property>
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\Master Tables\Loading master tables\Product Master Table.Inputs[OLE DB Destination Input]"
+                      refId="Package\Master Tables\Loading master tables\Profile Master Table.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Master Tables\Loading master tables\Product Master Table.Inputs[OLE DB Destination Input].Columns[Copy of ProjectID]"
+                          refId="Package\Master Tables\Loading master tables\Profile Master Table.Inputs[OLE DB Destination Input].Columns[Copy of ProjectID]"
                           cachedDataType="i4"
                           cachedName="Copy of ProjectID"
-                          externalMetadataColumnId="Package\Master Tables\Loading master tables\Product Master Table.Inputs[OLE DB Destination Input].ExternalColumns[ProjectID]"
+                          externalMetadataColumnId="Package\Master Tables\Loading master tables\Profile Master Table.Inputs[OLE DB Destination Input].ExternalColumns[ProjectID]"
                           lineageId="Package\Master Tables\Loading master tables\Data Conversion 4.Outputs[Data Conversion Output].Columns[Copy of ProjectID]" />
                         <inputColumn
-                          refId="Package\Master Tables\Loading master tables\Product Master Table.Inputs[OLE DB Destination Input].Columns[Copy of ProjectName]"
+                          refId="Package\Master Tables\Loading master tables\Profile Master Table.Inputs[OLE DB Destination Input].Columns[Copy of ProjectName]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="200"
                           cachedName="Copy of ProjectName"
-                          externalMetadataColumnId="Package\Master Tables\Loading master tables\Product Master Table.Inputs[OLE DB Destination Input].ExternalColumns[ProjectName]"
+                          externalMetadataColumnId="Package\Master Tables\Loading master tables\Profile Master Table.Inputs[OLE DB Destination Input].ExternalColumns[ProjectName]"
                           lineageId="Package\Master Tables\Loading master tables\Data Conversion 4.Outputs[Data Conversion Output].Columns[Copy of ProjectName]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Master Tables\Loading master tables\Product Master Table.Inputs[OLE DB Destination Input].ExternalColumns[ProjectID]"
+                          refId="Package\Master Tables\Loading master tables\Profile Master Table.Inputs[OLE DB Destination Input].ExternalColumns[ProjectID]"
                           dataType="i4"
                           name="ProjectID" />
                         <externalMetadataColumn
-                          refId="Package\Master Tables\Loading master tables\Product Master Table.Inputs[OLE DB Destination Input].ExternalColumns[ProjectName]"
+                          refId="Package\Master Tables\Loading master tables\Profile Master Table.Inputs[OLE DB Destination Input].ExternalColumns[ProjectName]"
                           codePage="1252"
                           dataType="str"
                           length="200"
@@ -7705,22 +7705,22 @@ where [refTable].[ProjectID] = ? and [refTable].[ProjectName] = ?</property>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Master Tables\Loading master tables\Product Master Table.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\Master Tables\Loading master tables\Profile Master Table.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\Master Tables\Loading master tables\Product Master Table.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\Master Tables\Loading master tables\Profile Master Table.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Master Tables\Loading master tables\Product Master Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\Master Tables\Loading master tables\Profile Master Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Master Tables\Loading master tables\Product Master Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Master Tables\Loading master tables\Profile Master Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Master Tables\Loading master tables\Product Master Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\Master Tables\Loading master tables\Profile Master Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Master Tables\Loading master tables\Product Master Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Master Tables\Loading master tables\Profile Master Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -7737,7 +7737,7 @@ where [refTable].[ProjectID] = ? and [refTable].[ProjectName] = ?</property>
                   startId="Package\Master Tables\Loading master tables\Conditional Split.Outputs[Conditional Split Default Output]" />
                 <path
                   refId="Package\Master Tables\Loading master tables.Paths[Conditional Split Default Output1]"
-                  endId="Package\Master Tables\Loading master tables\Product Master Table.Inputs[OLE DB Destination Input]"
+                  endId="Package\Master Tables\Loading master tables\Profile Master Table.Inputs[OLE DB Destination Input]"
                   name="Conditional Split Default Output"
                   startId="Package\Master Tables\Loading master tables\Conditional Split 4.Outputs[Conditional Split Default Output]" />
                 <path
@@ -22342,7 +22342,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           TopLeft="1006.66666666667,210" />
         <NodeLayout
           Size="184,42"
-          Id="Package\Master Tables\Loading master tables\Product Master Table"
+          Id="Package\Master Tables\Loading master tables\Profile Master Table"
           TopLeft="1064.44444444444,410" />
         <NodeLayout
           Size="168,42"
@@ -23180,7 +23180,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Master Tables\Loading master tables\Product Master Table">
+    design-time-name="Package\Master Tables\Loading master tables\Profile Master Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -183,7 +183,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Product Subcategory ID</Value>
+                                  <Value>Profile Subcategory ID</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>

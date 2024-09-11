@@ -77,7 +77,7 @@ table Sales
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Total Reveue' = Sales[Units]* RELATED('Product Lookup'[RetailPrice])
+	column 'Total Reveue' = Sales[Units]* RELATED('Profile Lookup'[RetailPrice])
 		dataType: double
 		formatString: 0.00
 		lineageTag: 6f453653-b757-492a-a028-0b3033ed24f9
@@ -86,7 +86,7 @@ table Sales
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Total Cost' = Sales[Units] * RELATED('Product Lookup'[StandardCost])
+	column 'Total Cost' = Sales[Units] * RELATED('Profile Lookup'[StandardCost])
 		dataType: double
 		formatString: 0.00
 		lineageTag: 6bbf083f-cf26-4697-9b63-552ed9082179

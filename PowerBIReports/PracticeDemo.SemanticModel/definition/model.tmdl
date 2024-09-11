@@ -14,7 +14,7 @@ queryGroup 'Transform File from Sales\Helper Queries'
 
 	annotation PBI_QueryGroupOrder = 0
 
-annotation PBI_QueryOrder = ["Categories Lookup","Geography Lookup","SalesRep Lookup","Product Lookup","SubCategories Lookup","Sales","Sample File","Parameter1","Transform Sample File","Transform File","Measure Table"]
+annotation PBI_QueryOrder = ["Categories Lookup","Geography Lookup","SalesRep Lookup","Profile Lookup","SubCategories Lookup","Sales","Sample File","Parameter1","Transform Sample File","Transform File","Measure Table"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -26,7 +26,7 @@ ref table 'Categories Lookup'
 ref table DateTableTemplate_004609b3-b86e-451f-a7dc-839c023fc2ba
 ref table 'Geography Lookup'
 ref table 'SalesRep Lookup'
-ref table 'Product Lookup'
+ref table 'Profile Lookup'
 ref table 'SubCategories Lookup'
 ref table Sales
 ref table DateMaster
