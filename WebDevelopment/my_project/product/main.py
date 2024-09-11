@@ -1,4 +1,6 @@
-from fastapi import FastAPI, Depends
+from typing import List
+from fastapi import FastAPI, Depends, HTTPException, status, Response
+
 from sqlalchemy.orm import Session
 from . import models, schemas
 from .database import engine, SessionLocal
@@ -34,13 +36,16 @@ def delete_product(id, db: Session = Depends(get_db)):
     db.commit()
     return {'Product deleted'}
 
-@app.get('/product/{id}')
-def get_product(id, db: Session = Depends(get_db)):
+@app.get('/product/{id}', response_model=List[schemas.DisplayProduct])
+def get_product(id,response: Response, db: Session = Depends(get_db)):
     product = db.query(models.Product).filter(models.Product.id == id).first()
+    if not product:
+        raise HTTPException(status_code = status.HTTP_404_NOT_FOUND,
+                            detail ='Product not found')
     return product
 
 
-@app.post("/product")
+@app.post("/product", status_code=status.HTTP_201_CREATED)
 def add_product(request: schemas.Product, db: Session = Depends(get_db)):
     new_product = models.Product(
         name=request.name,
