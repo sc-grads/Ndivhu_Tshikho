@@ -1,0 +1,59 @@
+2024-09-12 10:32:44,844 - ERROR - Error registering user issa1: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: INSERT INTO user (username, email, password) VALUES (?, ?, ?)]
+[parameters: ('issa1', 'issa1@gmail.com', 'issa1')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-09-12 10:32:44,956 - ERROR - Registration error: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: INSERT INTO user (username, email, password) VALUES (?, ?, ?)]
+[parameters: ('issa1', 'issa1@gmail.com', 'issa1')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-09-12 10:33:38,545 - INFO - User registered: issa2
+2024-09-12 10:34:09,084 - INFO - User logged in: issa2
+2024-09-12 12:19:08,137 - INFO - Accessing registration page
+2024-09-12 12:20:29,397 - INFO - User registered: issa3
+2024-09-12 12:20:29,434 - INFO - Accessing login page
+2024-09-12 12:20:43,107 - ERROR - Error logging in user issa3: name 'authenticate_user' is not defined
+2024-09-12 12:29:21,632 - INFO - Accessing registration page
+2024-09-12 12:29:43,488 - INFO - User registered: ben
+2024-09-12 12:29:43,505 - INFO - Accessing login page
+2024-09-12 12:31:14,089 - INFO - Accessing login page
+2024-09-12 12:31:50,601 - INFO - User registered: issa3
+2024-09-12 12:31:50,611 - INFO - Accessing login page
+2024-09-12 12:32:08,138 - INFO - Accessing login page
+2024-09-12 12:32:10,924 - INFO - Accessing login page
+2024-09-12 12:32:12,199 - INFO - Accessing login page
+2024-09-12 12:32:12,928 - INFO - Accessing login page
+2024-09-12 12:32:23,161 - INFO - Accessing registration page
+2024-09-12 12:33:13,892 - INFO - Accessing registration page
+2024-09-12 12:33:31,229 - INFO - User registered: issa11
+2024-09-12 12:33:31,244 - INFO - Accessing login page
+2024-09-12 12:34:01,259 - ERROR - Error logging in user issa11: name 'authenticate_user' is not defined
+2024-09-12 12:35:19,184 - INFO - Accessing registration page
+2024-09-12 12:36:53,700 - INFO - Accessing registration page
+2024-09-12 12:40:05,090 - INFO - Accessing registration page
+2024-09-12 12:41:48,533 - INFO - Accessing registration page
+2024-09-12 12:42:24,678 - INFO - Accessing login page
+2024-09-12 12:42:43,590 - INFO - User logged in: issa1
+2024-09-12 12:49:56,080 - INFO - Accessing registration page
+2024-09-12 12:49:57,673 - INFO - Accessing registration page
+2024-09-12 12:51:26,251 - INFO - Accessing registration page
+2024-09-12 12:51:54,784 - INFO - User registered: ben 
+2024-09-12 12:51:54,813 - INFO - Accessing login page
+2024-09-12 12:52:28,455 - INFO - User logged in: ben
+2024-09-12 13:04:53,403 - INFO - Accessing login page
+2024-09-12 13:04:54,203 - INFO - Accessing registration page
+2024-09-12 13:05:10,308 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\NdivhudzannyiT\Ndivhu_Tshikho\Development\Ecommerce\env\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-09-12 13:05:10,670 - INFO - User registered: ben 
+2024-09-12 13:05:10,670 - INFO - Accessing login page
+2024-09-12 13:05:51,886 - WARNING - Failed login attempt for user: ben
+2024-09-12 13:09:33,881 - ERROR - Error logging in user issa1: hash could not be identified
+2024-09-12 13:09:47,140 - INFO - Accessing login page
+2024-09-12 13:09:47,884 - INFO - Accessing registration page
+2024-09-12 13:10:05,040 - INFO - User registered: Ben
+2024-09-12 13:10:05,062 - INFO - Accessing login page
+2024-09-12 13:10:16,342 - WARNING - Failed login attempt for user: ben
+2024-09-12 13:10:40,705 - INFO - User logged in: Ben
