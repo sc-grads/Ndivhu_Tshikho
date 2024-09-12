@@ -29,7 +29,7 @@
     COUNT(p.ProductID) AS CountOfProduct
     
 FROM 
-    Production.Product AS p
+    Production.Profile AS p
 LEFT JOIN 
     Production.ProductSubcategory AS ps
 ON 
@@ -104,7 +104,7 @@ GROUP BY ps.Name;</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Product Sub Category</Value>
+                                  <Value>Profile Sub Category</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -142,7 +142,7 @@ GROUP BY ps.Name;</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Count Of Product</Value>
+                                  <Value>Count Of Profile</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -309,7 +309,7 @@ GROUP BY ps.Name;</CommandText>
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>Count Of Product</Label>
+                  <Label>Count Of Profile</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>

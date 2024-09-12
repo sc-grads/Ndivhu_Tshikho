@@ -23,11 +23,11 @@ relationship 81dd48b9-4814-d8c8-988b-7f46d0702adf
 
 relationship a193db48-f6d1-6b57-9399-75b9fce060f2
 	fromColumn: 'Sales by Store'.product_id
-	toColumn: 'Product Lookup'.product_id
+	toColumn: 'Profile Lookup'.product_id
 
 relationship 17c0d745-9ebe-9dd0-462a-3c9c7486ddda
 	fromColumn: 'Food Inventory'.product_id
-	toColumn: 'Product Lookup'.product_id
+	toColumn: 'Profile Lookup'.product_id
 
 relationship f95c1ce5-4c78-2c73-079a-7c0fe1fe61d5
 	fromColumn: 'Sales by Store'.store_id

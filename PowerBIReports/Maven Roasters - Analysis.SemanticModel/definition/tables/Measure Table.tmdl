@@ -8,7 +8,7 @@ table 'Measure Table'
 			                                       --from a related table. 
 			    'Sales by Store'[quantity_sold]*
 			    RELATED(
-			        'Product Lookup'[current_cost]
+			        'Profile Lookup'[current_cost]
 			    )
 			)
 			```
@@ -196,7 +196,7 @@ table 'Measure Table'
 			CALCULATE(
 			    [Customer Sales],
 			    'Store Lookup'[store_id] = 3,
-			    'Product Lookup'[product_group] = "Whole Bean/Teas"
+			    'Profile Lookup'[product_group] = "Whole Bean/Teas"
 			)
 		displayFolder: Advanced Calculate
 		lineageTag: 7e3adb81-8363-4252-a6a4-e26ce4bb2017
@@ -208,7 +208,7 @@ table 'Measure Table'
 			CALCULATE(
 			    [Customer Sales],
 			    'Store Lookup'[store_id] = 3,
-			    'Product Lookup'[product_group] = "Whole Bean/Teas",
+			    'Profile Lookup'[product_group] = "Whole Bean/Teas",
 			    ALL(
 			        'Store Lookup'
 			    )
@@ -298,22 +298,22 @@ table 'Measure Table'
 		displayFolder: Advanced Calculate
 		lineageTag: 148da406-0c30-4d59-a62c-91661b86e6f2
 
-	measure 'Count of Product ID (DISTICNT)' =
+	measure 'Count of Profile ID (DISTICNT)' =
 			
 			COUNTROWS(
 			    DISTINCT(
-			        'Product Lookup'[product_id]
+			        'Profile Lookup'[product_id]
 			    )
 			)
 		formatString: 0
 		displayFolder: Table & Filter Functions
 		lineageTag: 63357fac-1fd4-446b-be6f-082f26391f4a
 
-	measure 'Count of Product ID (VALUES)' =
+	measure 'Count of Profile ID (VALUES)' =
 			
 			COUNTROWS(
 			    VALUES(
-			        'Product Lookup'[product_id]
+			        'Profile Lookup'[product_id]
 			    )
 			)
 		formatString: 0
@@ -326,7 +326,7 @@ table 'Measure Table'
 			    [Customer Sales],
 			    ALLEXCEPT(
 			        'Sales by Store',
-			        'Product Lookup'[product_group],
+			        'Profile Lookup'[product_group],
 			        'Calendar'[Transaction_Date]
 			    )
 			)
@@ -345,7 +345,7 @@ table 'Measure Table'
 			        'Calendar'[Transaction_Date],
 			        'Store Lookup'[store_id],
 			        'Customer Lookup'[customer_first-name],
-			        'Product Lookup'[product_group]
+			        'Profile Lookup'[product_group]
 			    )
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
@@ -378,7 +378,7 @@ table 'Measure Table'
 	measure 'Retail Price (SELECTEDVALUE)' =
 			
 			SELECTEDVALUE(
-			    'Product Lookup'[current_retail_price]
+			    'Profile Lookup'[current_retail_price]
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Table & Filter Functions
@@ -389,7 +389,7 @@ table 'Measure Table'
 			DIVIDE(
 			    [Customer Sales],
 			    SELECTEDVALUE(
-			        'Product Lookup'[current_retail_price]
+			        'Profile Lookup'[current_retail_price]
 			    )
 			)
 		formatString: #,0.00
@@ -552,7 +552,7 @@ table 'Measure Table'
 			    'Sales by Store',
 			    'Sales by Store'[quantity_sold]*
 			    RELATED(
-			        'Product Lookup'[current_wholesale_price]
+			        'Profile Lookup'[current_wholesale_price]
 			    )
 			)
 			
@@ -704,7 +704,7 @@ table 'Measure Table'
 			        SUM(
 			            'Sales by Store'[quantity_sold]
 			        ),
-			        'Sales by Store'[Product Group] = "Whole Bean/Teas"
+			        'Sales by Store'[Profile Group] = "Whole Bean/Teas"
 			    ),
 			    [Bean Goal (TREATAS)]   
 			)
@@ -720,7 +720,7 @@ table 'Measure Table'
 			        SUM(
 			            'Sales by Store'[quantity_sold]
 			        ),
-			        'Sales by Store'[Product Group] = "Beverages"
+			        'Sales by Store'[Profile Group] = "Beverages"
 			    ),
 			    [Beverage Goal (TREATAS)]   
 			)
@@ -736,7 +736,7 @@ table 'Measure Table'
 			        SUM(
 			            'Sales by Store'[quantity_sold]
 			        ),
-			        'Sales by Store'[Product Group] = "Food"
+			        'Sales by Store'[Profile Group] = "Food"
 			    ),
 			    [Food Goal (TREATAS)]   
 			)
@@ -752,7 +752,7 @@ table 'Measure Table'
 			        SUM(
 			            'Sales by Store'[quantity_sold]
 			        ),
-			        'Sales by Store'[Product Group] = "Merchandise"
+			        'Sales by Store'[Profile Group] = "Merchandise"
 			    ),
 			    [Merchandise Goal (TREATAS)]
 			)
@@ -778,16 +778,16 @@ table 'Measure Table'
 		displayFolder: Iterator Functions
 		lineageTag: 83800999-35a5-4a95-a841-09c02154c77a
 
-	measure 'Selected Product Category (CONCATENATEX)' =
+	measure 'Selected Profile Category (CONCATENATEX)' =
 			
 			"Show Sales For: " &
 			CONCATENATEX(
 			    VALUES(
-			        'Product Lookup'[product_category]
+			        'Profile Lookup'[product_category]
 			    ),
-			    'Product Lookup'[product_category],
+			    'Profile Lookup'[product_category],
 			    ", ",
-			    'Product Lookup'[product_category],
+			    'Profile Lookup'[product_category],
 			    ASC
 			)
 		displayFolder: Iterator Functions
@@ -943,11 +943,11 @@ table 'Measure Table'
 			
 			IF(
 			    HASONEVALUE(
-			        'Product Lookup'[product_category]
+			        'Profile Lookup'[product_category]
 			    ),
 			    RANKX(
 			    All(
-			        'Product Lookup'[product_category]
+			        'Profile Lookup'[product_category]
 			    ),
 			    [Customer Sales]
 			)
@@ -971,11 +971,11 @@ table 'Measure Table'
 			
 			IF(
 			    HASONEVALUE(
-			        'Product Lookup'[product_category]
+			        'Profile Lookup'[product_category]
 			    ),
 			    RANKX(
 			    All(
-			        'Product Lookup'[product_category]
+			        'Profile Lookup'[product_category]
 			    ),
 			    [Rounded Customer Sales],
 			    ,DESC
@@ -986,16 +986,16 @@ table 'Measure Table'
 		displayFolder: Iterator Functions
 		lineageTag: de037c69-4d1f-458d-8e0d-60ccb4e7c55f
 
-	measure 'Top 5 Product by Profit (RANKX)' = ```
+	measure 'Top 5 Profile by Profit (RANKX)' = ```
 			
 			VAR ProfitRank =
 			IF(
 			    HASONEVALUE(
-			        'Product Lookup'[product_category]
+			        'Profile Lookup'[product_category]
 			    ),
 			    RANKX(
 			        ALL(
-			            'Product Lookup'[product]
+			            'Profile Lookup'[product]
 			        ),
 			        [Customer Sales] - [Cost]
 			    )

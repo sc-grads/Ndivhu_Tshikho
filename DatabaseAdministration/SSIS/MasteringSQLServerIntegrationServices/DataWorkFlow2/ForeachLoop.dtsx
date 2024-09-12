@@ -239,11 +239,11 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Foreach Loop Container\Data Flow Task\Product"
+                  refId="Package\Foreach Loop Container\Data Flow Task\Profile"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
-                  name="Product"
+                  name="Profile"
                   usesDispositions="true"
                   version="4">
                   <properties>
@@ -254,7 +254,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[Product]</property>
+                      name="OpenRowset">[Profile]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -296,7 +296,7 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Foreach Loop Container\Data Flow Task\Product.Connections[OleDbConnection]"
+                      refId="Package\Foreach Loop Container\Data Flow Task\Profile.Connections[OleDbConnection]"
                       connectionManagerID="Package.ConnectionManagers[DESKTOP-PL72RR2.SSIS]"
                       connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PL72RR2.SSIS]"
                       description="The OLE DB runtime connection used to access the database."
@@ -304,37 +304,37 @@
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\Foreach Loop Container\Data Flow Task\Product.Inputs[OLE DB Destination Input]"
+                      refId="Package\Foreach Loop Container\Data Flow Task\Profile.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Product.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          refId="Package\Foreach Loop Container\Data Flow Task\Profile.Inputs[OLE DB Destination Input].Columns[ProductID]"
                           cachedDataType="i4"
                           cachedName="ProductID"
-                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                           lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ProductID]" />
                         <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Product.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                          refId="Package\Foreach Loop Container\Data Flow Task\Profile.Inputs[OLE DB Destination Input].Columns[ProductName]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="ProductName"
-                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
                           lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ProductName]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          refId="Package\Foreach Loop Container\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="ProductID" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Product.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                          refId="Package\Foreach Loop Container\Data Flow Task\Profile.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
                           codePage="1252"
                           dataType="str"
                           length="50"
@@ -344,22 +344,22 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Foreach Loop Container\Data Flow Task\Product.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\Foreach Loop Container\Data Flow Task\Profile.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task\Product.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task\Profile.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\Foreach Loop Container\Data Flow Task\Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\Foreach Loop Container\Data Flow Task\Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -371,7 +371,7 @@
               <paths>
                 <path
                   refId="Package\Foreach Loop Container\Data Flow Task.Paths[Flat File Source Output]"
-                  endId="Package\Foreach Loop Container\Data Flow Task\Product.Inputs[OLE DB Destination Input]"
+                  endId="Package\Foreach Loop Container\Data Flow Task\Profile.Inputs[OLE DB Destination Input]"
                   name="Flat File Source Output"
                   startId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]" />
               </paths>
@@ -426,7 +426,7 @@
           TopLeft="41,57" />
         <NodeLayout
           Size="117,42"
-          Id="Package\Foreach Loop Container\Data Flow Task\Product"
+          Id="Package\Foreach Loop Container\Data Flow Task\Profile"
           TopLeft="58,214" />
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[Flat File Source Output]"
@@ -454,7 +454,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Foreach Loop Container\Data Flow Task\Product">
+    design-time-name="Package\Foreach Loop Container\Data Flow Task\Profile">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

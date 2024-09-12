@@ -1,24 +1,24 @@
-﻿table 'Product Metric Selection'
+﻿table 'Profile Metric Selection'
 
-	column 'Product Metric Selection'
+	column 'Profile Metric Selection'
 		dataType: string
 		summarizeBy: none
 		isDataTypeInferred
 		sourceColumn: [Value1]
-		sortByColumn: 'Product Metric Selection Order'
+		sortByColumn: 'Profile Metric Selection Order'
 
 		relatedColumnDetails
-			groupByColumn: 'Product Metric Selection Fields'
+			groupByColumn: 'Profile Metric Selection Fields'
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Product Metric Selection Fields'
+	column 'Profile Metric Selection Fields'
 		dataType: string
 		isHidden
 		summarizeBy: none
 		isDataTypeInferred
 		sourceColumn: [Value2]
-		sortByColumn: 'Product Metric Selection Order'
+		sortByColumn: 'Profile Metric Selection Order'
 
 		extendedProperty ParameterMetadata =
 				{
@@ -28,7 +28,7 @@
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Product Metric Selection Order'
+	column 'Profile Metric Selection Order'
 		dataType: int64
 		isHidden
 		formatString: 0
@@ -38,7 +38,7 @@
 
 		annotation SummarizationSetBy = Automatic
 
-	partition 'Product Metric Selection' = calculated
+	partition 'Profile Metric Selection' = calculated
 		mode: import
 		source =
 				{

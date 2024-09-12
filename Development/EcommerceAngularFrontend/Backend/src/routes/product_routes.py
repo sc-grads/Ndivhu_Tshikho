@@ -18,5 +18,5 @@ def get_products():
 def get_product(product_id):
     logger.info(f'Fetching product with ID: {product_id}')
     product = Product.query.get_or_404(product_id)
-    logger.info(f'Product with ID: {product_id} fetched successfully')
+    logger.info(f'Profile with ID: {product_id} fetched successfully')
     return jsonify(product.to_dict()), 200

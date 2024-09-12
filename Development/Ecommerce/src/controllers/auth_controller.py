@@ -1,19 +1,20 @@
-from flask import request, jsonify
-from app import db
-from models.user import User
-import bcrypt
+from sqlalchemy.orm import Session
+from passlib.hash import bcrypt
+from models import user as user_model
 
-def register_user():
-    data = request.get_json()
-    hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
-    new_user = User(username=data['username'], email=data['email'], password=hashed_password)
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify({"message": "User registered successfully"}), 201
+def create_user(db: Session, username: str, email: str, password: str):
+    hashed_password = bcrypt.hash(password)
+    new_user = user_model.User(username=username, email=email, password=hashed_password)
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+    return new_user
 
-def login_user():
-    data = request.get_json()
-    user = User.query.filter_by(email=data['email']).first()
-    if user and bcrypt.checkpw(data['password'].encode('utf-8'), user.password):
-        return jsonify({"message": "Login successful"}), 200
-    return jsonify({"message": "Invalid credentials"}), 401
+def get_user_by_email(db: Session, email: str):
+    return db.query(user_model.User).filter(user_model.User.email == email).first()
+
+def authenticate_user(db: Session, email: str, password: str):
+    user = get_user_by_email(db, email)
+    if user and bcrypt.verify(password, user.password):
+        return user
+    return False

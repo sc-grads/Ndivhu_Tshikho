@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class Product(db.Model):
+class Profile(db.Model):
     __tablename__ = 'products'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -11,4 +11,4 @@ class Product(db.Model):
     description = db.Column(db.String(255), nullable=True)
 
     def __repr__(self):
-        return f'<Product {self.name}>'
+        return f'<Profile {self.name}>'

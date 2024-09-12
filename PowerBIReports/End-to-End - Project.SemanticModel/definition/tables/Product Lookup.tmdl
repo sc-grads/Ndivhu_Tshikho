@@ -1,4 +1,4 @@
-table 'Product Lookup'
+table 'Profile Lookup'
 	lineageTag: 7229dde0-fd01-46ce-9285-41eac529adda
 
 	column ProductID
@@ -55,11 +55,11 @@ table 'Product Lookup'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	partition 'Product Lookup' = m
+	partition 'Profile Lookup' = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Dimensions\Product.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\NdivhudzannyiT\Documents\Ndivhu_Tshikho\Data\YouTube Project Datasets\Dimensions\Profile.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductID", Int64.Type}, {"Sub Category Key", Int64.Type}, {"Color", type text}, {"ProductName", type text}, {"RetailPrice", type number}, {"StandardCost", type number}}),
 				    #"Removed Duplicates" = Table.Distinct(#"Changed Type", {"ProductID"})

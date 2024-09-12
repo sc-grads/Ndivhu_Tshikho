@@ -153,10 +153,10 @@ table 'Sales by Store'
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	column 'Product Group' =
+	column 'Profile Group' =
 			
 			RELATED(
-			    'Product Lookup'[product_group]
+			    'Profile Lookup'[product_group]
 			)
 		dataType: string
 		lineageTag: d9cbc11c-25c8-4a38-9a2d-6d58b0f59b44

@@ -54,6 +54,6 @@ SELECT * From [HumanResources].[EmployeePayHistory] WHERE ModifiedDate >= '2010-
 ------Group by clause  HAVING follow GROUP by and also precede the ORDER by if used.----
 ------HAVING clause enables you to specify coditions,on groups created by the GROUP by clause.
 
-SELECT Count(1) As CountOfProduct, Color From [Production].[Product] WHERE color = 'yellow' Group by Color 
-SELECT Count(1) As CountOfProduct, Color From [Production].[Product] Group by Color HAVING Color = 'yellow'
-SELECT Count(1) As CountOfProduct, Color,Size From [Production].[Product] Group by Color,Size HAVING Size >= '44' 
+SELECT Count(1) As CountOfProduct, Color From [Production].[Profile] WHERE color = 'yellow' Group by Color
+SELECT Count(1) As CountOfProduct, Color From [Production].[Profile] Group by Color HAVING Color = 'yellow'
+SELECT Count(1) As CountOfProduct, Color,Size From [Production].[Profile] Group by Color,Size HAVING Size >= '44'

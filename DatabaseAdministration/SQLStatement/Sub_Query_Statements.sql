@@ -9,6 +9,6 @@ SELECT * FROM [HumanResources].[EmployeePayHistory]
 --- WHERE clause filters the rows that are returned by the query.
 WHERE BusinessEntityID IN (SELECT BusinessEntityID From [HumanResources].[EmployeePayHistory]  WHERE Rate > 60)
 
-SELECT * From [Production].[Product] 
+SELECT * From [Production].[Profile]
 WHERE ProductID IN (SELECT ProductID From [Production].[ProductInventory] WHERE Quantity = 500)
 

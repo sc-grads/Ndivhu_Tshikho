@@ -20,7 +20,7 @@ def add_to_cart():
     db.session.add(cart_item)
     db.session.commit()
 
-    return jsonify({'message': 'Product added to cart'}), 201
+    return jsonify({'message': 'Profile added to cart'}), 201
 
 @cart_bp.route('/cart/<int:user_id>', methods=['GET'])
 def get_cart(user_id):

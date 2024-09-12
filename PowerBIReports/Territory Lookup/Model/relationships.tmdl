@@ -8,23 +8,23 @@ relationship 66fe3593-a2fe-2e39-d28a-7776e6882812
 
 relationship d7e433ea-5460-4788-6e04-93bf6ef63b34
 	fromColumn: 'Sales Data'.ProductKey
-	toColumn: 'Product Lookup'.ProductKey
+	toColumn: 'Profile Lookup'.ProductKey
 
 relationship 779e6426-9e61-aad0-647a-09e753097d75
 	fromColumn: 'Sales Data'.OrderDate
 	toColumn: 'Calendar Lookup'.Date
 
 relationship 9993cc10-224c-827d-a3fc-75fb24b0add8
-	fromColumn: 'Product Lookup'.ProductSubcategoryKey
-	toColumn: 'Product Subcategories Lookup'.ProductSubcategoryKey
+	fromColumn: 'Profile Lookup'.ProductSubcategoryKey
+	toColumn: 'Profile Subcategories Lookup'.ProductSubcategoryKey
 
 relationship 41229031-5622-79f3-ad61-f73cd9221ed0
-	fromColumn: 'Product Subcategories Lookup'.ProductCategoryKey
-	toColumn: 'Product Categories Lookup'.ProductCategoryKey
+	fromColumn: 'Profile Subcategories Lookup'.ProductCategoryKey
+	toColumn: 'Profile Categories Lookup'.ProductCategoryKey
 
 relationship dd1460a7-0449-f970-0af3-e5c5ff227159
 	fromColumn: 'Returns Data'.ProductKey
-	toColumn: 'Product Lookup'.ProductKey
+	toColumn: 'Profile Lookup'.ProductKey
 
 relationship 8940e2c1-760a-e9f3-6ee5-2c8be87d28a3
 	fromColumn: 'Returns Data'.TerritoryKey

@@ -17,7 +17,7 @@
 	measure 'Average Retail Price' =
 			
 			AVERAGE(
-			    'Product Lookup'[ProductPrice]
+			    'Profile Lookup'[ProductPrice]
 			)
 		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 
@@ -73,7 +73,7 @@
 			
 			CALCULATE(
 			    [Total Returns],
-			    'Product Categories Lookup'[CategoryName] = "Bikes"
+			    'Profile Categories Lookup'[CategoryName] = "Bikes"
 			    )
 		formatString: #,0
 
@@ -81,7 +81,7 @@
 			
 			CALCULATE(
 			    [Quantity Sold],
-			    'Product Categories Lookup'[CategoryName] = "Bikes"
+			    'Profile Categories Lookup'[CategoryName] = "Bikes"
 			)
 		formatString: #,0
 
@@ -89,7 +89,7 @@
 			
 			CALCULATE(
 			    [Return Rate],
-			    'Product Categories Lookup'[CategoryName] = "Bikes"
+			    'Profile Categories Lookup'[CategoryName] = "Bikes"
 			)
 		formatString: #,0.00%;-#,0.00%;#,0.00%
 
@@ -116,7 +116,7 @@
 			CALCULATE(
 			    [Average Retail Price],
 			    ALL(
-			        'Product Lookup'
+			        'Profile Lookup'
 			        )
 			)
 
@@ -145,8 +145,8 @@
 			CALCULATE(
 			    [Total  Orders],
 			    FILTER(
-			        'Product Lookup',
-			        'Product Lookup'[ProductPrice] > [Overall Average Price]
+			        'Profile Lookup',
+			        'Profile Lookup'[ProductPrice] > [Overall Average Price]
 			    )
 			)
 		formatString: #,0
@@ -157,7 +157,7 @@
 			    'Sales Data',
 			    'Sales Data'[OrderQuantity] * 
 			    RELATED(
-			        'Product Lookup'[ProductPrice]
+			        'Profile Lookup'[ProductPrice]
 			    )
 			)
 			
@@ -182,7 +182,7 @@
 			    'Sales Data',
 			    'Sales Data'[OrderQuantity]*
 			    RELATED(
-			        'Product Lookup'[ProductCost]
+			        'Profile Lookup'[ProductCost]
 			    )
 			)
 		formatString: \$#,0;(\$#,0);\$#,0

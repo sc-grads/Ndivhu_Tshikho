@@ -8,10 +8,10 @@ relationship AutoDetected_4631d2d4-5609-450d-9276-40ae6a7c7387
 
 relationship AutoDetected_f1da5fc6-3e89-4e7a-bfbe-e2a86633ccba
 	fromColumn: Sales.ProductID
-	toColumn: 'Product Lookup'.ProductID
+	toColumn: 'Profile Lookup'.ProductID
 
 relationship AutoDetected_9d7f05ab-b52d-47ae-bd05-76f5eb68802e
-	fromColumn: 'Product Lookup'.SubCategoryKey
+	fromColumn: 'Profile Lookup'.SubCategoryKey
 	toColumn: 'SubCategories Lookup'.SubCategoryKey
 
 relationship 51c942f5-f92e-23cf-b342-9f88bf4df92d

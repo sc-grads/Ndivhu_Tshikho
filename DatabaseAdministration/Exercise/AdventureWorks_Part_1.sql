@@ -15,8 +15,8 @@ Select [FirstName],[LastName], [BusinessEntityID] AS Employee_ID from [Person].[
 Order By [LastName]
 
 -- 4.
-Select [ProductID], [ProductNumber], [Name]  as [Product Name]  
-From [Production].[Product]
+Select [ProductID], [ProductNumber], [Name]  as [Profile Name]
+From [Production].[Profile]
 Where [SellStartDate] is not null and [ProductLine] like 'T%'
 Order By [Name]
 

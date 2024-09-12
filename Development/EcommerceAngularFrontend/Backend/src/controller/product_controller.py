@@ -27,4 +27,4 @@ def add_product():
     db.session.add(new_product)
     db.session.commit()
 
-    return jsonify({'message': 'Product added successfully'}), 201
+    return jsonify({'message': 'Profile added successfully'}), 201

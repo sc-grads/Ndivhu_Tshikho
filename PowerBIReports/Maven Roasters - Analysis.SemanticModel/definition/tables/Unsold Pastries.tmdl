@@ -56,7 +56,7 @@ table 'Unsold Pastries'
 		summarizeBy: sum
 		isNameInferred
 		isDataTypeInferred
-		sourceColumn: Product Lookup[current_retail_price]
+		sourceColumn: Profile Lookup[current_retail_price]
 
 		annotation SummarizationSetBy = Automatic
 
@@ -68,7 +68,7 @@ table 'Unsold Pastries'
 		summarizeBy: none
 		isNameInferred
 		isDataTypeInferred
-		sourceColumn: Product Lookup[product]
+		sourceColumn: Profile Lookup[product]
 
 		annotation SummarizationSetBy = Automatic
 
@@ -85,8 +85,8 @@ table 'Unsold Pastries'
 				    'Food Inventory'[store_id],
 				    'Food Inventory'[quantity_sold],
 				    'Food Inventory'[quantity_start_of_day],
-				    'Product Lookup'[current_retail_price],
-				    'Product Lookup'[product]
+				    'Profile Lookup'[current_retail_price],
+				    'Profile Lookup'[product]
 				)
 
 	annotation PBI_Id = bd7e32a5c9ff49219b9bb2a1a46df9db
