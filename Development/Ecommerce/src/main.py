@@ -1,11 +1,12 @@
 from fastapi import FastAPI
-from views import auth
+from routers import auth_router
+from database import Base, engine
 
+# Initialize the FastAPI app
 app = FastAPI()
 
-app.include_router(auth.router)
+# Create the database tables
+Base.metadata.create_all(bind=engine)
 
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("src.main:app", host="127.0.0.1", port=8000, reload=True)
+# Include the authentication router
+app.include_router(auth_router.router)
