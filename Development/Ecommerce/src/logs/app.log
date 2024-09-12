@@ -67,3 +67,32 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2024-09-12 13:56:28,694 - INFO - User registered: Riv
 2024-09-12 13:56:28,710 - INFO - Accessing login page
 2024-09-12 13:57:09,097 - ERROR - Error logging in user Riv: name 'login_user' is not defined
+2024-09-12 14:03:33,328 - ERROR - Error logging in user Ben: name 'login_user' is not defined
+2024-09-12 14:05:41,907 - ERROR - Error logging in user Ben: __init__() takes 1 positional argument but 4 were given
+2024-09-12 14:06:56,252 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\NdivhudzannyiT\Ndivhu_Tshikho\Development\Ecommerce\env\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-09-12 14:06:56,684 - INFO - User logged in: Ben
+2024-09-12 14:07:36,650 - INFO - Accessing login page
+2024-09-12 14:07:46,750 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\NdivhudzannyiT\Ndivhu_Tshikho\Development\Ecommerce\env\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-09-12 14:07:47,248 - INFO - User logged in: Ben
+2024-09-12 14:07:47,633 - INFO - User logged in: Ben
+2024-09-12 14:47:17,718 - INFO - Accessing registration page
+2024-09-12 14:48:09,233 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\NdivhudzannyiT\Ndivhu_Tshikho\Development\Ecommerce\env\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-09-12 14:48:09,744 - INFO - User registered: pranav
+2024-09-12 14:48:09,757 - INFO - Accessing login page
+2024-09-12 14:48:26,124 - INFO - User logged in: pranav
+2024-09-12 14:52:11,507 - INFO - Accessing login page
