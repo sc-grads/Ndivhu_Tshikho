@@ -1,9 +1,10 @@
 from fastapi import FastAPI
-from routers import auth_router
+from routers import auth_router, product_router
 from database import Base, engine
 import logging
 from logging_config import *
 from fastapi.staticfiles import StaticFiles
+
 
 # Initialize the FastAPI app
 app = FastAPI()
@@ -14,3 +15,4 @@ Base.metadata.create_all(bind=engine)
 
 # Include the authentication router
 app.include_router(auth_router.router)
+app.include_router(product_router.router)

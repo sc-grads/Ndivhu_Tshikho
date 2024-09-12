@@ -57,3 +57,13 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2024-09-12 13:10:05,062 - INFO - Accessing login page
 2024-09-12 13:10:16,342 - WARNING - Failed login attempt for user: ben
 2024-09-12 13:10:40,705 - INFO - User logged in: Ben
+2024-09-12 13:55:54,522 - INFO - Accessing registration page
+2024-09-12 13:56:28,215 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\NdivhudzannyiT\Ndivhu_Tshikho\Development\Ecommerce\env\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-09-12 13:56:28,694 - INFO - User registered: Riv
+2024-09-12 13:56:28,710 - INFO - Accessing login page
+2024-09-12 13:57:09,097 - ERROR - Error logging in user Riv: name 'login_user' is not defined

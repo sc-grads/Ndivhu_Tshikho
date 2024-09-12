@@ -42,13 +42,14 @@ async def get_login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
 @router.post("/login")
-async def post_login(request: Request, username: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
+async def post_login(request: Request, username: str = Form(...), password: str = Form(...)):
+    db: Session = next(get_db())
     try:
-        user = db.query(User).filter(User.username == username).first()
-        if user and pwd_context.verify(password, user.password):
+        user = login_user(db, username, password)
+        if user:
             logger.info(f"User logged in: {username}")
-            # Set session or token here
-            return RedirectResponse(url="/dashboard", status_code=303)
+            # Set session or token here if applicable
+            return RedirectResponse(url="/products", status_code=303)
         else:
             logger.warning(f"Failed login attempt for user: {username}")
             return templates.TemplateResponse("login.html", {"request": request, "message": "Invalid credentials"})
