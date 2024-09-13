@@ -29,3 +29,26 @@ Traceback (most recent call last):
 AttributeError: module 'bcrypt' has no attribute '__about__'
 2024-09-13 10:02:31,016 - routers.auth_router - INFO - User registered: tate
 2024-09-13 10:02:31,021 - routers.auth_router - INFO - Accessing login page
+2024-09-13 10:06:07,043 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\NdivhudzannyiT\Ndivhu_Tshikho\Development\Ecommerce\env\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-09-13 10:06:07,606 - routers.auth_router - INFO - User logged in: tate@gmail.com
+2024-09-13 10:06:41,698 - product - INFO - Added product: iPhone 12, New edition , 30000.0, /static/images/815eN0AS-CL._AC_SL1500_.jpg
+2024-09-13 10:14:39,952 - product - INFO - Updated product ID 1: iPhone 12, New edition , 30000.0, /static/images/815eN0AS-CL._AC_SL1500_.jpg
+2024-09-13 10:24:39,390 - product - INFO - Deleted product ID 2
+2024-09-13 10:25:12,510 - product - INFO - Added product: iPhone 15 Pro Max, Blue Titanium, 3100.0, /static/images/815eN0AS-CL._AC_SL1500_.jpg
+2024-09-13 15:04:14,804 - main - INFO - Application startup: FastAPI e-commerce backend
+2024-09-13 15:06:43,823 - main - INFO - Application startup: FastAPI e-commerce backend
+2024-09-13 15:07:41,268 - routers.auth_router - INFO - Accessing registration page
+2024-09-13 15:08:35,596 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\NdivhudzannyiT\Ndivhu_Tshikho\Development\Ecommerce\env\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-09-13 15:08:36,340 - routers.auth_router - INFO - User registered: Israel
+2024-09-13 15:08:36,390 - routers.auth_router - INFO - Accessing login page
+2024-09-13 15:10:08,549 - routers.auth_router - INFO - User logged in: israel@gmail.com

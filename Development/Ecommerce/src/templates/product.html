@@ -34,22 +34,22 @@
 <!-- JavaScript for Search Filter -->
 <script>
 function filterProducts() {
-    let input = document.getElementById('searchInput').value.toLowerCase();
-    console.log('Search query:', input); // Debugging: See the search input in console
-
+    let input = document.getElementById('searchInput').value.toLowerCase().trim();
     let productCards = document.getElementsByClassName('product-card');
     
+    console.log('Search query:', input); // Debugging: Print search input
+
+    // Loop through all product cards and hide those that don't match the search query
     for (let i = 0; i < productCards.length; i++) {
-        let productName = productCards[i].getAttribute('data-name');
-        console.log('Checking product:', productName); // Debugging: See which products are being checked
+        let productName = productCards[i].getAttribute('data-name').toLowerCase();
+        console.log('Checking product:', productName); // Debugging: Log each product
 
         if (productName.includes(input)) {
-            productCards[i].style.display = '';
+            productCards[i].style.display = ''; // Show matching product
         } else {
-            productCards[i].style.display = 'none';
+            productCards[i].style.display = 'none'; // Hide non-matching product
         }
     }
 }
 </script>
-
 {% endblock %}
