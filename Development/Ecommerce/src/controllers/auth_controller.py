@@ -1,20 +1,46 @@
 from sqlalchemy.orm import Session
-from passlib.hash import bcrypt
-from models import user as user_model
+from models.user import User
+from passlib.context import CryptContext
+import logging
 
-def create_user(db: Session, username: str, email: str, password: str):
-    hashed_password = bcrypt.hash(password)
-    new_user = user_model.User(username=username, email=email, password=hashed_password)
-    db.add(new_user)
-    db.commit()
-    db.refresh(new_user)
-    return new_user
+# Setup password hashing
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-def get_user_by_email(db: Session, email: str):
-    return db.query(user_model.User).filter(user_model.User.email == email).first()
+# Setup logging
+logger = logging.getLogger(__name__)
 
-def authenticate_user(db: Session, email: str, password: str):
-    user = get_user_by_email(db, email)
-    if user and bcrypt.verify(password, user.password):
+def register_user(db: Session, username: str, email: str, password: str):
+    hashed_password = pwd_context.hash(password)
+    try:
+        # Check if the username or email already exists
+        if db.query(User).filter(User.username == username).first():
+            raise ValueError("Username already exists")
+        if db.query(User).filter(User.email == email).first():
+            raise ValueError("Email already exists")
+
+        # Create a new user and add it to the database
+        user = User(username=username, email=email, password=hashed_password)
+        db.add(user)
+        db.commit()
+        logger.info(f"User registered: {username}")
         return user
-    return False
+    except ValueError as ve:
+        logger.warning(f"Validation error during registration for {username}: {ve}")
+        raise
+    except Exception as e:
+        db.rollback()  # Rollback the transaction on error
+        logger.error(f"Error registering user {username}: {e}")
+        raise
+
+def login_user(db: Session, username: str, password: str):
+    try:
+        user = db.query(User).filter(User.username == username).first()
+        if user and pwd_context.verify(password, user.password):
+            logger.info(f"User logged in: {username}")
+            return user
+        else:
+            logger.warning(f"Failed login attempt for user: {username}")
+            return None
+    except Exception as e:
+        logger.error(f"Error logging in user {username}: {e}")
+        raise

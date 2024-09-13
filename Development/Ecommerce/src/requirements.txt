@@ -5,3 +5,5 @@ pydantic
 bcrypt
 python-jose
 passlib
+python-multipart
+jinja2
