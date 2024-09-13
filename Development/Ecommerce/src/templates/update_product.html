@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Update Product</h1>
+    <form action="/update_product/{{ product.id }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="name" class="form-label">Product Name:</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ product.name }}" required>
+            <div class="invalid-feedback">
+                Please provide a valid product name.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea class="form-control" id="description" name="description" required>{{ product.description }}</textarea>
+            <div class="invalid-feedback">
+                Please provide a description.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price:</label>
+            <input type="number" class="form-control" id="price" name="price" value="{{ product.price }}" step="0.01" required>
+            <div class="invalid-feedback">
+                Please provide a valid price.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="file" class="form-label">Product Image:</label>
+            <input type="file" class="form-control" id="file" name="file">
+            <p class="mt-2">Current Image:</p>
+            <img src="{{ product.image_url }}" alt="{{ product.name }}" class="img-thumbnail" width="150">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Product</button>
+        <a href="/products" class="btn btn-secondary">Back to Products</a>
+    </form>
+</div>
+{% endblock %}

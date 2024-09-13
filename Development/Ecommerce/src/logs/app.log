@@ -119,3 +119,20 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2024-09-12 16:42:45,108 - routers.auth_router - INFO - User logged in: Bongani 
 2024-09-12 16:43:40,172 - product - INFO - Added product:  Apple iPhone 15 Pro Max Silicone Case , with MagSafe - Black , 1200.0, /static/images/511UY5FJH6L._AC_SL1500_.jpg
 2024-09-12 16:43:57,331 - product - INFO - Deleted product ID 3
+2024-09-13 10:00:51,475 - routers.auth_router - INFO - Accessing registration page
+2024-09-13 10:02:30,296 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\NdivhudzannyiT\Ndivhu_Tshikho\Development\Ecommerce\env\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-09-13 10:02:31,016 - routers.auth_router - INFO - User registered: tate
+2024-09-13 10:02:31,021 - routers.auth_router - INFO - Accessing login page
+2024-09-13 10:06:07,043 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\NdivhudzannyiT\Ndivhu_Tshikho\Development\Ecommerce\env\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-09-13 10:06:07,606 - routers.auth_router - INFO - User logged in: tate@gmail.com
+2024-09-13 10:06:41,698 - product - INFO - Added product: iPhone 12, New edition , 30000.0, /static/images/815eN0AS-CL._AC_SL1500_.jpg
