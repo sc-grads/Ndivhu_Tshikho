@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import auth_router
+from router import auth_router
 from database import Base, engine
 import logging
 from logging_config import setup_logging
