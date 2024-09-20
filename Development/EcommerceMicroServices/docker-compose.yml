@@ -1,20 +1,31 @@
 services:
-  product-service:
-    build: ./product-service
+  user_service:
+    build:
+      context: ./user-service
     ports:
       - "8001:8000"
-    networks:
-      - ecommerce-network
-    depends_on:
-      - user-service
+    environment:
+      - DATABASE_URL=sqlite:///./user.db
+    volumes:
+      - ./user-service/app:/app
 
-  user-service:
-    build: ./user-service
+  product_service:
+    build:
+      context: ./product-service
     ports:
       - "8002:8000"
-    networks:
-      - ecommerce-network
+    environment:
+      - DATABASE_URL=sqlite:///./product.db
+    volumes:
+      - ./product-service/app:/app
 
-networks:
-  ecommerce-network:
-    driver: bridge
+  frontend_service:
+    build:
+      context: ./frontend-service
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./frontend-service/app:/app
+    depends_on:
+      - user_service
+      - product_service

@@ -1,0 +1,19 @@
+# Use an official Python runtime as a parent image
+FROM python:3.12-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+WORKDIR /app
+
+COPY ./app/requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY ./app .
+
+
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+# Run the FastAPI app with Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
