@@ -14,8 +14,8 @@ def register(username: str, email: str, password: str, db: Session = Depends(get
     return create_user(db, username, email, password)
 
 @router.post("/login")
-def login(username: str, password: str, db: Session = Depends(get_db)):
-    user = get_user(db, username)
+def login(email: str, password: str, db: Session = Depends(get_db)):
+    user = get_user(db, email)
     if user is None or not pwd_context.verify(password, user.password):
         raise HTTPException(status_code=400, detail="Invalid credentials")
     return {"message": "Login successful!"}

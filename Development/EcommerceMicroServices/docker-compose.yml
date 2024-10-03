@@ -1,31 +1,34 @@
+
 services:
-  user_service:
+  frontend-service:
     build:
-      context: ./user-service
+      context: ./frontend-service  # Path to the frontend service directory
     ports:
-      - "8001:8000"
-    environment:
-      - DATABASE_URL=sqlite:///./user.db
+      - "8000:8000"                 # Expose port 8000 for the frontend service
     volumes:
-      - ./user-service/app:/app
+      - ./frontend-service/app:/app  # Bind mount the app directory for live updates
 
-  product_service:
+  user-service:
     build:
-      context: ./product-service
+      context: ./user-service  # Path to the user service directory
     ports:
-      - "8002:8000"
-    environment:
-      - DATABASE_URL=sqlite:///./product.db
-    volumes:
-      - ./product-service/app:/app
+      - "8001:8000"            # Expose port 8000 for the user service
 
-  frontend_service:
+  product-service:
     build:
-      context: ./frontend-service
+      context: ./product-service  # Path to the product service directory
     ports:
-      - "5000:5000"
-    volumes:
-      - ./frontend-service/app:/app
+      - "8002:8000"               # Expose port 8000 for the product service
+
+  nginx:
+    build:
+      context: ./nginx  # Path to the Nginx directory
+    ports:
+      - "8080:80"       # Expose port 8080 for Nginx
     depends_on:
-      - user_service
-      - product_service
+      - frontend-service
+      - user-service
+      - product-service
+    volumes:
+      - ./frontend-service/app/static:/usr/share/nginx/html/static  # Serve static files
+      - ./frontend-service/app/templates:/usr/share/nginx/html       # Serve HTML templates
