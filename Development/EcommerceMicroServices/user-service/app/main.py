@@ -17,4 +17,4 @@ app.add_middleware(
 )
 
 # Include the auth_router with a prefix
-app.include_router(auth_router.router, prefix="/api/users")
+app.include_router(auth_router.router)

@@ -1,8 +1,33 @@
 {% extends "base.html" %}
 
-{% block title %}Products{% endblock %}
-
 {% block content %}
-<h1>Product List</h1>
-<!-- Products will be dynamically populated here -->
+<h2>Product List</h2>
+<div id="productList"></div>
+
+<script>
+async function fetchProducts() {
+    const response = await fetch('/products');
+    if (response.ok) {
+        const products = await response.json();
+        const productListDiv = document.getElementById('productList');
+        
+        products.forEach(product => {
+            const productItem = document.createElement('div');
+            productItem.className = 'product-item';
+            productItem.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <p>Price: $${product.price}</p>
+                <img src="${product.image_url}" alt="${product.name}" style="width: 100px;">
+            `;
+            productListDiv.appendChild(productItem);
+        });
+    } else {
+        const errorData = await response.json();
+        console.error('Error fetching products:', errorData);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', fetchProducts);
+</script>
 {% endblock %}

@@ -1,8 +1,9 @@
 # Use the official Nginx image as the base image
-FROM nginx:alpine
+FROM nginx:latest
 
-# Copy the Nginx configuration file to the correct directory
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy your custom Nginx config file into the container
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-# Expose port 80 to the outside world
+# Expose port 80 for web traffic
 EXPOSE 80
+

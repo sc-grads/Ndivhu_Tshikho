@@ -1,9 +1,65 @@
-{% extends "base.html" %}
-{% block content %}
-<h2>Login Page</h2>
-<form action="/login" method="post">
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br>
-    <input type="submit" value="Login">
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <div id="errorMessage" class="mt-3" style="color: red;"></div>
+        <div id="successMessage" class="mt-3" style="color: green;"></div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const loginData = {
+                email: email,
+                password: password
+            };
+
+            fetch("http://localhost:8080/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(loginData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.detail || "Login failed");
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("successMessage").innerText = "Login successful!";
+                document.getElementById("loginForm").reset();
+                // Optionally redirect to another page or perform other actions here
+            })
+            .catch(error => {
+                document.getElementById("errorMessage").innerText = error.message;
+            });
+        });
+    </script>
+</body>
+</html>

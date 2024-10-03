@@ -4,31 +4,40 @@ services:
     build:
       context: ./frontend-service  # Path to the frontend service directory
     ports:
-      - "8000:8000"                 # Expose port 8000 for the frontend service
+      - "8005:8000"  # Map port 8000 in the container to port 8005 on the host
     volumes:
-      - ./frontend-service/app:/app  # Bind mount the app directory for live updates
+      - ./frontend-service/app:/app  
+      - ./frontend-service/app/static:/app/static 
+      - ./frontend-service/app/templates:/app/templates
+    networks:
+      - app-network
 
   user-service:
     build:
       context: ./user-service  # Path to the user service directory
     ports:
-      - "8001:8000"            # Expose port 8000 for the user service
-
-  product-service:
-    build:
-      context: ./product-service  # Path to the product service directory
-    ports:
-      - "8002:8000"               # Expose port 8000 for the product service
+      - "8001:8000"  
+    volumes:
+      - ./user-service/app:/app  
+    networks:
+      - app-network
 
   nginx:
     build:
       context: ./nginx  # Path to the Nginx directory
     ports:
-      - "8080:80"       # Expose port 8080 for Nginx
+      - "8080:80"  # Expose port 8080 for Nginx
     depends_on:
       - frontend-service
       - user-service
-      - product-service
     volumes:
       - ./frontend-service/app/static:/usr/share/nginx/html/static  # Serve static files
-      - ./frontend-service/app/templates:/usr/share/nginx/html       # Serve HTML templates
+      - ./frontend-service/app/templates:/usr/share/nginx/html  # Serve HTML templates
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf  # Use custom Nginx configuration
+    networks:
+      - app-network
+
+# Create a custom network for all services
+networks:
+  app-network:
+    driver: bridge
