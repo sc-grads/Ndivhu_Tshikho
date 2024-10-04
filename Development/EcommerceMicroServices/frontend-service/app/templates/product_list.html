@@ -1,33 +1,81 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Product List</h2>
-<div id="productList"></div>
+<h1 class="text-center my-4">Our Products</h1>
 
+<!-- Search Bar -->
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search for products..." onkeyup="filterProducts()">
+        </div>
+    </div>
+</div>
+
+<!-- Product Grid -->
+<div class="container">
+    <div class="row" id="productGrid">
+        <!-- Products will be dynamically added here -->
+    </div>
+</div>
+
+<!-- JavaScript to Fetch and Display Products -->
 <script>
-async function fetchProducts() {
-    const response = await fetch('/products');
-    if (response.ok) {
-        const products = await response.json();
-        const productListDiv = document.getElementById('productList');
-        
-        products.forEach(product => {
-            const productItem = document.createElement('div');
-            productItem.className = 'product-item';
-            productItem.innerHTML = `
-                <h3>${product.name}</h3>
-                <p>${product.description}</p>
-                <p>Price: $${product.price}</p>
-                <img src="${product.image_url}" alt="${product.name}" style="width: 100px;">
-            `;
-            productListDiv.appendChild(productItem);
-        });
-    } else {
-        const errorData = await response.json();
-        console.error('Error fetching products:', errorData);
-    }
-}
+    document.addEventListener("DOMContentLoaded", function() {
+        fetchProducts(); // Fetch products on page load
+    });
 
-document.addEventListener('DOMContentLoaded', fetchProducts);
+    function fetchProducts() {
+        fetch("http://localhost:8080/store/products")  // Replace with your API endpoint
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                renderProducts(data); // Assuming the API returns a list of products
+            })
+            .catch(error => {
+                console.error("There was a problem with the fetch operation:", error);
+            });
+    }
+
+    function renderProducts(products) {
+        const productGrid = document.getElementById("productGrid");
+        productGrid.innerHTML = ''; // Clear the existing product grid
+
+        products.forEach(product => {
+            const productCard = `
+                <div class="col-md-4 d-flex align-items-stretch product-card" data-name="${product.name.toLowerCase()}">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="${product.image_url}" class="card-img-top img-fluid" alt="${product.name}" style="height: auto; max-height: 250px; object-fit: contain;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text">${product.description}</p>
+                            <p class="card-text"><strong>$ ${product.price}</strong></p>
+                            <a href="/product/${product.id}" class="btn btn-primary mt-auto">View</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            productGrid.innerHTML += productCard; // Append the product card to the grid
+        });
+    }
+
+    function filterProducts() {
+        let input = document.getElementById('searchInput').value.toLowerCase().trim();
+        let productCards = document.getElementsByClassName('product-card');
+
+        // Loop through all product cards and hide those that don't match the search query
+        for (let i = 0; i < productCards.length; i++) {
+            let productName = productCards[i].getAttribute('data-name').toLowerCase();
+            if (productName.includes(input)) {
+                productCards[i].style.display = ''; // Show matching product
+            } else {
+                productCards[i].style.display = 'none'; // Hide non-matching product
+            }
+        }
+    }
 </script>
 {% endblock %}

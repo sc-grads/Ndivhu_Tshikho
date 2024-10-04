@@ -3,16 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="/static/css/style.css"> <!-- Link to your CSS -->
+    <title>Home Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+        }
+        .hero-section {
+            background-image: url('/static/images/ecommerce-banner.jpg'); /* Optional background image */
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .hero-text {
+            text-align: center;
+        }
+        .btn-lg {
+            font-size: 1.25rem;
+            padding: 10px 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Our E-Commerce Site</h1>
-        <div>
-            <a href="/register" class="btn btn-primary">Register</a>
-            <a href="/login" class="btn btn-secondary">Login</a>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">E-commerce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/products">Shop</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1>Welcome to Our E-commerce Store</h1>
+            <p>Find the best products at unbeatable prices</p>
+            <a href="/register" class="btn btn-primary btn-lg mx-2">Register</a>
+            <a href="/login" class="btn btn-secondary btn-lg mx-2">Login</a>
         </div>
     </div>
+
+    <!-- Features Section -->
+    <div class="container text-center my-5">
+        <h2>Why Shop With Us?</h2>
+        <p class="lead">We offer a wide range of products at the best prices. Join us today!</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <h3>Free Shipping</h3>
+                    <p>Enjoy free shipping on all orders above $50.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <h3>Quality Products</h3>
+                    <p>All our products are sourced from trusted brands.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <h3>24/7 Support</h3>
+                    <p>Our support team is here to assist you anytime.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 </body>
 </html>

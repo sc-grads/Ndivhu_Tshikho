@@ -23,4 +23,9 @@ def register_page(request: Request):
 def login_page(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
+@app.get("/products")
+def product_page(request: Request):
+    return templates.TemplateResponse("product_list.html", {"request": request})
+
+
 
