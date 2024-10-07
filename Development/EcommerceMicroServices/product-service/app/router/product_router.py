@@ -14,9 +14,9 @@ async def add_product(
     db: Session = Depends(get_db)
 ):
     # Read the file content
-    image_url = f"/store/static/{file.filename}"
+    image_url = f"/images/{file.filename}"
     # Save the file
-    file_location = f"static/{file.filename}"
+    file_location = f"images/{file.filename}"
     with open(file_location, "wb") as f:
         f.write(file.file.read())
     
@@ -36,8 +36,8 @@ async def modify_product(
     db: Session = Depends(get_db)
 ):
     # Handle file upload similarly
-    image_url = f"store/static/{file.filename}"
-    file_location = f"/store/static/{file.filename}"
+    image_url = f"images/{file.filename}"
+    file_location = f"images/{file.filename}"
     with open(file_location, "wb") as f:
         f.write(file.file.read())
     

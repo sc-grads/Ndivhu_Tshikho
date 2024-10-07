@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from router import product_router
 from database import engine, Base
 
@@ -7,6 +8,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+app.mount("/images", StaticFiles(directory="images"), name="images")
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,

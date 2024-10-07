@@ -1,0 +1,63 @@
+<!-- Add Product Form -->
+<div class="container mb-4">
+    <h2>Add New Product</h2>
+    <form id="addProductForm">
+        <div class="mb-3">
+            <label for="productName" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="productName" required>
+        </div>
+        <div class="mb-3">
+            <label for="productDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="productDescription" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="productPrice" class="form-label">Price</label>
+            <input type="number" class="form-control" id="productPrice" required>
+        </div>
+        <div class="mb-3">
+            <label for="productImage" class="form-label">Image URL</label>
+            <input type="text" class="form-control" id="productImage" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('addProductForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        createProduct();
+    });
+
+    function createProduct() {
+        const name = document.getElementById('productName').value;
+        const description = document.getElementById('productDescription').value;
+        const price = document.getElementById('productPrice').value;
+        const imageUrl = document.getElementById('productImage').value;
+
+        fetch("http://localhost:8080/store/products", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name,
+                description,
+                price,
+                image_url: imageUrl
+            }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => {
+            fetchProducts(); // Refresh the product list
+            document.getElementById('addProductForm').reset(); // Clear the form
+        })
+        .catch(error => {
+            console.error("There was a problem with the fetch operation:", error);
+        });
+    }
+</script>

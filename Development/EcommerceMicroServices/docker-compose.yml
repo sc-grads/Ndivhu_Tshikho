@@ -1,23 +1,20 @@
-
 services:
   frontend-service:
     build:
-      context: ./frontend-service  # Path to the frontend service directory
+      context: ./frontend-service
     ports:
-      - "8005:8000"  # Map port 8000 in the container to port 8005 on the host
+      - "8005:8000"
     volumes:
-      - ./frontend-service/app:/app  
+      - ./frontend-service/app:/app 
       - ./frontend-service/app/static:/app/static 
-      - ./frontend-service/app/templates:/app/templates
-      - ./product-service/app/static:/app/static
     networks:
       - app-network
 
   user-service:
     build:
-      context: ./user-service  # Path to the user service directory
+      context: ./user-service
     ports:
-      - "8001:8000" 
+      - "8001:8000"
     environment:
       - DATABASE_URL=sqlite:///user.db
     volumes:
@@ -27,35 +24,34 @@ services:
 
   product-service:
     build:
-      context: ./product-service  # Path to the product service directory
+      context: ./product-service
     ports:
-      - "8002:8000" 
+      - "8002:8000"
     environment:
       - DATABASE_URL=sqlite:///product.db
     volumes:
       - ./product-service/app:/app  
-      - ./product-service/app/static:/app/static
+      - ./product-service/app/images:/app/images
     networks:
       - app-network
 
   nginx:
     build:
-      context: ./nginx  # Path to the Nginx directory
+      context: ./nginx
     ports:
-      - "8080:80"  # Expose port 8080 for Nginx
+      - "8080:80"
     depends_on:
       - frontend-service
       - user-service
       - product-service
     volumes:
-      - ./frontend-service/app/static:/usr/share/nginx/html/static  # Serve static files
       - ./frontend-service/app/templates:/usr/share/nginx/html  # Serve HTML templates
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf  # Use custom Nginx configuration
-      - ./product-service/app/static:/usr/share/nginx/html/static
+      - ./frontend-service/app/static:/usr/share/nginx/html/static  # Serve static files
+      - ./product-service/app/images:/usr/share/nginx/html/images
     networks:
       - app-network
 
-# Create a custom network for all services
 networks:
   app-network:
     driver: bridge

@@ -12,10 +12,11 @@
     <style>
         body {
             background-color: #f8f9fa;
-            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
         .hero-section {
-            background-image: url('/static/images/ecommerce-banner.jpg'); /* Optional background image */
+            background-image: url('/static/images/ecommerce-banner.jpg'); /* Add a path to your banner image */
             background-size: cover;
             background-position: center;
             height: 70vh;
@@ -24,6 +25,7 @@
             justify-content: center;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            position: relative;
         }
         .hero-text {
             text-align: center;
@@ -31,6 +33,21 @@
         .btn-lg {
             font-size: 1.25rem;
             padding: 10px 20px;
+        }
+        .feature-card {
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer a {
+            color: white;
         }
     </style>
 </head>
@@ -67,36 +84,75 @@
         </div>
     </div>
 
-    <!-- Features Section -->
+    <!-- Products Section -->
     <div class="container text-center my-5">
-        <h2>Why Shop With Us?</h2>
-        <p class="lead">We offer a wide range of products at the best prices. Join us today!</p>
-        <div class="row">
+        <h2>Featured Products</h2>
+        <div class="row" id="product-list">
+            <!-- Sample Product Card -->
             <div class="col-md-4">
-                <div class="card p-4">
-                    <h3>Free Shipping</h3>
-                    <p>Enjoy free shipping on all orders above $50.</p>
+                <div class="card feature-card p-4">
+                    <img src="/static/images/product1.jpg" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">$19.99</p>
+                        <button class="btn btn-primary add-to-cart" data-product-id="1">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card p-4">
-                    <h3>Quality Products</h3>
-                    <p>All our products are sourced from trusted brands.</p>
+            <!-- Repeat for more products -->
+        </div>
+    </div>
+
+    <!-- Registration Prompt Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Registration Required</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-4">
-                    <h3>24/7 Support</h3>
-                    <p>Our support team is here to assist you anytime.</p>
+                <div class="modal-body">
+                    <p>You must register or log in to add products to your cart. Would you like to register now?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="/register" class="btn btn-primary">Register</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 E-commerce. All Rights Reserved.</p>
+            <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
+        </div>
+    </footer>
+
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+
+    <script>
+        $(document).ready(function() {
+            // Example of checking if user is logged in
+            let isLoggedIn = false; // Replace with actual login status check
+
+            $('.add-to-cart').on('click', function() {
+                if (!isLoggedIn) {
+                    $('#registerModal').modal('show');
+                } else {
+                    const productId = $(this).data('product-id');
+                    // Logic to add the product to cart
+                    alert(`Product ${productId} added to cart!`);
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
