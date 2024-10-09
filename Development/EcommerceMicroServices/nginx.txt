@@ -1,0 +1,14 @@
+
+Client Request: When a client makes a request to http://localhost:8080/store/products, the request hits the Nginx server.
+
+Nginx Proxying: Nginx checks its location blocks and forwards the request to the appropriate service:
+
+Requests starting with /store/ go to the product-service.
+Requests starting with /auth/ go to the user-service.
+Product Handling:
+
+The product-service handles the request using the FastAPI product_router.py.
+It performs the required action (adding, listing, modifying, or deleting a product) and communicates with the database as needed.
+Response: The service returns the response to Nginx, which then sends it back to the client.
+
+Serving Static Content: For static files or templates, Nginx serves them directly from the specified directories.
