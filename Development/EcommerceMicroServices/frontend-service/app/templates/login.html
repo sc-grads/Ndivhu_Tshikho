@@ -10,6 +10,7 @@
 
     <!-- Custom CSS (if needed) -->
     <link rel="stylesheet" href="/static/css/style.css">
+    <script src="static/config.js"></script>
 </head>
 <body>
 
@@ -50,6 +51,8 @@
         document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
+            const API_URL = env.API_URL;
+
             // Gather input values
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
@@ -60,7 +63,7 @@
             };
 
             // Send login request to the server
-            fetch("http://localhost:8080/auth/login", {
+            fetch(API_URL + "/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

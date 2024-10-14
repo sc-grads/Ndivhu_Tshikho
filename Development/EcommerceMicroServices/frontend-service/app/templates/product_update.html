@@ -31,7 +31,7 @@
         </div>
     </div>
 </div>
-
+<script src="static/config.js"></script>
 <script>
     function openEditModal(product) {
         document.getElementById('editProductId').value = product.id;
@@ -56,7 +56,9 @@
         const price = document.getElementById('editProductPrice').value;
         const imageUrl = document.getElementById('editProductImage').value;
 
-        fetch(`http://localhost:8080/store/products/${id}`, {
+        const API_URL = env.API_URL
+
+        fetch(API_URL + "/store/products/${id}", {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

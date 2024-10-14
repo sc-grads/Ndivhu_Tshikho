@@ -4,6 +4,8 @@ services:
       context: ./frontend-service
     ports:
       - "8005:8000"
+    environment:
+      - API_URL=http://localhost:8080  # Corrected here
     volumes:
       - ./frontend-service/app:/app 
       - ./frontend-service/app/static:/app/static 
@@ -17,6 +19,7 @@ services:
       - "8001:8000"
     environment:
       - DATABASE_URL=sqlite:///user.db
+      - API_URL=http://localhost:8080  # Removed spaces
     volumes:
       - ./user-service/app:/app  
     networks:
@@ -29,6 +32,7 @@ services:
       - "8002:8000"
     environment:
       - DATABASE_URL=sqlite:///product.db
+      - API_URL=http://localhost:8080  # Corrected here
     volumes:
       - ./product-service/app:/app  
       - ./product-service/app/images:/app/images
