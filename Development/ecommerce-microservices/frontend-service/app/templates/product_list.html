@@ -3,6 +3,9 @@
 {% block content %}
 <h1 class="text-center my-4">Our Products</h1>
 
+<!-- Add Product Button -->
+<button class="btn btn-success mb-4" onclick="openProductModal()">Add Product</button>
+
 <!-- Search Bar -->
 <div class="container mb-4">
     <div class="row">
@@ -30,7 +33,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="productForm">
+                <form id="productForm" enctype="multipart/form-data">
                     <input type="hidden" id="productId" />
                     <div class="form-group">
                         <label for="productName">Product Name</label>
@@ -45,8 +48,8 @@
                         <input type="number" class="form-control" id="productPrice" required>
                     </div>
                     <div class="form-group">
-                        <label for="productImage">Image URL</label>
-                        <input type="text" class="form-control" id="productImage" required>
+                        <label for="productImage">Product Image</label>
+                        <input type="file" class="form-control" id="productImage" accept="image/*" required>
                     </div>
                 </form>
             </div>
@@ -58,6 +61,10 @@
     </div>
 </div>
 
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Include Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script src="static/config.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", fetchProducts); // Fetch products on page load
@@ -108,10 +115,22 @@
         });
     }
 
-    function openProductModal() {
+    function openProductModal(product = null) {
         document.getElementById("productForm").reset(); // Reset the form
-        document.getElementById("productModalLabel").innerText = "Add Product"; // Set modal title
-        document.getElementById("saveProductBtn").onclick = saveProduct; // Set to save function
+        document.getElementById("productId").value = product ? product.id : ''; // Set product ID if editing
+        document.getElementById("productModalLabel").innerText = product ? "Edit Product" : "Add Product"; // Set modal title
+
+        if (product) {
+            // Populate form fields for editing
+            document.getElementById("productName").value = product.name;
+            document.getElementById("productDescription").value = product.description;
+            document.getElementById("productPrice").value = product.price;
+            // No need to populate the image field for editing
+            document.getElementById("saveProductBtn").onclick = () => saveProduct(product.id); // Update save button function for editing
+        } else {
+            document.getElementById("saveProductBtn").onclick = () => saveProduct(); // Set to save function
+        }
+
         $('#productModal').modal('show'); // Show the modal
     }
 
@@ -124,36 +143,31 @@
                 return response.json();
             })
             .then(product => {
-                document.getElementById("productId").value = product.id;
-                document.getElementById("productName").value = product.name;
-                document.getElementById("productDescription").value = product.description;
-                document.getElementById("productPrice").value = product.price;
-                document.getElementById("productImage").value = product.image_url;
-
-                document.getElementById("productModalLabel").innerText = "Edit Product"; // Set modal title
-                document.getElementById("saveProductBtn").onclick = saveProduct; // Set to save function
-                $('#productModal').modal('show'); // Show the modal
+                openProductModal(product); // Open modal with the product details
             })
             .catch(error => console.error("Fetch error:", error));
     }
 
-    function saveProduct() {
-        const id = document.getElementById("productId").value;
+    function saveProduct(id = null) {
         const name = document.getElementById("productName").value;
         const description = document.getElementById("productDescription").value;
         const price = document.getElementById("productPrice").value;
-        const imageUrl = document.getElementById("productImage").value;
+        const imageFile = document.getElementById("productImage").files[0];
 
-        const productData = { name, description, price, image_url: imageUrl };
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('description', description);
+        formData.append('price', price);
+        if (imageFile) {
+            formData.append('image', imageFile); // Attach the image file
+        }
+
         const method = id ? 'PUT' : 'POST'; // Determine if it's an update or a new product
         const url = id ? `${env.API_URL}/store/products/${id}` : `${env.API_URL}/store/products`;
 
         fetch(url, {
             method,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(productData),
+            body: formData, // Send the form data
         })
         .then(response => {
             if (!response.ok) {
