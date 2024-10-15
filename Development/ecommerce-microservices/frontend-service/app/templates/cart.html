@@ -1,0 +1,110 @@
+<div class="container">
+    <h2 class="my-4">Shopping Cart</h2>
+    <div id="cartItems" class="row">
+        <!-- Cart items will be dynamically added here -->
+    </div>
+    <h4 id="totalPrice" class="my-3">Total: $0.00</h4>
+</div>
+
+<script src="static/config.js"></script>
+<script>
+// Show loading indicator
+function showLoading() {
+    document.getElementById("cartItems").innerHTML = '<div class="loading">Loading...</div>';
+}
+
+// Fetch cart items
+function fetchCart() {
+    showLoading();  // Show loading before fetch
+    fetch(`${env.API_URL}/cart/`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(renderCart)
+        .catch(error => {
+            console.error("Fetch error:", error);
+            alert("Failed to fetch cart items. Please try again.");
+        });
+}
+
+// Render cart items
+function renderCart(cartItems) {
+    const cartItemsContainer = document.getElementById("cartItems");
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+
+    cartItems.forEach(item => {
+        const cartItem = `
+            <div class="col-md-4 cart-item" data-id="${item.id}">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.product.name}</h5>
+                        <p class="card-text">Quantity: 
+                            <input type="number" min="1" value="${item.quantity}" onchange="updateCartItem(${item.id}, this.value)" class="form-control" style="width: 100px;">
+                        </p>
+                        <p class="card-text"><strong>$${(item.product.price * item.quantity).toFixed(2)}</strong></p>
+                        <button class="btn btn-danger" onclick="removeCartItem(${item.id})">Remove</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        cartItemsContainer.innerHTML += cartItem;
+        total += item.product.price * item.quantity;
+    });
+
+    document.getElementById("totalPrice").innerText = `Total: $${total.toFixed(2)}`;
+}
+
+// Debounced function to update cart item quantity
+let debounceTimeout;
+function updateCartItem(itemId, quantity) {
+    // Validate quantity
+    if (quantity < 1) {
+        alert("Quantity must be at least 1");
+        return;
+    }
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(() => {
+        fetch(`${env.API_URL}/cart/${itemId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ quantity }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            fetchCart(); // Refresh cart after update
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+            alert("Failed to update cart item. Please try again.");
+        });
+    }, 300); // Adjust delay as necessary
+}
+
+// Remove cart item
+function removeCartItem(itemId) {
+    if (confirm("Are you sure you want to remove this item from the cart?")) {
+        fetch(`${env.API_URL}/cart/${itemId}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            fetchCart(); // Refresh cart after removal
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+            alert("Failed to remove cart item. Please try again.");
+        });
+    }
+}
+
+// Call fetchCart to populate cart on page load
+document.addEventListener("DOMContentLoaded", fetchCart);
+</script>

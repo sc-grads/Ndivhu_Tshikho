@@ -1,4 +1,6 @@
 fastapi
-uvicorn
-httpx
 jinja2
+requests
+uvicorn
+python-multipart
+httpx

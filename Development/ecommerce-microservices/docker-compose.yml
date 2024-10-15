@@ -1,27 +1,48 @@
-services:
+
+
+services: 
+  frontend-service:
+    build:
+      context: ./frontend-service
+    ports:
+      - "8005:8000"
+    environment:
+      - API_URL=http://localhost:8080  # API URL for the frontend
+    volumes:
+      - ./frontend-service/app:/app 
+      - ./frontend-service/app/static:/app/static 
+    networks:
+      - ecommerce-network
+
   user-service:
     build: ./user-service
     container_name: user_service
     ports:
       - "8001:8000"  # Maps port 8001 of the host to port 8000 of the container
+    volumes:
+      - ./user-service/app:/app
     networks:
       - ecommerce-network
     depends_on:
       - db-service
     environment:
-      DATABASE_URL: "postgresql://user:password@db-service:5432/ecommerce"  # Change this line
+      DATABASE_URL: "postgresql://user:password@db-service:5432/ecommerce"
+ # Connection string for PostgreSQL
 
   product-service:
     build: ./product-service
     container_name: product_service
     ports:
       - "8002:8000"  # Maps port 8002 of the host to port 8000 of the container
+    volumes:
+      - ./product-service/app:/app
+      - ./product-service/app/images:/app/images
     networks:
       - ecommerce-network
     depends_on:
       - db-service
     environment:
-      DATABASE_URL: "postgresql://user:password@db-service:5432/ecommerce"  # Change this line
+      DATABASE_URL: "postgresql://user:password@db-service:5432/ecommerce" # Connection string for PostgreSQL
 
   db-service:
     image: postgres:latest  # Use the official PostgreSQL image
@@ -40,15 +61,19 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx_proxy
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - "80:80"  # Exposes port 80 for HTTP traffic
+      - "8080:80"  # Exposes port 80 for HTTP traffic
     networks:
       - ecommerce-network
     depends_on:
       - user-service
       - product-service
+      - frontend-service
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf  # Nginx default config
+      - ./frontend-service/app/templates:/usr/share/nginx/html  # Serve HTML templates
+      - ./frontend-service/app/static:/usr/share/nginx/html/static  # Serve static files
+      - ./product-service/app/images:/usr/share/nginx/html/images  # Serve product images
 
 volumes:
   ecommerce_data:  # Define the shared named volume for PostgreSQL data

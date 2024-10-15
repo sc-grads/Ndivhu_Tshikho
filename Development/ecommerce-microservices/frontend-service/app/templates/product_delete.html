@@ -1,0 +1,19 @@
+function deleteProduct(id) {
+    // Confirm before deletion
+    if (confirm("Are you sure you want to delete this product?")) {
+        fetch(`http://localhost:8080/store/products/${id}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            // Refresh the product list after deletion
+            fetchProducts(); 
+        })
+        .catch(error => {
+            console.error("There was a problem with the fetch operation:", error);
+            alert("Error deleting product: " + error.message); // Alert for error
+        });
+    }
+}

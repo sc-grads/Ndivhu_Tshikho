@@ -13,5 +13,5 @@ app = FastAPI()
 app.mount("/images", StaticFiles(directory="images"), name="images")
 
 # Include the router
-app.include_router(router.router, prefix="/products")
+app.include_router(router.router)
 
