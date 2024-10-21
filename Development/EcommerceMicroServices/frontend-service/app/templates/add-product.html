@@ -1,78 +1,92 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="text-center my-4">Add New Product</h1>
+<h1 class="text-center my-4">Edit Product</h1>
 
 <div class="container">
     <form id="productForm" enctype="multipart/form-data">
+        <input type="hidden" id="productId" name="productId" value="{{ product.id }}"> <!-- Hidden input for product ID -->
+        
         <div class="form-group">
             <label for="productName">Product Name</label>
-            <input type="text" class="form-control" id="productName" required>
+            <input type="text" class="form-control" id="productName" value="{{ product.name }}" required>
         </div>
+        
         <div class="form-group">
             <label for="productDescription">Description</label>
-            <textarea class="form-control" id="productDescription" required></textarea>
+            <textarea class="form-control" id="productDescription" required>{{ product.description }}</textarea>
         </div>
+        
         <div class="form-group">
             <label for="productPrice">Price</label>
-            <input type="number" class="form-control" id="productPrice" required>
+            <input type="number" class="form-control" id="productPrice" value="{{ product.price }}" required>
         </div>
+        
         <div class="form-group">
-            <label for="productImage">Image</label>
-            <input type="file" class="form-control" id="productImage" accept="image/*" required>
+            <label for="currentImage">Current Image</label>
+            <div class="mb-2">
+                <img src="{{ product.image_url }}" alt="Product Image" style="max-width: 150px;">
+            </div>
+            <label for="productImage">Change Image</label>
+            <input type="file" class="form-control" id="productImage" accept="image/*">
         </div>
-        <button type="button" class="btn btn-primary" onclick="saveProduct()">Save Product</button>
+
+        <button type="button" class="btn btn-primary" onclick="updateProduct()">Update Product</button>
     </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="static/config.js"></script>
 <script>
-    // The saveProduct function is defined here
-    function saveProduct() {
-    const formData = new FormData();
-    const name = document.getElementById("productName").value;
-    const description = document.getElementById("productDescription").value;
-    const price = parseFloat(document.getElementById("productPrice").value);
-    const imageFile = document.getElementById("productImage").files[0];
+    // The updateProduct function is defined here
+    function updateProduct() {
+        const formData = new FormData();
+        const id = document.getElementById("productId").value;
+        const name = document.getElementById("productName").value;
+        const description = document.getElementById("productDescription").value;
+        const price = parseFloat(document.getElementById("productPrice").value);
+        const imageFile = document.getElementById("productImage").files[0];
 
-    if (!name || !description || !price || !imageFile) {
-        alert('Please fill all the required fields.');
-        return;
-    }
-
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("file", imageFile);
-
-    // Disable button to prevent multiple submissions
-    const saveButton = document.querySelector("button[onclick='saveProduct()']");
-    saveButton.disabled = true;
-    saveButton.textContent = "Saving...";
-
-    fetch(`${env.API_URL}/store/products`, {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => {
-                throw new Error(err.detail || 'Error adding product');
-            });
+        if (!name || !description || !price) {
+            alert('Please fill all the required fields.');
+            return;
         }
-        alert('Product added successfully!');
-        window.location.href = '/products';
-    })
-    .catch(error => {
-        console.error("Fetch error:", error);
-        alert('Error adding product: ' + error.message);
-    })
-    .finally(() => {
-        saveButton.disabled = false;
-        saveButton.textContent = "Save Product";
-    });
-}
 
+        formData.append("name", name);
+        formData.append("description", description);
+        formData.append("price", price);
+
+        // If a new image file is selected, append it to the formData
+        if (imageFile) {
+            formData.append("file", imageFile);
+        }
+
+        // Disable button to prevent multiple submissions
+        const updateButton = document.querySelector("button[onclick='updateProduct()']");
+        updateButton.disabled = true;
+        updateButton.textContent = "Updating...";
+
+        fetch(`${env.API_URL}/store/products/${id}`, {
+            method: 'PUT',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.detail || 'Error updating product');
+                });
+            }
+            alert('Product updated successfully!');
+            window.location.href = '/products';
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+            alert('Error updating product: ' + error.message);
+        })
+        .finally(() => {
+            updateButton.disabled = false;
+            updateButton.textContent = "Update Product";
+        });
+    }
 </script>
 {% endblock %}
