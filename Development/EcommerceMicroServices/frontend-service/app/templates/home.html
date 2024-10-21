@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>E-commerce Store</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -11,50 +11,58 @@
     <!-- Custom CSS -->
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #121212; /* Dark theme background */
             margin: 0;
             font-family: Arial, sans-serif;
         }
+        .navbar {
+            background-color: #343a40; /* Dark navbar */
+        }
+        .navbar a {
+            color: #f8f9fa; /* Light text for links */
+        }
         .hero-section {
-            background-image: url('/static/images/ecommerce-banner.jpg'); /* Add a path to your banner image */
+            background-image: url('/static/images/ecommerce-banner.jpg'); /* Adjust with your product image */
             background-size: cover;
             background-position: center;
-            height: 70vh;
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
             position: relative;
         }
-        .hero-text {
-            text-align: center;
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
         }
-        .btn-lg {
-            font-size: 1.25rem;
-            padding: 10px 20px;
+        .hero-text p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
         }
-        .feature-card {
-            transition: transform 0.3s;
-        }
-        .feature-card:hover {
-            transform: scale(1.05);
+        .cta {
+            padding: 12px 24px;
+            text-transform: uppercase;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
         }
         .footer {
             background-color: #343a40;
             color: white;
-            padding: 20px 0;
+            padding: 20px;
             text-align: center;
-        }
-        .footer a {
-            color: white;
         }
     </style>
 </head>
 <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">E-commerce</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -77,49 +85,29 @@
     <!-- Hero Section -->
     <div class="hero-section">
         <div class="hero-text">
-            <h1>Welcome to Our E-commerce Store</h1>
-            <p>Find the best products at unbeatable prices</p>
-            <a href="/register" class="btn btn-primary btn-lg mx-2">Register</a>
-            <a href="/login" class="btn btn-secondary btn-lg mx-2">Login</a>
+            <h1>Introducing Product X</h1>
+            <p>Revolutionary technology, available now</p>
+            <p class="price">Now from R9,999</p>
+            <a href="/shop" class="cta">Shop Now</a>
         </div>
     </div>
 
     <!-- Products Section -->
     <div class="container text-center my-5">
-        <h2>Featured Products</h2>
+        <h2 class="text-white">Featured Products</h2>
         <div class="row" id="product-list">
-            <!-- Sample Product Card -->
-            <div class="col-md-4">
-                <div class="card feature-card p-4">
-                    <img src="/static/images/product1.jpg" class="card-img-top" alt="Product 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Product 1</h5>
-                        <p class="card-text">$19.99</p>
-                        <button class="btn btn-primary add-to-cart" data-product-id="1">Add to Cart</button>
-                    </div>
+            <div id="productCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" id="productCarouselInner">
+                    <!-- Products will be dynamically added here -->
                 </div>
-            </div>
-            <!-- Repeat for more products -->
-        </div>
-    </div>
-
-    <!-- Registration Prompt Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="registerModalLabel">Registration Required</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>You must register or log in to add products to your cart. Would you like to register now?</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="/register" class="btn btn-primary">Register</a>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
     </div>
@@ -128,7 +116,7 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 E-commerce. All Rights Reserved.</p>
-            <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
+            <p><a href="/privacy-policy" class="text-white">Privacy Policy</a> | <a href="/terms-of-service" class="text-white">Terms of Service</a></p>
         </div>
     </footer>
 
@@ -139,15 +127,13 @@
 
     <script>
         $(document).ready(function() {
-            // Example of checking if user is logged in
-            let isLoggedIn = false; // Replace with actual login status check
+            let isLoggedIn = false;
 
             $('.add-to-cart').on('click', function() {
                 if (!isLoggedIn) {
                     $('#registerModal').modal('show');
                 } else {
                     const productId = $(this).data('product-id');
-                    // Logic to add the product to cart
                     alert(`Product ${productId} added to cart!`);
                 }
             });

@@ -25,7 +25,19 @@ def login_page(request: Request):
 
 @app.get("/products")
 def product_page(request: Request):
-    return templates.TemplateResponse("product_list.html", {"request": request})
+    return templates.TemplateResponse("product.html", {"request": request})
+
+@app.get("/add-product")
+def add_product_page(request: Request):
+    return templates.TemplateResponse("add-product.html", {"request": request})
+
+@app.get("/edit-product")
+def edit_product_page(request: Request):
+    return templates.TemplateResponse("edit-product.html", {"request": request}) 
+
+@app.get("/shop")
+def shop_page(request: Request):
+    return templates.TemplateResponse("register.html", {"request": request})  
 
 
 

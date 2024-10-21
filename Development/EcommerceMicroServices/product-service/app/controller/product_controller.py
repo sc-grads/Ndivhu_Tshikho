@@ -32,3 +32,6 @@ def delete_product(db: Session, product_id: int):
         db.delete(db_product)
         db.commit()
     return db_product
+
+def get_product_by_id(db: Session, product_id: int):
+    return db.query(Product).filter(Product.id == product_id).first()
