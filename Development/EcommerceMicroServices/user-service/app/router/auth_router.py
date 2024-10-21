@@ -49,3 +49,10 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
 
     # Return user information (excluding password)
     return {"id": user_record.id, "username": user_record.username, "email": user_record.email}
+
+@router.get("/store/customer", response_model=UserResponse)
+def get_user(email: str, db: Session = Depends(get_db)):
+    user_record = db.query(User).filter(User.email == email).first()
+    if user_record is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user_record

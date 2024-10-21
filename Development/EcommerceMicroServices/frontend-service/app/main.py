@@ -37,7 +37,15 @@ def edit_product_page(request: Request):
 
 @app.get("/shop")
 def shop_page(request: Request):
-    return templates.TemplateResponse("register.html", {"request": request})  
+    return templates.TemplateResponse("login.html", {"request": request})  
+
+@app.get("/cart")
+def cart_page(request: Request):
+    return templates.TemplateResponse("cart.html", {"request": request})
+
+@app.get("/profile")
+def profile_page(request: Request):
+    return templates.TemplateResponse("profile.html", {"request": request})
 
 
 
