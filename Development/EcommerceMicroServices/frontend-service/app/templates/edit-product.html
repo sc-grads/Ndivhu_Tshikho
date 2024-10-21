@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center my-4">Edit Product</h1>
+
+<div class="container">
+    <form id="productForm" enctype="multipart/form-data">
+        <input type="hidden" id="productId" name="productId" value="{{ product.id }}"> <!-- Hidden input for product ID -->
+        <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" class="form-control" id="productName" value="{{ product.name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="productDescription">Description</label>
+            <textarea class="form-control" id="productDescription" required>{{ product.description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Price</label>
+            <input type="number" class="form-control" id="productPrice" value="{{ product.price }}" required>
+        </div>
+        <div class="form-group">
+            <label for="productImage">Image</label>
+            <input type="file" class="form-control" id="productImage" accept="image/*">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="updateProduct()">Update Product</button>
+    </form>
+</div>
+
+<!-- Include jQuery from a CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="static/config.js"></script>
+<script>
+function updateProduct() {
+    const formData = new FormData();
+    const id = document.getElementById("productId").value;
+
+    // Append form fields
+    formData.append("name", document.getElementById("productName").value);
+    formData.append("description", document.getElementById("productDescription").value);
+    formData.append("price", parseFloat(document.getElementById("productPrice").value));  // Ensure price is a float
+
+    // Check if a new image is uploaded
+    const imageFile = document.getElementById("productImage").files[0];
+    if (imageFile) {
+        formData.append("file", imageFile);  // If there's a new image, append it
+    }
+
+    fetch(`${env.API_URL}/store/products/${id}`, {
+        method: 'PUT',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => {
+                console.error("Backend error:", err);
+                alert('Validation error: ' + JSON.stringify(err.detail));
+                throw new Error(err.detail || 'Error updating product');
+            });
+        }
+        alert('Product updated successfully!');
+        window.location.href = '/products';  // Redirect to the products list
+    })
+    .catch(error => {
+        console.error("Fetch error:", error);
+        alert('Error updating product: ' + error.message);
+    });
+}
+</script>
+{% endblock %}

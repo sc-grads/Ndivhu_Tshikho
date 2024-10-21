@@ -9,6 +9,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 app.mount("/images", StaticFiles(directory="images"), name="images")
+
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
