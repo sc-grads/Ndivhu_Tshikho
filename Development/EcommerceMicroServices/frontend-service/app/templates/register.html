@@ -30,6 +30,24 @@
     </div>
 
     <script>
+        // Function to check password policy on the client side
+        function passwordPolicy(password) {
+            const errorMessage = [];
+            if (password.length < 8) {
+                errorMessage.push("Password must be at least 8 characters long");
+            }
+            if (!/[A-Z]/.test(password)) {
+                errorMessage.push("Password must contain at least one uppercase letter");
+            }
+            if (!/[a-z]/.test(password)) {
+                errorMessage.push("Password must contain at least one lowercase letter");
+            }
+            if (!/\d/.test(password)) {
+                errorMessage.push("Password must contain at least one digit");
+            }
+            return errorMessage;
+        }
+
         document.getElementById("registerForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
@@ -39,13 +57,21 @@
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
+            // Client-side password validation
+            const passwordErrors = passwordPolicy(password);
+            if (passwordErrors.length > 0) {
+                document.getElementById("errorMessage").innerText = passwordErrors.join(", ");
+                document.getElementById("successMessage").innerText = "";
+                return; // Stop the form from submitting if password is invalid
+            }
+
             const registrationData = {
                 username: username,
                 email: email,
                 password: password
             };
 
-            // Use direct concatenation for the URL
+            // Send registration data to backend
             fetch(API_URL + "/auth/register", {
                 method: "POST",
                 headers: {
