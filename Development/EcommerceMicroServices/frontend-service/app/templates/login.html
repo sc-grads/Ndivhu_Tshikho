@@ -50,18 +50,18 @@
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault();
-
+    
             const API_URL = env.API_URL;
-
+    
             // Gather input values
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
-
+    
             const loginData = {
                 email: email,
                 password: password
             };
-
+    
             // Send login request to the server
             fetch(API_URL + "/auth/login", {
                 method: "POST",
@@ -79,8 +79,22 @@
                 return response.json();
             })
             .then(data => {
-                // Redirect to the homepage after successful login
-                window.location.href = "/profile"; // Replace with your actual homepage
+                // Accessing the token and user info based on the updated backend response
+                const token = data.access_token; // Corrected key for access token
+                const userRole = data.role; // Corrected to use the role field directly
+    
+                // Store token in local storage (optional)
+                localStorage.setItem('token', token);
+    
+                // Redirect based on the user's role
+                if (userRole === 'admin') {
+                    window.location.href = "/products"  // Redirect to the product page for admins
+                } else if (userRole === 'user') {
+                    window.location.href = "/profile";  // Redirect to the profile page for regular users
+                } else {
+                    // Default redirection (optional)
+                    window.location.href = "/";
+                }
             })
             .catch(error => {
                 // Display error message
@@ -88,5 +102,6 @@
             });
         });
     </script>
+    
 </body>
 </html>

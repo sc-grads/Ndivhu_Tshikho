@@ -1,68 +1,75 @@
-# src/routers/auth_router.py
-
 from fastapi import APIRouter, HTTPException, Depends
+import jwt
 from sqlalchemy.orm import Session
 from model.user import User
 from model.schemas import UserCreate, UserLogin, UserResponse
 from database import get_db
 from passlib.context import CryptContext
+from utils.auth_utils import admin_required, user_required  # Import role dependencies
 
 router = APIRouter()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-
-# Define password policy function with specific error messages
-def password_policy(password: str):
-    if len(password) < 8:
-        return "Password must be at least 8 characters long"
-    if not any(char.isupper() for char in password):
-        return "Password must contain at least one uppercase letter"
-    if not any(char.islower() for char in password):
-        return "Password must contain at least one lowercase letter"
-    if not any(char.isdigit() for char in password):
-        return "Password must contain at least one digit"
-    return None
-
 @router.post("/auth/register", response_model=UserResponse)
-def register(user: UserCreate, db: Session = Depends(get_db)):
-    # Check if user already exists
+def register(user: UserCreate, db: Session = Depends(get_db), role: str = "user"):
     existing_user = db.query(User).filter(User.email == user.email).first()
     if existing_user:
         raise HTTPException(status_code=400, detail="Email already registered")
     
-    # Check if the password meets the password policy
-    error_message = password_policy(user.password)
-    if error_message:
-        raise HTTPException(status_code=400, detail=error_message)
     # Hash the password
     hashed_password = pwd_context.hash(user.password)
-
-    # Create a new user instance
-    new_user = User(
-        username=user.username,
-        email=user.email,
-        password=hashed_password,
-    )
-
-    # Add the user to the database
+    new_user = User(username=user.username, email=user.email, password=hashed_password, role=role)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
+    
+    # Create a JWT token for the new user
+    access_token = jwt.encode(
+        {"sub": new_user.email, "role": new_user.role},
+        "your_secret_key",  # Replace with your actual secret key
+        algorithm="HS256"
+    )
 
-    return new_user
+    # Return the user details along with the access token
+    return {
+        "id": new_user.id,
+        "username": new_user.username,
+        "email": new_user.email,
+        "role": new_user.role,
+        "access_token": access_token,
+        "token_type": "bearer"
+    }
 
 @router.post("/auth/login", response_model=UserResponse)
 def login(user: UserLogin, db: Session = Depends(get_db)):
-    # Retrieve the user from the database
     user_record = db.query(User).filter(User.email == user.email).first()
     
-    # Check if the user exists
-    if user_record is None:
-        raise HTTPException(status_code=400, detail="Invalid credentials")
-    
-    # Verify the password
-    if not pwd_context.verify(user.password, user_record.password):
+    if user_record is None or not pwd_context.verify(user.password, user_record.password):
         raise HTTPException(status_code=400, detail="Invalid credentials")
 
-    # Return user information (excluding password)
-    return {"id": user_record.id, "username": user_record.username, "email": user_record.email}
+    # Create token with user's role
+    access_token = jwt.encode(
+        {"sub": user_record.email, "role": user_record.role},
+        "your_secret_key",
+        algorithm="HS256"
+    )
+
+    # Return user info along with the access token
+    return {
+        "id": user_record.id,
+        "username": user_record.username,
+        "email": user_record.email,
+        "role": user_record.role,
+        "access_token": access_token,
+        "token_type": "bearer"
+    }
+
+# Admin-only route
+@router.get("auth/admin-only", dependencies=[Depends(admin_required)])
+def product_management():
+    return {"message": "Admin access granted!"}
+
+# User or Admin route
+@router.get("auth/user-only", dependencies=[Depends(user_required)])
+def user_dashboard():
+    return {"message": "User or Admin access granted!"}
