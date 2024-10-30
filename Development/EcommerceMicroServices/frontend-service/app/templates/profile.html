@@ -31,10 +31,18 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
         .cart-item img {
             width: 50px;
             height: 50px;
             object-fit: cover;
+            margin-right: 15px;
         }
     </style>
 </head>
@@ -81,12 +89,17 @@
         let cart = [];  // Array to store cart items
 
         function loadCustomerData() {
-            // Your customer data loading logic here
+            const apiUrl = env.API_URL;
+            fetch(`${apiUrl}/user/profile`) // Replace with your user profile endpoint
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("username").textContent = data.username;
+                })
+                .catch(error => console.error("Error loading customer data:", error));
         }
 
         function fetchProducts() {
             const apiUrl = env.API_URL;  // Use your environment variable for API URL
-            console.log("Fetching products from:", apiUrl);  // Debugging
             fetch(`${apiUrl}/store/products`)
                 .then(response => {
                     if (!response.ok) {
@@ -95,10 +108,12 @@
                     return response.json();
                 })
                 .then(products => {
-                    console.log("Fetched products:", products);  // Log products for debugging
                     renderProducts(products);
                 })
-                .catch(error => console.error("Fetch error:", error));
+                .catch(error => {
+                    console.error("Fetch error:", error);
+                    document.getElementById("productGrid").innerHTML = '<p class="text-danger">Failed to load products. Please try again later.</p>';
+                });
         }
 
         function renderProducts(products) {
@@ -156,10 +171,13 @@
                 cartItems.innerHTML = '<p>No items in the cart yet.</p>';
             } else {
                 cart.forEach(item => {
+                    const totalItemPrice = (item.price * item.quantity).toFixed(2);
                     const cartItem = `
                         <div class="cart-item">
                             <img src="${apiUrl}/${item.image_url}" alt="${item.name}">
-                            <p><strong>${item.name}</strong> - $${item.price} x ${item.quantity}</p>
+                            <div>
+                                <p><strong>${item.name}</strong> - $${item.price} x ${item.quantity} = $${totalItemPrice}</p>
+                            </div>
                         </div>
                     `;
                     cartItems.innerHTML += cartItem;
@@ -173,16 +191,15 @@
                 return;
             }
 
-            // Simulate a checkout API call
-            alert("Proceeding to checkout with items: " + JSON.stringify(cart));
-
-            // Reset cart after checkout
-            cart = [];
-            renderCart();
+            if (confirm("Are you sure you want to proceed with checkout?")) {
+                alert("Proceeding to checkout with items: " + JSON.stringify(cart));
+                cart = [];
+                renderCart();
+            }
         }
 
         function logout() {
-            // Your logout logic here (e.g., redirecting to the home page or clearing session)
+            // Redirect to the home page or clear session, depending on your logout logic
             window.location.href = '/';  // Example redirect
         }
     </script>
