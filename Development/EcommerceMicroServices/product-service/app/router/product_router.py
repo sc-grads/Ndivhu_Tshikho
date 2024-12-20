@@ -1,78 +1,55 @@
-from fastapi import APIRouter, Depends, File, Form, UploadFile, HTTPException, Request
+# app/router/product_router.py
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
-from model.product import Product
+from utils.jwt_utils import decode_token  # Import the decoding function
 from database import get_db
+from model.product import Product
 from controller.product_controller import create_product, get_products, update_product, delete_product
-import os
+from model.schemas import ProductResponse, ProductCreate  # Ensure you have the appropriate schemas
 
 router = APIRouter()
 
-UPLOAD_DIR = "images"
-
-# Ensure the directory exists
-if not os.path.exists(UPLOAD_DIR):
-    os.makedirs(UPLOAD_DIR)
-
-@router.post("/store/products")
+@router.post("/store/products", response_model=ProductResponse)
 async def add_product(
-    name: str = Form(...),  # Form data for non-file fields
+    name: str = Form(...),
     description: str = Form(...),
     price: float = Form(...),
-    file: UploadFile = File(...),  # File upload
-    db: Session = Depends(get_db)
+    file: UploadFile = File(...),
+    token: str = Depends(decode_token),  # Decode JWT here
+    db: Session = Depends(get_db),
 ):
-    try:
-        # Save the file to disk
-        image_url = f"/{UPLOAD_DIR}/{file.filename}"
-        file_location = os.path.join(UPLOAD_DIR, file.filename)
+    if token.role != "admin":  # Check if user is admin
+        raise HTTPException(status_code=403, detail="Operation not permitted")
+    
+    # Call the create_product function, ensuring it returns a ProductResponse
+    product = await create_product(db, name, description, price, file)  # Assume create_product handles the file upload
+    return product  # Ensure this returns an instance of ProductResponse
 
-        with open(file_location, "wb") as f:
-            f.write(await file.read())  # Save uploaded file
-
-        # Create the product using the controller logic
-        new_product = create_product(db, name, description, price, image_url)
-        return new_product
-    except Exception as e:
-        # Log the request body and error for debugging
-        print(f"Error occurred: {e}")
-        print(f"Request body: {await Request.form()}")
-        raise HTTPException(status_code=400, detail=str(e))
-
-        
-@router.get("/store/products")
-def list_products(db: Session = Depends(get_db)):
-    return get_products(db)
-
-@router.get("/store/products/{product_id}")
-def get_product(product_id: int, db: Session = Depends(get_db)):
-    product = db.query(Product).filter(Product.id == product_id).first()
-    if not product:
-        raise HTTPException(status_code=404, detail="Product not found")
-    return product
-
-@router.put("/store/products/{product_id}")
+@router.put("/store/products/{product_id}", response_model=ProductResponse)
 async def update_product_endpoint(
     product_id: int,
-    name: str,
-    description: str,
-    price: float,
-    file: UploadFile = File(None),  # File is optional in case there's no new file
-    db: Session = Depends(get_db)
+    name: str = Form(...),
+    description: str = Form(...),
+    price: float = Form(...),
+    file: UploadFile = File(None),
+    token: str = Depends(decode_token),
+    db: Session = Depends(get_db),
 ):
-    image_url = None
-    if file:
-        # If a new file is uploaded, save the new file
-        image_url = f"/{UPLOAD_DIR}/{file.filename}"
-        file_location = os.path.join(UPLOAD_DIR, file.filename)
+    if token.role != "admin":
+        raise HTTPException(status_code=403, detail="Operation not permitted")
+    
+    # Call the update_product function, ensuring it returns a ProductResponse
+    updated_product = await update_product(db, product_id, name, description, price, file)  # Assume update_product handles the file upload
+    return updated_product  # Ensure this returns an instance of ProductResponse
 
-        with open(file_location, "wb") as f:
-            f.write(await file.read())  # Use await for asynchronous file handling
-
-    # Update the product details with or without a new image
-    updated_product = update_product(db, product_id, name, description, price, image_url)
-    return updated_product
-
-@router.delete("/store/products/{product_id}")
-def remove_product(product_id: int, db: Session = Depends(get_db)):
+@router.delete("/store/products/{product_id}", response_model=dict)
+def remove_product(
+    product_id: int,
+    token: str = Depends(decode_token),
+    db: Session = Depends(get_db),
+):
+    if token.role != "admin":
+        raise HTTPException(status_code=403, detail="Operation not permitted")
+    
     delete_product(db, product_id)
     return {"detail": "Product deleted successfully"}

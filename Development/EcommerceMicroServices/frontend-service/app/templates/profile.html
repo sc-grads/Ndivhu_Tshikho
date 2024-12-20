@@ -20,12 +20,6 @@
             padding: 20px;
             text-align: center;
         }
-        .profile-info {
-            margin: 20px 0;
-        }
-        .product-grid {
-            margin-top: 30px;
-        }
         .cart-preview {
             background-color: #ffffff;
             padding: 20px;
@@ -90,16 +84,19 @@
 
         function loadCustomerData() {
             const apiUrl = env.API_URL;
-            fetch(`${apiUrl}/user/profile`) // Replace with your user profile endpoint
+            fetch(`${apiUrl}/auth/profile`)
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById("username").textContent = data.username;
+                    const usernameElement = document.getElementById("username");
+                    usernameElement.textContent = data.username;
                 })
-                .catch(error => console.error("Error loading customer data:", error));
+                .catch(error => {
+                    console.error("Fetch error:", error);
+                });
         }
 
         function fetchProducts() {
-            const apiUrl = env.API_URL;  // Use your environment variable for API URL
+            const apiUrl = env.API_URL;
             fetch(`${apiUrl}/store/products`)
                 .then(response => {
                     if (!response.ok) {
@@ -164,8 +161,8 @@
 
         function renderCart() {
             const cartItems = document.getElementById("cartItems");
-            const apiUrl = env.API_URL; // Get the API URL for rendering image paths
-            cartItems.innerHTML = ''; // Clear existing cart items
+            const apiUrl = env.API_URL;
+            cartItems.innerHTML = ''; 
 
             if (cart.length === 0) {
                 cartItems.innerHTML = '<p>No items in the cart yet.</p>';
@@ -199,8 +196,7 @@
         }
 
         function logout() {
-            // Redirect to the home page or clear session, depending on your logout logic
-            window.location.href = '/';  // Example redirect
+            window.location.href = '/';
         }
     </script>
 

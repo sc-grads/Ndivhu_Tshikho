@@ -25,6 +25,7 @@ services:
     networks:
       - app-network
 
+
   product-service:
     build:
       context: ./product-service
@@ -33,12 +34,30 @@ services:
     environment:
       - DATABASE_URL=sqlite:////data/ecommerce.db  # Same database reference
       - API_URL=http://localhost:8080  # Corrected here
+      - USER_SERVICE_URL=http:user-service:8001
     volumes:
       - ./product-service/app:/app  
       - ./product-service/app/images:/app/images
       - ./data:/data  # Bind mount the 'data' folder for shared database access
     networks:
       - app-network
+
+
+#  cart-serivice:
+#    build:
+#      context: ./cart-service
+#    ports:
+#      - "8003:8000"
+#    environment:
+#      - DATABASE_URL=sqlite:////data/ecommerce.db  # Same database reference
+#      - API_URL=http://localhost:8080  # Corrected here
+#      - USER_SERVICE_URL=http:user-service:8001
+#    volumes:
+#      - ./cart-service/app:/app  
+#      - ./data:/data  # Bind mount the 'data' folder for shared database access
+#    networks:
+#      - app-network
+
 
   nginx:
     build:

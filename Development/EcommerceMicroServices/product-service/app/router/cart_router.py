@@ -1,40 +1,23 @@
-# src/routers/cart_router.py
+# app/router/cart_router.py
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from model.cart import CartItem
+from controller.cart_controller import add_to_cart, get_cart_items, update_cart_item, remove_cart_item
 from database import get_db
 
 router = APIRouter()
 
-@router.post("/cart/")
-async def add_to_cart(product_id: int, quantity: int, db: Session = Depends(get_db)):
-    # Logic to add product to the cart
-    cart_item = CartItem(product_id=product_id, quantity=quantity)
-    db.add(cart_item)
-    db.commit()
-    db.refresh(cart_item)
-    return cart_item
+@router.post("/cart")
+def add_product_to_cart(product_id: int, quantity: int, db: Session = Depends(get_db)):
+    return add_to_cart(db, product_id, quantity)
 
-@router.get("/cart/")
-async def get_cart(db: Session = Depends(get_db)):
-    return db.query(CartItem).all()
+@router.get("/cart")
+def list_cart_items(db: Session = Depends(get_db)):
+    return get_cart_items(db)
 
-@router.put("/cart/{item_id}")
-async def update_cart_item(item_id: int, quantity: int, db: Session = Depends(get_db)):
-    item = db.query(CartItem).filter(CartItem.id == item_id).first()
-    if not item:
-        raise HTTPException(status_code=404, detail="Item not found")
-    
-    item.quantity = quantity
-    db.commit()
-    return item
+@router.put("/cart/{cart_id}")
+def update_cart_item_quantity(cart_id: int, quantity: int, db: Session = Depends(get_db)):
+    return update_cart_item(db, cart_id, quantity)
 
-@router.delete("/cart/{item_id}")
-async def remove_cart_item(item_id: int, db: Session = Depends(get_db)):
-    item = db.query(CartItem).filter(CartItem.id == item_id).first()
-    if not item:
-        raise HTTPException(status_code=404, detail="Item not found")
-    
-    db.delete(item)
-    db.commit()
-    return {"detail": "Item removed from cart"}
+@router.delete("/cart/{cart_id}")
+def delete_cart_item(cart_id: int, db: Session = Depends(get_db)):
+    return remove_cart_item(db, cart_id)

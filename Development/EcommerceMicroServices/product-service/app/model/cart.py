@@ -1,13 +1,14 @@
-# src/models/cart.py
-from sqlalchemy import Column, Integer, String, ForeignKey
+# app/model/cart.py
+from sqlalchemy import Column, Integer, ForeignKey, Float
 from sqlalchemy.orm import relationship
 from database import Base
 
-class CartItem(Base):
-    __tablename__ = 'cart_item'
-    
+class Cart(Base):
+    __tablename__ = "cart"
+
     id = Column(Integer, primary_key=True, index=True)
-    product_id = Column(Integer, ForeignKey('product.id'))
+    product_id = Column(Integer, ForeignKey("product.id"))
     quantity = Column(Integer, default=1)
-    
-    product = relationship("Product")  # Assuming you have a Product model
+    total_price = Column(Float)
+
+    product = relationship("Product", backref="cart_items")

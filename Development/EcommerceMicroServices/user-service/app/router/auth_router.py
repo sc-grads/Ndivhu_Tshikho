@@ -73,3 +73,7 @@ def product_management():
 @router.get("auth/user-only", dependencies=[Depends(user_required)])
 def user_dashboard():
     return {"message": "User or Admin access granted!"}
+
+@router.get("/auth/profile", dependencies=[Depends(user_required)])
+def get_current_user(current_user: User = Depends(user_required)):
+    return current_user
